@@ -1,0 +1,71 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.chat {
+  height: 4em;
+  border: solid 5px #EEE;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.messages {
+  overflow-y:scroll;
+  height: 85vh;
+  border: solid 5px #EEE;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.message {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* mensaje lado izquierdo */
+.left {
+  color: white;
+  margin-right: 80%;
+  background-color: #8378db;
+  position: relative;
+}
+
+/* mensaje lado derecho */
+.right {
+  color: white;
+  margin-left: 80%;
+  background: #0085D1;
+  position: relative;
+}
+
+.hora {
+  color: light-gray;
+  margin: 1em 0em 0em 1em;
+  font-size: 0.75em;
+  float: right;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-right {
+  width: 75%;
+  height: 100vh;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid red;
+}
+
+.flex-left {
+  width: 25%;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid blue;
+}

@@ -11,7 +11,9 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
+    // TODO evitar esto
     protected $except = [
-        //
+      '/telegram-update',
+      '/send-telegram'
     ];
 }
