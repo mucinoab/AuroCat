@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PusherNotificationController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+});
+
+Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_a_agente']);
+Route::post('/send-telegram', [PusherNotificationController::class, 'agente_a_telegram']);
+Route::get('/test-chat', function () {
+  return view('chat');
 });
 
 Auth::routes();
