@@ -17,7 +17,9 @@ var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
 <body>
   <div class="flex-container">
     <div id="chats" class="flex-left">
-      <h2>Chats</h2>
+      <div class="flex-left-head">
+        <h2>Chats</h2>
+      </div>
       <div class="chat">
       </div>
     </div>
