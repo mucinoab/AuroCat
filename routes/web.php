@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\PusherNotificationController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+
+
 use Illuminate\Http\Request;
 
 /*
@@ -25,6 +30,11 @@ Route::get('/test-chat', function () {
   return view('chat');
 });
 
-Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::view('login', 'login');
+Route::view('login','auth/login')->name('login')->middleware('guest');
+// Route::post('login', );
+Route::post('login', [LoginController::class, 'index'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
