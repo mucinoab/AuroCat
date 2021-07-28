@@ -14,8 +14,18 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('agent_id');
+            $table->date('end');
+
+            // El campo 'created_at de los timestamps guarda el inicio
             $table->timestamps();
+
+            // FK
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+
+            // softDeletes
+            $table->softDeletes();
         });
     }
 

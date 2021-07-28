@@ -14,8 +14,15 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('message');
+            $table->boolean('user_message');
+            $table->boolean('read');
+            
             $table->timestamps();
+            
+            // softDeletes
+            $table->softDeletes();
         });
     }
 

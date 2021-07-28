@@ -14,8 +14,16 @@ class CreateChatQueuesTable extends Migration
     public function up()
     {
         Schema::create('chat_queues', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('chat_id');
+            
             $table->timestamps();
+
+            // FK
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
+
+            // softDeletes
+            $table->softDeletes();
         });
     }
 

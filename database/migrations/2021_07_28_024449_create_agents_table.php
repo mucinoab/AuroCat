@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
 class CreateAgentsTable extends Migration
@@ -14,8 +14,17 @@ class CreateAgentsTable extends Migration
     public function up()
     {
         Schema::create('agents', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('email');
+            $table->string('password');
+            $table->string('token')->nullable();
+            
             $table->timestamps();
+
+            // softDeletes
+            $table->softDeletes();
         });
     }
 
