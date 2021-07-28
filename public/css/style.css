@@ -2,6 +2,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+}
+
 .messages {
   overflow-y:scroll;
   height: 85vh;
