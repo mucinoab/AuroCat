@@ -37,10 +37,21 @@ html {
 /* mensaje lado izquierdo */
 .chat {
   height: 10%;
-  background-color: #0EE;
+  background-color: #0085D1;
   display: flex;
   flex-direction: column;
   padding: 10px;
+}
+
+#nameUser {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+#prev-message {
+  font-size: .8rem;
+  margin: 0;
 }
 
 /* mensaje lado derecho */
@@ -72,18 +83,12 @@ html {
   width: 75%;
   height: 100vh;
   background-color: #202634;
-  /*margin: 5px;
-  padding: 5px;
-  border: 2px solid red;
-  */}
+}
 
 .flex-left {
   width: 25%;
   background-color: #3E4555;
-  /*margin: 5px;
-  padding: 5px;
-  border: 2px solid blue;
-*/}
+}
 p {
   font-family: Arial, Helvetica, sans-serif;
   color: #EEE;

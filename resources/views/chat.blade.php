@@ -22,6 +22,13 @@ var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
         <h2>Chats</h2>
       </div>
       <div class="chat">
+          <div class="chat-icon-cliente">
+            
+          </div>
+          <div class="chat-content">
+            <h2 id="nameUser">Cliente 1</h2>
+            <p id="prev-message">hola mensajito de prueba previo</p>
+          </div>
       </div>
     </div>
 
