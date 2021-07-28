@@ -37,7 +37,7 @@ html {
 /* mensaje lado izquierdo */
 .chat {
   height: 10%;
-  border: solid 5px #0EE;
+  background-color: #0EE;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -45,6 +45,7 @@ html {
 
 /* mensaje lado derecho */
 .flex-right-head{
+  width: 99.9%;
   border-left: 1px solid #3E4555;
 }
 .right {
@@ -70,6 +71,7 @@ html {
 .flex-right {
   width: 75%;
   height: 100vh;
+  background-color: #202634;
   /*margin: 5px;
   padding: 5px;
   border: 2px solid red;
@@ -82,3 +84,8 @@ html {
   padding: 5px;
   border: 2px solid blue;
 */}
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #EEE;
+  margin: 10px;
+}
