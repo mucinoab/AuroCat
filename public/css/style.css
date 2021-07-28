@@ -35,6 +35,13 @@ html {
 }
 
 /* mensaje lado izquierdo */
+.left {
+  color: white;
+  margin-right: 80%;
+  background-color: #8378db;
+  position: relative;
+}
+
 .chat {
   height: 10%;
   background-color: #0085D1;
