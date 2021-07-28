@@ -26,6 +26,9 @@ var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
     </div>
 
     <div class="flex-right">
+      <div class="flex-right-head">
+        <h2>Nombre Cliente</h2>
+      </div>
       <p>
         Envía un mensaje <a href="https://t.me/aeolus_help_bot">al bot</a> para iniciar.
       </p>
