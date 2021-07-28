@@ -1,8 +1,12 @@
 <?php
 
-namespace Database\Seeders;
+// namespace Database\Seeders;
+// \_0>
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+use App\Models\Agent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(AgentSeeder::class);
+    }
+}
+
+class AgentSeeder extends Seeder {
+    public function run(){
+        Agent::create(['name' => 'Bruno', 'lastname' => 'Muciño', 'email' => 'mucinoab@gmail.com', 'password' => Hash::make('1234')]);
     }
 }
