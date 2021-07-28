@@ -23,7 +23,7 @@ var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
       </div>
       <div class="chat">
           <div class="chat-icon-cliente">
-            
+
           </div>
           <div class="chat-content">
             <h2 id="nameUser">Cliente 1</h2>
@@ -34,6 +34,9 @@ var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
 
     <div class="flex-right">
       <div class="flex-right-head">
+        <div class="chat-icon-cliente">
+            
+        </div>
         <h2>Nombre Cliente</h2>
       </div>
       <p>
