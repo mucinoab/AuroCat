@@ -2,6 +2,7 @@
 <head>
   <title>Chat</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
   <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
   <script src="/js/utils.js"></script>
 </head>
