@@ -14,8 +14,18 @@ class CreateChatMessagesTable extends Migration
     public function up()
     {
         Schema::create('chat_messages', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('chat_id');
+            $table->unsignedBigInteger('message_id');
+            
             $table->timestamps();
+
+            // FK
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
+            $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
+
+            // softDeletes
+            $table->softDeletes();
         });
     }
 
