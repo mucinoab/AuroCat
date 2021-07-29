@@ -67,6 +67,9 @@ body {
 #prev-message {
   font-size: .8rem;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-top: 3px;
   margin-left: 2px;
 }
