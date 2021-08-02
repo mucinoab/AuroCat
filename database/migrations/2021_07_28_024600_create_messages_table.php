@@ -16,11 +16,14 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('message');
-            $table->boolean('user_message');
-            $table->boolean('read');
-            
+            $table->boolean('read')->nullable();
+            $table->unsignedBigInteger('user_id');
+
             $table->timestamps();
-            
+
+            // FK
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             // softDeletes
             $table->softDeletes();
         });

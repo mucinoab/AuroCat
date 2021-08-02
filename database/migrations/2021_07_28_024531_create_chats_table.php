@@ -15,15 +15,12 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('agent_id');
-            $table->date('created');
-            $table->date('assigned');
-            $table->date('finished');
+            $table->unsignedBigInteger('client_id');
 
             $table->timestamps();
 
             // FK
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
 
             // softDeletes
             $table->softDeletes();
