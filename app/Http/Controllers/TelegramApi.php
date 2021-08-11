@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 
-// Implementación básica de la API de los bots de Telegram
-// Fuente: https://core.telegram.org/bots/api
+// Basic implementation of the Telegram Bot API
+// Source: https://core.telegram.org/bots/api
 
 const BASE_URL = 'https://api.telegram.org/bot';
 
-// Manda mensaje, con teclado opcional
+// Send message, with optional keyboard 
 function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyboard_type="inline_keyboard") {
-  // Referencia: https://core.telegram.org/bots/api#sendmessage
+  // Reference: https://core.telegram.org/bots/api#sendmessage
   
-  // Hay algunos caracteres reservados, se debe escapar.
+  // Some reserved strings that need to be escaped 
   $msj = str_replace(['.', '!'], ['\\.', '\\!'], $msj); 
 
   $path = BASE_URL . getenv('TELEGRAM_TOKEN') . "/sendMessage";
@@ -25,19 +25,18 @@ function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyb
   ]);
 }
 
-// Manda mensaje con teclado
+// Send message with keyboard
 function send_keyboard(string $msj, string $chat_id, array $keyboard, string $keyboard_type="inline_keyboard") {
-  // Referencia: https://core.telegram.org/bots/api#inlinekeyboardmarkup
+  // Reference: https://core.telegram.org/bots/api#inlinekeyboardmarkup
 
   send_msj($msj, $chat_id, $keyboard, $keyboard_type);
 }
 
-// Actualiza teclado de un mensaje previamente enviado
+// Updates keyboard of a previously sent message
 function update_keyboard(string $chat_id, string $message_id, array $keyboard) {
-  // Referencia: https://core.telegram.org/bots/api#editmessagereplymarkup
+  // Reference: https://core.telegram.org/bots/api#editmessagereplymarkup
 
   $path = BASE_URL . getenv('TELEGRAM_TOKEN') . '/editMessageReplyMarkup';
-
   $response = Http::post($path, [
     'message_id' =>  $message_id,
     'chat_id' =>  $chat_id,
