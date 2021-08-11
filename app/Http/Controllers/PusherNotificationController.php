@@ -9,21 +9,21 @@ require_once "Gato.php";
 require_once "TelegramApi.php";
 
 class PusherNotificationController extends Controller {
-  // Handles all the incoming messages to the bot(webhook), responds
-  // accordingly and updates the web view
-  public function telegram_to_agent() {
+  // Maneja todos los mensajes enviados al bot.
+  // Responde conforme la situación y replica mensajes a la vista web.
+  public function telegram_a_agente() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
 
     if (isset($update['callback_query'])) {
-      // It is a callback query 
+      // Es un callback query
       $update = $update['callback_query'];
-      game_logic($update);
+      logica_juego($update);
       $side = "right";
     } else {
       $side = "left";
     }
 
-    // Handles commands "/function"
+    // Manejo de comandos
     $text = trim($update['message']['text']);
     switch ($text) {
       case "/start":
@@ -33,10 +33,10 @@ class PusherNotificationController extends Controller {
         );
         break;
 
-      // The same two cases, a new game
+      // Mismos dos casos, nuevo juego
       case "/nuevo":
       case "Sí":
-        send_keyboard("Marca la casilla.", $update['message']['chat']['id'], Gato::new_game());
+        send_keyboard("Marca la casilla.", $update['message']['chat']['id'], Gato::nuevo_juego());
         break;
 
       case "No":
@@ -44,18 +44,18 @@ class PusherNotificationController extends Controller {
         break;
     }
 
-    $msj_data = [
+    $data = [
       'id'   => $update['message']['chat']['id'],
       'msj'  => $update['message']['text'],
-      'side' => $side, // Indicates who sends the message
+      'side' => $side, // Indica quién envió el mensaje
       'time' => $update['message']['date'],
     ];
 
-    self::propagate_msj($msj_data);
+    self::propagate_msj($data);
   }
 
-  // Propagates the message to the agents in the web view
-  public function propagate_msj(array $msj_data) {
+  // Propaga el mensaje a los agentes(vista web).
+  public function propagate_msj(array $data) {
     $pusher = new Pusher(
       env('PUSHER_APP_KEY'),
       env('PUSHER_APP_SECRET'),
@@ -66,11 +66,12 @@ class PusherNotificationController extends Controller {
       )
     );
 
-    $pusher->trigger('nuevo-mensaje', 'App\\Events\\Notify', $msj_data);
+    $pusher->trigger('nuevo-mensaje', 'App\\Events\\Notify', $data);
   }
 
-  // Handles a message that was sent by an agent in the web view. 
-  public function agent_to_telegram() {
+  // Manda mensaje que fue enviado desde vista web a usuario y replica en todos
+  // los navegadores activos
+  public function agente_a_telegram() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
     $chatId = $update["chat"];
     $msj = $update["msj"];

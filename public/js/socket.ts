@@ -1,53 +1,48 @@
+// conexión con back end
 // @ts-ignore
 var channel = pusher.subscribe("nuevo-mensaje");
-channel.bind("App\\Events\\Notify", handlePackage);
+channel.bind("App\\Events\\Notify", recibePaquete);
 
-// HACK: id of the current conversation
+// id de conversación actual
 var chatId: string;
 
-// Unique identifier of the current instance
-const instanceId = uuid();
-
-// Handles all the incoming messages
-function handlePackage(data: { id: string, msj: string, time: number, side: string, instanceId: string | undefined }) {
+// Maneja los mensajes entrantes
+function recibePaquete(data: { id: string, msj: string, time: number }) {
   document.getElementById("hidden_chat").style.setProperty("display", "block");
   chatId = data.id;
-
-  if (data.instanceId !== instanceId) {
-    // We only need to draw the message if it is from another instance
-    drawMessage(data.msj, data.time * 1000, data.side as MessageSide);
-  }
+  nuevoMensaje(data.msj, data.time * 1000, Mensaje.Left);
 }
 
-// Draw message bubble in chat
-function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
-  const time = new Date(timeStamp).toLocaleTimeString([], {
+// Crea y añade a conversación nueva burbuja de mensaje
+function nuevoMensaje(msj: string, timeStamp: number, side: Mensaje) {
+  const hora  = new Date(timeStamp).toLocaleTimeString([], {
     hour: "2-digit",
     minute:"2-digit",
     hour12: false,
   });
 
   const chat = document.getElementById("chat");
-  const message = newElement("div", `message ${side}`, msj);
+  const mensaje = newElement("div", `message ${side}`, msj);
 
-  message.appendChild(newElement("div", "hora", time));
-  chat.appendChild(message);
-  message.scrollIntoView(false);
+  mensaje.appendChild(newElement("div", "hora", hora));
+  chat.appendChild(mensaje);
+  mensaje.scrollIntoView(false);
 }
 
-// Sends message and update the UI
-async function sendMessage() {
+// Manda mensaje y añade a UI
+async function mandaMensaje() {
   let input = <HTMLInputElement>document.getElementById("input");
   let str = input.value.trim();
 
   if (str.length != 0) {
-    drawMessage(str, new Date().getTime(), MessageSide.Right);
-    postData("/send-telegram", { chat: chatId , msj: str, senderId: instanceId });
-    input.value = ""; // clears the text input area
+    nuevoMensaje(str, new Date().getTime(), Mensaje.Right);
+    postData("/send-telegram", {chat: chatId , msj: str});
+    input.value = "";
   }
 }
 
-enum MessageSide {
+// A qué lado de la conversación pertenece un mensaje.
+enum Mensaje {
   Left = "left",
   Right = "right",
 }

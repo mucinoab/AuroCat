@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-// Retry keyboard
+// Implementación del juego gato.
+
+// Teclado de reintentar juego
 const RETRY = [[
   ["text" => "Sí"],
   ["text" => "No"]
 ]];
 
-// Implementation of the "gato" game
 class Gato {
-  // Represents the 8 winning states of the game
+  // Representa el valor del bitmask en las 8 posiciones ganadoras.
   const WIN_VALUES = [7, 56, 448, 73, 146, 292, 273, 84];
 
-  // Example
+  // Ejemplos
   //
-  // board   |   bitmask  | decimal
+  // tablero |   bitmask  | decimal
   //
   // x|x|x
   //  | |    -> 000000111 -> 7
@@ -25,11 +26,13 @@ class Gato {
   // x|x|x   -> 000111000 -> 56
   //  | |
 
-  // Every board position has been taken
-  const TIE = (1 << 9) - 1;
+  // Todas las casillas están llenas.
+  const EMPATE = (1 << 9) - 1;
 
-  // Bitmask that represents the taken positions in the board by a particular
-  // player.
+
+  // Bitmask que representa las casillas ocupadas por un jugador, su utilizan
+  // dos.
+  // Se usan 9 bits [0, 511]
   // 0 1 2
   // 3 4 5
   // 6 7 8
@@ -42,7 +45,7 @@ class Gato {
     self::$black = $b;
   }
 
-  // Checks if a given bitmask is in a winning state
+  // Evalúa si el jugador $mask esta en una posición ganadora
   final function is_win(int $mask): bool {
     foreach(self::WIN_VALUES as $win) {
       if (($mask & $win) == $win) return true;
@@ -51,27 +54,16 @@ class Gato {
     return false;
   }
 
-  // Transforms the current state of the game from the bitmask representation
-  // to a json representation that is used by Telegram to draw the keyboard.
+  // Convierte el estado del juego actual en un json que representa el estado
+  // actual del juego e información adicional sobre la casilla en si, esto para
+  // que al recibir esta información se pueda replicar fácilmente el del juego
+  // y el movimiento que se hizo.
   //
-  // For each of the board positions we store a few key values:
-  //   - Text: This is the content that the user will see on the button, we
-  //   show the current symbol in that position ('X', 'O', ' ')
-  //
-  //   - Callback data:  This is the data that Telegram sends back to us every
-  //   time a user presses a key. In this field we store:
-  //    - The symbol of that position
-  //    - The button position relative to the board [0-9]
-  //    - The bitmask for the player 1
-  //    - The bitmask for the player 2
-  //
-  // The purpose of storing it this way is that we can then recreate the
-  // whole state of a game from the values and then apply the given play.
-  //
-  // It is a 3x3 array, one cell for every posible position in the board.
+  // Representación
+  // Un arreglo bidimensional de 3x3 donde cada casilla contiene lo siguiente:
   //  {
-  //    "text": <['X', 'O', ' ']>,
-  //    "callback_data": "<symbol>,<position of the button [0-8]>,<bitmask p1>,<bitmask p2>"
+  //    "text": <casilla(X, O)>,
+  //    "callback_data": "<casilla>,<posición de botón [0-8]>,<bitmask blancas>,<bitmask negras>"
   //  }
   public function state_to_json(): array {
     $board = array();
@@ -79,7 +71,7 @@ class Gato {
 
     foreach (range(0, 9) as $i) {
       if($i != 0 && ($i % 3) == 0) {
-        // The end of a row
+        // Se acaba una fila
         array_push($board, $row);
         $row = array();
       }
@@ -87,43 +79,44 @@ class Gato {
       $mask = (1 << $i);
       $tile = ' ';
 
-      if (($mask & self::$white) != 0)
+      if (($mask & self::$white) != 0) {
         $tile = 'O';
-      else if (($mask & self::$black) != 0)
+      } else if (($mask & self::$black) != 0) {
         $tile = 'X';
+      }
 
-      //        symbol, idx,      bitmask p1,        bitmask p1
+      //       casilla, idx,    bitmask blanca,     bitmask negra
       $data = "{$tile},{$i}," . self::$white . ','. self::$black;
       array_push($row, array("text" => $tile, "callback_data" => $data));
     }
 
     return $board;
-  }
+  } 
 
-  // Executes a given move by a given player (true => black, false => white)
-  // The return value indicates if the provided move is valid.
-  public function move(int $move, bool $player): bool {
-    if ($move < 0 || $move > 8)
+  // Realiza el movimiento $m, realizado por el jugador $side, donde `true` es
+  // el jugador `black` y `false` es  el jugador `white`.
+  // Si no es un movimiento válido, regresa `false`, en caso contrario, `true`;
+  public function move(int $m, bool $side): bool {
+    // Es una casilla ocupada, no es un movimiento válido
+    if (((self::$white | self::$black) & (1 << $m)) != 0) 
       return false;
 
-    if (((self::$white | self::$black) & (1 << $move)) != 0)
-      return false;
-
-    if ($player)
-      self::$black |= 1 << $move;
+    // A qué lado pertenece el movimiento
+    if ($side)
+      self::$black |= 1 << $m;
     else
-      self::$white |= 1 << $move;
-
+      self::$white |= 1 << $m;
+    
     return true;
   }
 
-  // Provides the current state of the game
-  //  0 => agent/bot wins
-  //  1 => user wins
-  //  2 => tie
-  //  3 => nothing, game still in progress
+  // Indica en cuál de los 4 estados se encuentra el juego.
+  //  0 => Gana agente/bot
+  //  1 => Gana usuario
+  //  2 => Empate
+  //  3 => Nada, juego aún en curso
   public function status(): int {
-    // TODO: Use enums, php 8.1
+    // TODO: usar enums, php 8.1
 
     if ($this->is_win(self::$white)) {
       return 0;
@@ -133,15 +126,16 @@ class Gato {
       return 1;
     }
 
-    if ((self::$white | self::$black) == self::TIE) {
+    if ((self::$white | self::$black) == self::EMPATE) {
       return 2;
     }
 
     return 3;
   }
 
-  // Perform a random move
+  // Bot hace un movimiento random
   public function bot_move() {
+    // Es un juego en curso
     if (self::status() == 3) {
       $pos = rand(0, 8);
 
@@ -151,24 +145,24 @@ class Gato {
     }
   }
 
-  public static function new_game(): array {
+  public static function nuevo_juego(): array {
     $gato = new Gato(0, 0);
     return $gato->state_to_json();
   }
 }
 
-// Handles all game states, inputs and outputs.
-function game_logic(array &$update) {
+// Maneja todos los estados, entradas y respuestas del juego.
+function logica_juego(array &$update) {
   $move = explode(",", $update['data']);
-
   switch ($move[0]) {
-    case " ": // Empty position: a valid move
+    case " ": // Casilla vacía, movimiento válido
       $gato = new Gato((int) $move[2], (int) $move[3]);
 
-      // User play
+      // movimiento usuario
       $gato->move((int) $move[1], true);
 
-      // Random bot play
+      // TODO: Movimiento de agente
+      // movimiento del bot
       $gato->bot_move();
 
       $chatId = $update['message']['chat']['id'];
@@ -188,7 +182,10 @@ function game_logic(array &$update) {
         case 2:
           send_keyboard("Empate.\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
           break;
-        }
+      }
       break;
+  // Idea: 
+  // Cuando se haga un movimiento en una casilla no válida, actualizar el
+  // mensaje para decir que no es válida.
   }
 }

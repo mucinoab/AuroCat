@@ -19,8 +19,8 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
-Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
+Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_a_agente']);
+Route::post('/send-telegram', [PusherNotificationController::class, 'agente_a_telegram']);
 Route::get('/test-chat', function () {
   return view('chat');
 });
