@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PusherNotificationController;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,21 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
-Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
-Route::get('/test-chat', function () {
-  return view('chat');
-});
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia::render('Chat');
+})->name('dashboard');
+
+
+  Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_a_agente']);
+  Route::post('/send-telegram', [PusherNotificationController::class, 'agente_a_telegram']);
+  Route::get('/test-chat', function () {
+    return view('chat');
+  });
