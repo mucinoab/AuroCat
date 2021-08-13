@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ConversationStarted;
+use App\Events\GameStarted;
 use DateTime;
+use Illuminate\Support\Facades\Http;
 use Pusher\Pusher;
 
 require_once "Gato.php";
 require_once "TelegramApi.php";
 
+
 class PusherNotificationController extends Controller {
   // Handles all the incoming messages to the bot(webhook), responds
   // accordingly and updates the web view
+
   public function telegram_to_agent() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
 
     if (isset($update['callback_query'])) {
-      // It is a callback query 
+      // It is a callback query
       $update = $update['callback_query'];
       game_logic($update);
       $side = "right";
@@ -31,12 +36,30 @@ class PusherNotificationController extends Controller {
           "Envía /nuevo para jugar.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)",
           $update['message']['chat']['id']
         );
+
+        event(new ConversationStarted(
+            $update['message']['chat']['id'],
+            $update['message']['from']['first_name'],
+            "Envía /nuevo para jugar.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)",
+            $update['update_id'],
+            $side,
+            $update['message']['date']
+        ));
         break;
 
       // The same two cases, a new game
       case "/nuevo":
       case "Sí":
         send_keyboard("Marca la casilla.", $update['message']['chat']['id'], Gato::new_game());
+
+        event(new GameStarted(
+            $update['message']['chat']['id'],
+            $update['message']['from']['first_name'],
+            "Marca la casilla.",
+            $update['update_id'],
+            $update['message']['date'],
+            Gato::new_game()
+        ));
         break;
 
       case "No":
@@ -69,7 +92,7 @@ class PusherNotificationController extends Controller {
     $pusher->trigger('nuevo-mensaje', 'App\\Events\\Notify', $msj_data);
   }
 
-  // Handles a message that was sent by an agent in the web view. 
+  // Handles a message that was sent by an agent in the web view.
   public function agent_to_telegram() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
     $chatId = $update["chat"];

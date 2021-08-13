@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSended;
+use App\Events\ProcessedGame;
+
 // Retry keyboard
 const RETRY = [[
   ["text" => "Sí"],
@@ -176,17 +179,38 @@ function game_logic(array &$update) {
 
       update_keyboard($chatId, $message_id, $gato->state_to_json());
 
+      event(new ProcessedGame(
+        $chatId,
+        $gato->state_to_json(),
+        $update['message']['date']
+    ));
+
       switch ($gato->status()) {
         case 0:
           send_keyboard("Perdiste...\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
+          event(new MessageSended(
+            $chatId,
+            "Perdiste...\n¿Deseas jugar de nuevo?",
+            0
+            ));
           break;
 
         case 1:
           send_keyboard("¡Ganaste!\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
+          event(new MessageSended(
+            $chatId,
+            "¡Ganaste!\n¿Deseas jugar de nuevo?",
+            1
+            ));
           break;
 
         case 2:
           send_keyboard("Empate.\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
+          event(new MessageSended(
+            $chatId,
+            "Empate.\n¿Deseas jugar de nuevo?",
+            2
+            ));
           break;
         }
       break;
