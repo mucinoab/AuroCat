@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\PusherNotificationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Chat');
 })->name('dashboard');
 
-
-  Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_a_agente']);
-  Route::post('/send-telegram', [PusherNotificationController::class, 'agente_a_telegram']);
-  Route::get('/test-chat', function () {
+Route::get('/test-chat', function () {
     return view('chat');
   });
+
+  Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
+  Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
+
+  Route::post('/add-telegram-user', [GameController::class, 'add_telegram_user']);
+
