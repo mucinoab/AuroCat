@@ -3,15 +3,18 @@
   <title>Chat</title>
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.2/dist/vue.global.min.js"></script>
+
   <script src="/js/utils.js"></script>
+  <script>
+    var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+      cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+      encrypted: true
+    });
+  </script>
+  <script src="/js/socket.js" defer></script>
+  <script src="/js/chats-vue.js" defer></script>
 </head>
-<script>
-  var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
-    cluster: '{{env("PUSHER_APP_CLUSTER")}}',
-    encrypted: true
-  });
-</script>
-<script src="/js/socket.js"></script>
 
 <body>
   <div class="flex-container">
@@ -19,48 +22,39 @@
       <div class="flex-left-head">
         <h2>Chats</h2>
       </div>
-      <div class="chat chat-activo">
-        <div class="chat-icon-cliente">
-        </div>
-        <div class="chat-content">
-          <h2 id="nameUser">Cliente 1</h2>
-          <p id="prev-message">hola mensajito del chat activo prueba previo</p>
-        </div>
-      </div>
-      <div class="chat">
-        <div class="chat-icon-cliente">
-        </div>
-        <div class="chat-content">
-          <h2 id="nameUser">Cliente 1</h2>
-          <p id="prev-message">hola mensajito de prueba  de un chat no activo previo</p>
-        </div>
-      </div>
-      <div class="chat">
-        <div class="chat-icon-cliente">
-        </div>
-        <div class="chat-content">
-          <h2 id="nameUser">Cliente 1</h2>
-          <p id="prev-message">hola mensajito de prueba  de un chat no activo previo comaosdmasodmasodasidjaosidjasd</p>
-        </div>
-      </div>
+      <chat v-for="(chat, idx) in chats"
+        v-bind:chats="chat"
+        v-on:click="toggle(idx)"
+        :class="{'chat-activo': idx == activeIdx}"
+      ></chat>
     </div>
 
     <div class="flex-right">
       <div class="flex-right-head">
         <div class="chat-icon-cliente">
-
         </div>
         <h2>Nombre Cliente</h2>
       </div>
-      <p>
-        Envía un mensaje <a href="https://t.me/aeolus_help_bot">al bot</a> para iniciar.
-      </p>
-      <div id="hidden_chat" style="display:none">
+      <div id="hidden_chat" style="overflow-y: scroll">
         <div id="chat" class="messages">
+          <div class="grid">
+            <div class="unselectable"><span>X</span></div>
+            <div class="unselectable"><span> </span></div>
+            <div class="unselectable"><span>X</span></div>
+            <div class="unselectable"><span> </span></div>
+            <div class="unselectable"><span>O</span></div>
+            <div class="unselectable"><span> </span></div>
+            <div class="unselectable"><span> </span></div>
+            <div class="unselectable"><span> </span></div>
+            <div class="unselectable"><span>X</span></div>
+          </div>
         </div>
-        <input id="input" type="text">
-        <button type="button" onclick="sendMessage()">Manda</button>
+        <form action="javascript:sendMessage()" class="input_bar">
+          <input id="input" type="text" class="input">
+          <button type="button" onclick="sendMessage()" style="width: 10%">Manda</button>
+        </form>
       </div>
     </div>
   </div>
 </body>
+</html>

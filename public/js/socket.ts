@@ -14,12 +14,14 @@ function handlePackage(data: { id: string, msj: string, time: number, side: stri
   chatId = data.id;
 
   if (data.instanceId !== instanceId) {
+    // @ts-ignore
+    vm.updateChat(data.id)
     // We only need to draw the message if it is from another instance
     drawMessage(data.msj, data.time * 1000, data.side as MessageSide);
   }
 }
 
-// Draw message bubble in chat window
+// Draw message bubble in chat
 function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
   const time = timeFromUnix(timeStamp);
   const chat = document.getElementById("chat");
@@ -36,6 +38,8 @@ async function sendMessage() {
   let str = input.value.trim();
 
   if (str.length != 0) {
+    // @ts-ignore
+    vm.updateChat(chatId);
     drawMessage(str, new Date().getTime(), MessageSide.Right);
     postData("/send-telegram", { chat: chatId , msj: str, senderId: instanceId });
     input.value = ""; // clears the text input area
