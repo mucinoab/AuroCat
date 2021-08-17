@@ -18,3 +18,10 @@ function uuid() {
         return v.toString(16);
     });
 }
+function timeFromUnix(timeStamp) {
+    return new Date(timeStamp).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+    });
+}

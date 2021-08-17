@@ -1,15 +1,33 @@
 html {
   scroll-behavior: smooth;
+  font-family: sans-serif;
 }
 
 body {
   margin: 0;
 }
 
+.input_bar {
+  border-radius: 100px;
+  width: 75%;
+  padding-left: 0.5em;
+  position: fixed;
+  bottom: 0.5em;
+  display: flex;
+  flex-direction: row;
+}
+
+.input {
+  border-radius: 10px;
+  width: 80%;
+  height: 2em;
+  border-radius: 20px;
+  margin-right: 3em;
+}
+
 .messages {
-  overflow-y:scroll;
-  height: 85vh;
-  border: solid 5px #EEE;
+  overflow-y: scroll;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -24,7 +42,7 @@ body {
 }
 
 /* Diseños de encabezados de bandeja de chats y mensajaes*/
-.flex-right-head, .flex-left-head{
+.flex-right-head, .flex-left-head {
   display: flex;
   width: 100%;
   height: 8%;
@@ -33,7 +51,6 @@ body {
 
 .flex-left-head h2, .flex-right-head h2 {
   margin: auto;
-  font-family: sans-serif;
   font-size: 1.25rem;
   color: #fff;
 }
@@ -46,25 +63,20 @@ body {
   position: relative;
 }
 
-.chat {
-  height: 10%;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
 .chat-activo {
   background-color: #366DC7;
 }
 
-#nameUser {
+.nameUser {
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 1.1em;
   margin: 2px;
+  font-weight: bolder;
+  grid-area: nameUser;
 }
 
-#prev-message {
+.prev-message {
+  color: #EEE;
   font-size: .8rem;
   margin: 0;
   white-space: nowrap;
@@ -72,6 +84,7 @@ body {
   text-overflow: ellipsis;
   margin-top: 3px;
   margin-left: 2px;
+  grid-area: prev-msg;
 }
 
 /* mensaje lado derecho */
@@ -79,6 +92,7 @@ body {
   width: 99.9%;
   border-left: 1px solid #3E4555;
 }
+
 .right {
   color: white;
   margin-left: 80%;
@@ -106,11 +120,73 @@ body {
 }
 
 .flex-left {
+  overflow-y: scroll;
+  height: 100vh;
   width: 25%;
   background-color: #3E4555;
 }
+
 p {
-  font-family: Arial, Helvetica, sans-serif;
   color: #EEE;
   margin: 10px;
+}
+
+.grid {
+  width: 128px;
+  height: 128px;
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  padding: 25px;
+}
+
+.grid > div {
+  transition: all 0.2s linear 0s;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ccc;
+}
+
+.grid > div:hover {
+  background-color: #a8a8a8;
+}
+
+.grid > div:active {
+  transform: translate(0, 2px);
+  background-color: #929292;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chat {
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  display: grid; 
+  grid-template-columns: 2.5fr 1fr 0.5fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  grid-template-areas: 
+    "nameUser nameUser time"
+    "prev-msg prev-msg prev-msg"; 
+}
+
+.chat-time { 
+  grid-area: time; 
+  color: #c6c6c6;
+  font-size: 0.75em;
 }
