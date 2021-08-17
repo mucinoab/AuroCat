@@ -19,14 +19,9 @@ function handlePackage(data: { id: string, msj: string, time: number, side: stri
   }
 }
 
-// Draw message bubble in chat
+// Draw message bubble in chat window
 function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
-  const time = new Date(timeStamp).toLocaleTimeString([], {
-    hour: "2-digit",
-    minute:"2-digit",
-    hour12: false,
-  });
-
+  const time = timeFromUnix(timeStamp);
   const chat = document.getElementById("chat");
   const message = newElement("div", `message ${side}`, msj);
 

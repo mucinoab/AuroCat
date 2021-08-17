@@ -11,11 +11,7 @@ function handlePackage(data) {
     }
 }
 function drawMessage(msj, timeStamp, side) {
-    const time = new Date(timeStamp).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-    });
+    const time = timeFromUnix(timeStamp);
     const chat = document.getElementById("chat");
     const message = newElement("div", `message ${side}`, msj);
     message.appendChild(newElement("div", "hora", time));
