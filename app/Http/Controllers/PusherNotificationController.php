@@ -26,16 +26,12 @@ class PusherNotificationController extends Controller {
 
   public function telegram_to_agent() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
-
     if (isset($update['callback_query'])) {
       // It is a callback query
       $update = $update['callback_query'];
       $this->gatoService->game_logic($update);
-
     } else {
-
-      $this->commandService->sendMessage($update);
-    
+      $this->commandService->handleMessage($update);
     }
 
   }

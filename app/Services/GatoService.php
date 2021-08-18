@@ -1,8 +1,6 @@
 <?php
 namespace App\Services;
 
-use App\Http\Controllers\GameController;
-
 // Retry keyboard
 const RETRY = [[
   ["text" => "Sí"],
@@ -10,6 +8,13 @@ const RETRY = [[
 ]];
 
 class GatoService {
+
+  public $commandService;
+
+  public function __construct(CommandService $commandService)
+  {
+    $this->commandService = $commandService;
+  }
 
 // Handles all game states, inputs and outputs.
 function game_logic(array &$update) {
@@ -29,47 +34,28 @@ function game_logic(array &$update) {
       $message_id = $update['message']['message_id'];
       $board_state = $gato->state_to_json();
       update_keyboard($chatId, $message_id, $board_state);
-
-      $game  = new GameController();
-      $game->game_state(
-        $chatId, //id
-        $board_state, // board_state
-        $update['message']['date'] //date
-      );
+      $this->commandService->updateState($chatId,$board_state);
 
       switch ($gato->status()) {
         case 0:
           $message = "Perdiste...\n¿Deseas jugar de nuevo?";
           send_keyboard($message, $chatId, RETRY, "keyboard");
 
-          $game->game_message(
-            $chatId, //chta_id
-            $message //message
-          );
-          $game->change_state_game($game->id);
+          $this->commandService->sendWinnerMessage($chatId,$message,0);
           break;
 
         case 1:
           $message = "¡Ganaste!\n¿Deseas jugar de nuevo?";
           send_keyboard($message, $chatId, RETRY, "keyboard");
 
-          $game->game_message(
-            $chatId, //chta_id
-            $message //message
-          );
-          $game->change_state_game($chatId);
-
+          $this->commandService->sendWinnerMessage($chatId,$message,1);
           break;
 
         case 2:
           $message = "Empate.\n¿Deseas jugar de nuevo?";
           send_keyboard($message, $chatId, RETRY, "keyboard");
 
-          $game->game_message(
-            $chatId, //chta_id
-            $message //message
-          );
-          $game->change_state_game($chatId);
+          $this->commandService->sendWinnerMessage($chatId,$message,2);
           break;
         }
       break;
