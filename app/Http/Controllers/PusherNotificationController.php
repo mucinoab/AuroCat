@@ -36,36 +36,10 @@ class PusherNotificationController extends Controller {
 
   }
 
-  // Propagates the message to the agents in the web view
-  public function propagate_msj(array $msj_data) {
-    $pusher = new Pusher(
-      env('PUSHER_APP_KEY'),
-      env('PUSHER_APP_SECRET'),
-      env('PUSHER_APP_ID'),
-      array(
-        'cluster' => env('PUSHER_APP_CLUSTER'),
-        'encrypted' => true
-      )
-    );
-
-    $pusher->trigger('nuevo-mensaje', 'App\\Events\\Notify', $msj_data);
-  }
-
   // Handles a message that was sent by an agent in the web view.
   public function agent_to_telegram() {
     $update = json_decode(file_get_contents('php://input'), TRUE);
-    $chatId = $update["chat"];
-    $msj = $update["msj"];
-
-    $data = [
-      'msj' => $msj,
-      'id' => $chatId,
-      'side' => 'right',
-      'instanceId' => $update['senderId'],
-      'time' => (new DateTime())->getTimestamp(),
-    ];
-
-    send_msj($msj, $chatId);
-    self::propagate_msj($data);
+    $this->commandService->handleAgentMessage($update);
   }
+  
 }

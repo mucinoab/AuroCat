@@ -6,6 +6,7 @@ use App\Models\TelegramUser;
 use App\Models\Game;
 use App\Models\Message;
 use App\Models\State;
+use DateTime;
 use Pusher\Pusher;
 
 require_once "TelegramService.php";
@@ -128,6 +129,24 @@ class CommandService
 
     return $game;
   }
+
+
+  public function handleAgentMessage($request){
+    $chatId = $request["chat"];
+    $msj = $request["msj"];
+
+    $data = [
+      'msj' => $msj,
+      'id' => $chatId,
+      'side' => 'right',
+      'instanceId' => $request['senderId'],
+      'time' => (new DateTime())->getTimestamp(),
+    ];
+
+    send_msj($msj, $chatId);
+    self::propagate_msj($data);
+  }
+
 
   // Propagates the message to the agents in the web view
   public function propagate_msj(array $msj_data)

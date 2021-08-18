@@ -47,7 +47,6 @@ class Game extends Model
     public function changeGameState($game,$state)
     {
         //changed the state of the record and saved it
-        // $game = $this->getLastGame($id);
         $game->state = $state;
         $game->save();
     }
