@@ -11,4 +11,14 @@ class TelegramUser extends Model
         'id',
         'name'
     ];
+
+    public final function createTelegramUserIfNotExist($id,$name)
+    {
+        TelegramUser::firstOrCreate(
+            ['id' => $id],
+            ['name' => $name]
+        );
+    }
+
+
 }

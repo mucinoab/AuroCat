@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PusherNotificationController;
 use Illuminate\Foundation\Application;
@@ -30,6 +31,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
   return Inertia::render('Chat');
 })->name('dashboard');
+
 
 Route::get('/test-chat', function() {
   return view('chat');
