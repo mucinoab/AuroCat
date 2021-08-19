@@ -1,33 +1,32 @@
 <template>
     <jet-action-section>
         <template #title>
-            Delete Account
+            Eliminar cuenta
         </template>
 
         <template #description>
-            Permanently delete your account.
+            Elimina permanentemente tu cuenta.
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+                Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar.
             </div>
 
             <div class="mt-5">
                 <jet-danger-button @click="confirmUserDeletion">
-                    Delete Account
+                    Eliminar cuenta
                 </jet-danger-button>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
             <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
                 <template #title>
-                    Delete Account
+                    Eliminar cuenta
                 </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
-
+                    ¿Está seguro de querer eliminar su cuenta? Una vez que su cuenta sea eliminada, todos sus datos y recursos serán eliminados permanentemente. Ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.       
                     <div class="mt-4">
                         <jet-input type="password" class="mt-1 block w-3/4" placeholder="Password"
                                     ref="password"
@@ -40,11 +39,11 @@
 
                 <template #footer>
                     <jet-secondary-button @click="closeModal">
-                        Cancel
+                        Cancelar
                     </jet-secondary-button>
 
                     <jet-danger-button class="ml-2" @click="deleteUser" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Delete Account
+                        Eliminar cuenta
                     </jet-danger-button>
                 </template>
             </jet-dialog-modal>

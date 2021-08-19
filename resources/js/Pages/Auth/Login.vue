@@ -1,5 +1,5 @@
 <template>
-    <Head title="Log in" />
+    <Head title="Gatonix" />
 
     
     <jet-authentication-card>
@@ -20,24 +20,24 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" class="text-white"/>
+                <jet-label for="password" value="Contraseña" class="text-white"/>
                 <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-white">Remember me</span>
+                    <span class="ml-2 text-sm text-white">Recordar contraseña</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-white hover:text-gray-900">
-                    Forgot your password?
+                    ¿Olvidaste tu contraseña?
                 </Link>
 
                 <jet-button class="ml-4 bg-cat-blue text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                    Iniciar sesión
                 </jet-button>
             </div>
         </form>
