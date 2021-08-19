@@ -119,7 +119,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
-                                                Cerrar cesión
+                                                Cerrar sesión
                                             </jet-dropdown-link>
                                         </form>
                                     </template>
