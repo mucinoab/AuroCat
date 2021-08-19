@@ -107,13 +107,15 @@ class CommandService
 
   public function updateState($id,$board_state)
   {
-    $game = $this->game->getLastGame($id);
+    $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id);
+    $game = $this->game->getLastGame($telegram_user);
     $this->state->updateState($game->id,$board_state);
   }
 
   public function sendWinnerMessage($id,$message,$winner)
   {
-    $game = $this->game->getLastGame($id);
+    $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id);
+    $game = $this->game->getLastGame($telegram_user);
     $dateUnix =  time();
     $update_id =  $dateUnix;
     $date =  $dateUnix;
