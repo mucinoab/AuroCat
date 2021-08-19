@@ -1,8 +1,8 @@
 <template>
-    <app-layout title="Profile">
+    <app-layout title="Mi perfil">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profile
+                Mi perfil
             </h2>
         </template>
 
