@@ -11,22 +11,22 @@
         <form @submit.prevent="submit">
             <div>
                 <jet-label for="name" value="Name" class="text-white"/>
-                <jet-input id="name" type="text" class="mt-1 block w-full bg-auro_gray" v-model="form.name" required autofocus autocomplete="name" />
+                <jet-input id="name" type="text" class="mt-1 block w-full bg-cat-gray" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
                 <jet-label for="email" value="Email" class="text-white"/>
-                <jet-input id="email" type="email" class="mt-1 block w-full bg-auro_gray" v-model="form.email" required />
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
                 <jet-label for="password" value="Password" class="text-white"/>
-                <jet-input id="password" type="password" class="mt-1 block w-full bg-auro_gray" v-model="form.password" required autocomplete="new-password" />
+                <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <jet-label for="password_confirmation" value="Confirm Password" class="text-white"/>
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-auro_gray" v-model="form.password_confirmation" required autocomplete="new-password" />
+                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
@@ -46,7 +46,7 @@
                     Already registered?
                 </Link>
 
-                <jet-button class="ml-4 bg-auro_blue" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 bg-cat-blue" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
                 </jet-button>
             </div>

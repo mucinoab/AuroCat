@@ -19,11 +19,11 @@
         <form @submit.prevent="submit">
             <div>
                 <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full bg-auro_gray" v-model="form.email" required autofocus />
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <jet-button class="bg-auro_blue" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="bg-cat-blue" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Email Password Reset Link
                 </jet-button>
             </div>

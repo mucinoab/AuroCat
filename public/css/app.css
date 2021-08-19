@@ -1510,25 +1510,21 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
 }
-.bg-auro-dark {
+.bg-cat-dark {
 	--tw-bg-opacity: 1;
 	background-color: rgba(32, 38, 52, var(--tw-bg-opacity));
 }
-.bg-auro-light {
+.bg-cat-light {
 	--tw-bg-opacity: 1;
 	background-color: rgba(52, 58, 75, var(--tw-bg-opacity));
 }
-.bg-auro_gray {
+.bg-cat-gray {
 	--tw-bg-opacity: 1;
 	background-color: rgba(200, 200, 200, var(--tw-bg-opacity));
 }
-.bg-auro_blue {
+.bg-cat-blue {
 	--tw-bg-opacity: 1;
 	background-color: rgba(54, 109, 199, var(--tw-bg-opacity));
-}
-.bg-blue-900 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(30, 58, 138, var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;

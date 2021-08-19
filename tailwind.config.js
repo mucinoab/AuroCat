@@ -4,18 +4,12 @@ const colors = require('tailwindcss/colors');
 const allColors = {
     ...colors,
     ...{
-        "auro": {
-            "light": '#343A4B',
-            "DEFAULT": '#293042',
-            "dark": '#202634'
-          },
-          "auro_blue":{
-              "DEFAULT": '#366DC7',
-              "blue_light": '#3B82EC'
-          },
-          "auro_gray":{
-              "DEFAULT": '#C8C8C8'
-          }
+        "cat": '#293042',
+        "cat-light": '#343A4B',
+        "cat-dark": '#202634',
+        "cat-blue": '#366DC7',
+        "cat-blue-light": '#3B82EC',
+        "cat-gray": '#C8C8C8'
     }
 
 };

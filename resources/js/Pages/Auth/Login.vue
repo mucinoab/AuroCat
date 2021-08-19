@@ -16,12 +16,12 @@
         <form @submit.prevent="submit">
             <div>
                 <jet-label for="email" value="Email" class="text-white"/>
-                <jet-input id="email" type="email" class="mt-1 block w-full bg-auro_gray" v-model="form.email" required autofocus />
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required autofocus />
             </div>
 
             <div class="mt-4">
                 <jet-label for="password" value="Password" class="text-white"/>
-                <jet-input id="password" type="password" class="mt-1 block w-full bg-auro_gray" v-model="form.password" required autocomplete="current-password" />
+                <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
@@ -36,7 +36,7 @@
                     Forgot your password?
                 </Link>
 
-                <jet-button class="ml-4 bg-auro_blue text-auro_white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 bg-cat-blue text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </jet-button>
             </div>
