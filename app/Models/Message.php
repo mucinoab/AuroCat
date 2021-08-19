@@ -16,6 +16,9 @@ class Message extends Model
         'date'
     ];
 
+    /**
+     * Change a new message
+     */
     public function createMessage($game_id,$chat_id,$update_id,$message,$transmitter,$date)
     {
         Message::create([
@@ -27,4 +30,13 @@ class Message extends Model
             'date' => $date
         ]);
     }
+
+    //Relationships in Laravel
+
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
+    }
+
+    
 }
