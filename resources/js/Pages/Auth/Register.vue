@@ -10,23 +10,23 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="name" value="Nombre" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+                <jet-label for="name" value="Nombre" class="text-white"/>
+                <jet-input id="name" type="text" class="mt-1 block w-full bg-cat-gray" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                <jet-label for="email" value="Email" class="text-white"/>
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Contraseña" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                <jet-label for="password" value="Contraseña" class="text-white"/>
+                <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirmar contraseña" />
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                <jet-label for="password_confirmation" value="Confirmar contraseña" class="text-white"/>
+                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
@@ -42,11 +42,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link :href="route('login')" class="underline text-sm text-white hover:text-gray-900">
                     ¿Ya está registrado?
                 </Link>
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 bg-cat-blue" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Registrar
                 </jet-button>
             </div>
