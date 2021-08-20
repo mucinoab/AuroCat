@@ -25269,7 +25269,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
             type: "password",
             "class": "mt-1 block w-3/4",
-            placeholder: "Password",
+            placeholder: "Contraseña",
             ref: "password",
             modelValue: $data.form.password,
             "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
