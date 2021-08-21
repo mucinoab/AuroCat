@@ -22973,10 +22973,10 @@ var _hoisted_2 = {
   "class": "px-4 sm:px-0"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-medium text-gray-900"
+  "class": "text-lg font-medium text-white"
 };
 var _hoisted_4 = {
-  "class": "mt-1 text-sm text-gray-600"
+  "class": "mt-1 text-sm text-gray-200"
 };
 var _hoisted_5 = {
   "class": "px-4 sm:px-0"
@@ -25203,7 +25203,7 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Elimina permanentemente tu cuenta. ");
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-xl text-sm text-white"
+  "class": "max-w-xl text-sm text-gray-200"
 }, " Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar. ", -1
 /* HOISTED */
 );
