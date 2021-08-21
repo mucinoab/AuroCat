@@ -1526,6 +1526,12 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(54, 109, 199, var(--tw-bg-opacity));
 }
+
+.bg-cat-dark-light {
+	--tw-bg-opacity: 1;
+	background-color: rgba(41, 48, 66, var(--tw-bg-opacity));
+}
+
 .bg-black {
 	--tw-bg-opacity: 1;
 	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
