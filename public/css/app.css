@@ -1762,14 +1762,6 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(212, 212, 216, var(--tw-text-opacity));
 }
-.text-gray-100 {
-	--tw-text-opacity: 1;
-	color: rgba(244, 244, 245, var(--tw-text-opacity));
-}
-.text-gray-50 {
-	--tw-text-opacity: 1;
-	color: rgba(250, 250, 250, var(--tw-text-opacity));
-}
 .underline {
 	text-decoration: underline;
 }
