@@ -9,15 +9,15 @@
         </template>
 
         <template #content>
-            <h3 class="text-lg font-medium text-gray-900" v-if="twoFactorEnabled">
+            <h3 class="text-lg font-medium text-white" v-if="twoFactorEnabled">
                 Ha habilitado la autenticación de dos factores.
             </h3>
 
-            <h3 class="text-lg font-medium text-gray-900" v-else>
+            <h3 class="text-lg font-medium text-white" v-else>
                 No ha habilitado la autenticación de dos factores.
             </h3>
 
-            <div class="mt-3 max-w-xl text-sm text-gray-600">
+            <div class="mt-3 max-w-xl text-sm text-gray-200">
                 <p>
                     Cuando se habilita la autenticación de dos factores, se le pedirá un token seguro y aleatorio durante la autenticación. Puede recuperar este token de la aplicación Google Authenticator de su teléfono.
                 </p>
@@ -25,7 +25,7 @@
 
             <div v-if="twoFactorEnabled">
                 <div v-if="qrCode">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
+                    <div class="mt-4 max-w-xl text-sm text-gray-200">
                         <p class="font-semibold">
                             La autenticación de dos factores ahora está habilitada. Escanee el siguiente código QR usando la aplicación de autenticación de su teléfono.
                         </p>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div v-if="recoveryCodes.length > 0">
-                    <div class="mt-4 max-w-xl text-sm text-gray-600">
+                    <div class="mt-4 max-w-xl text-sm text-gray-200">
                         <p class="font-semibold">
                             Almacene estos códigos de recuperación en un administrador de contraseñas seguro. Se pueden usar para recuperar el acceso a su cuenta si se pierde su dispositivo de autenticación de dos factores.
                         </p>
