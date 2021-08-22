@@ -37,17 +37,6 @@
       </div>
       <div id="hidden_chat" style="overflow-y: scroll">
         <div id="chat" class="messages">
-          <div class="grid">
-            <div class="unselectable"><span>X</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>X</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>O</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>X</span></div>
-          </div>
         </div>
         <form action="javascript:sendMessage()" class="input_bar">
           <input id="input" type="text" class="input">

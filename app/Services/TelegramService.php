@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Http;
 
 const BASE_URL = 'https://api.telegram.org/bot';
 
-// Send message, with optional keyboard 
-function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyboard_type="inline_keyboard") {
+// Send message, with optional keyboard.
+// Returns the message id.
+function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyboard_type="inline_keyboard"): string {
   // Reference: https://core.telegram.org/bots/api#sendmessage
   
   // Some reserved strings that need to be escaped 
@@ -22,13 +23,16 @@ function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyb
     "parse_mode" => "MarkdownV2",
     'reply_markup' => [$keyboard_type => $keyboard],
   ]);
+
+  return $response['result']['message_id'];
 }
 
 // Send message with keyboard
-function send_keyboard(string $msj, string $chat_id, array $keyboard, string $keyboard_type="inline_keyboard") {
+// Returns the message id.
+function send_keyboard(string $msj, string $chat_id, array $keyboard, string $keyboard_type="inline_keyboard"): string {
   // Reference: https://core.telegram.org/bots/api#inlinekeyboardmarkup
 
-  send_msj($msj, $chat_id, $keyboard, $keyboard_type);
+  return send_msj($msj, $chat_id, $keyboard, $keyboard_type);
 }
 
 // Updates keyboard of a previously sent message

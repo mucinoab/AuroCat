@@ -26,66 +26,90 @@ class CommandService
     $this->state = $state;
   }
 
-  public function handleMessage($request)
-  {
+  public function handleMessage($request) {
     $text = trim($request['message']['text']);
+    $chatId = $request['message']['chat']['id'];
 
-    // Handles commands "/function"
+    // Handles commands of the type "/function"
     switch ($text) {
       case "/start":
-        $id = $request['message']['chat']['id'];
         $message = "Envía /nuevo para jugar.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
-        send_msj(
-          $message,
-          $id
-        );
+        send_msj($message, $chatId);
 
         $this->command_start(
-          $id, // id
+          $chatId,
+          $request['message']['date'],
+          $request['update_id'],
+          $message,
           $request['message']['from']['first_name'], // name
-          $request['message']['date'], // date
-          $request['update_id'], // update_id
-          $message // message
         );
 
         break;
-        // The same two cases, a new game
+
+      // The same two cases, a new game vs the bot
       case "/nuevo":
       case "Sí":
-        $message = "Marca la casilla.";
-        $id = $request['message']['chat']['id'];
-        $board_state = Gato::new_game();
-        send_keyboard($message, $id, $board_state);
+        $this->new_game($chatId, true, $request);
+        return;
 
-        $this->command_newGame(
-          $id, // id
-          $request['message']['date'], // date
-          $request['update_id'], // update_id
-          $message, //message
-          $board_state // board_state
-        );
-
-        break;
+      case "/nuevo_bot": // game vs agent 
+        $this->new_game($chatId, false, $request);
+        return;
 
       case "No":
-        $id = $request['message']['chat']['id'];
-        $message = "Gracias por jugar.";
-        send_msj($message, $id);
+        send_msj("Gracias por jugar.", $chatId);
         break;
     }
 
-    $msj_data = [
-      'id'   => $request['message']['chat']['id'],
-      'msj'  => $request['message']['text'],
-      'side' => "right", // Indicates who sends the message
+    $msg_data = [
+      'id'   => $chatId,
+      'msg'  => $text,
+      'side' => "left", // Indicates who sends the message
       'time' => $request['message']['date'],
     ];
 
-    self::propagate_msj($msj_data);
+    self::propagate_msj($msg_data);
   }
 
-  public function command_start($id, $name, $date, $update_id, $message)
-  {
+  private function new_game(string $chatId, bool $practice, array $request) {
+    self::propagate_msj([
+      'id'   => $chatId,
+      'msg'  => $request['message']['text'],
+      'side' => "left", // Indicates who sends the message
+      'time' => $request['message']['date'],
+    ]);
+
+    $message = "Marca la casilla.";
+
+    $gato = new Gato(0, 0, $practice, $chatId);
+    $msg_id = send_keyboard($message, $chatId, $gato->state_to_json());
+    $gato->game_id = $msg_id;
+
+    $board_state = $gato->state_to_json();
+    update_keyboard($chatId, $msg_id, $board_state);
+
+    $msg_data = [
+        'id'   => $chatId,
+        'side' => "right",
+        'time' => $request['message']['date'],
+        'callback' => [
+          'data'          => $gato->game_state(),
+          'practice game' => $practice,
+        ],
+    ];
+
+    self::propagate_msj($msg_data);
+
+    $this->command_newGame(
+      $chatId,
+      $request['message']['date'],
+      $request['update_id'],
+      $message,
+      $board_state
+    );
+  } 
+
+  public function command_start($id, $name, $date, $update_id, $message) {
     $this->telegramUser->createTelegramUserIfNotExist($id, $name);
     $game = $this->game->getLastGame($id);
     $game = $this->firstOrCreateNewGame($game, $id, $date);
@@ -102,20 +126,19 @@ class CommandService
     $this->state->createState($game->id, $board_state, 0, 1, $date);
   }
 
-  public function updateState($id,$board_state)
+  public function updateState($id, $board_state)
   {
     $game = $this->game->getLastGame($id);
-    $this->state->updateState($game->id,$board_state);
+    $this->state->updateState($game->id, $board_state);
   }
 
-  public function sendWinnerMessage($id,$message,$winner)
+  public function sendWinnerMessage($id, $message, $winner)
   {
-    $game = $this->game->getLastGame($id);
-    $dateUnix =  time();
-    $update_id =  $dateUnix;
-    $date =  $dateUnix;
-    $this->message->createMessage($game->id,$id,$update_id,$message,0,$date);
-    $this->game->changeGameStateToFinaledWithWinner($game,$winner);
+    $game     = $this->game->getLastGame($id);
+    $dateUnix = $update_id = time();
+
+    $this->message->createMessage($game->id, $id, $update_id, $message, 0, $dateUnix);
+    $this->game->changeGameStateToFinaledWithWinner($game, $winner);
   }
 
   public function firstOrCreateNewGame($game, $id, $date)
@@ -133,23 +156,22 @@ class CommandService
 
   public function handleAgentMessage($request){
     $chatId = $request["chat"];
-    $msj = $request["msj"];
+    $msg = $request["msg"];
 
     $data = [
-      'msj' => $msj,
+      'msg' => $msg,
       'id' => $chatId,
       'side' => 'right',
       'instanceId' => $request['senderId'],
       'time' => (new DateTime())->getTimestamp(),
     ];
 
-    send_msj($msj, $chatId);
+    send_msj($msg, $chatId);
     self::propagate_msj($data);
   }
 
-
   // Propagates the message to the agents in the web view
-  public function propagate_msj(array $msj_data)
+  public static function propagate_msj(array $msj_data)
   {
     $pusher = new Pusher(
       env('PUSHER_APP_KEY'),
