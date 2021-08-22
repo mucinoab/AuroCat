@@ -20279,7 +20279,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     contentClasses: {
       "default": function _default() {
-        return ['py-1', 'bg-white'];
+        return ['py-1', 'bg-cat-dark-light'];
       }
     }
   },
@@ -20554,7 +20554,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['active', 'href', 'as'],
   computed: {
     classes: function classes() {
-      return this.active ? 'block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition';
+      return this.active ? 'block pl-3 pr-4 py-2 border-l-4 border-indigo-400 text-base font-medium text-black bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition' : 'block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-200 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-60 focus:border-gray-300 transition';
     }
   }
 });
@@ -22573,7 +22573,7 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   key: 0,
   type: "submit",
-  "class": "block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+  "class": "block w-full px-4 py-2 text-sm leading-5 text-gray-200 text-left hover:bg-gray-600 focus:outline-none focus:bg-gray-800 transition"
 };
 var _hoisted_2 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -22588,7 +22588,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_2)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 2,
     href: $props.href,
-    "class": "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+    "class": "block px-4 py-2 text-sm leading-5 text-gray-200 hover:bg-gray-600 focus:outline-none focus:bg-gray-800 transition"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")];
@@ -23188,7 +23188,7 @@ var _hoisted_25 = {
 };
 var _hoisted_26 = {
   key: 0,
-  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition"
+  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-500 transition"
 };
 var _hoisted_27 = ["src", "alt"];
 var _hoisted_28 = {
@@ -23197,7 +23197,7 @@ var _hoisted_28 = {
 };
 var _hoisted_29 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 bg-cat-dark-light hover:text-gray-300 focus:outline-none transition"
 };
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -23224,7 +23224,7 @@ var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
 var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "border-t border-gray-100"
+  "class": "border-t border-gray-500"
 }, null, -1
 /* HOISTED */
 );
@@ -23258,10 +23258,10 @@ var _hoisted_42 = {
 };
 var _hoisted_43 = ["src", "alt"];
 var _hoisted_44 = {
-  "class": "font-medium text-base text-gray-800"
+  "class": "font-medium text-base text-gray-200"
 };
 var _hoisted_45 = {
-  "class": "font-medium text-sm text-gray-500"
+  "class": "font-medium text-sm text-gray-300"
 };
 var _hoisted_46 = {
   "class": "mt-3 space-y-1"
