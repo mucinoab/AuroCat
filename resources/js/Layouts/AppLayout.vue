@@ -4,8 +4,8 @@
 
         <jet-banner />
 
-        <div class="min-h-screen bg-cat-dark">
-            <nav class="bg-cat-dark-light border-b border-gray-100">
+        <div class="min-h-screen">
+            <nav class="bg-cat-dark-light border-b border-gray-600">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -217,14 +217,14 @@
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <header class="bg-cat-dark shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-cat-dark">
                 <slot></slot>
             </main>
         </div>
@@ -232,6 +232,7 @@
 </template>
 
 <script>
+    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
     import JetBanner from '@/Jetstream/Banner.vue'
     import JetDropdown from '@/Jetstream/Dropdown.vue'
@@ -248,6 +249,7 @@
         components: {
             Head,
             JetApplicationMark,
+            JetAuthenticationCardLogo,
             JetBanner,
             JetDropdown,
             JetDropdownLink,
