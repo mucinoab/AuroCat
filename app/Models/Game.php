@@ -79,7 +79,7 @@ class Game extends Model
 
     public function states()
     {
-        return $this->hasMany(State::class);
+        return $this->hasOne(State::class);
     }
 
 }
