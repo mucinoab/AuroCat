@@ -109,17 +109,22 @@ class CommandService
     );
   } 
 
-  public function command_start($id, $name, $date, $update_id, $message) {
-    $this->telegramUser->createTelegramUserIfNotExist($id, $name);
-    $game = $this->game->getLastGame($id);
-    $game = $this->firstOrCreateNewGame($game, $id, $date);
+  public function command_start($id, $name, $date, $update_id, $message)
+  {
+    $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id, $name);
+    $game = $this->game->getLastGame($telegram_user);
+    if($game->state==2 || $game==null){
+      $game = $this->game->createGame($id, $date);
+    }
+
     $this->message->createMessage($game->id, $id, $update_id, '/start', 1, $date);
     $this->message->createMessage($game->id, $id, $update_id, $message, 0, $date);
   }
 
   public function command_newGame($id, $date, $update_id, $message, $board_state)
   {
-    $game = $this->game->getLastGame($id);
+    $telegram_user = TelegramUser::find($id);
+    $game = $this->game->getLastGame($telegram_user);
     $game = $this->firstOrCreateNewGame($game, $id, $date);
     $this->message->createMessage($game->id, $id, $update_id, '/nuevo', 1, $date);
     $this->message->createMessage($game->id, $id, $update_id, $message, 0, $date);
@@ -128,17 +133,20 @@ class CommandService
 
   public function updateState($id, $board_state)
   {
-    $game = $this->game->getLastGame($id);
-    $this->state->updateState($game->id, $board_state);
+    $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id);
+    $game = $this->game->getLastGame($telegram_user);
+    $this->state->updateState($game->id,$board_state);
   }
 
   public function sendWinnerMessage($id, $message, $winner)
   {
-    $game     = $this->game->getLastGame($id);
-    $dateUnix = $update_id = time();
-
-    $this->message->createMessage($game->id, $id, $update_id, $message, 0, $dateUnix);
-    $this->game->changeGameStateToFinaledWithWinner($game, $winner);
+    $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id);
+    $game = $this->game->getLastGame($telegram_user);
+    $dateUnix =  time();
+    $update_id =  $dateUnix;
+    $date =  $dateUnix;
+    $this->message->createMessage($game->id,$id,$update_id,$message,0,$date);
+    $this->game->changeGameStateToFinaledWithWinner($game,$winner);
   }
 
   public function firstOrCreateNewGame($game, $id, $date)
@@ -152,7 +160,6 @@ class CommandService
 
     return $game;
   }
-
 
   public function handleAgentMessage($request){
     $chatId = $request["chat"];

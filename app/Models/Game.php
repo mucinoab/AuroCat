@@ -15,27 +15,29 @@ class Game extends Model
         'opponent',
         'date'
     ];
-
-    public function getLastGame($id)
-    {
-        /**
-         * The following query gets the record from the games table that contains
-         * the telegram_user_id and its status is differet from finished(2).
-         * There should be only one record
-         * -- state
-         *      0 => bot
-         *      1 => agente
-         *      2 => finalizado
-         */
-
-        return Game::where('telegram_user_id', '=', $id)->where('state', '!=', 2)->first();
-    }
     
+    /**
+     * From user games, get the record which is different of finished(2)
+     * -- state
+     *      0 => bot
+     *      1 => agente
+     *      2 => finalizado
+     */
+    public function getLastGame($telegram_user)
+    {
+        
+        return $telegram_user->games()->where('state', '!=', 2)->first();
+    }
+    /**
+     * Change the game to finalized
+     */
     public function changeGameStateToFinaled($game)
     {
         $this->changeGameState($game,2);
     }
-
+    /**
+     * Change the game to finalized and add the winner
+     */
     public function changeGameStateToFinaledWithWinner($game,$winner)
     {
         $game->state = 2;
@@ -43,14 +45,18 @@ class Game extends Model
         $game->save();
     }
 
-
+    /**
+     * Change the game state
+     */
     public function changeGameState($game,$state)
     {
         //changed the state of the record and saved it
         $game->state = $state;
         $game->save();
     }
-
+    /**
+     * Change a new game
+     */
     public function createGame($id,$date)
     {
         return Game::create([
@@ -59,7 +65,21 @@ class Game extends Model
           ]);
     }
 
+    //Relationships
+    
+    public function telegramUser()
+    {
+        return $this->belongsTo(TelegramUser::class);
+    }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 
+    public function states()
+    {
+        return $this->hasOne(State::class);
+    }
 
 }
