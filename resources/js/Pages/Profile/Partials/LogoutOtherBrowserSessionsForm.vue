@@ -9,7 +9,7 @@
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-600">
+            <div class="max-w-xl text-sm text-gray-200">
                 Si es necesario, puede cerrar la sesión de todas las demás sesiones del navegador en todos los dispositivos. Algunas de sus sesiones recientes se enumeran a continuación; sin embargo, es posible que esta lista no sea exhaustiva. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña.
             </div>
 
@@ -27,12 +27,12 @@
                     </div>
 
                     <div class="ml-3">
-                        <div class="text-sm text-gray-600">
+                        <div class="text-sm text-gray-300">
                             {{ session.agent.platform }} - {{ session.agent.browser }}
                         </div>
 
                         <div>
-                            <div class="text-xs text-gray-500">
+                            <div class="text-xs text-gray-200">
                                 {{ session.ip_address }},
 
                                 <span class="text-green-500 font-semibold" v-if="session.is_current_device">This device</span>
@@ -48,7 +48,7 @@
                     Cerrar sesión en otras sesiones del explorador
                 </jet-button>
 
-                <jet-action-message :on="form.recentlySuccessful" class="ml-3">
+                <jet-action-message :on="form.recentlySuccessful" class="ml-3 text-gray-300">
                     Listo.
                 </jet-action-message>
             </div>
@@ -63,7 +63,7 @@
                     Introduzca su contraseña para confirmar que desea cerrar la sesión de las demás sesiones del navegador en todos sus dispositivos.
 
                     <div class="mt-4">
-                        <jet-input type="password" class="mt-1 block w-3/4" placeholder="Contraseña"
+                        <jet-input type="password" class="mt-1 block w-3/4 text-black" placeholder="Contraseña"
                                     ref="password"
                                     v-model="form.password"
                                     @keyup.enter="logoutOtherBrowserSessions" />
@@ -77,7 +77,7 @@
                         Cancelar
                     </jet-secondary-button>
 
-                    <jet-button class="ml-2" @click="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <jet-button class="ml-2 bg-green-500" @click="logoutOtherBrowserSessions" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Cerrar sesión en otras sesiones del explorador
                     </jet-button>
                 </template>

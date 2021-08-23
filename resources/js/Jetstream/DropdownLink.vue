@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-700 text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" v-if="as == 'button'">
+        <button type="submit" class="block w-full px-4 py-2 text-sm leading-5 text-gray-200 text-left hover:bg-gray-600 focus:outline-none focus:bg-gray-800 transition" v-if="as == 'button'">
             <slot></slot>
         </button>
 
@@ -8,7 +8,7 @@
             <slot></slot>
         </a>
 
-        <Link :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" v-else>
+        <Link :href="href" class="block px-4 py-2 text-sm leading-5 text-gray-200 hover:bg-gray-600 focus:outline-none focus:bg-gray-800 transition" v-else>
             <slot></slot>
         </Link>
     </div>
