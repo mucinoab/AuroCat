@@ -2,29 +2,32 @@
 var channel = pusher.subscribe("nuevo-mensaje");
 channel.bind("App\\Events\\Notify", handlePackage);
 
-// HACK: id of the current conversation
-var chatId: string;
-
-// Unique identifier of the current instance
+// Unique identifier of the current instance.
 const instanceId = uuid();
 
-// Handles all the incoming messages
-function handlePackage(data: { id: string, msj: string, time: number, side: string, instanceId: string | undefined }) {
-  document.getElementById("hidden_chat").style.setProperty("display", "block");
-  chatId = data.id;
+// ID of the currently selected chat.
+var chatId: number;
 
-  if (data.instanceId !== instanceId) {
-    // @ts-ignore
-    vm.updateChat(data.id)
+// Input element where the messages are typed.
+const messageInput = <HTMLInputElement>document.getElementById("input");
+
+// Handles all the incoming messages
+function handlePackage(pckg: MsgPackage) {
+  if (pckg.hasOwnProperty("callback")) {
+    drawBoard(pckg);
+  } else if (pckg.instanceId !== instanceId) {
     // We only need to draw the message if it is from another instance
-    drawMessage(data.msj, data.time * 1000, data.side as MessageSide);
+
+    // @ts-ignore
+    vm.updateChat(pckg.id, pckg.msg, pckg);
+    drawMessage(pckg.msg, pckg.id, pckg.time * 1000, pckg.side as MessageSide);
   }
 }
 
 // Draw message bubble in chat
-function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
+function drawMessage(msj: string, chatId: string, timeStamp: number, side: MessageSide): void {
   const time = timeFromUnix(timeStamp);
-  const chat = document.getElementById("chat");
+  const chat = getOrNew(`conversation-${chatId}`, "div", "messages");;
   const message = newElement("div", `message ${side}`, msj);
 
   message.appendChild(newElement("div", "hora", time));
@@ -34,16 +37,83 @@ function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
 
 // Sends message and update the UI
 async function sendMessage() {
-  let input = <HTMLInputElement>document.getElementById("input");
-  let str = input.value.trim();
+  let msg = messageInput.value.trim();
 
-  if (str.length != 0) {
+  if (msg.length != 0) {
     // @ts-ignore
-    vm.updateChat(chatId);
-    drawMessage(str, new Date().getTime(), MessageSide.Right);
-    postData("/send-telegram", { chat: chatId , msj: str, senderId: instanceId });
-    input.value = ""; // clears the text input area
+    vm.updateChat(chatId, msg);
+
+    drawMessage(msg, String(chatId), unixTime() * 1000, MessageSide.Right);
+    postData("/send-telegram", { chat: chatId , msg: msg, senderId: instanceId });
+
+    messageInput.value = ""; // clears the text input area.
   }
+}
+
+// Draws or updates a Gato board from a given state.
+function drawBoard(state: MsgPackage) {
+  const data = state.callback.data.split(',');
+
+  const messageId = data[5];
+  const gameId = `juego${messageId}`;
+
+  const white = parseInt(data[2], 10);
+  const black = parseInt(data[3], 10);
+
+  const game = document.getElementById(gameId);
+  const board = createBoard(white, black, gameId, messageId);
+
+  if (game === null) {
+    const chat = document.getElementById(`conversation-${state.id}`);
+    drawMessage("Marca la casilla.", state.id, unixTime() * 1000, MessageSide.Right);
+    chat.appendChild(board);
+  } else {
+    // Updates the board.
+    game.parentNode.replaceChild(board, game);
+  }
+}
+
+// Creates the HTML element that represents the Gato board.
+function createBoard(white: number, black: number, gameId: string, msgId: string): HTMLElement {
+  const board = newElement("div", "grid");
+  board.id = gameId;
+
+  for (let i = 0; i < 9; i += 1) {
+    const mask = 1 << i;
+    let piece = ' ';
+
+    if ((mask & white) != 0) piece = 'O';
+    else if ((mask & black) != 0) piece = 'X';
+
+    const tile = newElement("div", "unselectable");
+    tile.appendChild(newElement("span", "", piece));
+    tile.id = `${msgId}${i}`;
+    tile.onclick = _ => {
+      boardMove(msgId, i, `${piece},${i},${white},${black},false,${msgId}`);
+    };
+
+    board.appendChild(tile);
+  }
+
+  return board;
+}
+
+// Sends a board move by sending a callback query that mimics the ones sent by Telegram.
+async function boardMove(msgId: string, pos: number, data: string): Promise<void> {
+  document.getElementById(`${msgId}${pos}`).innerHTML = "O"; // Updates the UI
+
+  postData("/telegram-update", {
+    "callback_query" : {
+      "data": data,
+      "message": {
+        "chat": { "id": chatId },
+        "message_id": msgId,
+        "date": unixTime(),
+      },
+      // Signal the server that is an agent move.
+      "agent": 1,
+    }
+  });
 }
 
 enum MessageSide {

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <head>
-  <title>Chat</title>
+  <meta charset="utf-8">
+  <title>Test Chat</title>
+
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.2/dist/vue.global.min.js"></script>
-
-  <script src="/js/utils.js"></script>
   <script>
     var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
       cluster: '{{env("PUSHER_APP_CLUSTER")}}',
       encrypted: true
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.4/dist/vue.global.prod.min.js" defer></script>
+  <script src="/js/utils.js" defer></script>
   <script src="/js/socket.js" defer></script>
   <script src="/js/chats-vue.js" defer></script>
 </head>
@@ -35,21 +36,9 @@
         </div>
         <h2>Nombre Cliente</h2>
       </div>
-      <div id="hidden_chat" style="overflow-y: scroll">
-        <div id="chat" class="messages">
-          <div class="grid">
-            <div class="unselectable"><span>X</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>X</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>O</span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span> </span></div>
-            <div class="unselectable"><span>X</span></div>
-          </div>
-        </div>
-        <form action="javascript:sendMessage()" class="input_bar">
+
+      <div id="conversations" style="overflow-y: scroll;">
+        <form id="input_bar" action="javascript:sendMessage()" class="input_bar" autocomplete="off">
           <input id="input" type="text" class="input">
           <button type="button" onclick="sendMessage()" style="width: 10%">Manda</button>
         </form>

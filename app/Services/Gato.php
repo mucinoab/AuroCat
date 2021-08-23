@@ -1,15 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Events\MessageSended;
-use App\Events\ProcessedGame;
-
-// Retry keyboard
-const RETRY = [[
-  ["text" => "Sí"],
-  ["text" => "No"]
-]];
+namespace App\Services;
 
 // Implementation of the "gato" game
 class Gato {
@@ -40,9 +31,16 @@ class Gato {
   private static $white;
   private static $black;
 
-  public function __construct(int $w, int $b) {
+
+  // Bot(true) or human(false) second player
+  private static $practice_game;
+  public $game_id;
+
+  public function __construct(int $w, int $b, bool $practice_game, string $id) {
     self::$white = $w;
     self::$black = $b;
+    self::$practice_game = $practice_game;
+    $this->game_id = $id;
   }
 
   // Checks if a given bitmask is in a winning state
@@ -95,8 +93,8 @@ class Gato {
       else if (($mask & self::$black) != 0)
         $tile = 'X';
 
-      //        symbol, idx,      bitmask p1,        bitmask p1
-      $data = "{$tile},{$i}," . self::$white . ','. self::$black;
+      //        symbol, idx,      bitmask p1,        bitmask p1,      player type,            game_id
+      $data = "{$tile},{$i}," . self::$white . ','. self::$black.','.self::$practice_game.','.$this->game_id;
       array_push($row, array("text" => $tile, "callback_data" => $data));
     }
 
@@ -154,65 +152,12 @@ class Gato {
     }
   }
 
-  public static function new_game(): array {
-    $gato = new Gato(0, 0);
-    return $gato->state_to_json();
+  public function game_state(): string {
+    return " , ," . self::$white . ','. self::$black . ',' . self::$practice_game . ',' . $this->game_id;
   }
-}
 
-// Handles all game states, inputs and outputs.
-function game_logic(array &$update) {
-  $move = explode(",", $update['data']);
-
-  switch ($move[0]) {
-    case " ": // Empty position: a valid move
-      $gato = new Gato((int) $move[2], (int) $move[3]);
-
-      // User play
-      $gato->move((int) $move[1], true);
-
-      // Random bot play
-      $gato->bot_move();
-
-      $chatId = $update['message']['chat']['id'];
-      $message_id = $update['message']['message_id'];
-
-      update_keyboard($chatId, $message_id, $gato->state_to_json());
-
-      event(new ProcessedGame(
-        $chatId,
-        $gato->state_to_json(),
-        $update['message']['date']
-    ));
-
-      switch ($gato->status()) {
-        case 0:
-          send_keyboard("Perdiste...\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
-          event(new MessageSended(
-            $chatId,
-            "Perdiste...\n¿Deseas jugar de nuevo?",
-            0
-            ));
-          break;
-
-        case 1:
-          send_keyboard("¡Ganaste!\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
-          event(new MessageSended(
-            $chatId,
-            "¡Ganaste!\n¿Deseas jugar de nuevo?",
-            1
-            ));
-          break;
-
-        case 2:
-          send_keyboard("Empate.\n¿Deseas jugar de nuevo?", $chatId, RETRY, "keyboard");
-          event(new MessageSended(
-            $chatId,
-            "Empate.\n¿Deseas jugar de nuevo?",
-            2
-            ));
-          break;
-        }
-      break;
+  public static function new_game(bool $practice_game, string $game_id): array {
+    $gato = new Gato(0, 0, $practice_game, $game_id);
+    return $gato->state_to_json();
   }
 }

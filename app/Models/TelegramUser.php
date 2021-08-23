@@ -11,4 +11,24 @@ class TelegramUser extends Model
         'id',
         'name'
     ];
+
+
+    public final function createTelegramUserIfNotExist($id,$name = "Invitado")
+    {
+        $telegram_user = TelegramUser::firstOrCreate(
+            ['id' => $id],
+            ['name' => $name]
+        );
+
+        return $telegram_user;
+    }
+
+    //Relationships in Laravel
+    
+    public function games()
+    {
+        return $this->hasMany(Game::class);
+    }
+
+
 }
