@@ -1,10 +1,19 @@
-// Creates new HTML element
+// Creates new HTML element.
 function newElement(tagType: string, className: string = "", val: any = ""): HTMLElement {
   const ele = document.createElement(tagType);
   ele.className = className;
   ele.innerText = val;
 
   return ele;
+}
+
+// Gets an element by id or creates a new one with the provided tag type.
+function getOrNew(id: string, tagType: string, className: string = ""): HTMLElement {
+  const ele = document.getElementById(id);
+
+  if (ele !== null) return ele;
+
+  return newElement(tagType, className);
 }
 
 // Manda post request a url con datos en json
@@ -28,7 +37,7 @@ function uuid(): string {
 
 function unixTime(): number{
   // Real unix time is in seconds, not milliseconds.
-    return Math.floor(new Date().getTime() / 1000);
+  return Math.floor(new Date().getTime() / 1000);
 }
 
 function timeFromUnix(timeStamp: string | number): string {

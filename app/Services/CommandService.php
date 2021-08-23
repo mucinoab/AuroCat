@@ -63,6 +63,7 @@ class CommandService
 
     $msg_data = [
       'id'   => $chatId,
+      'name' => $request['message']['chat']['first_name'],
       'msg'  => $text,
       'side' => "left", // Indicates who sends the message
       'time' => $request['message']['date'],

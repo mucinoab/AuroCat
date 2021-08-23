@@ -2,29 +2,32 @@
 var channel = pusher.subscribe("nuevo-mensaje");
 channel.bind("App\\Events\\Notify", handlePackage);
 
-// Id of the currently selected chat.
-var chatId: string;
-
-// Unique identifier of the current instance
+// Unique identifier of the current instance.
 const instanceId = uuid();
+
+// ID of the currently selected chat.
+var chatId: number;
+
+// Input element where the messages are typed.
+const messageInput = <HTMLInputElement>document.getElementById("input");
 
 // Handles all the incoming messages
 function handlePackage(pckg: MsgPackage) {
   if (pckg.hasOwnProperty("callback")) {
-    drawBoard(pckg.callback);
+    drawBoard(pckg);
   } else if (pckg.instanceId !== instanceId) {
     // We only need to draw the message if it is from another instance
 
     // @ts-ignore
-    vm.updateChat(pckg.id);
-    drawMessage(pckg.msg, pckg.time * 1000, pckg.side as MessageSide);
+    vm.updateChat(pckg.id, pckg.msg, pckg);
+    drawMessage(pckg.msg, pckg.id, pckg.time * 1000, pckg.side as MessageSide);
   }
 }
 
 // Draw message bubble in chat
-function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
+function drawMessage(msj: string, chatId: string, timeStamp: number, side: MessageSide): void {
   const time = timeFromUnix(timeStamp);
-  const chat = document.getElementById("chat");
+  const chat = getOrNew(`conversation-${chatId}`, "div", "messages");;
   const message = newElement("div", `message ${side}`, msj);
 
   message.appendChild(newElement("div", "hora", time));
@@ -34,34 +37,38 @@ function drawMessage(msj: string, timeStamp: number, side: MessageSide): void {
 
 // Sends message and update the UI
 async function sendMessage() {
-  let input = <HTMLInputElement>document.getElementById("input");
-  let msg = input.value.trim();
+  let msg = messageInput.value.trim();
 
   if (msg.length != 0) {
     // @ts-ignore
-    vm.updateChat(chatId);
-    drawMessage(msg, unixTime() * 1000, MessageSide.Right);
+    vm.updateChat(chatId, msg);
+
+    drawMessage(msg, String(chatId), unixTime() * 1000, MessageSide.Right);
     postData("/send-telegram", { chat: chatId , msg: msg, senderId: instanceId });
-    input.value = ""; // clears the text input area
+
+    messageInput.value = ""; // clears the text input area.
   }
 }
 
 // Draws or updates a Gato board from a given state.
-function drawBoard(state: Callback) {
-  const data = state.data.split(',');
+function drawBoard(state: MsgPackage) {
+  const data = state.callback.data.split(',');
+
+  const messageId = data[5];
+  const gameId = `juego${messageId}`;
+
   const white = parseInt(data[2], 10);
   const black = parseInt(data[3], 10);
-  const gameId = `juego${data[5]}`;
 
   const game = document.getElementById(gameId);
-  const board = createBoard(white, black, gameId, data[5]);
+  const board = createBoard(white, black, gameId, messageId);
 
   if (game === null) {
-    const chat = document.getElementById("chat");
-    drawMessage("Marca la casilla.", unixTime() * 1000, MessageSide.Right);
+    const chat = document.getElementById(`conversation-${state.id}`);
+    drawMessage("Marca la casilla.", state.id, unixTime() * 1000, MessageSide.Right);
     chat.appendChild(board);
   } else {
-    // updates the board.
+    // Updates the board.
     game.parentNode.replaceChild(board, game);
   }
 }
@@ -91,7 +98,7 @@ function createBoard(white: number, black: number, gameId: string, msgId: string
   return board;
 }
 
-// Sends a board move by sending a callback query that mimics the ones sent by Telegram
+// Sends a board move by sending a callback query that mimics the ones sent by Telegram.
 async function boardMove(msgId: string, pos: number, data: string): Promise<void> {
   document.getElementById(`${msgId}${pos}`).innerHTML = "O"; // Updates the UI
 
@@ -103,7 +110,7 @@ async function boardMove(msgId: string, pos: number, data: string): Promise<void
         "message_id": msgId,
         "date": unixTime(),
       },
-      // Signal the server that is an agent move
+      // Signal the server that is an agent move.
       "agent": 1,
     }
   });

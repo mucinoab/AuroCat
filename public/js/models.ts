@@ -2,6 +2,7 @@
 
 interface MsgPackage {
   id: string,
+  name: string | undefined,
   msg: string | undefined,
   time: number,
   side: string,
