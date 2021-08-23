@@ -45,6 +45,7 @@ const chatsBox =  {
         this.chats.forEach(ch => { 
           ch.time = timeFromUnix(ch.time);
           ch.lastMessage = "···" ;
+          ch.unreadMessages = 0;
 
           appendConversation(ch.id);
         });
@@ -60,8 +61,9 @@ const chatsBox =  {
 
       const oldConv = this.activeIdx === null ? null : this.chats[this.activeIdx].id;
      
-      // Update active idx and current conversation id.
+      // Update active idx, current conversation id, and clear notification count.
       this.activeIdx = idx;
+      this.chats[idx].unreadMessages = 0;
       chatId = this.chats[idx].id;
 
       openConversation(oldConv, chatId);
@@ -87,6 +89,9 @@ const chatsBox =  {
       this.chats[pos].time = timeFromUnix(new Date().getTime());
       this.chats[pos].lastMessage = message;
 
+      if (pos !== this.activeIdx)
+        this.chats[pos].unreadMessages += 1;
+
       // Shift elements 
       this.chats.unshift(this.chats.splice(pos, 1)[0]);
 
@@ -110,6 +115,9 @@ app.component("chat", {
       </div>
       <div class="chat-time">
         {{ chats.time }}
+      </div>
+      <div class="notification-count" v-show="chats.unreadMessages > 0">
+        {{ chats.unreadMessages }}
       </div>
       <div class="prev-message">
         {{ chats.lastMessage }}
