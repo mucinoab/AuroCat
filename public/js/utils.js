@@ -5,6 +5,12 @@ function newElement(tagType, className = "", val = "") {
     ele.innerText = val;
     return ele;
 }
+function getOrNew(id, tagType, className = "") {
+    const ele = document.getElementById(id);
+    if (ele !== null)
+        return ele;
+    return newElement(tagType, className);
+}
 async function postData(url, data) {
     await fetch(url, {
         method: 'POST',

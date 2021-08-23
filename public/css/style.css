@@ -10,11 +10,12 @@ body {
 .input_bar {
   border-radius: 100px;
   width: 75%;
-  padding-left: 0.5em;
+  padding-left: 1em;
   position: fixed;
-  bottom: 0.5em;
+  bottom: 1em;
   display: flex;
   flex-direction: row;
+  display: none;
 }
 
 .input {
@@ -28,9 +29,8 @@ body {
 .messages {
   overflow-y: scroll;
   height: 80vh;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+  padding: 1em;
+  display: none;
 }
 
 .message {
@@ -53,14 +53,6 @@ body {
   margin: auto;
   font-size: 1.25rem;
   color: #fff;
-}
-
-/* mensaje lado izquierdo */
-.left {
-  color: white;
-  margin-right: 80%;
-  background-color: #8378db;
-  position: relative;
 }
 
 .chat-activo {
@@ -87,15 +79,23 @@ body {
   grid-area: prev-msg;
 }
 
-/* mensaje lado derecho */
 .flex-right-head{
   width: 99.9%;
   border-left: 1px solid #3E4555;
 }
 
+/* left side message */
+.left {
+  color: white;
+  margin-right: 80%;
+  background-color: #8378db;
+  position: relative;
+}
+
+/* right side message */
 .right {
   color: white;
-  margin-left: 80%;
+  margin-left: 90%;
   background: #0085D1;
   position: relative;
 }
@@ -140,6 +140,7 @@ p {
   text-align: center;
   margin-left: 85%;
   padding-top: 0.75em;
+  padding-bottom: 0.75em;
 }
 
 .grid > div {
@@ -174,11 +175,12 @@ span {
 }
 
 .chat {
-  height: 10%;
+  height: 3.5em;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 0.75em;
   display: grid; 
+  border-radius: 15px;
   grid-template-columns: 2.5fr 1fr 0.5fr; 
   grid-template-rows: 1fr 1fr 1fr; 
   grid-template-areas: 
