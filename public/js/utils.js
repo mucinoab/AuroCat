@@ -1,5 +1,5 @@
 "use strict";
-function newElement(tagType, className, val) {
+function newElement(tagType, className = "", val = "") {
     const ele = document.createElement(tagType);
     ele.className = className;
     ele.innerText = val;
@@ -17,6 +17,9 @@ function uuid() {
         const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
+function unixTime() {
+    return Math.floor(new Date().getTime() / 1000);
 }
 function timeFromUnix(timeStamp) {
     return new Date(timeStamp).toLocaleTimeString([], {

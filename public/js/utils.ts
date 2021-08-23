@@ -1,5 +1,5 @@
 // Creates new HTML element
-function newElement(tagType: string, className: string, val: any): HTMLElement {
+function newElement(tagType: string, className: string = "", val: any = ""): HTMLElement {
   const ele = document.createElement(tagType);
   ele.className = className;
   ele.innerText = val;
@@ -24,6 +24,11 @@ function uuid(): string {
     const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
+}
+
+function unixTime(): number{
+  // Real unix time is in seconds, not milliseconds.
+    return Math.floor(new Date().getTime() / 1000);
 }
 
 function timeFromUnix(timeStamp: string | number): string {

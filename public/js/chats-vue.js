@@ -30,6 +30,8 @@ const chatsBox =  {
 
     // Updates the positions of the chats when a new message is sent or received 
     updateChat(id) {
+      chatId = id = parseInt(id, 10);
+
       // find the position
       const pos = this.chats.findIndex(e => e.id === id);
 

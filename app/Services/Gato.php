@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 // Implementation of the "gato" game
 class Gato {
   // Represents the 8 winning states of the game
@@ -30,9 +31,16 @@ class Gato {
   private static $white;
   private static $black;
 
-  public function __construct(int $w, int $b) {
+
+  // Bot(true) or human(false) second player
+  private static $practice_game;
+  public $game_id;
+
+  public function __construct(int $w, int $b, bool $practice_game, string $id) {
     self::$white = $w;
     self::$black = $b;
+    self::$practice_game = $practice_game;
+    $this->game_id = $id;
   }
 
   // Checks if a given bitmask is in a winning state
@@ -85,8 +93,8 @@ class Gato {
       else if (($mask & self::$black) != 0)
         $tile = 'X';
 
-      //        symbol, idx,      bitmask p1,        bitmask p1
-      $data = "{$tile},{$i}," . self::$white . ','. self::$black;
+      //        symbol, idx,      bitmask p1,        bitmask p1,      player type,            game_id
+      $data = "{$tile},{$i}," . self::$white . ','. self::$black.','.self::$practice_game.','.$this->game_id;
       array_push($row, array("text" => $tile, "callback_data" => $data));
     }
 
@@ -144,8 +152,12 @@ class Gato {
     }
   }
 
-  public static function new_game(): array {
-    $gato = new Gato(0, 0);
+  public function game_state(): string {
+    return " , ," . self::$white . ','. self::$black . ',' . self::$practice_game . ',' . $this->game_id;
+  }
+
+  public static function new_game(bool $practice_game, string $game_id): array {
+    $gato = new Gato(0, 0, $practice_game, $game_id);
     return $gato->state_to_json();
   }
 }

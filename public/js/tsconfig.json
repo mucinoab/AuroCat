@@ -3,6 +3,7 @@
     "socket.ts",
     "chats.ts",
     "utils.ts",
+    "models.ts",
   ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
@@ -13,6 +14,6 @@
     "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": false, /* TODO */
   }
 }
