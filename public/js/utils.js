@@ -34,3 +34,28 @@ function timeFromUnix(timeStamp) {
         hour12: false,
     });
 }
+function notify(title, msg) {
+    if (document.visibilityState === 'visible' || title === undefined)
+        return;
+    if (Notification.permission === "granted") {
+        spawnNotification(title, msg);
+    }
+    else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted")
+                spawnNotification(title, msg);
+        });
+    }
+}
+function spawnNotification(title, content) {
+    const options = {
+        body: content,
+        icon: "/images/logo.png",
+    };
+    const n = new Notification(title, options);
+    document.addEventListener('visibilitychange', _ => {
+        if (document.visibilityState === 'visible') {
+            n.close();
+        }
+    }, { once: true });
+}

@@ -47,3 +47,35 @@ function timeFromUnix(timeStamp: string | number): string {
     hour12: false,
   });
 }
+
+// Send a notification and ask for permission if not granted already
+function notify(title: string, msg: string) {
+  if (document.visibilityState === 'visible' || title === undefined) return;
+
+  if (Notification.permission === "granted") {
+    spawnNotification(title, msg);
+  } else if (Notification.permission !== "denied") {
+    // Ask for permission.
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") spawnNotification(title, msg);
+    });
+  }
+}
+
+function spawnNotification(title: string, content: string, ) {
+  // From MDN, https://developer.mozilla.org/en-US/docs/Web/API/Notification/close#examples
+
+  const options = {
+    body: content,
+    icon: "/images/logo.png",
+  };
+
+  const n = new Notification(title, options);
+
+  document.addEventListener('visibilitychange', _ => {
+    if (document.visibilityState === 'visible') {
+      n.close();
+    }
+  }, {once : true});
+}
+

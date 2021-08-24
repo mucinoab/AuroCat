@@ -103,15 +103,15 @@ async function boardMove(msgId: string, pos: number, data: string): Promise<void
   document.getElementById(`${msgId}${pos}`).innerHTML = "O"; // Updates the UI
 
   postData("/telegram-update", {
-    "callback_query" : {
-      "data": data,
-      "message": {
-        "chat": { "id": chatId },
-        "message_id": msgId,
-        "date": unixTime(),
+    callback_query : {
+      data: data,
+      message: {
+        chat: { id: chatId },
+        message_id: msgId,
+        date: unixTime(),
       },
       // Signal the server that is an agent move.
-      "agent": 1,
+      agent: 1,
     }
   });
 }

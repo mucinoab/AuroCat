@@ -83,7 +83,7 @@ const chatsBox =  {
         appendConversation(id);
 
         pos = this.chats.length;
-        this.chats.push({ "name": pckg.name, "id": id });
+        this.chats.push({ name: pckg.name, id: id });
       }
 
       this.chats[pos].time = timeFromUnix(new Date().getTime());
@@ -100,6 +100,8 @@ const chatsBox =  {
         this.activeIdx = 0;
       else if (pos > this.activeIdx && this.activeIdx !== null)
         this.activeIdx += 1;
+
+      notify(pckg.name, message);
     }
   },
 };
