@@ -38,10 +38,10 @@ class CommandService
 
         $this->command_start(
           $chatId,
+          $request['message']['from']['first_name'], // name
           $request['message']['date'],
           $request['update_id'],
           $message,
-          $request['message']['from']['first_name'], // name
         );
 
         break;
