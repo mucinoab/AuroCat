@@ -118,7 +118,7 @@ class CommandService
   {
     $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id, $name);
     $game = $this->game->getLastGame($telegram_user);
-    if($game->state==2 || $game==null){
+    if( $game==null || $game->state==2){
       $game = $this->game->createGame($id, $date);
     }
 
