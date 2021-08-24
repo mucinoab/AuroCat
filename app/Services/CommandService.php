@@ -60,13 +60,17 @@ class CommandService
         send_msj("Gracias por jugar.", $chatId);
         break;
     }
+    
+    // The last name is an optional field.
+    $last_name = isset($request['message']['chat']['last_name']) ? $request['message']['chat']['last_name'] : "";
 
     $msg_data = [
-      'id'   => $chatId,
-      'name' => $request['message']['chat']['first_name'],
-      'msg'  => $text,
-      'side' => "left", // Indicates who sends the message
-      'time' => $request['message']['date'],
+      'id'       => $chatId,
+      'name'     => $request['message']['chat']['first_name'],
+      'lastName' => $last_name,
+      'msg'      => $text,
+      'side'     => "left", // Indicates who sends the message
+      'time'     => $request['message']['date'],
     ];
 
     self::propagate_msj($msg_data);

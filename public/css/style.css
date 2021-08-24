@@ -185,11 +185,29 @@ span {
   grid-template-rows: 1fr 1fr 1fr; 
   grid-template-areas: 
     "nameUser nameUser time"
-    "prev-msg prev-msg prev-msg"; 
+    "prev-msg prev-msg notification"; 
 }
 
 .chat-time { 
   grid-area: time; 
   color: #c6c6c6;
   font-size: 0.75em;
+}
+
+/* Red bubble in chats */
+.notification-count {
+  position: relative;
+  left: 1em;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 0.7rem;
+  user-select: none;
+  color: white;
+  text-shadow: 0 0 1px black;
+  background: red;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  grid-area: notification;
 }
