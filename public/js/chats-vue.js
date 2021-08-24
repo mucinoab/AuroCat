@@ -2,6 +2,7 @@
 
 // Input bar at the bottom of conversations.
 const inputBar = document.getElementById("input_bar");
+const nameHeader = document.getElementById("name-header");
 
 // Switches between conversation elements by hiding the old one and showing the
 // new one. 
@@ -46,6 +47,7 @@ const chatsBox =  {
           ch.time = timeFromUnix(ch.time);
           ch.lastMessage = "···" ;
           ch.unreadMessages = 0;
+          ch.lastName = "";
 
           appendConversation(ch.id);
         });
@@ -61,10 +63,13 @@ const chatsBox =  {
 
       const oldConv = this.activeIdx === null ? null : this.chats[this.activeIdx].id;
      
-      // Update active idx, current conversation id, and clear notification count.
+      // Update active idx, current conversation id, clear notification count
+      // and header name.
       this.activeIdx = idx;
       this.chats[idx].unreadMessages = 0;
+
       chatId = this.chats[idx].id;
+      nameHeader.innerText = `${this.chats[idx].name} ${this.chats[idx].lastName}`;
 
       openConversation(oldConv, chatId);
     },
@@ -88,6 +93,7 @@ const chatsBox =  {
 
       this.chats[pos].time = timeFromUnix(new Date().getTime());
       this.chats[pos].lastMessage = message;
+      this.chats[pos].lastName = pckg.lastName === undefined ? "" : pckg.lastName ;
 
       if (pos !== this.activeIdx)
         this.chats[pos].unreadMessages += 1;
