@@ -34,7 +34,8 @@ class TelegramUserController extends Controller
                 [
                     "id" => $game->telegram_user_id,
                     "name" => $game->telegramUser->name,
-                    "message" => $game[ $stateDate>$stateMessage ? 'state': 'message']
+                    "time" => $game[$stateDate>$stateMessage ? 'state': 'message']->date,
+                    "lastMessage" => $game[ $stateDate>$stateMessage ? 'state': 'message']->message
                 ]
             );
         }

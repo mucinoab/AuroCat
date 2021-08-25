@@ -44,8 +44,8 @@ const chatsBox =  {
         this.chats.push(...json.chats);
 
         this.chats.forEach(ch => { 
-          ch.time = timeFromUnix(ch.message.date*1000);
-          ch.lastMessage = ch.message.message ;
+          ch.time = timeFromUnix(ch.time*1000);
+          ch.lastMessage = ch.lastMessage ;
           ch.unreadMessages = 0;
           ch.name = ch.name;
           ch.lastName = "";
