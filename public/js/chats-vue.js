@@ -2,6 +2,7 @@
 
 // Input bar at the bottom of conversations.
 const inputBar = document.getElementById("input_bar");
+const nameHeader = document.getElementById("name-header");
 
 // Switches between conversation elements by hiding the old one and showing the
 // new one. 
@@ -45,6 +46,8 @@ const chatsBox =  {
         this.chats.forEach(ch => { 
           ch.time = timeFromUnix(ch.time);
           ch.lastMessage = "···" ;
+          ch.unreadMessages = 0;
+          ch.lastName = "";
 
           appendConversation(ch.id);
         });
@@ -60,9 +63,13 @@ const chatsBox =  {
 
       const oldConv = this.activeIdx === null ? null : this.chats[this.activeIdx].id;
      
-      // Update active idx and current conversation id.
+      // Update active idx, current conversation id, clear notification count
+      // and header name.
       this.activeIdx = idx;
+      this.chats[idx].unreadMessages = 0;
+
       chatId = this.chats[idx].id;
+      nameHeader.innerText = `${this.chats[idx].name} ${this.chats[idx].lastName}`;
 
       openConversation(oldConv, chatId);
     },
@@ -81,11 +88,15 @@ const chatsBox =  {
         appendConversation(id);
 
         pos = this.chats.length;
-        this.chats.push({ "name": pckg.name, "id": id });
+        this.chats.push({ name: pckg.name, id: id });
       }
 
       this.chats[pos].time = timeFromUnix(new Date().getTime());
       this.chats[pos].lastMessage = message;
+      this.chats[pos].lastName = pckg.lastName === undefined ? "" : pckg.lastName ;
+
+      if (pos !== this.activeIdx)
+        this.chats[pos].unreadMessages += 1;
 
       // Shift elements 
       this.chats.unshift(this.chats.splice(pos, 1)[0]);
@@ -95,6 +106,8 @@ const chatsBox =  {
         this.activeIdx = 0;
       else if (pos > this.activeIdx && this.activeIdx !== null)
         this.activeIdx += 1;
+
+      notify(pckg.name, message);
     }
   },
 };
@@ -110,6 +123,9 @@ app.component("chat", {
       </div>
       <div class="chat-time">
         {{ chats.time }}
+      </div>
+      <div class="notification-count" v-show="chats.unreadMessages > 0">
+        {{ chats.unreadMessages }}
       </div>
       <div class="prev-message">
         {{ chats.lastMessage }}

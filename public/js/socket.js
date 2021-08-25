@@ -71,14 +71,14 @@ function createBoard(white, black, gameId, msgId) {
 async function boardMove(msgId, pos, data) {
     document.getElementById(`${msgId}${pos}`).innerHTML = "O";
     postData("/telegram-update", {
-        "callback_query": {
-            "data": data,
-            "message": {
-                "chat": { "id": chatId },
-                "message_id": msgId,
-                "date": unixTime(),
+        callback_query: {
+            data: data,
+            message: {
+                chat: { id: chatId },
+                message_id: msgId,
+                date: unixTime(),
             },
-            "agent": 1,
+            agent: 1,
         }
     });
 }

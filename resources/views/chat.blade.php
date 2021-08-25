@@ -32,9 +32,8 @@
 
     <div class="flex-right">
       <div class="flex-right-head">
-        <div class="chat-icon-cliente">
-        </div>
-        <h2>Nombre Cliente</h2>
+        <div class="chat-icon-cliente"> </div>
+        <h2 id="name-header"></h2>
       </div>
 
       <div id="conversations" style="overflow-y: scroll;">

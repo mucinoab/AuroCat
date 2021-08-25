@@ -41,7 +41,7 @@ class CommandService
           $request['message']['from']['first_name'], // name
           $request['message']['date'],
           $request['update_id'],
-          $message
+          $message,
         );
 
         break;
@@ -63,13 +63,17 @@ class CommandService
         $this->sendMessage($chatId,$text,0);
         
     }
+    
+    // The last name is an optional field.
+    $last_name = isset($request['message']['chat']['last_name']) ? $request['message']['chat']['last_name'] : "";
 
     $msg_data = [
-      'id'   => $chatId,
-      'name' => $request['message']['chat']['first_name'],
-      'msg'  => $text,
-      'side' => "left", // Indicates who sends the message
-      'time' => $request['message']['date'],
+      'id'       => $chatId,
+      'name'     => $request['message']['chat']['first_name'],
+      'lastName' => $last_name,
+      'msg'      => $text,
+      'side'     => "left", // Indicates who sends the message
+      'time'     => $request['message']['date'],
     ];
 
     self::propagate_msj($msg_data);
@@ -118,7 +122,7 @@ class CommandService
   {
     $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id, $name);
     $game = $this->game->getLastGame($telegram_user);
-    if($game->state==2 || $game==null){
+    if( $game==null || $game->state==2){
       $game = $this->game->createGame($id, $date);
     }
 
