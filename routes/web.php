@@ -41,6 +41,6 @@ Route::get('/test-chat', function() {
 
 Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
-Route::get('/chats',[TelegramUserController::class,'user_chats']);
+Route::get('/chats',[TelegramUserController::class,'index']);
 Route::get('/conversation',[TelegramUserController::class,'conversation']);
 
