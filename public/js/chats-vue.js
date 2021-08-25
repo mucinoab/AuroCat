@@ -44,10 +44,11 @@ const chatsBox =  {
         this.chats.push(...json.chats);
 
         this.chats.forEach(ch => { 
-          ch.time = timeFromUnix(ch.message.date);
+          ch.time = timeFromUnix(ch.message.date*1000);
           ch.lastMessage = ch.message.message ;
           ch.unreadMessages = 0;
-          ch.lastName = ch.name;
+          ch.name = ch.name
+          ch.lastName = "";
 
           appendConversation(ch.id);
         });
