@@ -63,7 +63,9 @@ class GatoService {
           ]
         ]);
 
-        $this->commandService->updateState($chatId, $board_state);
+        if($practice_game) $move_by = !$practice_game;
+
+        $this->commandService->updateState($chatId, $board_state,$move_by);
 
         if ($game_status != 3) { // End of a game
           send_keyboard($message, $chatId, RETRY, "keyboard");

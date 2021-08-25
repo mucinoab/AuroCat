@@ -38,9 +38,11 @@ class State extends Model
     /**
      * Update board_state field in a state record
      */
-    public function updateState($game_id,$board_state)
+    public function updateState($game_id,$board_state,$transmitter)
     {
         $state = $this->getAState($game_id);
+        $state->date = time();
+        $state->transmitter = $transmitter;
         $state->board_state = json_encode($board_state);
         $state->save();
     }
