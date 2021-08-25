@@ -31,7 +31,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-  return Inertia::render('Chat');
+  return Inertia::render('Chat/Index');
 })->name('dashboard');
 
 
@@ -41,4 +41,6 @@ Route::get('/test-chat', function() {
 
 Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
-Route::get('/chats',[TelegramUserController::class,'index']);
+Route::get('/chats',[TelegramUserController::class,'user_chats']);
+Route::get('/conversation',[TelegramUserController::class,'conversation']);
+

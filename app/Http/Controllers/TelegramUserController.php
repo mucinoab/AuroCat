@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,70 +33,60 @@ class TelegramUserController extends Controller
     }
 
     
-    /**
-     * Return all active games with agent
-     */
-    public function agentGames()
+
+   
+    //return all the chats that are palying with an agent
+    public function user_chats()
     {
         $agentGames = [];
-        $games = Game::with('telegramUser:id,name')->where('opponent','=',1)->where('state','!=',2)->get(['id','telegram_user_id']);
+        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('opponent','=',1)->where('state','!=',2)->orderbyDesc('date')->get(['id','telegram_user_id']);
+        
 
         foreach ($games as $game) {
+            $stateDate = 0;
+            $stateMessage = 0;    
+
+            if($game->state != null){ 
+                $stateDate = $game->state->date;
+                $game->state->message = $game->state->transmitter == 0 ? 'Esperando movimiento' : 'Responder Jugada';
+            }
+            if($game->message != null){
+                $stateMessage = $game->message->date;
+            }
+
             array_push(
                 $agentGames,
                 [
-                    "id" => $game->id,
-                    "telegram_user_id" => $game->telegram_user_id,
-                    "name" => $game->telegramUser->name
+                    "id" => $game->telegram_user_id,
+                    "name" => $game->telegramUser->name,
+                    "message" => $game[ $stateDate>$stateMessage ? 'state': 'message']
                 ]
             );
         }
 
-        return response()->json(["agentGames" => $agentGames]);
-
+        return response()->json(["chats" => $agentGames]);
     }
 
-    /**
-     * Return all active games with bot
-     */
-    public function botGames()
+    //return the messages from a chat_id with optional delimitation parameters
+    // ej: APP_URL/conversation?chat_id=1728265258&chats_number=5&offset=2
+    public function conversation(Request $request)
     {
-        $botGames = [];
-        $games = Game::with('telegramUser:id,name')->where('opponent','=',0)->where('state','!=',2)->get(['id','telegram_user_id']);
+        $conversation = Message::query();
+        $conversation->where('chat_id','=',$request->chat_id);
 
-        foreach ($games as $game) {
-            array_push(
-                $botGames,
-                [
-                    "id" => $game->id,
-                    "telegram_user_id" => $game->telegram_user_id,
-                    "name" => $game->telegramUser->name
-                ]
-            );
+        if($request->chats_number)
+        {
+            $conversation->take($request->chats_number);
         }
 
-        return response()->json(["botGames" => $botGames]);
-    }
-
-    /**
-     * Return all finalized games 
-     */
-    public function finalizedGames()
-    {
-        $finalizedGames = [];
-        $games = Game::with('telegramUser:id,name')->where('state','=',2)->get(['id','telegram_user_id']);
-
-        foreach ($games as $game) {
-            array_push(
-                $finalizedGames,
-                [
-                    "id" => $game->id,
-                    "telegram_user_id" => $game->telegram_user_id,
-                    "name" => $game->telegramUser->name
-                ]
-            );
+        if($request->offset)
+        {
+            $conversation->skip($request->offset);
         }
 
-        return response()->json(["finalizedGames" => $finalizedGames]);
+        $conversation->orderby('date','desc');
+        
+        return response()->json(["conversation" => $conversation->get()]);
+
     }
 }
