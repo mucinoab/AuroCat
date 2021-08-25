@@ -14,7 +14,7 @@ class TelegramUserController extends Controller
     public function index()
     {
         $agentGames = [];
-        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('state','!=',2)->orderbyDesc('date')->get(['id','telegram_user_id']);
+        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('state','!=',2)->orderByDesc('date')->get(['id','telegram_user_id']);
         
 
         foreach ($games as $game) {
