@@ -33,7 +33,12 @@ class CommandService
     // Handles commands of the type "/function"
     switch ($text) {
       case "/start":
-        $message = "Envía /nuevo para jugar.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
+        $message = "Saludos, me llamo AuroCAT , y te doy la bievenida a mi juego.
+        \nAntes de comenzar te dejo unas instrucciones que te serán de ayuda 
+        \nEscribe /nuevo si deseas comenzar una nueva partida 
+        \nSi necesitas /ayuda solo debes pedirla 
+        \nEscribe /menu para volver a mostrar este mensaje 
+        \nSi tienes dudas consulta las reglas  [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
         send_msj($message, $chatId);
 
         $this->command_start(
@@ -48,11 +53,21 @@ class CommandService
 
       // The same two cases, a new game vs the bot
       case "/nuevo":
+        $replyMarkup = [
+          [
+           ["text" => "Agente"],
+           ["text" => "Bot"]
+          ]
+       ];
+       
+         send_keyboard("Elije un oponente",$chatId,$replyMarkup,"keyboard");
+       break;
+       case "Bot":
       case "Sí":
         $this->new_game($chatId, true, $request);
         return;
 
-      case "/nuevo_bot": // game vs agent 
+      case "Agente": // game vs agent 
         $this->new_game($chatId, false, $request);
         return;
 
