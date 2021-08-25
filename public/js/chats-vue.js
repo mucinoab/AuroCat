@@ -47,7 +47,7 @@ const chatsBox =  {
           ch.time = timeFromUnix(ch.message.date*1000);
           ch.lastMessage = ch.message.message ;
           ch.unreadMessages = 0;
-          ch.name = ch.name
+          ch.name = ch.name;
           ch.lastName = "";
 
           appendConversation(ch.id);
