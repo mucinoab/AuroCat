@@ -57,13 +57,15 @@ class Game extends Model
     /**
      * Change a new game
      */
-    public function createGame($id,$date)
+    public function createGame($id,$date,$opponent=false)
     {
         return Game::create([
             'telegram_user_id' => $id,
-            'date' => $date
+            'date' => $date,
+            'opponent' => !$opponent
           ]);
     }
+
 
     //Relationships
     
@@ -77,9 +79,15 @@ class Game extends Model
         return $this->hasMany(Message::class);
     }
 
-    public function states()
+    public function state()
     {
         return $this->hasOne(State::class);
+    }
+
+    public function message()
+    {
+        return $this->hasOne(Message::class)
+            ->orderBy('date','desc');
     }
 
 }
