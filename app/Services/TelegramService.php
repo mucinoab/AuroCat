@@ -24,6 +24,7 @@ function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyb
     'reply_markup' => [
       $keyboard_type => $keyboard,
       'one_time_keyboard' => true,
+      'resize_keyboard'   => true,
     ],
   ]);
 
