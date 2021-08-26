@@ -9,37 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class TelegramUserController extends Controller
 {
+   
+    //return all the chats that are palying with an agent or bot
     public function index()
     {
-
-        $chats = [];
-        $users = DB::table('telegram_users')
-            ->select('id', 'name', DB::raw('UNIX_TIMESTAMP(updated_at) as fecha'))
-            ->orderByDesc('fecha')
-            ->get();
-
-        foreach ($users as $user) {
-            array_push(
-                $chats,
-                [
-                    "id" => $user->id,
-                    "name" => $user->name,
-                    "time" => $user->fecha,
-                ]
-            );
-        }
-
-        return response()->json(["chats" => $chats]);
-    }
-
-    
-
-   
-    //return all the chats that are palying with an agent
-    public function user_chats()
-    {
         $agentGames = [];
-        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('opponent','=',1)->where('state','!=',2)->orderbyDesc('date')->get(['id','telegram_user_id']);
+        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('state','!=',2)->orderByDesc('date')->get(['id','telegram_user_id']);
         
 
         foreach ($games as $game) {
@@ -59,7 +34,8 @@ class TelegramUserController extends Controller
                 [
                     "id" => $game->telegram_user_id,
                     "name" => $game->telegramUser->name,
-                    "message" => $game[ $stateDate>$stateMessage ? 'state': 'message']
+                    "time" => $game[$stateDate>$stateMessage ? 'state': 'message']->date,
+                    "lastMessage" => $game[ $stateDate>$stateMessage ? 'state': 'message']->message
                 ]
             );
         }
