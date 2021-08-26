@@ -182,7 +182,8 @@ span {
   display: grid; 
   border-radius: 15px;
   grid-template-columns: 2.5fr 1fr 0.5fr; 
-  grid-template-rows: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  border-bottom: solid 1px #777c87;
   grid-template-areas: 
     "nameUser nameUser time"
     "prev-msg prev-msg notification"; 

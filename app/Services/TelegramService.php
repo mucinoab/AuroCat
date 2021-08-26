@@ -21,7 +21,11 @@ function send_msj(string $msj, string $chat_id, array $keyboard=[], string $keyb
     "text" => $msj,
     "chat_id" => $chat_id,
     "parse_mode" => "MarkdownV2",
-    'reply_markup' => [$keyboard_type => $keyboard],
+    'reply_markup' => [
+      $keyboard_type => $keyboard,
+      'one_time_keyboard' => true,
+      'resize_keyboard'   => true,
+    ],
   ]);
 
   return $response['result']['message_id'];

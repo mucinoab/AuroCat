@@ -11,6 +11,15 @@ use Pusher\Pusher;
 
 require_once "TelegramService.php";
 
+const AGENT = "Juego vs Agente";
+const BOT = "Juego vs Bot";
+
+// Opponent selection keyboard
+const OPPONENT = [[
+  ["text" => AGENT],
+  ["text" => BOT] 
+]];
+
 class CommandService
 {
   public $telegramUser;
@@ -46,13 +55,17 @@ class CommandService
 
         break;
 
-      // The same two cases, a new game vs the bot
+      // The same two cases, a new game
       case "/nuevo":
       case "Sí":
+        send_keyboard("Elige un oponente.", $chatId, OPPONENT, "keyboard");
+        break;
+
+      case BOT:
         $this->new_game($chatId, true, $request);
         return;
 
-      case "/nuevo_bot": // game vs agent 
+      case AGENT:
         $this->new_game($chatId, false, $request);
         return;
 
