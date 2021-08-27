@@ -1,6 +1,6 @@
 <template>
     <Link :href="'/'">
-        <img class="rounded-md w-24 h-24" src="https://res.cloudinary.com/ddzj4rgox/image/upload/v1629253683/logoGatonix_av0bsc.png" alt="logo">
+        <img class="rounded-md w-24 h-24" src="/images/logo.png" alt="logo">
     </Link>
 </template>
 
