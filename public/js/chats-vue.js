@@ -69,8 +69,14 @@ const chatsBox =  {
       this.activeIdx = idx;
       this.chats[idx].unreadMessages = 0;
 
+      // HACK
+      if (this.chats[idx].lastMessage === "Es tu turno.")
+        this.chats[idx].lastMessage  = "...";
+
+      const lastName = this.chats[idx].lastName === undefined ? "" : this.chats[idx].lastName;
+
+      nameHeader.innerText = `${this.chats[idx].name} ${lastName}`;
       chatId = this.chats[idx].id;
-      nameHeader.innerText = `${this.chats[idx].name} ${this.chats[idx].lastName}`;
 
       openConversation(oldConv, chatId);
     },
