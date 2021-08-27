@@ -71,6 +71,15 @@ function drawBoard(state: MsgPackage) {
     // Updates the board.
     game.parentNode.replaceChild(board, game);
   }
+
+  // HACK
+  // Notify the agent, it is a game vs the agent
+  if (data[4].length === 0) {
+    state.name = "";
+
+    //@ts-ignore
+    vm.updateChat(state.id, "Es tu turno.", state);
+  }
 }
 
 // Creates the HTML element that represents the Gato board.
