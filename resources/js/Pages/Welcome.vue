@@ -22,7 +22,7 @@
             
 
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                <img class="rounded-md w-24 h-24" src="https://res.cloudinary.com/ddzj4rgox/image/upload/v1629253683/logoGatonix_av0bsc.png" alt="logo">
+                <img class="rounded-md w-24 h-24" src="/images/logo.png" alt="logo">
                 <h1 class="pl-2 pt-4 text-white text-6xl font-extrabold	">AuroCat</h1>
             </div>
 
@@ -59,7 +59,7 @@
             </div>
 
              <div class="flex justify-center pt-3"> 
-                <img class="rounded-md h-50 w-3/12 border-solid border-8 border-cat" src="https://res.cloudinary.com/ddzj4rgox/image/upload/v1630007256/ver2_1_vg8x4a.gif" alt="logo">
+                <img class="rounded-md h-50 w-3/12 border-solid border-8 border-cat" src="/images/animacionBienvenida.gif" alt="logo">
             </div>
 
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
