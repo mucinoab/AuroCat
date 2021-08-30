@@ -31,7 +31,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-  return Inertia::render('Chat/Index');
+  return Inertia::render('Chat');
 })->name('dashboard');
 
 
