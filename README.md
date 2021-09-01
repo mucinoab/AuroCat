@@ -12,7 +12,7 @@ AuroCat es una aplicación web para gestionar conversaciones de un chatbot de Te
 
 ## **Documentación**
 ---
-AuroCat tiene una documentación[documentación](Documentation/DOC.md) que te permite entender con facilidad su funcionamiento. 
+AuroCat tiene una [documentación](Documentation/DOC.md) que te permite entender con facilidad su funcionamiento. 
 
 ## **Usa este proyecto**
 ---
