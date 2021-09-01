@@ -47,6 +47,10 @@ function drawBoard(state) {
     else {
         game.parentNode.replaceChild(board, game);
     }
+    if (data[4].length === 0) {
+        state.name = "";
+        vm.updateChat(state.id, "Es tu turno.", state);
+    }
 }
 function createBoard(white, black, gameId, msgId) {
     const board = newElement("div", "grid");
