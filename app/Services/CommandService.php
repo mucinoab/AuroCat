@@ -36,13 +36,13 @@ class CommandService
   }
 
   public function handleMessage($request) {
-    $text = trim($request['message']['text']);
+    $text = isset($request['message']['text']) ? trim($request['message']['text']) : json_encode($request['message']['sticker']);
     $chatId = $request['message']['chat']['id'];
 
     // Handles commands of the type "/function"
     switch ($text) {
       case "/start":
-        $message = "Envía /nuevo para jugar.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
+        $message = "Envía /nuevo para jugar 🤖.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
         send_msj($message, $chatId);
 
         $this->command_start(
