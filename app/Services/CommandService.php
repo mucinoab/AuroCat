@@ -157,10 +157,7 @@ class CommandService
   {
     $telegram_user = $this->telegramUser->createTelegramUserIfNotExist($id);
     $game = $this->game->getLastGame($telegram_user);
-    $state = $this->state->getAState($game->id);
-    if($state->transmitter!=$transmitter){
-      $this->state->updateState($game->id,$board_state,$transmitter);
-    }
+    $this->state->updateState($game->id,$board_state,$transmitter);
   }
 
   public function sendWinnerMessage($id, $message, $winner)
