@@ -1,7 +1,15 @@
 <?php
+
 namespace App\Services;
 
 use App\Services\CommandService;
+use DateTime;
+
+require_once "TelegramService.php";
+require_once "PropagateService.php";
+
+const AGENT = "Juego vs Agente";
+const BOT = "Juego vs Bot";
 
 // Retry keyboard
 const RETRY = [[
@@ -9,16 +17,25 @@ const RETRY = [[
   ["text" => "No"]
 ]];
 
-class GatoService {
+// Opponent selection keyboard
+const OPPONENT = [[
+  ["text" => AGENT],
+  ["text" => BOT]
+]];
+
+class GatoService
+{
 
   public $commandService;
 
-  public function __construct(CommandService $commandService) {
+  public function __construct(CommandService $commandService)
+  {
     $this->commandService = $commandService;
   }
 
   // Handles all game states, inputs and outputs.
-  function game_logic(array &$update) {
+  function handleGame(array &$update)
+  {
     $move = explode(",", $update['data']);
     $practice_game = filter_var($move[4], FILTER_VALIDATE_BOOLEAN);
 
@@ -53,7 +70,7 @@ class GatoService {
             break;
         }
 
-        CommandService::propagate_msj([
+        propagate_msj([
           'id'   => $update['message']['chat']['id'],
           'side' => "right",
           'time' => $update['message']['date'],
@@ -63,16 +80,116 @@ class GatoService {
           ]
         ]);
 
-        if($practice_game) $move_by = !$practice_game;
+        if ($practice_game) $move_by = !$practice_game;
 
-        $this->commandService->updateState($chatId, $board_state,$move_by);
+        $this->commandService->updateState($chatId, $board_state, $move_by);
 
         if ($game_status != 3) { // End of a game
           send_keyboard($message, $chatId, RETRY, "keyboard");
+
+          $last_name = isset($update['message']['chat']['last_name']) ? $update['message']['chat']['last_name'] : "";
+
+          $msg_data = [
+            'id'       => $chatId,
+            'name'     => $update['message']['chat']['first_name'],
+            'lastName' => $last_name,
+            'msg'      => $message,
+            'side'     => "right", // Indicates who sends the message
+            'time'     => $update['message']['date'],
+          ];
+    
+          propagate_msj($msg_data);
+
           $this->commandService->sendWinnerMessage($chatId, $message, $game_status);
         }
 
         break;
     }
+  }
+
+  // Handles all TelegramUser messages.
+  public function handleTelegramUserMessage(array &$update)
+  {
+    $text = isset($update['message']['text']) ? trim($update['message']['text']) : json_encode($update['message']['sticker']);
+    $chatId = $update['message']['chat']['id'];
+    
+    // Handles commands of the type "/function"
+    switch ($text) {
+      case "/start":
+        $message = "Envía /nuevo para jugar 🤖.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
+        send_msj($message, $chatId);
+
+        $this->commandService->command_start(
+          $chatId,
+          $update['message']['from']['first_name'], // name
+          $update['message']['date'],
+          $update['update_id'],
+          $message,
+        );
+
+        break;
+
+        // The same two cases, a new game
+      case "/nuevo":
+      case "Sí":
+        $message = "Elige un oponente.";
+        send_keyboard($message, $chatId, OPPONENT, "keyboard");
+        break;
+
+      case BOT:
+        $this->commandService->new_game($chatId, true, $update);
+        return;
+
+      case AGENT:
+        $this->commandService->new_game($chatId, false, $update);
+        return;
+
+      case "No":
+        $message = "Gracias por jugar.";
+        send_msj($message, $chatId);
+        break;
+      default:
+        $this->commandService->sendMessage($chatId, $text, 0);
+    }
+
+    // The last name is an optional field.
+    $last_name = isset($update['message']['chat']['last_name']) ? $update['message']['chat']['last_name'] : "";
+
+    $msg_data = [
+      'id'       => $chatId,
+      'name'     => $update['message']['chat']['first_name'],
+      'lastName' => $last_name,
+      'msg'      => $text,
+      'side'     => "left", // Indicates who sends the message
+      'time'     => $update['message']['date'],
+    ];
+
+    propagate_msj($msg_data);
+
+    if(isset($message)){
+      $msg_data['msg'] = $message;
+      $msg_data['side'] = "right";
+
+      propagate_msj($msg_data);
+    }
+  }
+
+  // Handles all agents messages.
+  public function handleAgentMessage($update)
+  {
+    $chatId = $update["chat"];
+    $msg = $update["msg"];
+
+    $data = [
+      'msg' => $msg,
+      'id' => $chatId,
+      'side' => 'right',
+      'instanceId' => $update['senderId'],
+      'time' => (new DateTime())->getTimestamp(),
+    ];
+
+    send_msj($msg, $chatId);
+    $this->commandService->sendMessage($chatId, $msg, 1);
+    propagate_msj($data);
   }
 }

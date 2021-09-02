@@ -6,10 +6,6 @@
 - [Modelos](#modelos)
 - [Métodos en los modelos](#métodos-en-los-modelos)
 - [Servicios](#servicios)
-- [Utilidades](#utilidades)
-- [Usa este proyecto](#usa-este-proyecto)
-- [Conoce más](#conoce-más)
-- [Autores](#autores)
 
 </details>
 
@@ -223,5 +219,204 @@ Utilice este método para actualizar el teclado de un mensaje enviado anteriorme
 | `chat_id` | String  | Sí |Identificador del usuario de Telegram |
 | `message_id` | String | Sí | Arreglo con opciones|
 | `keyboard` | Array | Sí | Arreglo con la representación del tablero del juego |
+
+💭 **PropagateService**
+
+Envío de mensajes mediante Websockets.
+
+**propagate_msj**
+<br>
+Propaga el mensaje a los agentes en la vista web.
+
+| Parámetro |  Tipo | Requerido | Descripción |
+| --------- | ----- | --------- | ----------- |
+| `msj_data` | Array | Sí | Información del mensaje que se envía al frontend |
+
+Elementos del arreglo **msj_data** del método propagate_msj.
+
+
+| msj_data | Descripción |
+| ---------| ----------- |
+| `id`     | Identificador del usuario de Telegram |
+| `name`   | Nombre del usuario de Telegram |
+| `lastName`| Apellido del usuario de Telegram |
+| `msg`    | Mensaje |
+| `side`   | Indica el emisor del mensaje |
+| `time`   | Hora de envío del mensaje |
+
+
+🧩 **GatoService**
+
+Maneja los juegos, entrada y salida de mensajes.
+
+**handleGame**
+<br>
+Maneja todos los estados, entradas y salidas del juego.
+
+| Parámetro |  Tipo | Requerido | Descripción |
+| --------- | ----- | --------- | ----------- |
+| `update` | Array | Sí | Datos referentes a un movimiento en un juego |
+
+Representación del parametro **update** del método handleGame en formato JSON
+```go
+{
+    "update_id": 632610700,
+    "callback_query": {
+        "id": "7422842764417798785",
+        "from": {
+            "id": 1728265258,
+            "is_bot": false,
+            "first_name": "Prueba",
+            "language_code": "es"
+        },
+        "message": {
+            "message_id": 688,
+            "from": {
+                "id": 1932944007,
+                "is_bot": true,
+                "first_name": "Genabot",
+                "username": "Genarolaureanobot"
+            },
+            "chat": {
+                "id": 1728265258,
+                "first_name": "Prueba",
+                "type": "private"
+            },
+            "date": 1630565117,
+            "edit_date": 1630565128,
+            "text": "Marca la casilla.",
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            "text": "X",
+                            "callback_data": "X,0,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,1,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,2,0,9,,688"
+                        }
+                    ],
+                    [
+                        {
+                            "text": "X",
+                            "callback_data": "X,3,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,4,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,5,0,9,,688"
+                        }
+                    ],
+                    [
+                        {
+                            "text": " ",
+                            "callback_data": " ,6,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,7,0,9,,688"
+                        },
+                        {
+                            "text": " ",
+                            "callback_data": " ,8,0,9,,688"
+                        }
+                    ]
+                ]
+            }
+        },
+        "chat_instance": "870282868517388886",
+        "data": " ,6,0,9,,688"
+    }
+}
+
+```
+
+Elementos del objeto data y callback_data
+```go
+//          symbol, idx, bitmask p1, bitmask p2, player type,    game_id
+    $data = $tile,  $i,  $white,     $black,     $practice_game, $game_id;
+```
+<div align="center">
+
+| Elemento | Descripción |
+| ---------| ----------- |
+| `$tile`     | Representa el simbolo que ocupa la casilla (X , O). *Default:* " " |
+| `$i`   | La posición dentro del tablero(0-9) |
+| `$white`| La mascara de bits del jugador 1 |
+| `$black`    | La mascara de bits del jugador 2 |
+| `$practice_game`   | El tipo de jugador |
+| `$game_id`   | El identificador unico del juego |
+
+</div>
+
+**handleTelegramUserMessage**
+<br>
+Maneja todos los mensajes del usuario de Telegram.
+
+| Parámetro |  Tipo | Requerido | Descripción |
+| --------- | ----- | --------- | ----------- |
+| `update` | Array | Sí | Datos referentes a un mensaje de Telegram |
+
+
+Representación del parametro **update** del método handleTelegramUserMessage en formato JSON
+```go
+{
+    "update_id": 632610682,
+    "message": {
+        "message_id": 669,
+        "from": {
+            "id": 1728265258,
+            "is_bot": false,
+            "first_name": "Prueba",
+            "language_code": "es"
+        },
+        "chat": {
+            "id": 1728265258,
+            "first_name": "Prueba",
+            "type": "private"
+        },
+        "date": 1630564906,
+        "text": "/start",
+        "entities": [
+            {
+                "offset": 0,
+                "length": 6,
+                "type": "bot_command"
+            }
+        ]
+    }
+}
+```
+
+
+**handleAgentMessage**
+<br>
+Maneja todos los mensajes del Agente.
+
+| Parámetro |  Tipo | Requerido | Descripción |
+| --------- | ----- | --------- | ----------- |
+| `update` | Array | Sí | Datos referentes a un mensaje del Agente |
+
+
+Representación del parametro **update** del método handleAgentMessage en formato JSON
+```go
+
+```
+
+
+🗃️ **CommandService**
+
+Maneja todos los registros a la base de datos.
+
+
+  
 
 
