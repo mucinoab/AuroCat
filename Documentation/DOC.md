@@ -406,15 +406,6 @@ Maneja todos los mensajes del Agente.
 | `update` | Array | Sí | Datos referentes a un mensaje del Agente |
 
 
-Representación del parametro **update** del método handleAgentMessage en formato JSON
-```php
-
-```
-
-
-🗃️ **CommandService**
-
-Maneja todos los registros a la base de datos.
 
 
   
