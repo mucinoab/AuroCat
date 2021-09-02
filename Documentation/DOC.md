@@ -348,12 +348,12 @@ Elementos del objeto data y callback_data
 
 | Elemento | Descripción |
 | ---------| ----------- |
-| `$tile`     | Representa el simbolo que ocupa la casilla (X , O). *Default:* " " |
+| `$tile`     | Representa el símbolo que ocupa la casilla (X , O). *Default:* " " |
 | `$i`   | La posición dentro del tablero(0-9) |
-| `$white`| La mascara de bits del jugador 1 |
-| `$black`    | La mascara de bits del jugador 2 |
+| `$white`| La máscara de bits del jugador 1 |
+| `$black`    | La máscara de bits del jugador 2 |
 | `$practice_game`   | El tipo de jugador |
-| `$game_id`   | El identificador unico del juego |
+| `$game_id`   | El identificador único del juego |
 
 </div>
 
