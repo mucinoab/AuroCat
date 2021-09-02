@@ -258,7 +258,7 @@ Maneja todos los estados, entradas y salidas del juego.
 | `update` | Array | Sí | Datos referentes a un movimiento en un juego |
 
 Representación del parametro **update** del método handleGame en formato JSON
-```go
+```php
 {
     "update_id": 632610700,
     "callback_query": {
@@ -367,7 +367,7 @@ Maneja todos los mensajes del usuario de Telegram.
 
 
 Representación del parametro **update** del método handleTelegramUserMessage en formato JSON
-```go
+```php
 {
     "update_id": 632610682,
     "message": {
@@ -407,7 +407,7 @@ Maneja todos los mensajes del Agente.
 
 
 Representación del parametro **update** del método handleAgentMessage en formato JSON
-```go
+```php
 
 ```
 
