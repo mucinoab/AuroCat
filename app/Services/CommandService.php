@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\FinishGame;
 use App\Models\TelegramUser;
 use App\Models\Game;
 use App\Models\Message;
@@ -82,6 +83,8 @@ class CommandService
     $this->message->createMessage($game->id, $id, $update_id, '/nuevo', 0, $date);
     $this->message->createMessage($game->id, $id, $update_id, $message, 1, $date + 1);
     $this->state->createState($game->id, $board_state, 0, 1, $date);
+
+    FinishGame::dispatch($game)->delay(now()->addMinutes(15));
   }
 
   public function updateState($id, $board_state, $transmitter)
