@@ -41,7 +41,6 @@ function drawBoard(state) {
     const board = createBoard(white, black, gameId, messageId);
     if (game === null) {
         const chat = document.getElementById(`conversation-${state.id}`);
-        drawMessage("Marca la casilla.", state.id, unixTime() * 1000, MessageSide.Right);
         chat.appendChild(board);
     }
     else {

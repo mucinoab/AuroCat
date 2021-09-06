@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Game extends Model
 {
     protected $fillable = [
+        'id',
         'name',
         'telegram_user_id',
         'state',
@@ -25,8 +26,7 @@ class Game extends Model
      */
     public function getLastGame($telegram_user)
     {
-        
-        return $telegram_user->games()->where('state', '!=', 2)->first();
+        return $telegram_user->games()->orderBy('date','DESC')->first();
     }
     /**
      * Change the game to finalized
@@ -57,13 +57,19 @@ class Game extends Model
     /**
      * Change a new game
      */
-    public function createGame($id,$date,$opponent=false)
+    public function createGame($id,$telegram_user_id,$date,$opponent=false)
     {
         return Game::create([
-            'telegram_user_id' => $id,
+            'id' => $id,
+            'telegram_user_id' => $telegram_user_id,
             'date' => $date,
             'opponent' => !$opponent
           ]);
+    }
+
+    public function findGame($id)
+    {
+        return Game::find($id);
     }
 
 

@@ -19,11 +19,12 @@ function getOrNew(id: string, tagType: string, className: string = ""): HTMLElem
 // Manda post request a url con datos en json
 async function postData(url: string, data: { [key: string]: any }): Promise<void> {
   // From MDN, https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options
-  await fetch(url, {
+   await fetch(url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data),
   });
+  console.log(JSON.stringify(data));
 }
 
 // UUID (Universally Unique IDentifier)
