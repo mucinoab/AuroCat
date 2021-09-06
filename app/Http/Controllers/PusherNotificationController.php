@@ -24,7 +24,7 @@ class PusherNotificationController extends Controller
 
     // It is a callback query
     if (isset($update['callback_query'])){
-      // Get the game_id from the dara object
+      // Get the game_id from the data object
       $gameId =  explode(",",$update['callback_query']['data'])[5];
       $game = $this->gatoService->onCourse($gameId);
       if($game){

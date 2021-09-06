@@ -24,7 +24,6 @@ async function postData(url: string, data: { [key: string]: any }): Promise<void
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data),
   });
-  console.log(JSON.stringify(data));
 }
 
 // UUID (Universally Unique IDentifier)
