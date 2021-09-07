@@ -58,6 +58,11 @@ class CommandService
     ]);
 
     $board_state = $gato->state_to_json();
+    /**
+     * We send the board together with the next message  that we use 
+     * for the game_id, for that reason we add +1 to update in the next  
+     * message and no the message used fot the game_id.
+     */
     update_keyboard($chatId, $board_id+1, $board_state);
 
     $msg_data = [
