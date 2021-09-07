@@ -23,10 +23,21 @@ class PusherNotificationController extends Controller
     $update = json_decode($request->getContent(), TRUE);
 
     // It is a callback query
-    if (isset($update['callback_query']))
-      $this->gatoService->handleGame($update['callback_query']);
-    else
+    if (isset($update['callback_query'])){
+      // Get the game_id from the data object
+      $gameId =  explode(",",$update['callback_query']['data'])[5];
+      $game = $this->gatoService->onCourse($gameId);
+      if($game){
+          $this->gatoService->handleGame($update['callback_query'],$game);
+        }else{
+          $update = ["chat"=>$update['callback_query']['message']['chat']['id'],
+                      "msg"=>'¡Juguemos! 🤖 Recuerda que puedes usar /nuevo para iniciar un nuevo juego.🎮',
+                      "senderId"=>''];
+          $this->gatoService->handleAgentMessage($update);
+        }
+    }else{
       $this->gatoService->handleTelegramUserMessage($update);
+    }
   }
 
   // Handles a message that was sent by an agent in the web view.
@@ -35,4 +46,6 @@ class PusherNotificationController extends Controller
     $update = json_decode($request->getContent(), TRUE);
     $this->gatoService->handleAgentMessage($update);
   }
+
+  
 }
