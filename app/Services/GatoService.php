@@ -47,8 +47,18 @@ class GatoService
         $move_by = !isset($update['agent']); // Agent or user move
         $game_id = $move[5];  //game_id
 
+        if($move_by == True && $move[6] == 'user' && !$practice_game) return;        
+        if($move_by == False && $move[6] == 'agent') return;
+
+
         $gato = new Gato((int) $move[2], (int) $move[3], $practice_game, $game_id);
         $gato->move((int) $move[1], $move_by);
+        
+        if($move[6] == 'user'){
+          $gato->turn = 'agent';
+        }else if($move[6] == 'agent'){
+          $gato->turn = 'user';
+        }
 
         // Random bot play
         if ($practice_game) $gato->bot_move();
