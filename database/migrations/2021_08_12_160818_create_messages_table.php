@@ -16,7 +16,7 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('game_id')->nullable();
-            $table->integer('chat_id');
+            $table->integer('chat_id')->index();
             $table->unsignedInteger('update_id');
             $table->text('message')->nullable();
             $table->tinyInteger('transmitter');
