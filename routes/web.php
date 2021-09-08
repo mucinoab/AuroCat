@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PusherNotificationController;
 use App\Http\Controllers\TelegramUserController;
@@ -43,4 +44,7 @@ Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
 Route::get('/chats',[TelegramUserController::class,'index']);
 Route::get('/conversation',[TelegramUserController::class,'conversation']);
+
+//Get game stats
+Route::get('/rates/{option}',[DashboardController::class,'index']);
 
