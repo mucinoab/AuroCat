@@ -14,9 +14,10 @@ class DashboardController extends Controller
      * ej: APP_URL/rates/{option}
      * 
      * option  Description
-     * gwad - games won and drawn
-     *  tgp - total games played
-     *   tp - time played
+     *  gwad - games won and drawn
+     *   tgp - total games played
+     *    tp - time played
+     * avgtp - average time played
      */
     public function index(Request $request)
     {
@@ -29,6 +30,8 @@ class DashboardController extends Controller
             return $this->getTotalGamesPlayed();
         } else if ($type == 'tp') {
             return $this->getTimePlayed();
+        } else if ($type == 'avgtp') {
+            return $this->getAvgTimePlayed();
         }
 
     }
@@ -142,7 +145,41 @@ class DashboardController extends Controller
         ], $code);
     }
 
+    // Return the average total time played by the telegram user, against the agent and the bot
+    public function getAvgTimePlayed() {
+        $title = "Average Time Played";
+        $code = 200;
+        $labels = ['Red', 'Yellow', 'Blue'];
 
+        $total_time_played = Game::select(
+            DB::raw('sec_to_time(round(avg(time_to_sec(timediff(from_unixtime(states.date), 
+                from_unixtime(games.date)))))) as avg_total_time_played'))
+                ->join('states', 'games.id', '=', 'states.game_id')
+                ->whereNotNull('games.winner')
+                ->first();
+
+        $total_time_played_vs_agent = Game::select(
+            DB::raw('sec_to_time(round(avg(time_to_sec(timediff(from_unixtime(states.date), 
+                    from_unixtime(games.date)))))) as avg_time_played_vs_agent'))
+            ->join('states', 'games.id', '=', 'states.game_id')
+            ->where('games.opponent',1)->whereNotNull('games.winner')
+            ->first();
+
+        $total_time_played_vs_bot = Game::select(
+            DB::raw('sec_to_time(round(avg(time_to_sec(timediff(from_unixtime(states.date), 
+                    from_unixtime(games.date)))))) as avg_time_played_vs_bot'))
+                ->join('states', 'games.id', '=', 'states.game_id')
+                ->where('games.opponent',0)->whereNotNull('games.winner')
+                ->first();
+
+        $data = [$total_time_played,$total_time_played_vs_agent,$total_time_played_vs_bot];    
+
+        return response()->json([
+            'title' => $title,
+            'data' => $data,
+            'labels' => $labels
+        ], $code);        
+    }
 
 
 }
