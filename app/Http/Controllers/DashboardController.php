@@ -14,9 +14,10 @@ class DashboardController extends Controller
      * ej: APP_URL/rates/{option}
      * 
      * option  Description
-     * gwad - games won and drawn
-     *  tgp - total games played
-     *   tp - time played
+     *  gwad - games won and drawn
+     *   tgp - total games played
+     *    tp - time played
+     * avgtp - average time played
      */
     public function index(Request $request)
     {
