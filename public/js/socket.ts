@@ -59,9 +59,10 @@ function drawBoard(state: MsgPackage) {
 
   const white = parseInt(data[2], 10);
   const black = parseInt(data[3], 10);
+  const turn = data[6];
 
   const game = document.getElementById(gameId);
-  const board = createBoard(white, black, gameId, messageId);
+  const board = createBoard(white, black, gameId, messageId, turn);
 
   if (game === null) {
     const chat = document.getElementById(`conversation-${state.id}`);
@@ -83,7 +84,7 @@ function drawBoard(state: MsgPackage) {
 }
 
 // Creates the HTML element that represents the Gato board.
-function createBoard(white: number, black: number, gameId: string, msgId: string): HTMLElement {
+function createBoard(white: number, black: number, gameId: string, msgId: string, turn: string): HTMLElement {
   const board = newElement("div", "grid");
   board.id = gameId;
 
@@ -98,7 +99,7 @@ function createBoard(white: number, black: number, gameId: string, msgId: string
     tile.appendChild(newElement("span", "", piece));
     tile.id = `${msgId}${i}`;
     tile.onclick = _ => {
-      boardMove(msgId, i, `${piece},${i},${white},${black},false,${msgId}`);
+      boardMove(msgId, i, `${piece},${i},${white},${black},false,${msgId},${turn}`);
     };
 
     board.appendChild(tile);
