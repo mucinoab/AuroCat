@@ -7,6 +7,14 @@ body {
   margin: 0;
 }
 
+header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0em 1em 2em 4em;
+}
+
 .input_bar {
   border-radius: 100px;
   width: 75%;
@@ -179,18 +187,18 @@ span {
   display: flex;
   flex-direction: column;
   padding: 0.75em;
-  display: grid; 
+  display: grid;
   border-radius: 15px;
-  grid-template-columns: 2.5fr 1fr 0.5fr; 
-  grid-template-rows: 1fr 1fr; 
+  grid-template-columns: 2.5fr 1fr 0.5fr;
+  grid-template-rows: 1fr 1fr;
   border-bottom: solid 1px #777c87;
-  grid-template-areas: 
+  grid-template-areas:
     "nameUser nameUser time"
-    "prev-msg prev-msg notification"; 
+    "prev-msg prev-msg notification";
 }
 
-.chat-time { 
-  grid-area: time; 
+.chat-time {
+  grid-area: time;
   color: #c6c6c6;
   font-size: 0.75em;
 }
@@ -211,4 +219,32 @@ span {
   align-items: center;
   border-radius: 50%;
   grid-area: notification;
+}
+
+.graph-container {
+  align-items: center;
+  color: white;
+  display: grid;
+  grid-template-columns: 0.5fr repeat(2, 2fr) 0.5fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: row;
+  padding-bottom: 5em;
+  grid-template-areas:
+    "side graph graph side"
+    "side graph graph side"
+}
+
+.graph {
+  margin: 0.5em;
+  height: 40em;
+}
+
+.loading {
+  height: 20em;
+  width: 20em;
+  margin: 0 auto 1em;
+}
+
+svg path, svg rect{
+  fill: #85a2b6;
 }
