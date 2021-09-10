@@ -73,6 +73,9 @@ function createBoard(white, black, gameId, msgId, turn) {
     return board;
 }
 async function boardMove(msgId, pos, data) {
+    const turn = data.split(',')[6];
+    if(turn == 'agent') return;
+
     document.getElementById(`${msgId}${pos}`).innerHTML = "O";
     postData("/telegram-update", {
         callback_query: {

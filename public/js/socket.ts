@@ -110,8 +110,11 @@ function createBoard(white: number, black: number, gameId: string, msgId: string
 
 // Sends a board move by sending a callback query that mimics the ones sent by Telegram.
 async function boardMove(msgId: string, pos: number, data: string): Promise<void> {
+  
+  const turn = data.split(',')[6];
+  if(turn == 'agent') return;
+  
   document.getElementById(`${msgId}${pos}`).innerHTML = "O"; // Updates the UI
-
   postData("/telegram-update", {
     callback_query : {
       data: data,
