@@ -47,4 +47,3 @@ Route::get('/conversation',[TelegramUserController::class,'conversation']);
 
 //Get game stats
 Route::get('/rates/{option}',[DashboardController::class,'index']);
-
