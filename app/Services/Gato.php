@@ -35,12 +35,14 @@ class Gato {
   // Bot(true) or human(false) second player
   private static $practice_game;
   public $game_id;
+  public $turn; //To save the last user who has been played. ('agent', 'user')
 
   public function __construct(int $w, int $b, bool $practice_game, string $id) {
     self::$white = $w;
     self::$black = $b;
     self::$practice_game = $practice_game;
     $this->game_id = $id;
+    $this->turn = 'agent';
   }
 
   // Checks if a given bitmask is in a winning state
@@ -93,8 +95,8 @@ class Gato {
       else if (($mask & self::$black) != 0)
         $tile = 'X';
 
-      //        symbol, idx,      bitmask p1,        bitmask p1,      player type,            game_id
-      $data = "{$tile},{$i}," . self::$white . ','. self::$black.','.self::$practice_game.','.$this->game_id;
+      //        symbol, idx,      bitmask p1,        bitmask p1,      player type,            game_id             last_player
+      $data = "{$tile},{$i}," . self::$white . ','. self::$black.','.self::$practice_game.','.$this->game_id.','.$this->turn;
       array_push($row, array("text" => $tile, "callback_data" => $data));
     }
 
@@ -153,7 +155,7 @@ class Gato {
   }
 
   public function game_state(): string {
-    return " , ," . self::$white . ','. self::$black . ',' . self::$practice_game . ',' . $this->game_id;
+    return " , ," . self::$white . ','. self::$black . ',' . self::$practice_game . ',' . $this->game_id.','.$this->turn;
   }
 
   public static function new_game(bool $practice_game, string $game_id): array {
