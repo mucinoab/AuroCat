@@ -15,5 +15,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
       '/telegram-update',
       '/send-telegram',
+      '/unread',
+
     ];
 }

@@ -49,7 +49,7 @@ class GatoService
 
         $gato = new Gato((int) $move[2], (int) $move[3], $practice_game, $game_id);
         $gato->move((int) $move[1], $move_by);
-
+        
         // Random bot play
         if ($practice_game) $gato->bot_move();
 
@@ -80,13 +80,15 @@ class GatoService
 
         propagate_msj([
           'id'   => $update['message']['chat']['id'],
-          'side' => "right",
-          'time' => $update['message']['date'],
+          'transmitter' => 1,
+          'date' => $update['message']['date'],
           'callback' => [
             'data'          => $gato->game_state(),
             'practice game' => $practice_game
           ]
+
         ]);
+        
 
         if ($practice_game) $move_by = !$practice_game;
 
@@ -101,9 +103,9 @@ class GatoService
             'id'       => $chatId,
             'name'     => $update['message']['chat']['first_name'],
             'lastName' => $last_name,
-            'msg'      => $message,
-            'side'     => "right", // Indicates who sends the message
-            'time'     => $update['message']['date'],
+            'message'      => $message,
+            'transmitter'     => 1, // Indicates who sends the message
+            'date'     => $update['message']['date'],
           ];
     
           propagate_msj($msg_data);
@@ -126,7 +128,7 @@ class GatoService
       case "/start":
         $message = "Envía /nuevo para jugar 🤖.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
         send_msj($message, $chatId);
-
+        $message = "<p>Env&iacute;a /nuevo para jugar 🤖. Consulta las reglas <a href='https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas'>Aquí</a></p>";
         $this->commandService->command_start(
           $chatId,
           $update['message']['from']['first_name'], // name
@@ -160,20 +162,29 @@ class GatoService
     // The last name is an optional field.
     $last_name = isset($update['message']['chat']['last_name']) ? $update['message']['chat']['last_name'] : "";
 
+    // $msg_data = [
+    //   'id'       => $chatId,
+    //   'name'     => $update['message']['chat']['first_name'],
+    //   'lastName' => $last_name,
+    //   'msg'      => $text,
+    //   'side'     => "left", // Indicates who sends the message
+    //   'time'     => $update['message']['date'],
+    // ];
+
     $msg_data = [
       'id'       => $chatId,
       'name'     => $update['message']['chat']['first_name'],
       'lastName' => $last_name,
-      'msg'      => $text,
-      'side'     => "left", // Indicates who sends the message
-      'time'     => $update['message']['date'],
+      'message'      => $text,
+      'transmitter'     => 0, // Indicates who sends the message
+      'date'     => $update['message']['date'],
     ];
 
     propagate_msj($msg_data);
 
     if(isset($message)){
-      $msg_data['msg'] = $message;
-      $msg_data['side'] = "right";
+      $msg_data['message'] = $message;
+      $msg_data['transmitter'] = 1;
       propagate_msj($msg_data);
     }
 
@@ -186,16 +197,30 @@ class GatoService
     $msg = $update["msg"];
 
     $data = [
-      'msg' => $msg,
+      'message' => $msg,
       'id' => $chatId,
-      'side' => 'right',
+      'transmitter' => 1,
       'instanceId' => $update['senderId'],
-      'time' => (new DateTime())->getTimestamp(),
+      'date' => (new DateTime())->getTimestamp(),
     ];
 
     send_msj($msg, $chatId);
     $this->commandService->sendMessage($chatId, $msg, 1);
     propagate_msj($data);
+  }
+
+  // Handles all agents messages.
+  public function handleUnread($update)
+  {
+    $chatId = $update["chat"];
+    $option = $update["option"];
+
+    $data = [
+      'id' => $chatId,
+      'option' => $option,
+    ];
+    propagate_msj($data);
+
   }
 
 

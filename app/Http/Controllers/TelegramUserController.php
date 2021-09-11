@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Message;
+use App\Models\State;
+use App\Models\TelegramUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,34 +16,23 @@ class TelegramUserController extends Controller
     public function index()
     {
         $agentGames = [];
-        $games = Game::with(['telegramUser:id,name','message:game_id,date,transmitter,message','state:game_id,date,transmitter'])->where('state','!=',2)->orderByDesc('date')->get(['id','telegram_user_id']);
-        
-
+        $games = TelegramUser::get(['id','name']);
         foreach ($games as $game) {
-            $stateDate = 0;
-            $stateMessage = 0;    
-
-            if($game->state != null){ 
-                $stateDate = $game->state->date;
-                $game->state->message = $game->state->transmitter == 0 ? 'Esperando movimiento' : 'Responder Jugada';
-            }
-            if($game->message != null){
-                $stateMessage = $game->message->date;
-            }
-
+            $message = Message::where('chat_id',$game->id)->orderBy('date','DESC')->first();
             array_push(
                 $agentGames,
                 [
-                    "id" => $game->telegram_user_id,
-                    "name" => $game->telegramUser->name,
-                    "time" => $game[$stateDate>$stateMessage ? 'state': 'message']->date,
-                    "lastMessage" => $game[ $stateDate>$stateMessage ? 'state': 'message']->message
+                    "id" => $game->id,
+                    "name" => $game->name,
+                    "date" => $message->date,
+                    "lastMessage" => $message->message
                 ]
             );
         }
 
         return response()->json(["chats" => $agentGames]);
     }
+
 
     //return the messages from a chat_id with optional delimitation parameters
     // ej: APP_URL/conversation?chat_id=1728265258&chats_number=5&offset=2
@@ -65,4 +56,16 @@ class TelegramUserController extends Controller
         return response()->json(["conversation" => $conversation->get()]);
 
     }
+
+     //return all the chats that are palying with an agent or bot
+     public function lastGame(Request $request)
+     {
+         $game = Game::where('telegram_user_id',$request->chat_id)->orderBy('date','DESC')->first();
+         $state = State::where('game_id',$game->id)->first();
+
+         
+
+ 
+         return response()->json(["lastGame" => $state,"game"=>$game]);
+     }
 }

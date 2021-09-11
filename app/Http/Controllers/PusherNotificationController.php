@@ -47,5 +47,10 @@ class PusherNotificationController extends Controller
     $this->gatoService->handleAgentMessage($update);
   }
 
+  public function readMessages(Request $request){
+    $update = json_decode($request->getContent(), TRUE);
+    $this->gatoService->handleUnread($update);
+  }
+
   
 }
