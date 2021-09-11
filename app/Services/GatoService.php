@@ -47,9 +47,19 @@ class GatoService
         $move_by = !isset($update['agent']); // Agent or user move
         $game_id = $move[5];  //game_id
 
+        if($move_by == True && $move[6] == 'user' && !$practice_game) return; //When a user tries to play twice.
+        if($move_by == False && $move[6] == 'agent') return; //When the agent tries to play twice.
+
         $gato = new Gato((int) $move[2], (int) $move[3], $practice_game, $game_id);
         $gato->move((int) $move[1], $move_by);
-        
+
+        //Indicates the player who threw the last turn, only if it was a valid movement.
+        if($move[6] == 'user'){
+          $gato ->turn = 'agent';
+        } else if($move[6] == 'agent'){
+          $gato->turn = 'user';
+        }
+
         // Random bot play
         if ($practice_game) $gato->bot_move();
 

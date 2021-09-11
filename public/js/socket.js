@@ -37,8 +37,9 @@ function drawBoard(state) {
     const gameId = `juego${messageId}`;
     const white = parseInt(data[2], 10);
     const black = parseInt(data[3], 10);
+    const turn = data[6];
     const game = document.getElementById(gameId);
-    const board = createBoard(white, black, gameId, messageId);
+    const board = createBoard(white, black, gameId, messageId, turn);
     if (game === null) {
         const chat = document.getElementById(`conversation-${state.id}`);
         drawMessage("Marca la casilla.", state.id, unixTime() * 1000, MessageSide.Right);
@@ -52,7 +53,7 @@ function drawBoard(state) {
         vm.updateChat(state.id, "Es tu turno.", state);
     }
 }
-function createBoard(white, black, gameId, msgId) {
+function createBoard(white, black, gameId, msgId, turn) {
     const board = newElement("div", "grid");
     board.id = gameId;
     for (let i = 0; i < 9; i += 1) {
@@ -66,13 +67,16 @@ function createBoard(white, black, gameId, msgId) {
         tile.appendChild(newElement("span", "", piece));
         tile.id = `${msgId}${i}`;
         tile.onclick = _ => {
-            boardMove(msgId, i, `${piece},${i},${white},${black},false,${msgId}`);
+            boardMove(msgId, i, `${piece},${i},${white},${black},false,${msgId},${turn}`);
         };
         board.appendChild(tile);
     }
     return board;
 }
 async function boardMove(msgId, pos, data) {
+    const turn = data.split(',')[6];
+    if (turn == 'agent')
+        return;
     document.getElementById(`${msgId}${pos}`).innerHTML = "O";
     postData("/telegram-update", {
         callback_query: {

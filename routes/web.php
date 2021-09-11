@@ -56,4 +56,3 @@ Route::get('/lastGame',[TelegramUserController::class,'lastGame']);
 
 //Get game stats
 Route::get('/rates/{option}',[DashboardController::class,'index']);
-
