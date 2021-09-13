@@ -39,20 +39,16 @@ Route::get('/hey', function() {
   return Inertia::render('Chat/Index');
 });
 
-Route::get('/ver', function() {
-  return Inertia::render('Prueba/Index');
-});
-
 Route::get('/test-chat', function() {
   return view('chat');
 });
 
 Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
-Route::post('/unread', [PusherNotificationController::class, 'readMessages']);
 Route::get('/chats',[TelegramUserController::class,'index']);
 Route::get('/conversation',[TelegramUserController::class,'conversation']);
-Route::get('/lastGame',[TelegramUserController::class,'lastGame']);
+Route::get('/lastGame',[TelegramUserController::class,'game']);
+
 
 //Get game stats
 Route::get('/rates/{option}',[DashboardController::class,'index']);

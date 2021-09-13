@@ -15,57 +15,74 @@ class TelegramUserController extends Controller
     //return all the chats that are palying with an agent or bot
     public function index()
     {
-        $agentGames = [];
-        $games = TelegramUser::get(['id','name']);
-        foreach ($games as $game) {
-            $message = Message::where('chat_id',$game->id)->orderBy('date','DESC')->first();
-            array_push(
-                $agentGames,
-                [
-                    "id" => $game->id,
-                    "name" => $game->name,
-                    "date" => $message->date,
-                    "lastMessage" => $message->message
-                ]
+        $data = array();
+
+        $users = TelegramUser::query()->when(request('chats_number'),function($query){
+            return $query->take(request('chats_number'));
+        })->when(request('offset'),function($query){
+            return $query->skip(request('offset'));
+        })->get(['id','name']);
+
+
+        foreach($users as $user){
+            
+            $game = Game::where('telegram_user_id',$user->id)->orderBy('date','DESC')->first();
+            $game->stateRelation;
+            $message = Message::where('game_id',$game->id)->orderBy('date','DESC')->first();
+
+            $values = array(
+                'chats'=>array(
+                    'id'=>$user->id,
+                    'name'=>$user->name,
+                    'lastMessage'=> $message->message,
+                    'date'=> $message->date,
+                    'opponent'=> $game->opponent,
+                    'state'=> $game->state,
+                    'gameId'=> $game->id,
+                    'turn'=> $game->stateRelation->turn,
+                    'unread'=>0),
+                // 'game' =>$game
             );
-        }
+        
+            array_push($data,$values);
 
-        return response()->json(["chats" => $agentGames]);
+        }   
+        return response()->json(["data" => $data]);
+
     }
-
 
     //return the messages from a chat_id with optional delimitation parameters
-    // ej: APP_URL/conversation?chat_id=1728265258&chats_number=5&offset=2
-    public function conversation(Request $request)
+    public function conversation()
     {
-        $conversation = Message::query();
-        $conversation->where('chat_id','=',$request->chat_id);
-
-        if($request->chats_number)
+        // http://localhost:8000/conversation?chats_number=10&offset=1&chats=[id,id,...]
+        $messages = array();
+        if(request('chats'))
         {
-            $conversation->take($request->chats_number);
+            $ids = json_decode(request('chats'));
+            foreach($ids as $id){
+                $userMessages = Message::where('chat_id',$id)->orderBy('date','DESC')->when(request('chats_number'),function($query){
+                    return $query->take(request('chats_number'));
+                })->when(request('offset'),function($query){
+                    return $query->skip(request('offset'));
+                })->get(['chat_id','message','transmitter','date']);
+
+                array_push($messages,array("chat_id"=>$id,"messages"=>$userMessages));
+            }
+        }else{
+            // http://localhost:8000/conversation?chat_id=1728265258&chats_number=10&offset=1
+            $userMessages = Message::where('chat_id',request('chat_id'))->orderBy('date','DESC')->when(request('chats_number'),function($query){
+                return $query->take(request('chats_number'));
+            })->when(request('offset'),function($query){
+                return $query->skip(request('offset'));
+            })->get(['message','transmitter','date']);
+            array_push($messages,array("chat_id"=>request('chat_id'),"messages"=>$userMessages));
         }
-
-        if($request->offset)
-        {
-            $conversation->skip($request->offset);
-        }
-
-        $conversation->orderby('date','desc');
-        
-        return response()->json(["conversation" => $conversation->get()]);
-
+        return response()->json(["messages" => $messages]);
     }
 
-     //return all the chats that are palying with an agent or bot
-     public function lastGame(Request $request)
-     {
-         $game = Game::where('telegram_user_id',$request->chat_id)->orderBy('date','DESC')->first();
-         $state = State::where('game_id',$game->id)->first();
-
-         
-
- 
-         return response()->json(["lastGame" => $state,"game"=>$game]);
+     public function game(){
+         $game = Game::find(request('game_id'));
+         $game->stateRelation;
+        return response()->json(["game" => $game]);
      }
 }

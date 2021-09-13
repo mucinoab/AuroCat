@@ -56,7 +56,7 @@ class GatoService
         //Indicates the player who threw the last turn, only if it was a valid movement.
         if($move[6] == 'user'){
           $gato ->turn = 'agent';
-        } else if($move[6] == 'agent'){
+        } else if($move[6] == 'agent' && !$practice_game){
           $gato->turn = 'user';
         }
 
@@ -94,7 +94,7 @@ class GatoService
           'date' => $update['message']['date'],
           'callback' => [
             'data'          => $gato->game_state(),
-            'practice game' => $practice_game
+            'practice_game' => $practice_game
           ]
 
         ]);
@@ -166,7 +166,7 @@ class GatoService
         send_msj($message, $chatId);
         break;
       default:
-        $this->commandService->sendMessage($chatId, $text, 0);
+        $this->commandService->sendMessage($chatId, $text, 1);
     }
 
     // The last name is an optional field.
@@ -218,21 +218,6 @@ class GatoService
     $this->commandService->sendMessage($chatId, $msg, 1);
     propagate_msj($data);
   }
-
-  // Handles all agents messages.
-  public function handleUnread($update)
-  {
-    $chatId = $update["chat"];
-    $option = $update["option"];
-
-    $data = [
-      'id' => $chatId,
-      'option' => $option,
-    ];
-    propagate_msj($data);
-
-  }
-
 
   public function onCourse($id){
     return $this->commandService->getLastTelegramUserGame($id);

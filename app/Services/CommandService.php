@@ -71,7 +71,7 @@ class CommandService
       'date' => $request['message']['date'],
       'callback' => [
         'data'          => $gato->game_state(),
-        'practice game' => $practice,
+        'practice_game' => $practice,
       ],
     ];
     propagate_msj($msg_data);
