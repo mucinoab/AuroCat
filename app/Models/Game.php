@@ -85,7 +85,7 @@ class Game extends Model
         return $this->hasMany(Message::class);
     }
 
-    public function state()
+    public function stateRelation()
     {
         return $this->hasOne(State::class);
     }

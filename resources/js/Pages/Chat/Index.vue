@@ -482,7 +482,7 @@ export default {
     this.instanceId = uuidUnique();
 
     //Get request using fetch with error handling
-    fetch("/chats?chats_number=20")
+    fetch("/chats?chats_number=10")
       .then(async response => {
         const data = await response.json();
         // check for error response

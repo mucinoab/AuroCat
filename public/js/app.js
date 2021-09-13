@@ -21715,7 +21715,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     //create the instancheID for this user
     this.instanceId = (0,_js_instanceId_js__WEBPACK_IMPORTED_MODULE_5__.default)(); //Get request using fetch with error handling
 
-    fetch("/chats?chats_number=20").then( /*#__PURE__*/function () {
+    fetch("/chats?chats_number=10").then( /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(response) {
         var data, error;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
