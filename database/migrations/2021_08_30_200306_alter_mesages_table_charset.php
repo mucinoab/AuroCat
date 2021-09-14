@@ -24,7 +24,7 @@ class AlterMesagesTableCharset extends Migration
      */
     public function down()
     {
-        DB::statement("ALTER TABLE messages CHANGE message message TEXT CHARACTER SET utf8 COLLATE utf8_general_ci;");
+        DB::statement("ALTER TABLE messages CHANGE message message TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;");
 
     }
 }
