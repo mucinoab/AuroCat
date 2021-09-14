@@ -16,7 +16,7 @@ class CreateStatesTable extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('game_id')->nullable();
+            $table->foreignId('game_id')->nullable()->index();
             $table->text('board_state');
             $table->tinyInteger('transmitter');
             $table->tinyInteger('turn');

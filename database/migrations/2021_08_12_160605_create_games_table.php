@@ -14,13 +14,14 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('telegram_user_id')->nullable();
+            $table->id()->unique();
+            $table->foreignId('telegram_user_id')->nullable()->index();
             $table->tinyInteger('state')->default(0);
             $table->tinyInteger('winner')->nullable();
             $table->tinyInteger('opponent')->default(0);
             $table->unsignedInteger('date');
             $table->timestamps();
+            $table->index(['opponent','winner']);
         });
     }
 
