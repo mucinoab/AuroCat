@@ -28,9 +28,9 @@ class CommandService
 
     propagate_msj([
       'id'   => $chatId,
-      'msg'  => $request['message']['text'],
-      'side' => "left", // Indicates who sends the message
-      'time' => $request['message']['date'],
+      'message'  => $request['message']['text'],
+      'transmitter' => 0, // Indicates who sends the message
+      'date' => $request['message']['date'],
     ]);
 
     $board_message = "Estamos preparando tu juego 🎮";
@@ -38,9 +38,9 @@ class CommandService
 
     propagate_msj([
       'id'   => $chatId,
-      'msg'  => $board_message,
-      'side' => "right", // Indicates who sends the message
-      'time' => $request['message']['date'],
+      'message'  => $board_message,
+      'transmitter' => 1, // Indicates who sends the message
+      'date' => $request['message']['date'],
     ]);
 
     $gato = new Gato(0, 0, $practice, $board_id);
@@ -52,9 +52,9 @@ class CommandService
 
     propagate_msj([
       'id'   => $chatId,
-      'msg'  => $message,
-      'side' => "right", // Indicates who sends the message
-      'time' => $request['message']['date'],
+      'message'  => $message,
+      'transmitter' => 1, // Indicates who sends the message
+      'date' => $request['message']['date'],
     ]);
 
     $board_state = $gato->state_to_json();
@@ -67,11 +67,11 @@ class CommandService
 
     $msg_data = [
       'id'   => $chatId,
-      'side' => "right",
-      'time' => $request['message']['date'],
+      'transmitter' => 1,
+      'date' => $request['message']['date'],
       'callback' => [
         'data'          => $gato->game_state(),
-        'practice game' => $practice,
+        'practice_game' => $practice,
       ],
     ];
     propagate_msj($msg_data);
@@ -80,7 +80,7 @@ class CommandService
       $chatId,
       $request['message']['date'],
       $request['update_id'],
-      $board_message .'/n' . $message,
+      $board_message .'\n' . $message,
       $board_state,
       $practice,
       $board_id,

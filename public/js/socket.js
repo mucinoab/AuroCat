@@ -42,6 +42,7 @@ function drawBoard(state) {
     const board = createBoard(white, black, gameId, messageId, turn);
     if (game === null) {
         const chat = document.getElementById(`conversation-${state.id}`);
+        drawMessage("Marca la casilla.", state.id, unixTime() * 1000, MessageSide.Right);
         chat.appendChild(board);
     }
     else {
@@ -74,8 +75,8 @@ function createBoard(white, black, gameId, msgId, turn) {
 }
 async function boardMove(msgId, pos, data) {
     const turn = data.split(',')[6];
-    if(turn == 'agent') return;
-
+    if (turn == 'agent')
+        return;
     document.getElementById(`${msgId}${pos}`).innerHTML = "O";
     postData("/telegram-update", {
         callback_query: {

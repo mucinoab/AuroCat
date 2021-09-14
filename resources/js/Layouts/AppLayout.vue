@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div >
         <Head :title="title" />
 
         <jet-banner />
 
-        <div class="min-h-screen bg-cat-dark">
+        <div class="min-h-screen bg-cat-dark overflow-y-auto">
             <nav class="bg-cat-dark-light border-b border-gray-600">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

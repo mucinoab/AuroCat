@@ -17,7 +17,7 @@
   <script src="/js/chats-vue.js" defer></script>
 </head>
 
-<body>
+<body >
   <div class="flex-container">
     <div id="chats" class="flex-left">
       <div class="flex-left-head">
@@ -37,6 +37,16 @@
       </div>
 
       <div id="conversations" style="overflow-y: scroll;">
+        
+        {{-- <messages v-for="message in messages"
+        v-bind:message="message"
+      ></messages> --}}
+
+      {{-- <conversation 
+        :conversation="conversation">
+      </conversation> --}}
+
+        
         <form id="input_bar" action="javascript:sendMessage()" class="input_bar" autocomplete="off">
           <input id="input" type="text" class="input">
           <button type="button" onclick="sendMessage()" style="width: 10%">Manda</button>
