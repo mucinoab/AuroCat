@@ -21376,6 +21376,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Jetstream/Button.vue */ "./resources/js/Jetstream/Button.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Button: _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    card: ''
+  },
+  computed: {
+    color: function color() {
+      return "hover:bg-".concat(this.card.color, "-600 text-").concat(this.card.color, "-600 border-").concat(this.card.color, "-300 dark:border-").concat(this.card.color, "-500");
+    },
+    iconColor: function iconColor() {
+      return "text-".concat(this.card.color, "-600");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=script&lang=js":
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=script&lang=js ***!
@@ -21390,6 +21422,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     category: {}
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    game: {}
+  },
+  computed: {
+    date: function date() {
+      return timeFromUnix(this.message.date * 1000);
+    },
+    title: function title() {
+      if (this.game.state == 2) return 'Finalizado';else if (this.game.state_relation.turn == 1) return 'Espera Movimiento';else return 'Tu turno';
+    },
+    item: function item() {
+      if (this.game.state == 2) return "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z";else if (this.game.state_relation.turn == 1) return "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z";else return "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z";
+    },
+    color: function color() {
+      if (this.game.state == 2) return 'border-red-600 bg-red-500';
+      if (this.game.state_relation.turn == 1) return 'border-yellow-600 bg-yellow-500';else return 'border-green-600 bg-green-500';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      opponent: ''
+    };
+  },
+  props: {
+    game: '',
+    option: '',
+    name: ''
+  },
+  computed: {
+    text: function text() {
+      if (this.option.option == 0) {
+        return this.game.state != 2 ? 'En curso' : 'Finalizada';
+      } else if (this.option.option == 1) {
+        this.opponent = this.game.opponent ? 'Bot' : 'Agente';
+        return this.opponent;
+      } else if (this.option.option == 2) {
+        if (this.game.winner != undefined) {
+          if (this.game.winner == 0) {
+            return this.opponent;
+          } else if (this.game.winner == 1) {
+            return this.name;
+          } else if (this.game.winner == 2) {
+            return 'Empate';
+          }
+        }
+      }
+    }
   }
 });
 
@@ -21412,7 +21524,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserChat_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserChat.vue */ "./resources/js/Pages/Chat/UserChat.vue");
 /* harmony import */ var _Message_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Message.vue */ "./resources/js/Pages/Chat/Message.vue");
 /* harmony import */ var _Board_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Board.vue */ "./resources/js/Pages/Chat/Board.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _GameHeader_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GameHeader.vue */ "./resources/js/Pages/Chat/GameHeader.vue");
+/* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
+/* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -21424,19 +21539,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Category: _Category_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     UserChat: _UserChat_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     Message: _Message_vue__WEBPACK_IMPORTED_MODULE_3__.default,
-    Board: _Board_vue__WEBPACK_IMPORTED_MODULE_4__.default
+    Board: _Board_vue__WEBPACK_IMPORTED_MODULE_4__.default,
+    GameHeader: _GameHeader_vue__WEBPACK_IMPORTED_MODULE_5__.default,
+    GameInformation: _GameInformation_vue__WEBPACK_IMPORTED_MODULE_6__.default,
+    CardInfo: _CardInfo_vue__WEBPACK_IMPORTED_MODULE_7__.default
   },
   data: function data() {
     return {
       WIN_VALUES: [7, 56, 448, 73, 146, 292, 273, 84],
+      info: [{
+        'option': 0,
+        'title': 'Partida',
+        'color': 'bg-green-100 text-green-500',
+        'icon': 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'
+      }, {
+        'option': 1,
+        'title': 'Oponente',
+        'color': 'bg-red-100 text-red-500',
+        'icon': 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+      }, {
+        'option': 2,
+        'title': 'Ganador',
+        'color': 'bg-orange-100 text-orange-500',
+        'icon': 'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z'
+      }],
+      cards: [{
+        'firstMessage': 'Lo sentimos',
+        'secondMessage': 'Al parecer tuvimos un error al obtener los datos',
+        'color': 'red',
+        'value': 'Recargar',
+        'd': 'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'
+      }, {
+        'firstMessage': 'Cargar juego',
+        'secondMessage': 'Da click para traer el juego',
+        'color': 'green',
+        'value': 'Cargar',
+        'd': 'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.46a1 1 0 0 1 1.42-1.42 3 3 0 0 0 4.24 0 1 1 0 0 1 1.42 1.42 5 5 0 0 1-7.08 0zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'
+      }],
       errors: {
         chatsError: false,
-        messagesError: false
+        messagesError: false,
+        gamesError: false
       },
       loads: {
         loadChats: true,
@@ -21476,12 +21627,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.game.state == 2 || this.game.state_relation.turn == 1) return true;
       return false;
     },
-    setWinner: function setWinner() {
-      if (this.game.winner != undefined) {
-        var opponent = this.game.opponent == 0 ? 'bot' : 'agente';
-        return this.game.winner == 0 ? opponent : this.name;
-      }
-    },
     chatColor: function chatColor() {
       if (this.chat.state != 2) {
         return {
@@ -21495,61 +21640,85 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     // the method that listens to the propagation
     handlePackage: function handlePackage(pckg) {
-      if (pckg.hasOwnProperty("callback")) {
-        // this send a event to the child to update the board
-        this.newMove = pckg.callback; //search for the chat to update the position and state value
+      var position = this.chats.findIndex(function (chat) {
+        return chat.id == pckg.id;
+      });
 
-        var position = this.chats.findIndex(function (chat) {
-          return chat.id == pckg.id;
-        });
-        var data = pckg.callback.data.split(",");
-        var game_id = data[5]; //ELIMINE TODAS LAS OPCIONES PARA CAMBIO DE COLORES Y ESTADOS EN EL CHAT Y AL MOMENTO DE JUGAR PARA
-        //NO HACER MÁS CONFUSIÓN, ESO PUEDE HASTA OMITIRSE
-        //HERE LOGIC FOR UPDATE BOARDS ---
-
-        this.chats[position].gameId = game_id; // Shift elements
-
-        this.chats.unshift(this.chats.splice(position, 1)[0]);
-      } else {
-        //save messages from all conversation
-        var _position = this.chats.findIndex(function (chat) {
-          return chat.id == pckg.id;
-        });
-
-        if (_position === -1) {
-          pckg.unread = 1;
-          pckg.lastMessage = pckg.message;
-          pckg.state = 2;
-          this.chats.unshift(pckg);
-          var obj = {
+      if (position === -1) {
+        pckg.unread = 1;
+        pckg.lastMessage = pckg.hasOwnProperty("lastMessage") ? pckg.lastMessage : 'Juego en curso...';
+        pckg.name = pckg.name;
+        pckg.state = pckg.hasOwnProperty("callback") ? '' : 2;
+        pckg.gameId = '';
+        this.chats.unshift(pckg);
+        position = 0;
+        var obj = {
+          'chat_id': pckg.id,
+          'messages': [{
             'chat_id': pckg.id,
-            'messages': [{
-              'chat_id': pckg.id,
-              'message': pckg.message,
-              'transmitter': pckg.transmitter,
-              'date': pckg.date,
-              'game_id': ''
-            }]
-          };
-          this.allMessages.push(obj);
-          return;
+            'message': pckg.lastMessage,
+            'transmitter': pckg.transmitter,
+            'date': pckg.date,
+            'game_id': ''
+          }]
+        };
+        this.allMessages.push(obj);
+      }
+
+      if (pckg.hasOwnProperty("callback")) {
+        var data = pckg.callback.data.split(",");
+        var black = data[2];
+        var white = data[3];
+        var game_id = data[5];
+        var turn = data[6] == 'agent' ? 1 : 0; // Propagates changes to the selected game and chats states
+
+        if (this.chat_id == pckg.id && this.game != '') {
+          this.newMove = pckg.callback;
+          this.game.state_relation.turn = turn;
+
+          if (black == 0 && white == 0) {
+            this.chats[position].state = turn;
+            this.game.state = 1;
+            this.game.winner = undefined;
+            this.game.opponent = pckg.callback.practice_game;
+          } else {
+            if (pckg.callback.win != 3) {
+              this.game.winner = pckg.callback.win;
+              this.game.state = 2;
+              this.chats[position].state = 2;
+            }
+          }
+        } else {
+          this.chats[position].state = turn;
+
+          if (black == 0 && white == 0) {
+            this.chats[position].turn = turn;
+          } else {
+            if (pckg.callback.win != 3) {
+              this.chats[position].state = 2;
+            }
+          }
         }
 
+        this.chats[position].turn = turn;
+        this.chats[position].gameId = game_id; // Shift elements
+        // this.chats.unshift(this.chats.splice(position, 1)[0]);
+      } else {
+        //save messages from all conversation
         var selectedGame = this.allMessages.filter(function (message) {
           return message.chat_id == pckg.id;
         });
         selectedGame[0].messages.unshift(pckg);
-        this.chats[_position].date = unixTime();
-        this.chats[_position].lastMessage = pckg.message;
+        this.chats[position].date = unixTime();
+        this.chats[position].lastMessage = pckg.message;
 
         if (this.chat_id != pckg.id) {
-          this.chats[_position].unread += 1;
+          this.chats[position].unread += 1;
         } else {
-          this.chats[_position].unread = 0;
+          this.chats[position].unread = 0;
         } // Shift elements
+        // this.chats.unshift(this.chats.splice(position, 1)[0]);
 
-
-        this.chats.unshift(this.chats.splice(_position, 1)[0]);
       }
     },
     // To send the message to the bottom
@@ -21560,15 +21729,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         var scrollHeight = container.scrollHeight;
         container.scrollTop = scrollHeight;
       }
-    },
-    // To change the winner -- open to changes
-    isWin: function isWin(white, black) {
-      for (var i = 0; i < 7; i++) {
-        if ((black & this.WIN_VALUES[i]) == this.WIN_VALUES[i]) return 1;
-        if ((white & this.WIN_VALUES[i]) == this.WIN_VALUES[i]) return 0;
-      }
-
-      return 2;
     },
     sendMessage: function sendMessage() {
       if (this.message == "") {
@@ -21612,8 +21772,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //Get user and game for selected user
     loadConversation: function loadConversation(chat_id, name, game_id) {
-      if (game_id == '') {//TODO: create a element to charge the game for this user
+      if (game_id == '') {
+        this.game = "";
+        this.errors.gamesError = true;
       } else {
+        this.errors.gamesError = false;
         this.getGame(game_id);
       }
 
@@ -21630,24 +21793,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     getGame: function getGame(game_id) {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                fetch("/lastGame?game_id=".concat(game_id)).then(function (response) {
+      fetch("/lastGame?game_id=".concat(game_id)).then( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(response) {
+          var data, error;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
                   return response.json();
-                }).then(function (json) {
-                  _this.game = json.game;
-                });
 
-              case 1:
-              case "end":
-                return _context.stop();
+                case 2:
+                  data = _context.sent;
+
+                  if (response.ok) {
+                    _context.next = 6;
+                    break;
+                  }
+
+                  error = data && data.message || response.statusText;
+                  return _context.abrupt("return", Promise.reject(error));
+
+                case 6:
+                  _this.game = data.game;
+
+                case 7:
+                case "end":
+                  return _context.stop();
+              }
             }
-          }
-        }, _callee);
-      }))();
+          }, _callee);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }())["catch"](function (error) {// ACTIVATE ERROR GAME MESSAGE
+      });
     },
     //get the conversation of the selected chat
     getConversation: function getConversation(chat_id) {
@@ -21656,21 +21838,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
       this.messages = selectedGame[0].messages;
     },
-    loadMoreMessages: function loadMoreMessages() {//TODO /conversation?chat_id=${chat_id}&chats_number=10}
+    loadGame: function loadGame() {
+      var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-              case "end":
-                return _context2.stop();
+      fetch("/game?chat_id=".concat(this.chat_id)).then( /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(response) {
+          var data, error, position;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return response.json();
+
+                case 2:
+                  data = _context2.sent;
+
+                  if (response.ok) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  error = data && data.message || response.statusText;
+                  return _context2.abrupt("return", Promise.reject(error));
+
+                case 6:
+                  _this2.errors.gamesError = false;
+                  _this2.game = data.game;
+                  position = _this2.chats.findIndex(function (chat) {
+                    return chat.id == _this2.chat_id;
+                  });
+                  _this2.chats[position].gameId = _this2.game.id;
+
+                case 10:
+                case "end":
+                  return _context2.stop();
+              }
             }
-          }
-        }, _callee2);
-      }))();
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref2.apply(this, arguments);
+        };
+      }())["catch"](function (error) {// ACTIVATE ERROR GAME MESSAGE
+      });
     },
-    loadMoreChats: function loadMoreChats() {//TODO /chats?chats_number=5&offset=
+    loadMoreMessages: function loadMoreMessages() {//TODO /conversation?chat_id=${chat_id}&chats_number=10}
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -21684,82 +21898,114 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    loadConversations: function loadConversations() {
-      var _this2 = this;
+    loadMoreChats: function loadMoreChats() {//TODO /chats?chats_number=5&offset=
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                fetch("/conversation?chats_number=10&chats=".concat(JSON.stringify(_this2.chatsIds))).then(function (response) {
-                  return response.json();
-                }).then(function (json) {
-                  _this2.allMessages = json.messages;
-                })["catch"](function (error) {
-                  _this2.errors.messagesError = true;
-                });
-
-              case 1:
               case "end":
                 return _context4.stop();
             }
           }
         }, _callee4);
       }))();
+    },
+    loadConversations: function loadConversations() {
+      var _this3 = this;
+
+      fetch("/conversation?chats_number=10&chats=".concat(JSON.stringify(this.chatsIds))).then( /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(response) {
+          var data, error;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return response.json();
+
+                case 2:
+                  data = _context5.sent;
+
+                  if (response.ok) {
+                    _context5.next = 6;
+                    break;
+                  }
+
+                  error = data && data.message || response.statusText;
+                  return _context5.abrupt("return", Promise.reject(error));
+
+                case 6:
+                  _this3.allMessages = data.messages;
+
+                case 7:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x3) {
+          return _ref3.apply(this, arguments);
+        };
+      }())["catch"](function (error) {
+        _this3.errors.messagesError = true;
+      });
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this4 = this;
 
     //create the instancheID for this user
-    this.instanceId = (0,_js_instanceId_js__WEBPACK_IMPORTED_MODULE_5__.default)(); //Get request using fetch with error handling
+    this.instanceId = (0,_js_instanceId_js__WEBPACK_IMPORTED_MODULE_8__.default)(); //Get request using fetch with error handling
 
-    fetch("/chats?chats_number=10").then( /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(response) {
+    fetch("/chats?chats_number=2").then( /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(response) {
         var data, error;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                _context5.next = 2;
+                _context6.next = 2;
                 return response.json();
 
               case 2:
-                data = _context5.sent;
+                data = _context6.sent;
 
                 if (response.ok) {
-                  _context5.next = 6;
+                  _context6.next = 6;
                   break;
                 }
 
                 error = data && data.message || response.statusText;
-                return _context5.abrupt("return", Promise.reject(error));
+                return _context6.abrupt("return", Promise.reject(error));
 
               case 6:
                 data.data.forEach(function (element) {
-                  _this3.chats.push(element.chats);
+                  _this4.chats.push(element.chats);
 
-                  _this3.chatsIds.push(element.chats.id);
+                  _this4.chatsIds.push(element.chats.id);
                 });
-                _this3.loads.loadChats = false; //TODO ASYNC
+                _this4.loads.loadChats = false; //TODO ASYNC
 
-                _this3.loadConversations();
+                _this4.loadConversations();
 
               case 9:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6);
       }));
 
-      return function (_x) {
-        return _ref.apply(this, arguments);
+      return function (_x4) {
+        return _ref4.apply(this, arguments);
       };
     }())["catch"](function (error) {
-      _this3.loads.loadChats = false;
-      _this3.errors.chatsError = true;
+      _this4.loads.loadChats = false;
+      _this4.errors.chatsError = true;
     });
   },
   mounted: function mounted() {
@@ -25696,6 +25942,65 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex dark:bg-cat"
+};
+var _hoisted_2 = {
+  "class": "pr-2"
+};
+var _hoisted_3 = ["d"];
+var _hoisted_4 = {
+  "class": ""
+};
+var _hoisted_5 = {
+  "class": "text-sm pb-2 dark:text-white"
+};
+var _hoisted_6 = {
+  "class": "text-sm text-gray-600  tracking-tight dark:text-white"
+};
+var _hoisted_7 = {
+  "class": "flex justify-center pt-2"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["fill-current", $options.iconColor]),
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    width: "24",
+    height: "24"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    "class": "heroicon-ui",
+    d: $props.card.d
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3)], 2
+  /* CLASS */
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.card.firstMessage), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.card.secondMessage), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-transparent hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border hover:border-transparent dark:text-white", $options.color])
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.card.value), 3
+  /* TEXT, CLASS */
+  )])])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=template&id=246bb09c":
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=template&id=246bb09c ***!
@@ -25738,6 +26043,103 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "mr-2"
+};
+var _hoisted_2 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "24",
+  height: "24",
+  viewBox: "0 0 24 24"
+};
+var _hoisted_3 = ["d"];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold select-none rounded border-b-2 text-white shadow-md py-2 px-6 inline-flex items-center", $options.color])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.title), 1
+  /* TEXT */
+  ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    fill: "currentcolor",
+    d: $options.item
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3)]))], 2
+  /* CLASS */
+  );
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "col-span-12 sm:col-span-6 md:col-span-3"
+};
+var _hoisted_2 = {
+  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat"
+};
+var _hoisted_3 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-6 w-6",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+};
+var _hoisted_4 = ["d"];
+var _hoisted_5 = {
+  "class": "flex flex-col flex-grow ml-4"
+};
+var _hoisted_6 = {
+  "class": "text-sm text-gray-500 dark:text-gray-300"
+};
+var _hoisted_7 = {
+  "class": "font-bold text-lg dark:text-white"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl", $props.option.color])
+  }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    "stroke-width": "2",
+    d: $props.option.icon
+  }, null, 8
+  /* PROPS */
+  , _hoisted_4)]))], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.option.title), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.text), 1
+  /* TEXT */
+  )])])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Index.vue?vue&type=template&id=16c0bfb8":
 /*!***************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Index.vue?vue&type=template&id=16c0bfb8 ***!
@@ -25752,30 +26154,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex h-screen overflow-hidden"
+  "class": "flex h-screen overflow-hidden dark:bg-cat-light"
 };
 var _hoisted_2 = {
-  "class": "bg-white rounded shadow p-6 w-full lg:w-1/4"
+  "class": "bg-white rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mb-4 text-center"
+  "class": "mb-4 p-4 text-center dark:bg-cat rounded-md"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-black text-xl font-bold"
+  "class": "text-black text-xl font-bold dark:text-white"
 }, "Chats")], -1
 /* HOISTED */
 );
 
-var _hoisted_4 = {
-  key: 0,
-  "class": "shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex"
-};
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr-2\"><svg class=\"fill-current text-red-600\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path class=\"heroicon-ui\" d=\"M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z\"></path></svg></div><div class=\"\"><div class=\"text-sm pb-2\"> Lo sentimos </div><div class=\"text-sm text-gray-600  tracking-tight \"> Al parecer tuvimos un error al obtener los datos. </div><div class=\"flex justify-center pt-2\"><a href=\"/\" class=\"bg-transparent hover:bg-red-600 text-red-600 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-red-300 hover:border-transparent\"> Recargar</a></div></div>", 2);
-
-var _hoisted_7 = [_hoisted_5];
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex items-center justify-center w-full h-full"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center items-center space-x-1 text-sm text-gray-700"
@@ -25793,11 +26186,11 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_9 = {
+var _hoisted_5 = {
   "class": "overflow-auto overflow-x-hidden h-3/4 w-full"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex mt-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
@@ -25807,24 +26200,24 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_7 = {
   key: 0,
-  "class": "bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between"
+  "class": "bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light"
 };
-var _hoisted_12 = {
+var _hoisted_8 = {
   key: 0,
   "class": "shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr-2\"><svg class=\"fill-current text-red-600\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path class=\"heroicon-ui\" d=\"M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z\"></path></svg></div><div class=\"\"><div class=\"text-sm pb-2\"> Lo sentimos </div><div class=\"text-sm text-gray-600  tracking-tight \"> Al parecer tuvimos un error al obtener los mensajes. </div></div>", 2);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pr-2\"><svg class=\"fill-current text-red-600\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\"><path class=\"heroicon-ui\" d=\"M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z\"></path></svg></div><div class=\"\"><div class=\"text-sm pb-2 dark:text-white\"> Lo sentimos </div><div class=\"text-sm text-gray-600  tracking-tight \"> Al parecer tuvimos un error al obtener los mensajes. </div></div>", 2);
 
-var _hoisted_15 = [_hoisted_13];
-var _hoisted_16 = {
+var _hoisted_11 = [_hoisted_9];
+var _hoisted_12 = {
   "class": "flex p-3 justify-between\tborder-b-2 border-gray-100"
 };
-var _hoisted_17 = ["name"];
+var _hoisted_13 = ["name"];
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   "class": "h-6 w-6",
   fill: "none",
@@ -25839,9 +26232,9 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_19 = [_hoisted_18];
+var _hoisted_15 = [_hoisted_14];
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex items-center justify-center w-full h-full"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center items-center space-x-1 text-sm text-gray-700"
@@ -25859,18 +26252,18 @@ var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_21 = [_hoisted_20];
-var _hoisted_22 = {
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = {
   "class": "conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse"
 };
-var _hoisted_23 = {
+var _hoisted_19 = {
   "class": "flex p-3"
 };
-var _hoisted_24 = {
+var _hoisted_20 = {
   "class": "flex-1 px-3"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 20 20",
   fill: "currentColor",
@@ -25881,199 +26274,20 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_26 = [_hoisted_25];
-var _hoisted_27 = {
+var _hoisted_22 = [_hoisted_21];
+var _hoisted_23 = {
   key: 1,
-  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center"
+  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
 };
-var _hoisted_28 = {
+var _hoisted_24 = {
+  key: 2,
+  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
+};
+var _hoisted_25 = {
   "class": "m-3"
 };
-var _hoisted_29 = {
-  key: 0,
-  "class": "font-bold select-none\trounded border-b-2 border-red-600 bg-red-500 text-white shadow-md py-2 px-6 inline-flex items-center"
-};
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "mr-2"
-}, "Finalizado", -1
-/* HOISTED */
-);
-
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "24",
-  height: "24",
-  viewBox: "0 0 24 24"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  fill: "currentcolor",
-  d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_32 = [_hoisted_30, _hoisted_31];
-var _hoisted_33 = {
-  key: 1,
-  "class": "font-bold select-none rounded border-b-2  border-yellow-600 bg-yellow-500 text-white shadow-md py-2 px-6 inline-flex items-center"
-};
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "mr-2"
-}, "Espera Movimiento", -1
-/* HOISTED */
-);
-
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "24",
-  height: "24",
-  viewBox: "0 0 24 24"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  fill: "currentcolor",
-  d: "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_36 = [_hoisted_34, _hoisted_35];
-var _hoisted_37 = {
-  key: 2,
-  "class": "font-bold select-none rounded border-b-2 border-green-600 bg-green-500 text-white shadow-md py-2 px-6 inline-flex items-center"
-};
-
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "mr-2"
-}, "Tu turno", -1
-/* HOISTED */
-);
-
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "24",
-  height: "24",
-  viewBox: "0 0 24 24"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  fill: "currentcolor",
-  d: "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_40 = [_hoisted_38, _hoisted_39];
-var _hoisted_41 = {
-  "class": "col-span-12 sm:col-span-6 md:col-span-3"
-};
-var _hoisted_42 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4"
-};
-
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  "class": "h-6 w-6",
-  fill: "none",
-  viewBox: "0 0 24 24",
-  stroke: "currentColor"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round",
-  "stroke-width": "2",
-  d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_44 = {
-  "class": "flex flex-col flex-grow ml-4"
-};
-
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-sm text-gray-500"
-}, "Partida", -1
-/* HOISTED */
-);
-
-var _hoisted_46 = {
-  "class": "font-bold text-lg"
-};
-var _hoisted_47 = {
-  "class": "col-span-12 sm:col-span-6 md:col-span-3"
-};
-var _hoisted_48 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4"
-};
-
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-red-100 text-red-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  "class": "h-6 w-6",
-  fill: "none",
-  viewBox: "0 0 24 24",
-  stroke: "currentColor"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round",
-  "stroke-width": "2",
-  d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_50 = {
-  "class": "flex flex-col flex-grow ml-4"
-};
-
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-sm text-gray-500"
-}, "Oponente", -1
-/* HOISTED */
-);
-
-var _hoisted_52 = {
-  "class": "font-bold text-lg"
-};
-var _hoisted_53 = {
-  "class": "col-span-12 sm:col-span-6 md:col-span-3"
-};
-var _hoisted_54 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4"
-};
-
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-orange-100 text-orange-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  "class": "h-6 w-6",
-  fill: "none",
-  viewBox: "0 0 24 24",
-  stroke: "currentColor"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round",
-  "stroke-width": "2",
-  d: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-})])], -1
-/* HOISTED */
-);
-
-var _hoisted_56 = {
-  "class": "flex flex-col flex-grow ml-4"
-};
-
-var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-sm text-gray-500"
-}, "Ganador", -1
-/* HOISTED */
-);
-
-var _hoisted_58 = {
-  "class": "font-bold text-lg"
-};
-
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex mt-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": " font-bold flex justify-center items-center w-full p-2 m-2 rounded-lg  bg-red-500 focus:outline-none focus:ring"
@@ -26084,19 +26298,30 @@ var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_CardInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CardInfo");
+
   var _component_UserChat = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UserChat");
 
   var _component_Message = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Message");
 
+  var _component_GameHeader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("GameHeader");
+
   var _component_Board = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Board");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left Section"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" chat error notification"), $data.errors.chatsError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.loads.loadChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  var _component_GameInformation = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("GameInformation");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Left Section"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Error message card "), $data.errors.chatsError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CardInfo, {
+    key: 0,
+    card: $data.cards[0]
+  }, null, 8
+  /* PROPS */
+  , ["card"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.loads.loadChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 1
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" loading chats icon "), _hoisted_8], 2112
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" loading chats icon "), _hoisted_4], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     key: 2
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" chats "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.chats, function (chat, idx) {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" chats "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.chats, function (chat, idx) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_UserChat, {
       chat: chat,
       onClick: function onClick($event) {
@@ -26108,22 +26333,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["chat", "onClick", "chat_id"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), _hoisted_10], 64
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), _hoisted_6], 64
   /* STABLE_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" message error notification"), $data.errors.messagesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, _hoisted_15)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    "class": "text-black text-xl font-bold",
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" message error notification"), $data.errors.messagesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, _hoisted_11)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+    "class": "text-black text-xl font-bold dark:text-white",
     name: $data.name
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 9
   /* TEXT, PROPS */
-  , _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  , _hoisted_13), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.closeChat && $options.closeChat.apply($options, arguments);
     })
-  }, _hoisted_19)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" loading messages icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("template", null, _hoisted_21, 512
+  }, _hoisted_15)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" loading messages icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("template", null, _hoisted_17, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.loads.loadMessage]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.messages, function (message) {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.loads.loadMessage]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.messages, function (message) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Message, {
       message: message
     }, null, 8
@@ -26131,7 +26356,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["message"]);
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring",
     placeholder: "Escribe un mensaje...",
@@ -26149,13 +26374,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.sendMessage && $options.sendMessage.apply($options, arguments);
     })
-  }, _hoisted_26)])], 512
+  }, _hoisted_22)])], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.inputAvailable]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [$data.game.state == 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, _hoisted_32)) : $data.game.state_relation.turn == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, _hoisted_36)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_37, _hoisted_40))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.inputAvailable]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+    card: $data.cards[1],
+    onClick: $options.loadGame
+  }, null, 8
+  /* PROPS */
+  , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
+    game: $data.game
+  }, null, 8
+  /* PROPS */
+  , ["game"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["flex justify-center", {
       'cursor-not-allowed': $options.boardAvailable
     }])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Board, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Board game "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Board, {
     state: $data.game,
     newMove: $data.newMove,
     onMove: $options.move
@@ -26163,13 +26397,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["state", "newMove", "onMove"])], 2
   /* CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [_hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.game.state != 2 ? 'En curso' : 'Finalizada'), 1
-  /* TEXT */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.game.opponent ? 'Agente' : 'Bot'), 1
-  /* TEXT */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [_hoisted_57, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.setWinner), 1
-  /* TEXT */
-  )])])]), _hoisted_59])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Card of game information  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameInformation, {
+    game: $data.game,
+    option: $data.info[0]
+  }, null, 8
+  /* PROPS */
+  , ["game", "option"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameInformation, {
+    game: $data.game,
+    option: $data.info[1]
+  }, null, 8
+  /* PROPS */
+  , ["game", "option"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameInformation, {
+    game: $data.game,
+    option: $data.info[2],
+    name: $data.name
+  }, null, 8
+  /* PROPS */
+  , ["game", "option", "name"]), _hoisted_26])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),
@@ -26228,13 +26472,13 @@ var _hoisted_2 = {
   "class": "flex flex-row justify-between items-center"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-bold text-black"
+  "class": "text-lg font-bold text-black dark:text-white"
 };
 var _hoisted_4 = {
   "class": "text-sm"
 };
 var _hoisted_5 = {
-  "class": "text-gray-500"
+  "class": "text-gray-500 dark:text-gray-300"
 };
 var _hoisted_6 = {
   "class": "flex justify-between"
@@ -26249,13 +26493,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$emit('mostrarConversacion');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 hover:bg-opacity-50", $options.chatColor, $options.select])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-b-2 dark:border-blue-600", $options.chatColor, $options.select])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "text-xs text-gray-500",
+    "class": "text-xs text-gray-500 dark:text-gray-300",
     innerHTML: $props.chat.lastMessage
   }, null, 8
   /* PROPS */
@@ -52761,6 +53005,32 @@ _Board_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file =
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Chat/CardInfo.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/Chat/CardInfo.vue ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CardInfo_vue_vue_type_template_id_3143cf7c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardInfo.vue?vue&type=template&id=3143cf7c */ "./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c");
+/* harmony import */ var _CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardInfo.vue?vue&type=script&lang=js */ "./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js");
+
+
+
+_CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _CardInfo_vue_vue_type_template_id_3143cf7c__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Chat/CardInfo.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Chat/Category.vue":
 /*!**********************************************!*\
   !*** ./resources/js/Pages/Chat/Category.vue ***!
@@ -52784,6 +53054,58 @@ if (false) {}
 _Category_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Chat/Category.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Category_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameHeader.vue":
+/*!************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameHeader.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _GameHeader_vue_vue_type_template_id_6a102286__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GameHeader.vue?vue&type=template&id=6a102286 */ "./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286");
+/* harmony import */ var _GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameHeader.vue?vue&type=script&lang=js */ "./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js");
+
+
+
+_GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _GameHeader_vue_vue_type_template_id_6a102286__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Chat/GameHeader.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameInformation.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameInformation.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _GameInformation_vue_vue_type_template_id_43a198ac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GameInformation.vue?vue&type=template&id=43a198ac */ "./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac");
+/* harmony import */ var _GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GameInformation.vue?vue&type=script&lang=js */ "./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js");
+
+
+
+_GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _GameInformation_vue_vue_type_template_id_43a198ac__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Chat/GameInformation.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -53676,6 +53998,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CardInfo_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CardInfo.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Chat/Category.vue?vue&type=script&lang=js":
 /*!**********************************************************************!*\
   !*** ./resources/js/Pages/Chat/Category.vue?vue&type=script&lang=js ***!
@@ -53688,6 +54026,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Category_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Category_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Category.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js":
+/*!************************************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameHeader_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameHeader.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameInformation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameInformation.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -54524,6 +54894,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c":
+/*!****************************************************************************!*\
+  !*** ./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CardInfo_vue_vue_type_template_id_3143cf7c__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CardInfo_vue_vue_type_template_id_3143cf7c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CardInfo.vue?vue&type=template&id=3143cf7c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/CardInfo.vue?vue&type=template&id=3143cf7c");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Chat/Category.vue?vue&type=template&id=246bb09c":
 /*!****************************************************************************!*\
   !*** ./resources/js/Pages/Chat/Category.vue?vue&type=template&id=246bb09c ***!
@@ -54536,6 +54922,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Category_vue_vue_type_template_id_246bb09c__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Category_vue_vue_type_template_id_246bb09c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Category.vue?vue&type=template&id=246bb09c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/Category.vue?vue&type=template&id=246bb09c");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameHeader_vue_vue_type_template_id_6a102286__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameHeader_vue_vue_type_template_id_6a102286__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameHeader.vue?vue&type=template&id=6a102286 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameHeader.vue?vue&type=template&id=6a102286");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameInformation_vue_vue_type_template_id_43a198ac__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_GameInformation_vue_vue_type_template_id_43a198ac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./GameInformation.vue?vue&type=template&id=43a198ac */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Chat/GameInformation.vue?vue&type=template&id=43a198ac");
 
 
 /***/ }),
@@ -55024,7 +55442,10 @@ var map = {
 	"./Auth/VerifyEmail.vue": "./resources/js/Pages/Auth/VerifyEmail.vue",
 	"./Chat.vue": "./resources/js/Pages/Chat.vue",
 	"./Chat/Board.vue": "./resources/js/Pages/Chat/Board.vue",
+	"./Chat/CardInfo.vue": "./resources/js/Pages/Chat/CardInfo.vue",
 	"./Chat/Category.vue": "./resources/js/Pages/Chat/Category.vue",
+	"./Chat/GameHeader.vue": "./resources/js/Pages/Chat/GameHeader.vue",
+	"./Chat/GameInformation.vue": "./resources/js/Pages/Chat/GameInformation.vue",
 	"./Chat/Index.vue": "./resources/js/Pages/Chat/Index.vue",
 	"./Chat/Message.vue": "./resources/js/Pages/Chat/Message.vue",
 	"./Chat/UserChat.vue": "./resources/js/Pages/Chat/UserChat.vue",

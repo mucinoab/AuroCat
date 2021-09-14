@@ -83,6 +83,18 @@ class TelegramUserController extends Controller
      public function game(){
          $game = Game::find(request('game_id'));
          $game->stateRelation;
+         if($game->state == 2){
+             $game->stateRelation->turn = 2;
+         }
         return response()->json(["game" => $game]);
+     }
+
+     public function lastGame(){
+        $game = Game::where('telegram_user_id',request('chat_id'))->orderBy('date','DESC')->first();
+        $game->stateRelation;
+        if($game->state == 2){
+            $game->stateRelation->turn = 2;
+        }
+       return response()->json(["game" => $game]);
      }
 }

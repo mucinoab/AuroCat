@@ -25,7 +25,7 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@3.2.4/dist/vue.global.prod.min.js" defer></script>
         <script src="/js/utils.js" defer></script>
     </head>
-    <body class="font-sans antialiased overflow-hidden	">
+    <body class="font-sans antialiased">
         @inertia
 
         @env ('local')

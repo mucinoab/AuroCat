@@ -73,18 +73,21 @@ class GatoService
         update_keyboard($chatId, $game_id+1, $board_state);
 
         $game_status = $gato->status();
-
+        $win = 3;
         switch ($game_status) {
           case 0:
             $message = "Perdiste...\n¿Deseas jugar de nuevo?";
+            $win = 0;
             break;
 
           case 1:
             $message = "¡Ganaste!\n¿Deseas jugar de nuevo?";
+            $win = 1;
             break;
 
           case 2:
             $message = "Empate.\n¿Deseas jugar de nuevo?";
+            $win = 2;
             break;
         }
 
@@ -92,9 +95,11 @@ class GatoService
           'id'   => $update['message']['chat']['id'],
           'transmitter' => 1,
           'date' => $update['message']['date'],
+          'name' => $update['message']['chat']['first_name'],
           'callback' => [
             'data'          => $gato->game_state(),
-            'practice_game' => $practice_game
+            'practice_game' => $practice_game,
+            'win' => $win
           ]
 
         ]);

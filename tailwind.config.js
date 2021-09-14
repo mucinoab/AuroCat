@@ -24,6 +24,7 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
     ],
+    darkMode:'class',
     theme: {
         extend: {
             "fontFamily": {
@@ -32,11 +33,10 @@ module.exports = {
         },
         colors:allColors
     },
-
     variants: {
         extend: {
-            opacity: ['disabled'],
-        },
+            opacity: ['disabled']
+        }
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

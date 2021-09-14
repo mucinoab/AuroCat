@@ -1,29 +1,15 @@
 <template>
-  <div class="flex h-screen overflow-hidden">
+  <div class="flex h-screen overflow-hidden dark:bg-cat-light">
     <!-- Left Section-->
-    <div class="bg-white rounded shadow p-6 w-full lg:w-1/4">
-      <div class="mb-4 text-center">
-        <h1 class="text-black text-xl font-bold">Chats</h1>
+    <div class="bg-white rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
+      <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
+        <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
       </div>
-      <!-- chat error notification--> 
-      <div class="shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex" v-if="errors.chatsError">
-        <div class="pr-2">
-          <svg class="fill-current text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-          </svg>
-        </div>
-        <div class="">
-          <div class="text-sm pb-2">
-            Lo sentimos
-          </div>
-          <div class="text-sm text-gray-600  tracking-tight ">
-            Al parecer tuvimos un error al obtener los datos.
-          </div>
-          <div class="flex justify-center pt-2">
-            <a href="/" class="bg-transparent hover:bg-red-600 text-red-600 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-red-300 hover:border-transparent"> Recargar</a>
-          </div>
-        </div>
-      </div>
+
+      <!-- Error message card -->
+      <CardInfo v-if="errors.chatsError"
+        :card="cards[0]"
+      ></CardInfo>
 
       <template v-if="loads.loadChats">
         <!-- loading chats icon -->
@@ -37,7 +23,6 @@
         </div>
       </template>
       <template v-else>
-
         <!-- chats -->
         <div class="overflow-auto overflow-x-hidden h-3/4 w-full">
           <UserChat
@@ -46,7 +31,6 @@
             @click="loadConversation(chat.id, chat.name,chat.gameId)"
             :chat_id="chat_id">
           </UserChat>
-
         </div>
         <!-- more chats button -->
         <div class="flex mt-4">
@@ -59,7 +43,7 @@
 
     <!-- Middle Section -->
     <template v-if="name != ''">
-      <div class="bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between">
+      <div class="bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light">
         <!-- message error notification--> 
         <div class="shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex" v-if="errors.messagesError">
           <div class="pr-2">
@@ -68,19 +52,20 @@
             </svg>
           </div>
           <div class="">
-            <div class="text-sm pb-2">
+            <div class="text-sm pb-2 dark:text-white">
               Lo sentimos
             </div>
             <div class="text-sm text-gray-600  tracking-tight ">
               Al parecer tuvimos un error al obtener los mensajes.
             </div>
-            
           </div>
         </div>
 
+
         <div class="flex p-3 justify-between	border-b-2 border-gray-100">
           <!-- Chat name -->
-          <h1 class="text-black text-xl font-bold" :name="name">{{ name }}</h1>
+          <h1 class="text-black text-xl font-bold dark:text-white" :name="name">{{ name }}</h1>
+
           <!-- Close chat icon -->
           <div>
             <button
@@ -135,36 +120,26 @@
     </template>
 
     <!-- Right Section -->
+    <!-- No game message card -->
+    <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat" v-if="errors.gamesError">
+      <CardInfo
+      :card="cards[1]"
+      @click="loadGame"
+      ></CardInfo>
+    </div>
+
     <template v-if="game != ''">
-      <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center">
+      <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat">
+
         <div class="m-3">
-          <template v-if="game.state == 2">
-            <div class="font-bold select-none	rounded border-b-2 border-red-600 bg-red-500 text-white shadow-md py-2 px-6 inline-flex items-center">
-              <span class="mr-2">Finalizado</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentcolor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-              </svg>
-            </div>
-          </template>
-          <template v-else-if="game.state_relation.turn == 1">
-            <div class="font-bold select-none rounded border-b-2  border-yellow-600 bg-yellow-500 text-white shadow-md py-2 px-6 inline-flex items-center">
-              <span class="mr-2" >Espera Movimiento</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentcolor" d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z"></path>
-              </svg>
-            </div>
-          </template>
-          <template v-else>
-            <div class="font-bold select-none rounded border-b-2 border-green-600 bg-green-500 text-white shadow-md py-2 px-6 inline-flex items-center">
-              <span class="mr-2">Tu turno</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-              </svg>
-            </div>
-          </template>
+          <!-- Status game card -->
+          <GameHeader
+            :game="game">
+          </GameHeader>
         </div>
 
         <div class="flex justify-center" :class="{'cursor-not-allowed': boardAvailable}">
+          <!-- Board game -->
           <Board 
             :state="game" 
             :newMove="newMove"
@@ -172,47 +147,22 @@
           </Board>
         </div>
 
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
-          <div class="flex flex-row bg-white shadow-sm rounded p-4">
-            <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              </svg>
-            </div>
-            <div class="flex flex-col flex-grow ml-4">
-              <div class="text-sm text-gray-500">Partida</div>
-              <div class="font-bold text-lg">{{game.state != 2 ? 'En curso' : 'Finalizada'}}</div>
-            </div>
-          </div>
-        </div>
+        <!-- Card of game information  -->
+        <GameInformation
+        :game="game"
+        :option="info[0]"
+        ></GameInformation>
 
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
-          <div class="flex flex-row bg-white shadow-sm rounded p-4">
-            <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-red-100 text-red-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <div class="flex flex-col flex-grow ml-4">
-              <div class="text-sm text-gray-500">Oponente</div>
-              <div class="font-bold text-lg">{{game.opponent ? 'Agente' : 'Bot'}}</div>
-            </div>
-          </div>
-        </div>
+        <GameInformation
+        :game="game"
+        :option="info[1]"
+        ></GameInformation>
 
-        <div class="col-span-12 sm:col-span-6 md:col-span-3">
-          <div class="flex flex-row bg-white shadow-sm rounded p-4">
-            <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-orange-100 text-orange-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-              </svg>
-            </div>
-            <div class="flex flex-col flex-grow ml-4">
-              <div class="text-sm text-gray-500">Ganador</div>
-              <div class="font-bold text-lg">{{ setWinner }}</div>
-            </div>
-          </div>
-        </div>
+        <GameInformation
+        :game="game"
+        :option="info[2]"
+        :name="name"
+        ></GameInformation>
 
         <div class="flex mt-4">
           <button class=" font-bold flex justify-center items-center w-full p-2 m-2 rounded-lg  bg-red-500 focus:outline-none focus:ring">
@@ -241,6 +191,9 @@ import Category from "./Category.vue";
 import UserChat from "./UserChat.vue";
 import Message from "./Message.vue";
 import Board from "./Board.vue";
+import GameHeader from "./GameHeader.vue";
+import GameInformation from "./GameInformation.vue";
+import CardInfo from "./CardInfo.vue";
 import uuidUnique from "/js/instanceId.js";
 
 export default {
@@ -249,13 +202,27 @@ export default {
     UserChat,
     Message,
     Board,
+    GameHeader,
+    GameInformation,
+    CardInfo
   },
   data() {
     return {
       WIN_VALUES:[7, 56, 448, 73, 146, 292, 273, 84],
+      info:[
+        {'option':0,'title':'Partida','color':'bg-green-100 text-green-500','icon':'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'},
+        {'option':1,'title':'Oponente','color':'bg-red-100 text-red-500','icon':'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'},
+        {'option':2,'title':'Ganador','color':'bg-orange-100 text-orange-500','icon':'M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z'}
+      ],
+      cards:[
+        {'firstMessage':'Lo sentimos','secondMessage':'Al parecer tuvimos un error al obtener los datos','color':'red','value':'Recargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'},
+        {'firstMessage':'Cargar juego','secondMessage':'Da click para traer el juego','color':'green','value':'Cargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.46a1 1 0 0 1 1.42-1.42 3 3 0 0 0 4.24 0 1 1 0 0 1 1.42 1.42 5 5 0 0 1-7.08 0zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'}
+
+      ],
       errors:{
         chatsError:false,
-        messagesError:false
+        messagesError:false,
+        gamesError:false
       },
       loads:{
         loadChats:true,
@@ -273,7 +240,6 @@ export default {
       messages: [],
       // the value of the input message
       message: "",
-
       // userChatSelected: "",
       chat_id: "",
       instanceId: "",
@@ -286,7 +252,6 @@ export default {
       //save the game information
       game: ''
     }
-
   },
   computed:{
     inputAvailable(){
@@ -298,12 +263,6 @@ export default {
       if(this.game.state == 2 || this.game.state_relation.turn == 1) return true;
 
       return false;
-    },
-    setWinner(){
-      if(this.game.winner!=undefined){
-        var opponent = this.game.opponent == 0 ? 'bot' : 'agente';
-        return this.game.winner == 0 ? opponent : this.name;
-      }
     },
     chatColor(){
           if(this.chat.state != 2){
@@ -318,40 +277,22 @@ export default {
   methods: {
     // the method that listens to the propagation
     handlePackage(pckg) {
-      if (pckg.hasOwnProperty("callback")) {
-        // this send a event to the child to update the board
-        this.newMove = pckg.callback; 
 
-        //search for the chat to update the position and state value
-        let position = this.chats.findIndex((chat) => chat.id == pckg.id);
-        var data = pckg.callback.data.split(",");
-        var game_id = data[5];
-        //ELIMINE TODAS LAS OPCIONES PARA CAMBIO DE COLORES Y ESTADOS EN EL CHAT Y AL MOMENTO DE JUGAR PARA
-        //NO HACER MÁS CONFUSIÓN, ESO PUEDE HASTA OMITIRSE
-       
-
-        //HERE LOGIC FOR UPDATE BOARDS ---
-
-
-        this.chats[position].gameId = game_id;
-        // Shift elements
-        this.chats.unshift(this.chats.splice(position, 1)[0]);
-
-      } else {
-        //save messages from all conversation
         let position = this.chats.findIndex((chat) => chat.id == pckg.id);
 
         if (position === -1) {
           pckg.unread = 1;
-          pckg.lastMessage = pckg.message;
-          pckg.state = 2;
+          pckg.lastMessage = pckg.hasOwnProperty("lastMessage") ? pckg.lastMessage : 'Juego en curso...' ;
+          pckg.name = pckg.name;
+          pckg.state = pckg.hasOwnProperty("callback") ? '' : 2;
+          pckg.gameId = '';
           this.chats.unshift(pckg);
-
+          position = 0;
           var obj = {
             'chat_id':pckg.id,
             'messages':[{
               'chat_id':pckg.id,
-              'message':pckg.message,
+              'message':pckg.lastMessage,
               'transmitter':pckg.transmitter,
               'date':pckg.date,
               'game_id':'',
@@ -359,9 +300,49 @@ export default {
           };
 
           this.allMessages.push(obj);
-          return;
         }
 
+      if (pckg.hasOwnProperty("callback")) {
+        var data = pckg.callback.data.split(",");
+        var black = data[2];
+        var white = data[3];
+        var game_id = data[5];
+        var turn = data[6] == 'agent' ? 1 : 0;
+
+        // Propagates changes to the selected game and chats states
+        if(this.chat_id == pckg.id && this.game != ''){
+          this.newMove = pckg.callback; 
+          this.game.state_relation.turn = turn;
+
+          if(black == 0 && white == 0){
+            this.chats[position].state = turn;
+            this.game.state = 1;
+            this.game.winner = undefined;
+            this.game.opponent = pckg.callback.practice_game;
+          }else{
+            if(pckg.callback.win != 3){
+              this.game.winner = pckg.callback.win;
+              this.game.state = 2;
+              this.chats[position].state = 2;
+            }
+          }
+        }else{
+          this.chats[position].state = turn;
+          if(black == 0 && white == 0){
+            this.chats[position].turn = turn;
+          }else{
+            if(pckg.callback.win != 3){
+              this.chats[position].state = 2;
+            }
+          }
+        }
+
+        this.chats[position].turn = turn;
+        this.chats[position].gameId = game_id;
+        // Shift elements
+        // this.chats.unshift(this.chats.splice(position, 1)[0]);
+      } else {
+        //save messages from all conversation
         var selectedGame = this.allMessages.filter(message => message.chat_id == pckg.id);
         selectedGame[0].messages.unshift(pckg);
         
@@ -375,7 +356,7 @@ export default {
         }
 
         // Shift elements
-        this.chats.unshift(this.chats.splice(position, 1)[0]);
+        // this.chats.unshift(this.chats.splice(position, 1)[0]);
       }
     },
     // To send the message to the bottom
@@ -385,14 +366,6 @@ export default {
         var scrollHeight = container.scrollHeight;
         container.scrollTop = scrollHeight;
       }
-    },
-    // To change the winner -- open to changes
-    isWin(white,black){
-      for (var i = 0; i < 7; i++) {
-        if ((black & this.WIN_VALUES[i]) == this.WIN_VALUES[i]) return 1;
-        if ((white & this.WIN_VALUES[i]) == this.WIN_VALUES[i]) return 0;
-      }
-      return 2;
     },
     sendMessage() {
       if (this.message == "") {
@@ -408,7 +381,6 @@ export default {
         msg: this.message,
         senderId: this.instanceId,
       });
-
       this.message = "";
     },
     move(data) {
@@ -435,8 +407,11 @@ export default {
     //Get user and game for selected user
     loadConversation(chat_id, name,game_id) {
       if(game_id == ''){
-        //TODO: create a element to charge the game for this user
+        this.game = "";
+        this.errors.gamesError = true;
       }else{
+        this.errors.gamesError = false;
+
         this.getGame(game_id);
       }
       this.chat_id = chat_id;
@@ -448,17 +423,43 @@ export default {
       this.chats[position].unread = 0;
     },
     //get the game of the selected chat
-    async getGame(game_id) {
+    getGame(game_id) {
       fetch(`/lastGame?game_id=${game_id}`)
-        .then((response) => response.json())
-        .then((json) => {
-          this.game = json.game;
-        })
+        .then(async response => {
+        const data = await response.json();
+        // check for error response
+        if(!response.ok){
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+          this.game = data.game;
+      })
+      .catch(error=> {
+          // ACTIVATE ERROR GAME MESSAGE
+      });
     },
     //get the conversation of the selected chat
     getConversation(chat_id){
         var selectedGame = this.allMessages.filter(message => message.chat_id == chat_id);
         this.messages = selectedGame[0].messages;
+    },
+    loadGame(){
+      fetch(`/game?chat_id=${this.chat_id}`)
+        .then(async response => {
+        const data = await response.json();
+        // check for error response
+        if(!response.ok){
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+        this.errors.gamesError = false;
+        this.game = data.game;
+        let position = this.chats.findIndex((chat) => chat.id == this.chat_id);
+        this.chats[position].gameId = this.game.id;
+      })
+      .catch(error=> {
+          // ACTIVATE ERROR GAME MESSAGE
+      });
     },
     async loadMoreMessages() {
       //TODO /conversation?chat_id=${chat_id}&chats_number=10}
@@ -466,23 +467,27 @@ export default {
     async loadMoreChats() {
       //TODO /chats?chats_number=5&offset=
     },
-    async loadConversations() {
+    loadConversations() {
       fetch(`/conversation?chats_number=10&chats=${JSON.stringify(this.chatsIds)}`)
-        .then((response) => response.json())
-        .then((json) => {
-          this.allMessages = json.messages;
-        })
-        .catch(error=> {
+        .then(async response => {
+        const data = await response.json();
+        // check for error response
+        if(!response.ok){
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+        this.allMessages = data.messages;
+      })
+      .catch(error=> {
           this.errors.messagesError = true;
-        });
+      });
     }
   },
   created() {
     //create the instancheID for this user
     this.instanceId = uuidUnique();
-
     //Get request using fetch with error handling
-    fetch("/chats?chats_number=10")
+    fetch("/chats?chats_number=2")
       .then(async response => {
         const data = await response.json();
         // check for error response

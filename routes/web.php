@@ -48,6 +48,8 @@ Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_te
 Route::get('/chats',[TelegramUserController::class,'index']);
 Route::get('/conversation',[TelegramUserController::class,'conversation']);
 Route::get('/lastGame',[TelegramUserController::class,'game']);
+Route::get('/game',[TelegramUserController::class,'lastGame']);
+
 
 
 //Get game stats
