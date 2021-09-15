@@ -1,7 +1,8 @@
 <template>
+<app-layout title="Chat">
   <div class="flex h-screen overflow-hidden dark:bg-cat-light">
     <!-- Left Section-->
-    <div class="bg-white rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
+    <div class="bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
       <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
         <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
       </div>
@@ -173,6 +174,8 @@
     </template>
 
   </div>
+    </app-layout>
+
 </template>
 
 <style>
@@ -195,6 +198,7 @@ import GameHeader from "./GameHeader.vue";
 import GameInformation from "./GameInformation.vue";
 import CardInfo from "./CardInfo.vue";
 import uuidUnique from "/js/instanceId.js";
+ import AppLayout from '@/Layouts/AppLayout.vue'
 
 export default {
   components: {
@@ -204,7 +208,8 @@ export default {
     Board,
     GameHeader,
     GameInformation,
-    CardInfo
+    CardInfo,
+    AppLayout
   },
   data() {
     return {

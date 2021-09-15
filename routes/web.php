@@ -32,12 +32,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-  return Inertia::render('Chat');
-})->name('dashboard');
-
-Route::get('/hey', function() {
   return Inertia::render('Chat/Index');
-});
+})->name('dashboard');
 
 Route::get('/test-chat', function() {
   return view('chat');

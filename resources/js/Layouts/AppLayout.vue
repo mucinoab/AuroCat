@@ -4,19 +4,18 @@
 
         <jet-banner />
 
-        <div class="min-h-screen bg-cat-dark overflow-y-auto">
-            <nav class="bg-cat-dark-light border-b border-gray-600">
+        <div class="min-h-screen bg-indigo-50	 overflow-y-auto dar:bg-cat-dark">
+            <nav class="bg-cat-dark-light border-b border-gray-600 dark:bg-cat-dark">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                <Link :href="'/'">
+                                    <img class="block h-11 w-auto rounded-md	" src="/images/logo.png" alt="logo">
                                 </Link>
                             </div>
-
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
@@ -81,6 +80,18 @@
                                 </jet-dropdown>
                             </div>
 
+                            <!-- button dark mode -->
+                            <div>
+                                <button
+                                type="button"
+                                class="p-2 ml-2 rounded-full focus:outline-none focus:ring text-white"
+                                @click="darkMode">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" :d="icon" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <jet-dropdown align="right" width="48">
@@ -90,7 +101,7 @@
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 bg-cat-dark-light hover:text-gray-300 focus:outline-none transition">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 dark:bg-cat-dark-light hover:text-gray-300 focus:outline-none transition">
                                                 {{ $page.props.user.name }}
 
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -109,6 +120,11 @@
                                         <jet-dropdown-link :href="route('profile.show')">
                                             Mi perfil
                                         </jet-dropdown-link>
+
+                                        <!-- <jet-dropdown-link @click="darkMode">
+                                            Modo Oscuro
+                                        </jet-dropdown-link> -->
+
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
                                             API Tokens
@@ -217,14 +233,14 @@
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-cat-dark shadow" v-if="$slots.header">
+            <header class="bg-white dark:bg-cat-dark shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
             </header>
 
             <!-- Page Content -->
-            <main class="bg-cat-dark">
+            <main class="bg-white dark:bg-cat-dark"  :class="{'dark':dark}">
                 <slot></slot>
             </main>
         </div>
@@ -261,6 +277,7 @@
         data() {
             return {
                 showingNavigationDropdown: false,
+                dark:true
             }
         },
 
@@ -276,6 +293,27 @@
             logout() {
                 this.$inertia.post(route('logout'));
             },
+            darkMode(){
+                this.dark = !this.dark;
+                var elemento = document.getElementById('bighead').className = this.dark ? 'dark': '';
+            }
+        },
+        computed:{
+            icon(){
+                if(this.dark){
+                    return "M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z";
+                }else{
+                    return "M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z";
+                }
+            },
+            colorIcon(){
+                return{
+                    // 'text-white':this.dark,
+                    // 'text-black':!this.dark
+                }
+            }
+
+            
         }
     }
 </script>
