@@ -36,17 +36,7 @@
         <h2 id="name-header"></h2>
       </div>
 
-      <div id="conversations" style="overflow-y: scroll;">
-        
-        {{-- <messages v-for="message in messages"
-        v-bind:message="message"
-      ></messages> --}}
-
-      {{-- <conversation 
-        :conversation="conversation">
-      </conversation> --}}
-
-        
+      <div id="conversations" style="overflow-y: scroll;">  
         <form id="input_bar" action="javascript:sendMessage()" class="input_bar" autocomplete="off">
           <input id="input" type="text" class="input">
           <button type="button" onclick="sendMessage()" style="width: 10%">Manda</button>
