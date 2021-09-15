@@ -11,8 +11,6 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
@@ -23,7 +21,13 @@
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/vue@3.2.4/dist/vue.global.prod.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+        integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
         <script src="/js/utils.js" defer></script>
+        <script src="/js/charts.js" defer></script>
+
+
     </head>
     <body id="bighead" class="font-sans antialiased dark">
         @inertia

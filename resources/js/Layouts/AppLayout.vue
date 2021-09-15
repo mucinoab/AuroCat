@@ -13,13 +13,18 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <Link :href="'/'">
-                                    <img class="block h-11 w-auto rounded-md	" src="/images/logo.png" alt="logo">
+                                    <img class="block h-11 w-auto rounded-md" src="/images/logo.png" alt="logo">
                                 </Link>
                             </div>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('messenger')" :active="route().current('messenger')">
+                                    Messenger
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Inicio
+                                    Dashboard
                                 </jet-nav-link>
                             </div>
                         </div>

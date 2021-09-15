@@ -31,13 +31,23 @@ Route::get('/', function () {
   ]);
 });
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-  return Inertia::render('Chat/Index');
+  return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/messenger', function() {
+  return Inertia::render('Chat/Index');
+})->name('messenger');
 
 Route::get('/test-chat', function() {
   return view('chat');
 });
+
+// Route::get('/hey', function() {
+//   return view('Dashboard');
+// });
+
 
 Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);

@@ -1,5 +1,7 @@
 <template>
-<app-layout title="Chat">
+<app-layout title="Messenger">
+    <Head title="Messenger" />
+
   <div class="flex h-screen overflow-hidden dark:bg-cat-light">
     <!-- Left Section-->
     <div class="bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
