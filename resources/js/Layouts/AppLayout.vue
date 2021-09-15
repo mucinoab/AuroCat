@@ -4,7 +4,7 @@
 
         <jet-banner />
 
-        <div class="min-h-screen bg-indigo-50	 overflow-y-auto dar:bg-cat-dark">
+        <div class="min-h-screen bg-indigo-50 overflow-y-auto dar:bg-cat-dark">
             <nav class="bg-cat-dark-light border-b border-gray-600 dark:bg-cat-dark">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,12 +23,6 @@
                                 </jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('chat.index')" :active="route().current('chat.index')">
-                                    Chats
-                                </jet-nav-link>
                                 <jet-nav-link :href="route('stats.index')" :active="route().current('stats.index')">
                                     Stats
                                 </jet-nav-link>
@@ -132,11 +126,6 @@
                                             Mi perfil
                                         </jet-dropdown-link>
 
-                                        <!-- <jet-dropdown-link @click="darkMode">
-                                            Modo Oscuro
-                                        </jet-dropdown-link> -->
-
-
                                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
                                             API Tokens
                                         </jet-dropdown-link>
@@ -169,9 +158,9 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                            Inicio
-                        </jet-responsive-nav-link>
+                        <jet-nav-link :href="route('messenger')" :active="route().current('messenger')">
+                            Messenger
+                        </jet-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -251,7 +240,7 @@
             </header>
 
             <!-- Page Content -->
-            <main class="bg-white dark:bg-cat-dark"  :class="{'dark':dark}">
+            <main class="bg-cat-dark"  :class="{'dark':dark}">
                 <slot></slot>
             </main>
         </div>
@@ -316,15 +305,7 @@
                 }else{
                     return "M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z";
                 }
-            },
-            colorIcon(){
-                return{
-                    // 'text-white':this.dark,
-                    // 'text-black':!this.dark
-                }
             }
-
-            
         }
     }
 </script>
