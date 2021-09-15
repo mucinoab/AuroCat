@@ -40,6 +40,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/messenger', function() {
   return Inertia::render('Chat/Index');
 })->name('messenger');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/NewChats', function() {
+  return view('chat');
+})->name('chat.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard.html', function() {
+})->name('stats.index');
+
+
 Route::get('/test-chat', function() {
   return view('chat');
 });
