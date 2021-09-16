@@ -177,15 +177,6 @@ class GatoService
     // The last name is an optional field.
     $last_name = isset($update['message']['chat']['last_name']) ? $update['message']['chat']['last_name'] : "";
 
-    // $msg_data = [
-    //   'id'       => $chatId,
-    //   'name'     => $update['message']['chat']['first_name'],
-    //   'lastName' => $last_name,
-    //   'msg'      => $text,
-    //   'side'     => "left", // Indicates who sends the message
-    //   'time'     => $update['message']['date'],
-    // ];
-
     $msg_data = [
       'id'       => $chatId,
       'name'     => $update['message']['chat']['first_name'],
