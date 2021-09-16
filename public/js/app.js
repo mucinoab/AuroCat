@@ -21460,12 +21460,11 @@ __webpack_require__.r(__webpack_exports__);
       if (this.option.option == 0) {
         return this.game.state != 2 ? 'En curso' : 'Finalizada';
       } else if (this.option.option == 1) {
-        this.opponent = this.game.opponent ? 'Bot' : 'Agente';
-        return this.opponent;
+        return this.game.opponent ? 'Bot' : 'Agente';
       } else if (this.option.option == 2) {
         if (this.game.winner != undefined) {
           if (this.game.winner == 0) {
-            return this.opponent;
+            return this.game.opponent ? 'Bot' : 'Agente';
           } else if (this.game.winner == 1) {
             return this.name;
           } else if (this.game.winner == 2) {
