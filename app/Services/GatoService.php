@@ -56,7 +56,7 @@ class GatoService
         //Indicates the player who threw the last turn, only if it was a valid movement.
         if($move[6] == 'user'){
           $gato ->turn = 'agent';
-        } else if($move[6] == 'agent'){
+        } else if($move[6] == 'agent' && !$practice_game){
           $gato->turn = 'user';
         }
 
@@ -73,30 +73,37 @@ class GatoService
         update_keyboard($chatId, $game_id+1, $board_state);
 
         $game_status = $gato->status();
-
+        $win = 3;
         switch ($game_status) {
           case 0:
             $message = "Perdiste...\n¿Deseas jugar de nuevo?";
+            $win = 0;
             break;
 
           case 1:
             $message = "¡Ganaste!\n¿Deseas jugar de nuevo?";
+            $win = 1;
             break;
 
           case 2:
             $message = "Empate.\n¿Deseas jugar de nuevo?";
+            $win = 2;
             break;
         }
 
         propagate_msj([
           'id'   => $update['message']['chat']['id'],
-          'side' => "right",
-          'time' => $update['message']['date'],
+          'transmitter' => 1,
+          'date' => $update['message']['date'],
+          'name' => $update['message']['chat']['first_name'],
           'callback' => [
             'data'          => $gato->game_state(),
-            'practice game' => $practice_game
+            'practice_game' => $practice_game,
+            'win' => $win
           ]
+
         ]);
+        
 
         if ($practice_game) $move_by = !$practice_game;
 
@@ -111,9 +118,9 @@ class GatoService
             'id'       => $chatId,
             'name'     => $update['message']['chat']['first_name'],
             'lastName' => $last_name,
-            'msg'      => $message,
-            'side'     => "right", // Indicates who sends the message
-            'time'     => $update['message']['date'],
+            'message'      => $message,
+            'transmitter'     => 1, // Indicates who sends the message
+            'date'     => $update['message']['date'],
           ];
     
           propagate_msj($msg_data);
@@ -136,7 +143,7 @@ class GatoService
       case "/start":
         $message = "Envía /nuevo para jugar 🤖.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
         send_msj($message, $chatId);
-
+        $message = "<p>Env&iacute;a /nuevo para jugar 🤖. Consulta las reglas <a href='https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas'>Aquí</a></p>";
         $this->commandService->command_start(
           $chatId,
           $update['message']['from']['first_name'], // name
@@ -164,7 +171,7 @@ class GatoService
         send_msj($message, $chatId);
         break;
       default:
-        $this->commandService->sendMessage($chatId, $text, 0);
+        $this->commandService->sendMessage($chatId, $text, 1);
     }
 
     // The last name is an optional field.
@@ -174,16 +181,16 @@ class GatoService
       'id'       => $chatId,
       'name'     => $update['message']['chat']['first_name'],
       'lastName' => $last_name,
-      'msg'      => $text,
-      'side'     => "left", // Indicates who sends the message
-      'time'     => $update['message']['date'],
+      'message'      => $text,
+      'transmitter'     => 0, // Indicates who sends the message
+      'date'     => $update['message']['date'],
     ];
 
     propagate_msj($msg_data);
 
     if(isset($message)){
-      $msg_data['msg'] = $message;
-      $msg_data['side'] = "right";
+      $msg_data['message'] = $message;
+      $msg_data['transmitter'] = 1;
       propagate_msj($msg_data);
     }
 
@@ -196,18 +203,17 @@ class GatoService
     $msg = $update["msg"];
 
     $data = [
-      'msg' => $msg,
+      'message' => $msg,
       'id' => $chatId,
-      'side' => 'right',
+      'transmitter' => 1,
       'instanceId' => $update['senderId'],
-      'time' => (new DateTime())->getTimestamp(),
+      'date' => (new DateTime())->getTimestamp(),
     ];
 
     send_msj($msg, $chatId);
     $this->commandService->sendMessage($chatId, $msg, 1);
     propagate_msj($data);
   }
-
 
   public function onCourse($id){
     return $this->commandService->getLastTelegramUserGame($id);

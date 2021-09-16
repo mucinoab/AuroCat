@@ -31,26 +31,25 @@ Route::get('/', function () {
   ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-  return Inertia::render('Chat');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/NewChats', function() {
-  return view('chat');
-})->name('chat.index');
+// Main routes
+Route::middleware(['auth:sanctum', 'verified'])->get('/messenger', function() {
+  return Inertia::render('Chat/Index');
+})->name('messenger');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard.html', function() {
 })->name('stats.index');
-
 
 Route::get('/test-chat', function() {
   return view('chat');
 });
 
+
 Route::post('/telegram-update', [PusherNotificationController::class, 'telegram_to_agent']);
 Route::post('/send-telegram', [PusherNotificationController::class, 'agent_to_telegram']);
 Route::get('/chats',[TelegramUserController::class,'index']);
 Route::get('/conversation',[TelegramUserController::class,'conversation']);
+Route::get('/lastGame',[TelegramUserController::class,'game']);
+Route::get('/game',[TelegramUserController::class,'lastGame']);
 
 //Get game stats
 Route::get('/rates/{option}',[DashboardController::class,'index']);

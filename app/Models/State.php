@@ -43,6 +43,7 @@ class State extends Model
         $state = $this->getAState($game_id);
         $state->date = time();
         $state->transmitter = $transmitter;
+        $state->turn = !$transmitter;
         $state->board_state = json_encode($board_state);
         $state->save();
     }

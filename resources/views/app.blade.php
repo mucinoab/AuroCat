@@ -11,12 +11,21 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
+        <script>
+            var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+                cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+                encrypted: true
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@3.2.4/dist/vue.global.prod.min.js" defer></script>
+        <script src="/js/utils.js" defer></script>
+
+
     </head>
-    <body class="font-sans antialiased">
+    <body id="bighead" class="font-sans antialiased dark">
         @inertia
 
         @env ('local')

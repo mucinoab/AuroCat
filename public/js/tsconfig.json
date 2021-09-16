@@ -4,6 +4,7 @@
     "chats.ts",
     "utils.ts",
     "models.ts",
+    "instanceId.ts"
   ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
