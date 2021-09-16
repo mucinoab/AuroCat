@@ -21501,6 +21501,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 /* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -21679,7 +21691,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.chats[position].gameId = game_id; // Shift elements
         // this.chats.unshift(this.chats.splice(position, 1)[0]);
       } else {
-        //save messages from all conversation
+        if (this.instanceId != pckg.instanceId && this.chat_id == pckg.id) {
+          this.messages.unshift(pckg);
+        } //save messages from all conversation
+
+
         var selectedGame = this.allMessages.filter(function (message) {
           return message.chat_id == pckg.id;
         });
@@ -21715,6 +21731,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         transmitter: 1,
         date: unixTime()
       };
+      this.messages.unshift(message);
       postData("/send-telegram", {
         chat: this.chat_id,
         msg: this.message,
@@ -21757,6 +21774,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.chat_id = chat_id;
       this.name = name;
+      this.messages = [];
       this.getConversation(chat_id); //DELETE UNREAD MESSAGES
 
       var position = this.chats.findIndex(function (chat) {
@@ -21808,10 +21826,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     //get the conversation of the selected chat
     getConversation: function getConversation(chat_id) {
+      var _this$messages;
+
       var selectedGame = this.allMessages.filter(function (message) {
         return message.chat_id == chat_id;
       });
-      this.messages = selectedGame[0].messages;
+
+      (_this$messages = this.messages).push.apply(_this$messages, _toConsumableArray(selectedGame[0].messages));
     },
     loadGame: function loadGame() {
       var _this2 = this;
