@@ -29,7 +29,7 @@ Route::get('/', function () {
     'laravelVersion' => Application::VERSION,
     'phpVersion' => PHP_VERSION,
   ]);
-});
+})->name('inicio');
 
 // Main routes
 Route::middleware(['auth:sanctum', 'verified'])->get('/messenger', function() {
