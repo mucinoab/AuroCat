@@ -404,7 +404,7 @@ export default {
         callback_query: {
           data: data,
           message: {
-            chat: { id: this.chat_id },
+            chat: { id: this.chat_id, first_name:this.name},
             message_id: msgId,
             date: unixTime(),
           },

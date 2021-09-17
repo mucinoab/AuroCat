@@ -21745,7 +21745,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           data: data,
           message: {
             chat: {
-              id: this.chat_id
+              id: this.chat_id,
+              first_name: this.name
             },
             message_id: msgId,
             date: unixTime()
