@@ -21810,10 +21810,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _context.abrupt("return", Promise.reject(error));
 
                 case 6:
-                  console.log("JUEGO", data.game);
                   _this.game = data.game;
 
-                case 8:
+                case 7:
                 case "end":
                   return _context.stop();
               }

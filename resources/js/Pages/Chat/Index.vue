@@ -448,7 +448,6 @@ export default {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-        console.log("JUEGO",data.game);
           this.game = data.game;
       })
       .catch(error=> {
