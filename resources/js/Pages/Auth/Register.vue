@@ -1,6 +1,12 @@
 <template>
     <Head title="Crea tu cuenta de agente" />
 
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <Link :href="route('inicio')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+             Regresar al inicio
+        </Link>   
+    </div>
+
     <jet-authentication-card>
         <template #logo>
             <jet-authentication-card-logo />

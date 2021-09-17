@@ -1,7 +1,15 @@
 <template>
     <Head title="Gatonix" />
 
-    
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <Link :href="route('inicio')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+             Inicio
+        </Link>
+        <Link :href="route('register')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+             Registrarse
+        </Link>    
+    </div>
+
     <jet-authentication-card>
         <template #logo>
             <jet-authentication-card-logo />
@@ -40,6 +48,8 @@
                     Iniciar sesión
                 </jet-button>
             </div>
+
+
         </form>
     </jet-authentication-card>
 </template>
@@ -69,7 +79,9 @@
 
         props: {
             canResetPassword: Boolean,
-            status: String
+            status: String,
+            canLogin: Boolean,
+            canRegister: Boolean,
         },
 
         data() {

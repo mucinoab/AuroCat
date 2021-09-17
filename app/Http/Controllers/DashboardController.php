@@ -4,32 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
   /**
-  * Return a result corresponding to the options passed by parameter
-  * ej: APP_URL/rates/{option}
-  *
-  * option  Description
-  * gwad - games won and drawn
-  *  tgp - total games played
-  *   tp - time played
-  */
+   * Return a result corresponding to the options passed by parameter
+   * ej: APP_URL/rates/{option}
+   *
+   * option  Description
+   * gwad - games won and drawn
+   *  tgp - total games played
+   *   tp - time played
+   */
+
+  // Cache expiration time in seconds
+  const EXPIRATION_TIME = 30;
+
   public function index(Request $request)
   {
-    $type = $request->option;
+    switch ($request->option) {
 
-    if ($type == 'gwad') {
-      $a = $this->getGamesWonAndDrawn();
-    } else if ($type == 'tgp') {
-      $a = $this->getTotalGamesPlayed();
-    } else if ($type == 'tp') {
-      $a = $this->getTimePlayed();
+    case 'gwad':
+      $data = Cache::remember('gwad', self::EXPIRATION_TIME, function() {
+        return $this->getGamesWonAndDrawn();
+      });
+      break;
+
+    case 'tgp':
+      $data = Cache::remember('tgp', self::EXPIRATION_TIME, function() {
+        return $this->getTotalGamesPlayed();
+      });
+      break;
+
+    case 'tp':
+      $data = Cache::remember('tp', self::EXPIRATION_TIME, function() {
+        return $this->getTimePlayed();
+      });
+      break;
     }
 
-    return $a;
+    return $data;
   }
 
   // Return all games won or drawn against the agent or bot
@@ -49,7 +65,7 @@ class DashboardController extends Controller
       $game_result = "{$game->winner}{$game->opponent}";
 
       switch ($game_result) {
-      // ---------- Agent vs User -------------
+        // ---------- Agent vs User -------------
       case "01": // Agent wins
         $agentBeatsUser++;
         break;
@@ -62,7 +78,7 @@ class DashboardController extends Controller
         $userAgentDraw++;
         break;
 
-      // ---------- Bot vs User -------------
+        // ---------- Bot vs User -------------
       case "00": // Bot wins
         $botBeatsUser++;
         break;
@@ -119,18 +135,16 @@ class DashboardController extends Controller
   public function getTimePlayed()
   {
     $time_played_vs_agent = Game::select(
-      DB::raw('sec_to_time(sum(time_to_sec(timediff(from_unixtime(states.date),
-    from_unixtime(games.date))))) as total_time_played_vs_agent'))
+      DB::raw('sum(time_to_sec(timediff(from_unixtime(states.date), from_unixtime(games.date)))) as total'))
       ->join('states', 'games.id', '=', 'states.game_id')
       ->where('games.opponent',1)->whereNotNull('games.winner')
-      ->first();
+      ->first()['total'];
 
     $time_played_vs_bot = Game::select(
-      DB::raw('sec_to_time(sum(time_to_sec(timediff(from_unixtime(states.date),
-    from_unixtime(games.date))))) as total_time_played_vs_bot'))
+      DB::raw('sum(time_to_sec(timediff(from_unixtime(states.date), from_unixtime(games.date)))) as total'))
       ->join('states', 'games.id', '=', 'states.game_id')
       ->where('games.opponent',0)->whereNotNull('games.winner')
-      ->first();
+      ->first()['total'];
 
     return response()->json([
       'title' => "Time Played",
