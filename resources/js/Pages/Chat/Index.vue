@@ -325,7 +325,7 @@ export default {
             this.chats[position].state = turn;
             this.game.state = 1;
             this.game.winner = undefined;
-            this.game.opponent = pckg.callback.practice_game;
+            this.game.opponent = !pckg.callback.practice_game;
           }else{
             if(pckg.callback.win != 3){
               this.game.winner = pckg.callback.win;
@@ -448,6 +448,7 @@ export default {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
+        console.log("JUEGO",data.game);
           this.game = data.game;
       })
       .catch(error=> {

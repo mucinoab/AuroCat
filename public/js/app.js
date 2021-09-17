@@ -21460,11 +21460,11 @@ __webpack_require__.r(__webpack_exports__);
       if (this.option.option == 0) {
         return this.game.state != 2 ? 'En curso' : 'Finalizada';
       } else if (this.option.option == 1) {
-        return this.game.opponent ? 'Bot' : 'Agente';
+        return this.game.opponent ? 'Agente' : 'Bot';
       } else if (this.option.option == 2) {
         if (this.game.winner != undefined) {
           if (this.game.winner == 0) {
-            return this.game.opponent ? 'Bot' : 'Agente';
+            return this.game.opponent ? 'Agente' : 'Bot';
           } else if (this.game.winner == 1) {
             return this.name;
           } else if (this.game.winner == 2) {
@@ -21666,7 +21666,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             this.chats[position].state = turn;
             this.game.state = 1;
             this.game.winner = undefined;
-            this.game.opponent = pckg.callback.practice_game;
+            this.game.opponent = !pckg.callback.practice_game;
           } else {
             if (pckg.callback.win != 3) {
               this.game.winner = pckg.callback.win;
@@ -21808,9 +21808,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _context.abrupt("return", Promise.reject(error));
 
                 case 6:
+                  console.log("JUEGO", data.game);
                   _this.game = data.game;
 
-                case 7:
+                case 8:
                 case "end":
                   return _context.stop();
               }
