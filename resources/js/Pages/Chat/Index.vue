@@ -325,7 +325,7 @@ export default {
             this.chats[position].state = turn;
             this.game.state = 1;
             this.game.winner = undefined;
-            this.game.opponent = pckg.callback.practice_game;
+            this.game.opponent = !pckg.callback.practice_game;
           }else{
             if(pckg.callback.win != 3){
               this.game.winner = pckg.callback.win;
@@ -349,6 +349,11 @@ export default {
         // Shift elements
         // this.chats.unshift(this.chats.splice(position, 1)[0]);
       } else {
+
+        if(this.instanceId != pckg.instanceId && this.chat_id == pckg.id){
+          this.messages.unshift(pckg);
+        }
+
         //save messages from all conversation
         var selectedGame = this.allMessages.filter(message => message.chat_id == pckg.id);
         selectedGame[0].messages.unshift(pckg);
@@ -383,6 +388,9 @@ export default {
         transmitter: 1,
         date: unixTime(),
       };
+
+      this.messages.unshift(message);
+      
       postData("/send-telegram", {
         chat: this.chat_id,
         msg: this.message,
@@ -396,7 +404,7 @@ export default {
         callback_query: {
           data: data,
           message: {
-            chat: { id: this.chat_id },
+            chat: { id: this.chat_id, first_name:this.name},
             message_id: msgId,
             date: unixTime(),
           },
@@ -423,6 +431,7 @@ export default {
       }
       this.chat_id = chat_id;
       this.name = name;
+      this.messages = [];
       this.getConversation(chat_id);
 
       //DELETE UNREAD MESSAGES
@@ -448,7 +457,7 @@ export default {
     //get the conversation of the selected chat
     getConversation(chat_id){
         var selectedGame = this.allMessages.filter(message => message.chat_id == chat_id);
-        this.messages = selectedGame[0].messages;
+        this.messages.push(...selectedGame[0].messages);
     },
     loadGame(){
       fetch(`/game?chat_id=${this.chat_id}`)
