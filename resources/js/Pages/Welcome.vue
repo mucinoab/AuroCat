@@ -89,8 +89,9 @@
             fetch("/dark-mode")
             .then(response => response.json())
             .then(json => {
-                 if(json.dark == null) return;
-                document.getElementById('bighead').className = json.dark ? 'dark': '';
+                if(json.darkMode == null) return;
+                
+                document.getElementById('bighead').className = json.darkMode ? 'dark': '';
             });
         }
     }

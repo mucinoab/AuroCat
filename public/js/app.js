@@ -22710,8 +22710,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               fetch("/dark-mode").then(function (response) {
                 return response.json();
               }).then(function (json) {
-                if (json.dark == null) return;
-                document.getElementById('bighead').className = json.dark ? 'dark' : '';
+                if (json.darkMode == null) return;
+                document.getElementById('bighead').className = json.darkMode ? 'dark' : '';
               });
 
             case 1:
