@@ -1,11 +1,11 @@
 <template>
     <jet-action-section>
         <template #title>
-            Autenticación de dos factores
+            <span class="dark:text-white text-black">Autenticación de dos factores</span>
         </template>
 
         <template #description>
-            Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.
+            <span class="dark:text-gray-200 text-gray-500">Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.</span>
         </template>
 
         <template #content>

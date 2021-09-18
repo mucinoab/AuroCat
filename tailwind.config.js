@@ -10,7 +10,8 @@ const allColors = {
         "cat-blue": '#366DC7',
         "cat-blue-light": '#3B82EC',
         "cat-gray": '#C8C8C8',
-        "cat-dark-light": '#293042'
+        "cat-dark-light": '#293042',
+        "cat-logo":'#042f69'
     }
 
 };
