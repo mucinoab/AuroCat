@@ -22,6 +22,7 @@ class TelegramUserFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->faker->randomNumber(9),
             'name' => $this->faker->name()
         ];
     }
