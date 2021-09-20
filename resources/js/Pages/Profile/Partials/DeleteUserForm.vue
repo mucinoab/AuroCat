@@ -1,11 +1,11 @@
 <template>
     <jet-action-section>
         <template #title>
-            Eliminar cuenta
+            <span class="dark:text-white text-black">Eliminar cuenta</span>
         </template>
 
         <template #description>
-            Elimina permanentemente tu cuenta.
+            <span class="dark:text-gray-200 text-gray-500">Elimina permanentemente tu cuenta.</span>
         </template>
 
         <template #content>

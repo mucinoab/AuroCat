@@ -1,11 +1,11 @@
 <template>
     <jet-action-section>
         <template #title>
-            Sesiones del navegador
+            <span class="dark:text-white text-black">Sesiones del navegador</span>
         </template>
 
         <template #description>
-            Administre y cierre la sesión activa en otros navegadores y dispositivos.
+            <span class="dark:text-gray-200 text-gray-500">Administre y cierre la sesión activa en otros navegadores y dispositivos.</span>
         </template>
 
         <template #content>

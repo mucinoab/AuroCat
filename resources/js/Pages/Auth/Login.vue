@@ -2,10 +2,10 @@
     <Head title="Gatonix" />
 
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        <Link :href="route('inicio')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+        <Link :href="route('inicio')" class="ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500">
              Inicio
         </Link>
-        <Link :href="route('register')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+        <Link :href="route('register')" class="ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500">
              Registrarse
         </Link>    
     </div>
@@ -23,24 +23,24 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" class="text-white"/>
-                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required autofocus />
+                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white"/>
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.email" required autofocus />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Contraseña" class="text-white"/>
-                <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="current-password" />
+                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white"/>
+                <jet-input id="password" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-white">Recordar contraseña</span>
+                    <span class="ml-2 text-sm  text-cat-dark dark:text-white">Recordar contraseña</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-white hover:text-gray-900">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-cat-dark dark:text-white hover:text-gray-900">
                     ¿Olvidaste tu contraseña?
                 </Link>
 

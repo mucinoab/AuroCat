@@ -2,7 +2,7 @@
     <Head title="Crea tu cuenta de agente" />
 
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        <Link :href="route('inicio')" class="ml-4 text-sm text-white underline hover:text-gray-500">
+        <Link :href="route('inicio')" class="ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500">
              Regresar al inicio
         </Link>   
     </div>
@@ -16,23 +16,23 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="name" value="Nombre" class="text-white"/>
-                <jet-input id="name" type="text" class="mt-1 block w-full bg-cat-gray" v-model="form.name" required autofocus autocomplete="name" />
+                <jet-label for="name" value="Nombre" class="text-cat-dark dark:text-white"/>
+                <jet-input id="name" type="text" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="email" value="Email" class="text-white"/>
-                <jet-input id="email" type="email" class="mt-1 block w-full bg-cat-gray" v-model="form.email" required />
+                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white"/>
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Contraseña" class="text-white"/>
-                <jet-input id="password" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password" required autocomplete="new-password" />
+                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white"/>
+                <jet-input id="password" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirmar contraseña" class="text-white"/>
-                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-cat-gray" v-model="form.password_confirmation" required autocomplete="new-password" />
+                <jet-label for="password_confirmation" value="Confirmar contraseña" class="text-cat-dark dark:text-white"/>
+                <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4" v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
