@@ -29,7 +29,8 @@
         </div>
         <!-- more chats button -->
         <div class="flex mt-4">
-          <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring">
+          <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
+            @click="loadMoreChats">
             <p class="text-xs text-white text-base">Cargar más chats</p>
           </button>
         </div>
@@ -456,7 +457,18 @@ export default {
       //TODO /conversation?chat_id=${chat_id}&chats_number=10}
     },
     async loadMoreChats() {
-      //TODO /chats?chats_number=5&offset=
+      var lengthChats = this.chats.length;
+      fetch(`/chats?chats_number=${lengthChats+5}&offset=${lengthChats}`)
+      .then(response =>  response.json())
+      .then(json =>{
+        this.chatsIds = [];
+        json.data.forEach(element => {
+          this.chats.push(element.chats);
+          this.chatsIds.push(element.chats.id)
+        });
+        
+        this.loadConversations()
+      });
     },
     loadConversations() {
       fetch(`/conversation?chats_number=10&chats=${JSON.stringify(this.chatsIds)}`)
@@ -467,7 +479,9 @@ export default {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-        this.allMessages = data.messages;
+
+        this.allMessages.push(...data.messages);
+      
       })
       .catch(error=> {
           this.errors.messagesError = true;
@@ -478,7 +492,7 @@ export default {
     //create the instancheID for this user
     this.instanceId = uuidUnique();
     //Get request using fetch with error handling
-    fetch("/chats?chats_number=2")
+    fetch("/chats?chats_number=5")
       .then(async response => {
         const data = await response.json();
         // check for error response

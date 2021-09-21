@@ -21947,13 +21947,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    loadMoreChats: function loadMoreChats() {//TODO /chats?chats_number=5&offset=
+    loadMoreChats: function loadMoreChats() {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var lengthChats;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                lengthChats = _this3.chats.length;
+                fetch("/chats?chats_number=".concat(lengthChats + 5, "&offset=").concat(lengthChats)).then(function (response) {
+                  return response.json();
+                }).then(function (json) {
+                  _this3.chatsIds = [];
+                  json.data.forEach(function (element) {
+                    _this3.chats.push(element.chats);
+
+                    _this3.chatsIds.push(element.chats.id);
+                  });
+
+                  _this3.loadConversations();
+                });
+
+              case 2:
               case "end":
                 return _context4.stop();
             }
@@ -21962,10 +21979,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     loadConversations: function loadConversations() {
-      var _this3 = this;
+      var _this4 = this;
 
       fetch("/conversation?chats_number=10&chats=".concat(JSON.stringify(this.chatsIds))).then( /*#__PURE__*/function () {
         var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(response) {
+          var _this4$allMessages;
+
           var data, error;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
             while (1) {
@@ -21986,7 +22005,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _context5.abrupt("return", Promise.reject(error));
 
                 case 6:
-                  _this3.allMessages = data.messages;
+                  (_this4$allMessages = _this4.allMessages).push.apply(_this4$allMessages, _toConsumableArray(data.messages));
 
                 case 7:
                 case "end":
@@ -22000,17 +22019,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return _ref3.apply(this, arguments);
         };
       }())["catch"](function (error) {
-        _this3.errors.messagesError = true;
+        _this4.errors.messagesError = true;
       });
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     //create the instancheID for this user
     this.instanceId = (0,_js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__.default)(); //Get request using fetch with error handling
 
-    fetch("/chats?chats_number=2").then( /*#__PURE__*/function () {
+    fetch("/chats?chats_number=5").then( /*#__PURE__*/function () {
       var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(response) {
         var data, error;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
@@ -22033,13 +22052,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 data.data.forEach(function (element) {
-                  _this4.chats.push(element.chats);
+                  _this5.chats.push(element.chats);
 
-                  _this4.chatsIds.push(element.chats.id);
+                  _this5.chatsIds.push(element.chats.id);
                 });
-                _this4.loads.loadChats = false;
+                _this5.loads.loadChats = false;
 
-                _this4.loadConversations();
+                _this5.loadConversations();
 
               case 9:
               case "end":
@@ -22053,8 +22072,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref4.apply(this, arguments);
       };
     }())["catch"](function (error) {
-      _this4.loads.loadChats = false;
-      _this4.errors.chatsError = true;
+      _this5.loads.loadChats = false;
+      _this5.errors.chatsError = true;
     });
   },
   mounted: function mounted() {
@@ -26193,27 +26212,27 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_4 = {
   "class": "overflow-auto overflow-x-hidden h-3/4 w-full"
 };
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_5 = {
   "class": "flex mt-4"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-xs text-white text-base"
-}, "Cargar más chats")])], -1
+}, "Cargar más chats", -1
 /* HOISTED */
 );
 
-var _hoisted_6 = {
+var _hoisted_7 = [_hoisted_6];
+var _hoisted_8 = {
   key: 0,
   "class": "bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light"
 };
-var _hoisted_7 = {
+var _hoisted_9 = {
   "class": "flex p-3 justify-between\tborder-b-2 border-gray-100"
 };
-var _hoisted_8 = ["name"];
+var _hoisted_10 = ["name"];
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   "class": "h-6 w-6",
   fill: "none",
@@ -26228,18 +26247,18 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = [_hoisted_9];
-var _hoisted_11 = {
+var _hoisted_12 = [_hoisted_11];
+var _hoisted_13 = {
   "class": "conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse"
 };
-var _hoisted_12 = {
+var _hoisted_14 = {
   "class": "flex p-3"
 };
-var _hoisted_13 = {
+var _hoisted_15 = {
   "class": "flex-1 px-3"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 20 20",
   fill: "currentColor",
@@ -26250,24 +26269,24 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_15 = [_hoisted_14];
-var _hoisted_16 = {
+var _hoisted_17 = [_hoisted_16];
+var _hoisted_18 = {
   key: 1,
   "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
 };
-var _hoisted_17 = {
+var _hoisted_19 = {
   key: 2,
   "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
 };
-var _hoisted_18 = {
+var _hoisted_20 = {
   key: 3,
   "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
 };
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "m-3"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex mt-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": " font-bold flex justify-center items-center w-full p-2 m-2 rounded-lg  bg-red-500 focus:outline-none focus:ring"
@@ -26329,25 +26348,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["chat", "onClick", "chat_id"]);
       }), 256
       /* UNKEYED_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), _hoisted_5], 64
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": "flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring",
+        onClick: _cache[0] || (_cache[0] = function () {
+          return $options.loadMoreChats && $options.loadMoreChats.apply($options, arguments);
+        })
+      }, _hoisted_7)])], 64
       /* STABLE_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Conversation header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Conversation header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
         "class": "text-black text-xl font-bold dark:text-white",
         name: $data.name
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 9
       /* TEXT, PROPS */
-      , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
         "class": "p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring",
-        onClick: _cache[0] || (_cache[0] = function () {
+        onClick: _cache[1] || (_cache[1] = function () {
           return $options.closeChat && $options.closeChat.apply($options, arguments);
         })
-      }, _hoisted_10)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Error message card "), $data.errors.messagesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CardInfo, {
+      }, _hoisted_12)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Error message card "), $data.errors.messagesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_CardInfo, {
         key: 0,
         card: $data.cards[2]
       }, null, 8
       /* PROPS */
-      , ["card"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.messages, function (message) {
+      , ["card"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.messages, function (message) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Message, {
           message: message
         }, null, 8
@@ -26355,14 +26379,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["message"]);
       }), 256
       /* UNKEYED_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "text",
         "class": "w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring",
         placeholder: "Escribe un mensaje...",
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.message = $event;
         }),
-        onKeyup: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
+        onKeyup: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         }, ["enter"]))
       }, null, 544
@@ -26370,21 +26394,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
         "class": "p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring",
-        onClick: _cache[3] || (_cache[3] = function () {
+        onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
-      }, _hoisted_15)])], 512
+      }, _hoisted_17)])], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.inputAvailable]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.inputAvailable]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[1],
         onClick: $options.loadGame
       }, null, 8
       /* PROPS */
-      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[3]
       }, null, 8
       /* PROPS */
-      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
+      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
         game: $data.game
       }, null, 8
       /* PROPS */
@@ -26416,7 +26440,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: $data.name
       }, null, 8
       /* PROPS */
-      , ["game", "option", "name"]), _hoisted_20])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+      , ["game", "option", "name"]), _hoisted_22])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
     }),
     _: 1
     /* STABLE */

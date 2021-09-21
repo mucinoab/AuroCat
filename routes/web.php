@@ -58,3 +58,4 @@ Route::get('/rates/{option}',[DashboardController::class,'index']);
 Route::get('/dark-mode',[DarkModeController::class,'index']);
 // Change the value of DarkMode session
 Route::get('/change-dark-mode',[DarkModeController::class,'changeColor']);
+

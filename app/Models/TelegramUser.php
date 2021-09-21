@@ -33,5 +33,10 @@ class TelegramUser extends Model
         return $this->hasMany(Game::class);
     }
 
+    public function game()
+    {
+        return $this->hasOne(Game::class)
+            ->orderBy('date','desc');
+    }
 
 }
