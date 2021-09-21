@@ -14,7 +14,7 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->id();
             $table->foreignId('telegram_user_id')->nullable()->index();
             $table->tinyInteger('state')->default(0);
             $table->tinyInteger('winner')->nullable();

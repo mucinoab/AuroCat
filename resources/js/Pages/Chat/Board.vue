@@ -34,6 +34,7 @@ export default {
             const black = parseInt(data[3], 10);
             const game_id = data[5];
             const turn = data[6];
+            const msg_id = data[7];
 
             var board = [];
             var row = [];
@@ -51,8 +52,8 @@ export default {
                 if ((mask & white) != 0) tile = 'O';
                 else if ((mask & black) != 0) tile = 'X';
 
-                //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn
-                var data = `${tile},${i},${white},${black},false,${game_id},${turn}`;
+                //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn,msg_id
+                var data = `${tile},${i},${white},${black},false,${game_id},${turn},${msg_id}`;
                 row.push({"text":tile,"callback_data":data});
                 
             }
