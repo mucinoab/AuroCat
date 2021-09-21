@@ -20,34 +20,23 @@ class TelegramUserController extends Controller
   {
     $data = array();
 
-    $users = TelegramUser::query()->when(request('chats_number'), function($query) {
+    $users = TelegramUser::with(['game','game.stateRelation','game.message'])->get()->sortByDesc('game.date')->when(request('chats_number'), function($query) {
       return $query->take(request('chats_number'));
     })->when(request('offset'), function($query) {
       return $query->skip(request('offset'));
-    })->get(['id','name']);
-
+    });
 
     foreach($users as $user) {
-      $game = Cache::remember("telegram_user_{$user->id}", self::CACHE_TTL, function() use ($user) {
-        return Game::where('telegram_user_id', $user->id)->orderBy('date', 'DESC')->first();
-      });
-
-      $game->stateRelation;
-
-      $message = Cache::remember("game_id_{$user->id}", self::CACHE_TTL, function() use ($game) {
-        return Message::where('game_id', $game->id)->orderBy('date', 'DESC')->first();
-      });
-
       $values = array(
         'chats'=>array(
           'id'=>          $user->id,
           'name'=>        $user->name,
-          'lastMessage'=> $message->message,
-          'date'=>        $message->date,
-          'opponent'=>    $game->opponent,
-          'state'=>       $game->state,
-          'gameId'=>      $game->id,
-          'turn'=>        $game->stateRelation->turn,
+          'lastMessage'=> $user->game->message->message,
+          'date'=>        $user->game->message->date,
+          'opponent'=>    $user->game->opponent,
+          'state'=>       $user->game->state,
+          'gameId'=>      $user->game->id,
+          'turn'=>        $user->game->stateRelation->turn,
           'unread'=>      0
         ),
       );
@@ -104,4 +93,5 @@ class TelegramUserController extends Controller
     }
     return response()->json(["game" => $game]);
   }
+
 }
