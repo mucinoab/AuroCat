@@ -371,7 +371,7 @@ export default {
       this.message = "";
     },
     move(data) {
-      var msgId = data.split(",")[5];
+      var msgId = data.split(",")[7];
       postData("/telegram-update", {
         callback_query: {
           data: data,

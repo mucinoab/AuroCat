@@ -60,10 +60,9 @@ class Game extends Model
     /**
      * Change a new game
      */
-    public function createGame($id,$telegram_user_id,$date,$opponent=false)
+    public function createGame($telegram_user_id,$date,$opponent=false)
     {
         return Game::create([
-            'id' => $id,
             'telegram_user_id' => $telegram_user_id,
             'date' => $date,
             'opponent' => !$opponent

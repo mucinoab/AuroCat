@@ -50,7 +50,7 @@ class GatoService
         if($move_by == True && $move[6] == 'user' && !$practice_game) return; //When a user tries to play twice.
         if($move_by == False && $move[6] == 'agent') return; //When the agent tries to play twice.
 
-        $gato = new Gato((int) $move[2], (int) $move[3], $practice_game, $game_id);
+        $gato = new Gato((int) $move[2], (int) $move[3], $practice_game, $game_id,$message_id);
         $gato->move((int) $move[1], $move_by);
 
         //Indicates the player who threw the last turn, only if it was a valid movement.
@@ -70,7 +70,7 @@ class GatoService
          * for the game_id, for that reason we add +1 to update in the next  
          * message and no the message used fot the game_id.
          */
-        update_keyboard($chatId, $game_id+1, $board_state);
+        update_keyboard($chatId, $message_id, $board_state);
 
         $game_status = $gato->status();
         $win = 3;

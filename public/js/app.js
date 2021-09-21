@@ -21347,6 +21347,7 @@ __webpack_require__.r(__webpack_exports__);
       var black = parseInt(data[3], 10);
       var game_id = data[5];
       var turn = data[6];
+      var msg_id = data[7];
       var board = [];
       var row = [];
 
@@ -21359,9 +21360,9 @@ __webpack_require__.r(__webpack_exports__);
 
         var mask = 1 << i;
         var tile = ' ';
-        if ((mask & white) != 0) tile = 'O';else if ((mask & black) != 0) tile = 'X'; //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn
+        if ((mask & white) != 0) tile = 'O';else if ((mask & black) != 0) tile = 'X'; //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn,msg_id
 
-        var data = "".concat(tile, ",").concat(i, ",").concat(white, ",").concat(black, ",false,").concat(game_id, ",").concat(turn);
+        var data = "".concat(tile, ",").concat(i, ",").concat(white, ",").concat(black, ",false,").concat(game_id, ",").concat(turn, ",").concat(msg_id);
         row.push({
           "text": tile,
           "callback_data": data
@@ -21785,7 +21786,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.message = "";
     },
     move: function move(data) {
-      var msgId = data.split(",")[5];
+      var msgId = data.split(",")[7];
       postData("/telegram-update", {
         callback_query: {
           data: data,
