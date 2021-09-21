@@ -59,5 +59,3 @@ Route::get('/dark-mode',[DarkModeController::class,'index']);
 // Change the value of DarkMode session
 Route::get('/change-dark-mode',[DarkModeController::class,'changeColor']);
 
-
-Route::get('/ver',[TelegramUserController::class,'ver']);
