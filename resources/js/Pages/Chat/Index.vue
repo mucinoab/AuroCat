@@ -114,7 +114,7 @@
           </GameHeader>
         </div>
 
-        <div class="flex justify-center" :class="{'cursor-not-allowed': boardAvailable}">
+        <div class="flex justify-center mb-10" :class="{'cursor-not-allowed': boardAvailable, 'cursor-pointer':!boardAvailable}">
           <!-- Board game -->
           <Board 
             :state="game" 
@@ -161,6 +161,10 @@
   overflow: scroll;
   background: lightgrey;
   margin-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 </style>
 
