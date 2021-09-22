@@ -33,8 +33,8 @@ class TelegramUserController extends Controller
           'chats'=>array(
             'id'=>          $user->id,
             'name'=>        $user->name,
-            'lastMessage'=> $user->message ? $user->message->message : '',
-            'date'=>        $user->message ? $user->message->date : 0,
+            'lastMessage'=> $user->message->message,
+            'date'=>        $user->message->date,
             'opponent'=>    $user->game ? $user->game->opponent : 2,
             'state'=>       $user->game ? $user->game->state : 2,
             'gameId'=>      $user->game ? $user->game->id : '',
