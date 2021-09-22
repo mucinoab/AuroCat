@@ -65,11 +65,6 @@ class GatoService
 
         $board_state = $gato->state_to_json();
         
-        /**
-         * We send the board together with the next message  that we use 
-         * for the game_id, for that reason we add +1 to update in the next  
-         * message and no the message used fot the game_id.
-         */
         update_keyboard($chatId, $message_id, $board_state);
 
         $game_status = $gato->status();
@@ -144,14 +139,8 @@ class GatoService
         $message = "Envía /nuevo para jugar 🤖.\nConsulta las reglas [aquí.](https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas)";
         send_msj($message, $chatId);
         $message = "<p>Env&iacute;a /nuevo para jugar 🤖. Consulta las reglas <a href='https://es.wikipedia.org/wiki/Tres_en_l%C3%ADnea#Reglas'>Aquí</a></p>";
-        $this->commandService->command_start(
-          $chatId,
-          $update['message']['from']['first_name'], // name
-          $message
-        );
         break;
-
-        // The same two cases, a new game
+      // The same two cases, a new game
       case "/nuevo":
       case "Sí":
         $message = "Elige un oponente.";
@@ -170,10 +159,8 @@ class GatoService
         $message = "Gracias por jugar.";
         send_msj($message, $chatId);
         break;
-      default:
-        $this->commandService->sendMessage($chatId, $text, 1);
     }
-
+    
     // The last name is an optional field.
     $last_name = isset($update['message']['chat']['last_name']) ? $update['message']['chat']['last_name'] : "";
 
@@ -188,12 +175,16 @@ class GatoService
 
     propagate_msj($msg_data);
 
+    // Save telegram user message
+    $this->commandService->saveTelegramUserMessage($chatId,$update['message']['from']['first_name'],$text);
+    
     if(isset($message)){
       $msg_data['message'] = $message;
       $msg_data['transmitter'] = 1;
       propagate_msj($msg_data);
+      // save bot message
+      $this->commandService->saveAgentOrBotMessage($chatId,$message);
     }
-
   }
 
   // Handles all agents messages.
@@ -201,7 +192,7 @@ class GatoService
   {
     $chatId = $update["chat"];
     $msg = $update["msg"];
-
+    
     $data = [
       'message' => $msg,
       'id' => $chatId,
@@ -211,8 +202,9 @@ class GatoService
     ];
 
     send_msj($msg, $chatId);
-    $this->commandService->sendMessage($chatId, $msg, 1);
     propagate_msj($data);
+    //save agent message
+    $this->commandService->saveAgentOrBotMessage($chatId, $msg);
   }
 
   public function onCourse($id){

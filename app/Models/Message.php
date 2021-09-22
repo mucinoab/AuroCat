@@ -11,8 +11,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-       'game_id',
-        'chat_id',
+        'telegram_user_id',
         'update_id',
         'message',
         'transmitter',
@@ -22,11 +21,10 @@ class Message extends Model
     /**
      * Change a new message
      */
-    public function createMessage($game_id,$chat_id,$update_id,$message,$transmitter,$date)
+    public function createMessage($chat_id,$update_id,$message,$transmitter,$date)
     {
         Message::create([
-            'game_id' => $game_id,
-            'chat_id' => $chat_id,
+            'telegram_user_id' => $chat_id,
             'update_id' => $update_id,
             'message' => $message,
             'transmitter' => $transmitter,
@@ -36,15 +34,8 @@ class Message extends Model
 
     //Relationships in Laravel
 
-    public function game()
+    public function telegram_user()
     {
-        return $this->belongsTo(Game::class);
+        return $this->belongsTo(TelegramUser::class);
     }
-
-
-    
-
-
-
-    
 }
