@@ -26202,10 +26202,10 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_11 = [_hoisted_10];
 var _hoisted_12 = {
-  "class": "conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse"
+  "class": "conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen"
 };
 var _hoisted_13 = {
-  "class": "flex p-3"
+  "class": "flex p-3 mt-5"
 };
 var _hoisted_14 = {
   "class": "flex-1 px-3"

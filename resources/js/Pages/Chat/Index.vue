@@ -61,12 +61,12 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse">
+        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
         <!-- Input for writing a messages -->
-        <div class="flex p-3" v-show="inputAvailable">
+        <div class="flex p-3 mt-5" v-show="inputAvailable">
           <div class="flex-1 px-3">
             <input type="text" class="w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring"
               placeholder="Escribe un mensaje..."
