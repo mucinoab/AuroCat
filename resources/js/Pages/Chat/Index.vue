@@ -19,7 +19,7 @@
       </template>
       <template v-else>
         <!-- chats -->
-        <div class="overflow-auto overflow-x-hidden h-3/4 w-full">
+        <div class="overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-screen': !loads.moreChats }">
           <UserChat
             v-for="(chat, idx) in chats"
             :chat="chat"
@@ -28,13 +28,12 @@
           </UserChat>
         </div>
         <!-- more chats button -->
-        <div class="flex mt-4">
+        <div class="flex mt-4" v-if="loads.moreChats">
           <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
             @click="loadMoreChats">
             <p class="text-xs text-white text-base">Cargar más chats</p>
           </button>
         </div>
-
       </template>
     </div>
 
@@ -215,7 +214,10 @@ export default {
       },
       loads:{
         loadChats:true,
-        loadMessage:true
+        loadMessage:true,
+
+        // True until there are no more chats to load.
+        moreChats: true,
       },
       // save all the chats
       chats: [],
@@ -414,26 +416,23 @@ export default {
     },
     //get the game of the selected chat
     getGame(game_id) {
-      fetch(`/lastGame?game_id=${game_id}`)
-        .then(async response => {
-        const data = await response.json();
-        // check for error response
-        if(!response.ok){
-          const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
-        }
-          this.game = data.game;
-      })
-      .catch(error=> {
+      const err = () => { 
         this.errors.gamesError = false;
         this.errors.noGameError = true;
-      });
+        };
+
+      fetch(`/lastGame?game_id=${game_id}`)
+      .then(response => response.json())
+      .catch(err)
+      .then(data => this.game = data.game )
+      .catch(err);
     },
     //get the conversation of the selected chat
     getConversation(chat_id){
         var selectedGame = this.allMessages.filter(message => message.chat_id == chat_id);
         this.messages.push(...selectedGame[0].messages);
     },
+
     loadGame(){
       fetch(`/game?chat_id=${this.chat_id}`)
         .then(async response => {
@@ -453,15 +452,25 @@ export default {
         this.errors.noGameError = true;
       });
     },
+
     async loadMoreMessages() {
       //TODO /conversation?chat_id=${chat_id}&chats_number=10}
     },
+
     async loadMoreChats() {
       var lengthChats = this.chats.length;
+
       fetch(`/chats?chats_number=${lengthChats+5}&offset=${lengthChats}`)
-      .then(response =>  response.json())
-      .then(json =>{
+      .then(response => response.json())
+      .then(json => {
+        if (json.data.length === 0) {
+          // There are no more chats to load.
+          this.loads.moreChats = false;
+          return;
+        }
+
         this.chatsIds = [];
+
         json.data.forEach(element => {
           this.chats.push(element.chats);
           this.chatsIds.push(element.chats.id)
@@ -470,29 +479,21 @@ export default {
         this.loadConversations()
       });
     },
+
     loadConversations() {
       fetch(`/conversation?chats_number=10&chats=${JSON.stringify(this.chatsIds)}`)
-        .then(async response => {
-        const data = await response.json();
-        // check for error response
-        if(!response.ok){
-          const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
-        }
-
+      .then(response => response.json())
+      .catch(_ => this.errors.messagesError = true)
+      .then(data => {
         this.allMessages.push(...data.messages);
-      
-      })
-      .catch(error=> {
-          this.errors.messagesError = true;
-      });
+      }).catch(_ => this.errors.messagesError = true);
     }
   },
   created() {
     //create the instancheID for this user
     this.instanceId = uuidUnique();
     //Get request using fetch with error handling
-    fetch("/chats?chats_number=5")
+    fetch("/chats?chats_number=10")
       .then(async response => {
         const data = await response.json();
         // check for error response
