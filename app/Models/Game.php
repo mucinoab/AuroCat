@@ -82,20 +82,8 @@ class Game extends Model
         return $this->belongsTo(TelegramUser::class);
     }
 
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
     public function stateRelation()
     {
         return $this->hasOne(State::class);
     }
-
-    public function message()
-    {
-        return $this->hasOne(Message::class)
-            ->orderBy('date','desc');
-    }
-
 }

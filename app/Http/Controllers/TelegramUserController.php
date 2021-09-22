@@ -20,30 +20,31 @@ class TelegramUserController extends Controller
   {
     $data = array();
 
-    $users = TelegramUser::with(['game','game.stateRelation','game.message'])->get()->sortByDesc('game.date')->when(request('chats_number'), function($query) {
+    $users = TelegramUser::with(['message:telegram_user_id,message,date','game:telegram_user_id,id,state,opponent','game.stateRelation:game_id,turn'])
+    ->get(['id','name'])->sortByDesc('message.date')->when(request('chats_number'), function($query) {
       return $query->take(request('chats_number'));
     })->when(request('offset'), function($query) {
       return $query->skip(request('offset'));
     });
 
     foreach($users as $user) {
-      $values = array(
-        'chats'=>array(
-          'id'=>          $user->id,
-          'name'=>        $user->name,
-          'lastMessage'=> $user->game->message->message,
-          'date'=>        $user->game->message->date,
-          'opponent'=>    $user->game->opponent,
-          'state'=>       $user->game->state,
-          'gameId'=>      $user->game->id,
-          'turn'=>        $user->game->stateRelation->turn,
-          'unread'=>      0
-        ),
-      );
-
-      array_push($data, $values);
+      if(isset($user->message)){
+        $values = array(
+          'chats'=>array(
+            'id'=>          $user->id,
+            'name'=>        $user->name,
+            'lastMessage'=> $user->message->message,
+            'date'=>        $user->message->date,
+            'opponent'=>    $user->game ? $user->game->opponent : 2,
+            'state'=>       $user->game ? $user->game->state : 2,
+            'gameId'=>      $user->game ? $user->game->id : '',
+            'turn'=>        $user->game ? $user->game->stateRelation->turn : 2,
+            'unread'=>      0
+          ),
+        );
+        array_push($data, $values);
+      }
     }
-
     return response()->json(['data' => $data]);
   }
 
@@ -56,17 +57,17 @@ class TelegramUserController extends Controller
     {
       $ids = json_decode(request('chats'));
       foreach($ids as $id){
-        $userMessages = Message::where('chat_id',$id)->orderBy('date','DESC')->when(request('chats_number'),function($query){
+        $userMessages = Message::where('telegram_user_id',$id)->orderBy('date','DESC')->when(request('chats_number'),function($query){
           return $query->take(request('chats_number'));
         })->when(request('offset'),function($query){
           return $query->skip(request('offset'));
-        })->get(['chat_id','message','transmitter','date']);
+        })->get(['telegram_user_id','message','transmitter','date']);
 
         array_push($messages,array("chat_id"=>$id,"messages"=>$userMessages));
       }
     }else{
       // http://localhost:8000/conversation?chat_id=1728265258&chats_number=10&offset=1
-      $userMessages = Message::where('chat_id',request('chat_id'))->orderBy('date','DESC')->when(request('chats_number'),function($query){
+      $userMessages = Message::where('telegram_user_id',request('chat_id'))->orderBy('date','DESC')->when(request('chats_number'),function($query){
         return $query->take(request('chats_number'));
       })->when(request('offset'),function($query){
         return $query->skip(request('offset'));

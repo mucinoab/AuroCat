@@ -39,4 +39,9 @@ class TelegramUser extends Model
             ->orderBy('date','desc');
     }
 
+    public function message()
+    {
+        return $this->hasOne(Message::class)->orderBy('date','desc');
+    }
+
 }
