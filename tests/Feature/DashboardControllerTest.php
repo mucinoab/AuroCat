@@ -16,6 +16,7 @@ class DashboardControllerTest extends TestCase
         $this->get('rates/gwad')
                 ->assertOk();
     }
+    
     /**
      * Test the route rates with option tgp return OK.
      */
@@ -23,10 +24,10 @@ class DashboardControllerTest extends TestCase
         $this->get('rates/tgp')
                 ->assertOk();
     }
+
     /**
      * Test the route rates with option tp return OK.
      */
-
      public function testRouteRatesWithOptionTp(){
          $this->get('rates/tp')
                 ->assertOk();
