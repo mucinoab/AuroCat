@@ -1,33 +1,25 @@
 <template>
 <app-layout title="Messenger">
-    <Head title="Messenger" />
+  <Head title="Messenger" />
 
   <div class="flex h-screen overflow-hidden dark:bg-cat-light">
     <!-- Left Section-->
     <div class="bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
+      <!-- Chat title -->
       <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
         <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
       </div>
 
       <!-- Error message card -->
-      <CardInfo v-if="errors.chatsError"
-        :card="cards[0]"
-      ></CardInfo>
+      <CardInfo v-if="errors.chatsError" :card="cards[0]"></CardInfo>
 
       <template v-if="loads.loadChats">
         <!-- loading chats icon -->
-        <div class="flex items-center justify-center w-full h-full">
-          <div class="flex justify-center items-center space-x-1 text-sm text-gray-700">
-            <svg fill="none" class="w-6 h-6 animate-spin" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-              <path clip-rule="evenodd" d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z" fill="currentColor" fill-rule="evenodd"/>
-            </svg>
-            <div>Cargando chats...</div>
-          </div>
-        </div>
+        <LoadMessage :message="LoadingMessages[0]"></LoadMessage>
       </template>
       <template v-else>
         <!-- chats -->
-        <div class="overflow-auto overflow-x-hidden h-3/4 w-full">
+        <div class="overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-screen': !loads.moreChats }">
           <UserChat
             v-for="(chat, idx) in chats"
             :chat="chat"
@@ -36,8 +28,9 @@
           </UserChat>
         </div>
         <!-- more chats button -->
-        <div class="flex mt-4">
-          <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring">
+        <div class="flex mt-4" v-if="loads.moreChats">
+          <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
+            @click="loadMoreChats">
             <p class="text-xs text-white text-base">Cargar más chats</p>
           </button>
         </div>
@@ -47,28 +40,10 @@
     <!-- Middle Section -->
     <template v-if="name != ''">
       <div class="bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light">
-        <!-- message error notification--> 
-        <div class="shadow-lg rounded-lg bg-white mx-auto m-8 p-4 notification-box flex" v-if="errors.messagesError">
-          <div class="pr-2">
-            <svg class="fill-current text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-              <path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-            </svg>
-          </div>
-          <div class="">
-            <div class="text-sm pb-2 dark:text-white">
-              Lo sentimos
-            </div>
-            <div class="text-sm text-gray-600  tracking-tight ">
-              Al parecer tuvimos un error al obtener los mensajes.
-            </div>
-          </div>
-        </div>
-
-
+        <!-- Conversation header -->
         <div class="flex p-3 justify-between	border-b-2 border-gray-100">
           <!-- Chat name -->
           <h1 class="text-black text-xl font-bold dark:text-white" :name="name">{{ name }}</h1>
-
           <!-- Close chat icon -->
           <div>
             <button
@@ -82,25 +57,16 @@
           </div>
         </div>
 
-        <!-- loading messages icon -->
-        <template v-show="loads.loadMessage">
-          <div class="flex items-center justify-center w-full h-full" >
-            <div class="flex justify-center items-center space-x-1 text-sm text-gray-700">
-              <svg fill="none" class="w-6 h-6 animate-spin" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path clip-rule="evenodd" d="M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z" fill="currentColor" fill-rule="evenodd"/>
-              </svg>
-              <div>Cargando mensajes...</div>
-            </div>
-          </div>
-        </template>
+        <!-- Error message card -->
+        <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse">
+        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
         <!-- Input for writing a messages -->
-        <div class="flex p-3" v-show="inputAvailable">
+        <div class="flex p-3 mt-5" v-show="inputAvailable">
           <div class="flex-1 px-3">
             <input type="text" class="w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring"
               placeholder="Escribe un mensaje..."
@@ -131,6 +97,13 @@
       ></CardInfo>
     </div>
 
+    <!-- No game exists message card -->
+    <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat" v-if="errors.noGameError">
+      <CardInfo
+      :card="cards[3]"
+      ></CardInfo>
+    </div>
+
     <template v-if="game != ''">
       <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat">
 
@@ -141,7 +114,7 @@
           </GameHeader>
         </div>
 
-        <div class="flex justify-center" :class="{'cursor-not-allowed': boardAvailable}">
+        <div class="flex justify-center mb-10" :class="{'cursor-not-allowed': boardAvailable, 'cursor-pointer':!boardAvailable}">
           <!-- Board game -->
           <Board 
             :state="game" 
@@ -189,9 +162,14 @@
   background: lightgrey;
   margin-bottom: 20px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
 </style>
 
 <script>
+import AppLayout from '@/Layouts/AppLayout.vue'
 import Category from "./Category.vue";
 import UserChat from "./UserChat.vue";
 import Message from "./Message.vue";
@@ -199,11 +177,12 @@ import Board from "./Board.vue";
 import GameHeader from "./GameHeader.vue";
 import GameInformation from "./GameInformation.vue";
 import CardInfo from "./CardInfo.vue";
+import LoadMessage from "./LoadMessage.vue";
 import uuidUnique from "/js/instanceId.js";
- import AppLayout from '@/Layouts/AppLayout.vue'
 
 export default {
   components: {
+    AppLayout,
     Category,
     UserChat,
     Message,
@@ -211,7 +190,7 @@ export default {
     GameHeader,
     GameInformation,
     CardInfo,
-    AppLayout
+    LoadMessage
   },
   data() {
     return {
@@ -223,22 +202,29 @@ export default {
       ],
       cards:[
         {'firstMessage':'Lo sentimos','secondMessage':'Al parecer tuvimos un error al obtener los datos','color':'red','value':'Recargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'},
-        {'firstMessage':'Cargar juego','secondMessage':'Da click para traer el juego','color':'green','value':'Cargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.46a1 1 0 0 1 1.42-1.42 3 3 0 0 0 4.24 0 1 1 0 0 1 1.42 1.42 5 5 0 0 1-7.08 0zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'}
+        {'firstMessage':'Cargar juego','secondMessage':'Da click para traer el último juego','color':'green','value':'Cargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.46a1 1 0 0 1 1.42-1.42 3 3 0 0 0 4.24 0 1 1 0 0 1 1.42 1.42 5 5 0 0 1-7.08 0zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'},
+        {'firstMessage':'Lo sentimos','secondMessage':'Al parecer tuvimos un error al obtener los mensajes','color':'red','value':'Recargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'},
+        {'firstMessage':'Sin juegos','secondMessage':'Este usuario no tiene ningún juego registrado','color':'red','value':'Recargar','d':'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-3.54-4.54a5 5 0 0 1 7.08 0 1 1 0 0 1-1.42 1.42 3 3 0 0 0-4.24 0 1 1 0 0 1-1.42-1.42zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm6 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z'},
 
+      ],
+      LoadingMessages:[
+        {'message':'Cargando chats...'}
       ],
       errors:{
         chatsError:false,
         messagesError:false,
-        gamesError:false
+        gamesError:false,
+        noGameError:false
       },
       loads:{
         loadChats:true,
-        loadMessage:true
+        loadMessage:true,
+
+        // True until there are no more chats to load.
+        moreChats: true,
       },
       // save all the chats
       chats: [],
-      // save the games of all chats
-      games:[],
       // save the ids of all chats
       chatsIds:[],
       //save the all conversations
@@ -247,15 +233,13 @@ export default {
       messages: [],
       // the value of the input message
       message: "",
-      // userChatSelected: "",
+      // chat selected info,
       chat_id: "",
+      name: "",
+      // agent instanceId
       instanceId: "",
-      // the game state of selected chat
-      state: '',
       //save the new move to update the board
       newMove: "",
-      //save the name of the user
-      name: "",
       //save the game information
       game: ''
     }
@@ -295,17 +279,12 @@ export default {
           pckg.gameId = '';
           this.chats.unshift(pckg);
           position = 0;
+          
           var obj = {
             'chat_id':pckg.id,
-            'messages':[{
-              'chat_id':pckg.id,
-              'message':pckg.lastMessage,
-              'transmitter':pckg.transmitter,
-              'date':pckg.date,
-              'game_id':'',
-            }]
+            'messages':[]
           };
-
+          
           this.allMessages.push(obj);
         }
 
@@ -347,7 +326,7 @@ export default {
         this.chats[position].turn = turn;
         this.chats[position].gameId = game_id;
         // Shift elements
-        // this.chats.unshift(this.chats.splice(position, 1)[0]);
+        this.chats.unshift(this.chats.splice(position, 1)[0]);
       } else {
 
         if(this.instanceId != pckg.instanceId && this.chat_id == pckg.id){
@@ -368,7 +347,7 @@ export default {
         }
 
         // Shift elements
-        // this.chats.unshift(this.chats.splice(position, 1)[0]);
+        this.chats.unshift(this.chats.splice(position, 1)[0]);
       }
     },
     // To send the message to the bottom
@@ -399,7 +378,7 @@ export default {
       this.message = "";
     },
     move(data) {
-      var msgId = data.split(",")[5];
+      var msgId = data.split(",")[7];
       postData("/telegram-update", {
         callback_query: {
           data: data,
@@ -421,6 +400,7 @@ export default {
     },
     //Get user and game for selected user
     loadConversation(chat_id, name,game_id) {
+      this.errors.noGameError = false;
       if(game_id == ''){
         this.game = "";
         this.errors.gamesError = true;
@@ -440,25 +420,23 @@ export default {
     },
     //get the game of the selected chat
     getGame(game_id) {
+      const err = () => { 
+        this.errors.gamesError = false;
+        this.errors.noGameError = true;
+        };
+
       fetch(`/lastGame?game_id=${game_id}`)
-        .then(async response => {
-        const data = await response.json();
-        // check for error response
-        if(!response.ok){
-          const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
-        }
-          this.game = data.game;
-      })
-      .catch(error=> {
-          // ACTIVATE ERROR GAME MESSAGE
-      });
+      .then(response => response.json())
+      .catch(err)
+      .then(data => this.game = data.game )
+      .catch(err);
     },
     //get the conversation of the selected chat
     getConversation(chat_id){
         var selectedGame = this.allMessages.filter(message => message.chat_id == chat_id);
         this.messages.push(...selectedGame[0].messages);
     },
+
     loadGame(){
       fetch(`/game?chat_id=${this.chat_id}`)
         .then(async response => {
@@ -474,36 +452,52 @@ export default {
         this.chats[position].gameId = this.game.id;
       })
       .catch(error=> {
-          // ACTIVATE ERROR GAME MESSAGE
+        this.errors.gamesError = false;
+        this.errors.noGameError = true;
       });
     },
+
     async loadMoreMessages() {
       //TODO /conversation?chat_id=${chat_id}&chats_number=10}
     },
+
     async loadMoreChats() {
-      //TODO /chats?chats_number=5&offset=
+      var lengthChats = this.chats.length;
+
+      fetch(`/chats?chats_number=${lengthChats+5}&offset=${lengthChats}`)
+      .then(response => response.json())
+      .then(json => {
+        if (json.data.length === 0) {
+          // There are no more chats to load.
+          this.loads.moreChats = false;
+          return;
+        }
+
+        this.chatsIds = [];
+
+        json.data.forEach(element => {
+          this.chats.push(element.chats);
+          this.chatsIds.push(element.chats.id)
+        });
+        
+        this.loadConversations()
+      });
     },
+
     loadConversations() {
       fetch(`/conversation?chats_number=10&chats=${JSON.stringify(this.chatsIds)}`)
-        .then(async response => {
-        const data = await response.json();
-        // check for error response
-        if(!response.ok){
-          const error = (data && data.message) || response.statusText;
-          return Promise.reject(error);
-        }
-        this.allMessages = data.messages;
-      })
-      .catch(error=> {
-          this.errors.messagesError = true;
-      });
+      .then(response => response.json())
+      .catch(_ => this.errors.messagesError = true)
+      .then(data => {
+        this.allMessages.push(...data.messages);
+      }).catch(_ => this.errors.messagesError = true);
     }
   },
   created() {
     //create the instancheID for this user
     this.instanceId = uuidUnique();
     //Get request using fetch with error handling
-    fetch("/chats?chats_number=2")
+    fetch("/chats?chats_number=10")
       .then(async response => {
         const data = await response.json();
         // check for error response
@@ -517,7 +511,6 @@ export default {
           this.chatsIds.push(element.chats.id)
         });
         this.loads.loadChats = false;
-        //TODO ASYNC
         this.loadConversations();
       })
       .catch(error=> {

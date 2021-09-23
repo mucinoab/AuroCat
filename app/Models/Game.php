@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Game extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'id',
         'name',
@@ -57,10 +60,9 @@ class Game extends Model
     /**
      * Change a new game
      */
-    public function createGame($id,$telegram_user_id,$date,$opponent=false)
+    public function createGame($telegram_user_id,$date,$opponent=false)
     {
         return Game::create([
-            'id' => $id,
             'telegram_user_id' => $telegram_user_id,
             'date' => $date,
             'opponent' => !$opponent
@@ -80,20 +82,8 @@ class Game extends Model
         return $this->belongsTo(TelegramUser::class);
     }
 
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
     public function stateRelation()
     {
         return $this->hasOne(State::class);
     }
-
-    public function message()
-    {
-        return $this->hasOne(Message::class)
-            ->orderBy('date','desc');
-    }
-
 }

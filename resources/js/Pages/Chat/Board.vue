@@ -1,9 +1,10 @@
 <template>
     <div class="flex flex-col">
-        <div class="flex flex-row" v-for="row in boardValues">
+        <div class="flex flex-row " v-for="row in boardValues">
             <div 
-                class="select-none bg-white hover:bg-gray-200 text-gray-800 font-semibold   border border-gray-400 rounded shadow w-12 h-12 font-black" 
-                v-for="box in row" @click="move(box.callback_data)">{{box.text}}
+                class="select-none bg-white hover:bg-gray-200 text-gray-800 font-semibold border border-gray-400 rounded shadow w-16 h-16 font-black flex justify-center items-center" 
+                v-for="box in row" @click="move(box.callback_data)"> 
+                <span class="italic text-2xl text-gray-500">{{box.text}}</span>
             </div>
         </div>
     </div>
@@ -34,6 +35,7 @@ export default {
             const black = parseInt(data[3], 10);
             const game_id = data[5];
             const turn = data[6];
+            const msg_id = data[7];
 
             var board = [];
             var row = [];
@@ -51,8 +53,8 @@ export default {
                 if ((mask & white) != 0) tile = 'O';
                 else if ((mask & black) != 0) tile = 'X';
 
-                //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn
-                var data = `${tile},${i},${white},${black},false,${game_id},${turn}`;
+                //          symbol, idx, bitmask p1,bitmask p1,player type,game_id,turn,msg_id
+                var data = `${tile},${i},${white},${black},false,${game_id},${turn},${msg_id}`;
                 row.push({"text":tile,"callback_data":data});
                 
             }

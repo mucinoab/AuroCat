@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\PusherNotificationController;
@@ -53,3 +54,8 @@ Route::get('/game',[TelegramUserController::class,'lastGame']);
 
 //Get game stats
 Route::get('/rates/{option}',[DashboardController::class,'index']);
+// Get the value of darkMode session
+Route::get('/dark-mode',[DarkModeController::class,'index']);
+// Change the value of DarkMode session
+Route::get('/change-dark-mode',[DarkModeController::class,'changeColor']);
+

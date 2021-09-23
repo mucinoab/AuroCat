@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TelegramUser extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'id',
         'name'
@@ -30,5 +33,15 @@ class TelegramUser extends Model
         return $this->hasMany(Game::class);
     }
 
+    public function game()
+    {
+        return $this->hasOne(Game::class)
+            ->orderBy('date','desc');
+    }
+
+    public function message()
+    {
+        return $this->hasOne(Message::class)->orderBy('date','desc');
+    }
 
 }

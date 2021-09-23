@@ -1,11 +1,11 @@
 <template>
-    <jet-form-section @submitted="updateProfileInformation">
+    <jet-form-section @submitted="updateProfileInformation" >
         <template #title>
-            Datos de perfil
+            <span class="dark:text-white text-black">Datos de perfil</span>
         </template>
 
         <template #description>
-            Actualize la información de su cuenta de perfil y la dirección de su correo electrónico.
+            <span class="dark:text-gray-200 text-gray-500">Actualize la información de su cuenta de perfil y la dirección de su correo electrónico.</span>
         </template>
 
         <template #form>
@@ -44,14 +44,14 @@
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="name" value="Nombre" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
+                <jet-input id="name" type="text" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.name" autocomplete="name" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
+                <jet-input id="email" type="email" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.email" />
                 <jet-input-error :message="form.errors.email" class="mt-2" />
             </div>
         </template>
