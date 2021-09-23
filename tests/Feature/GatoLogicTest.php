@@ -14,9 +14,9 @@ class GatoLogicTest extends TestCase
     {
         $practice = false;
         $board_id = "123456789";
+        $message_id = "123456789";
 
-        $gato = new Gato(0, 0, $practice, $board_id);
-        $gato->game_id = $board_id;
+        $gato = new Gato(0, 0, $practice, $board_id, $message_id);
 
         $status = $gato->status();
 
@@ -26,10 +26,10 @@ class GatoLogicTest extends TestCase
     public function testValidateUserMovent(){
         $practice = false;
         $board_id = "123456789";
+        $message_id = "123456789";
         $move_by = true;
 
-        $gato = new Gato(0, 0, $practice, $board_id);
-        $gato->game_id = $board_id;
+        $gato = new Gato(0, 0, $practice, $board_id, $message_id);
 
         $board_state = $gato->state_to_json();
         $move = $movement = explode(',',$board_state[0][0]['callback_data'])[6];
@@ -48,10 +48,10 @@ class GatoLogicTest extends TestCase
     public function testValidateAgentMovent(){
         $practice = false;
         $board_id = "123456789";
+        $message_id = "123456789";
         $move_by = false;
 
-        $gato = new Gato(0, 0, $practice, $board_id);
-        $gato->game_id = $board_id;
+        $gato = new Gato(0, 0, $practice, $board_id, $message_id);
         $gato->turn = 'user';
 
         $board_state = $gato->state_to_json();
@@ -71,10 +71,10 @@ class GatoLogicTest extends TestCase
     public function testUserCantThrowTwice(){
         $practice = false;
         $board_id = "123456789";
+        $message_id = "123456789";
         $move_by = true;
 
-        $gato = new Gato(0, 0, $practice, $board_id);
-        $gato->game_id = $board_id;
+        $gato = new Gato(0, 0, $practice, $board_id, $message_id);
 
         $board_state = $gato->state_to_json();
         $move = $movement = explode(',',$board_state[0][0]['callback_data'])[6];
@@ -93,10 +93,10 @@ class GatoLogicTest extends TestCase
     public function testAgentCantThrowTwice(){
         $practice = false;
         $board_id = "123456789";
+        $message_id = "123456789";
         $move_by = false;
 
-        $gato = new Gato(0, 0, $practice, $board_id);
-        $gato->game_id = $board_id;
+        $gato = new Gato(0, 0, $practice, $board_id, $message_id);
 
         $gato->turn = 'user';
         $board_state = $gato->state_to_json();
