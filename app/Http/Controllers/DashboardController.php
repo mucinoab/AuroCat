@@ -51,7 +51,7 @@ class DashboardController extends Controller
   // Return all games won or drawn against the agent or bot
   public function getGamesWonAndDrawn()
   {
-    $games = Game::select('winner', 'opponent')->get();
+    $games = Game::select('winner', 'opponent')->whereNotNull('winner')->get();
 
     $agentBeatsUser = 0;
     $userBeatsAgent = 0;
@@ -114,7 +114,7 @@ class DashboardController extends Controller
   public function getTotalGamesPlayed()
   {
     $title = "Total Games Played";
-    $games = Game::select('opponent')->get();
+    $games = Game::select('opponent')->whereNotNull('winner')->get();
 
     $agent_games = 0;
     $bot_games = 0;
