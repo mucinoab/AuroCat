@@ -26202,7 +26202,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_11 = [_hoisted_10];
 var _hoisted_12 = {
-  "class": "conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen"
+  "class": "hide-scroll conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen"
 };
 var _hoisted_13 = {
   "class": "flex p-3 mt-5"
@@ -26290,7 +26290,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: 2
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" chats "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["overflow-auto overflow-x-hidden w-full", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["hide-scroll overflow-auto overflow-x-hidden w-full", {
           'h-3/4': $data.loads.moreChats,
           'h-screen': !$data.loads.moreChats
         }])

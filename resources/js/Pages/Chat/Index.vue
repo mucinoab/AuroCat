@@ -19,7 +19,7 @@
       </template>
       <template v-else>
         <!-- chats -->
-        <div class="overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-screen': !loads.moreChats }">
+        <div class="hide-scroll overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-screen': !loads.moreChats }">
           <UserChat
             v-for="(chat, idx) in chats"
             :chat="chat"
@@ -61,7 +61,7 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
+        <div class="hide-scroll conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
