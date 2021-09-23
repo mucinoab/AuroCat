@@ -25,7 +25,7 @@ class DashboardControllerTest extends TestCase
     /**
      * Test the route rates with option tp return OK.
      */
-     public function testRouteRatesWithOptionTp(){
+     public function RouteRatesWithOptionTp(){
          $this->markTestSkipped("The test is skipped due to problems in the repository tests");
          $this->get('rates/tp')
                 ->assertOk();
