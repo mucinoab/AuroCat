@@ -163,9 +163,15 @@
   margin-bottom: 20px;
 }
 
+/* Hide scroll-bar in chrome */
 ::-webkit-scrollbar {
     display: none;
 }
+/* Hide scroll bar in firefox */
+.hide-scroll{
+    scrollbar-width: none;
+}
+
 </style>
 
 <script>

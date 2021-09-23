@@ -26474,7 +26474,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative w-1/2 text-base", $options.styles])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "mb-1",
+    "class": "mb-2",
     innerHTML: $props.message.message
   }, null, 8
   /* PROPS */
@@ -28017,7 +28017,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* To scroll messages to buttom */\n.scroll {\r\n  width: 300px;\r\n  max-height: 150px;\r\n  overflow: scroll;\r\n  background: lightgrey;\r\n  margin-bottom: 20px;\n}\n::-webkit-scrollbar {\r\n    display: none;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* To scroll messages to buttom */\n.scroll {\r\n  width: 300px;\r\n  max-height: 150px;\r\n  overflow: scroll;\r\n  background: lightgrey;\r\n  margin-bottom: 20px;\n}\r\n\r\n/* Hide scroll-bar in chrome */\n::-webkit-scrollbar {\r\n    display: none;\n}\r\n/* Hide scroll bar in firefox */\n.hide-scroll{\r\n    scrollbar-width: none;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
