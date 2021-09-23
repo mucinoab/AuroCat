@@ -1,9 +1,10 @@
 <template>
     <div class="flex flex-col">
-        <div class="flex flex-row" v-for="row in boardValues">
+        <div class="flex flex-row " v-for="row in boardValues">
             <div 
-                class="select-none bg-white hover:bg-gray-200 text-gray-800 font-semibold   border border-gray-400 rounded shadow w-12 h-12 font-black" 
-                v-for="box in row" @click="move(box.callback_data)">{{box.text}}
+                class="select-none bg-white hover:bg-gray-200 text-gray-800 font-semibold border border-gray-400 rounded shadow w-16 h-16 font-black flex justify-center items-center" 
+                v-for="box in row" @click="move(box.callback_data)"> 
+                <span class="italic text-2xl text-gray-500">{{box.text}}</span>
             </div>
         </div>
     </div>
