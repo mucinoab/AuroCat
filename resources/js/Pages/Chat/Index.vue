@@ -19,7 +19,7 @@
       </template>
       <template v-else>
         <!-- chats -->
-        <div class="overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-screen': !loads.moreChats }">
+        <div class="scroll-thin overflow-auto overflow-x-hidden w-full" v-bind:class="{ 'h-3/4': loads.moreChats, 'h-5/6': !loads.moreChats }">
           <UserChat
             v-for="(chat, idx) in chats"
             :chat="chat"
@@ -61,7 +61,7 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
+        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
@@ -162,10 +162,28 @@
   background: lightgrey;
   margin-bottom: 20px;
 }
-
+/* scroll in chrome */
 ::-webkit-scrollbar {
-    display: none;
+  width: 10px;
 }
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+  box-shadow: inset 0 0 1px #888888;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888888; 
+  border-radius: 10px;
+}
+
+/* scroll in firefox */
+.scroll-thin{
+  scrollbar-color: #888888 #f1f1f1;
+  scrollbar-width: thin;
+  border-radius: 10px;
+}
+
 </style>
 
 <script>
