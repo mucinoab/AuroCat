@@ -26292,7 +26292,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" chats "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["hide-scroll overflow-auto overflow-x-hidden w-full", {
           'h-3/4': $data.loads.moreChats,
-          'h-screen': !$data.loads.moreChats
+          'h-5/6': !$data.loads.moreChats
         }])
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.chats, function (chat, idx) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_UserChat, {
@@ -28017,7 +28017,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* To scroll messages to buttom */\n.scroll {\r\n  width: 300px;\r\n  max-height: 150px;\r\n  overflow: scroll;\r\n  background: lightgrey;\r\n  margin-bottom: 20px;\n}\r\n\r\n/* Hide scroll-bar in chrome */\n::-webkit-scrollbar {\r\n    display: none;\n}\r\n/* Hide scroll bar in firefox */\n.hide-scroll{\r\n    scrollbar-width: none;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* To scroll messages to buttom */\n.scroll {\r\n  width: 300px;\r\n  max-height: 150px;\r\n  overflow: scroll;\r\n  background: lightgrey;\r\n  margin-bottom: 20px;\n}\r\n/* width */\n::-webkit-scrollbar {\r\n  width: 10px;\n}\r\n/* background scroll */\n::-webkit-scrollbar-track {\r\n  background: #f1f1f1; \r\n  border-radius: 10px;\r\n  box-shadow: inset 0 0 1px grey;\n}\r\n \r\n/* scroll */\n::-webkit-scrollbar-thumb {\r\n  background: rgba(136, 136, 136, 0.790); \r\n  border-radius: 10px;\n}\r\n\r\n/* scroll in firefox */\n.hide-scroll{\r\n  scrollbar-color: grey #f1f1f1;\r\n  scrollbar-width: thin;\r\n  border-radius: 10px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
