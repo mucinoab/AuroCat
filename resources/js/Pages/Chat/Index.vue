@@ -169,17 +169,17 @@
 ::-webkit-scrollbar-track {
   background: #f1f1f1; 
   border-radius: 10px;
-  box-shadow: inset 0 0 1px grey;
+  box-shadow: inset 0 0 1px #888888;
 }
  
 ::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.790); 
+  background: #888888; 
   border-radius: 10px;
 }
 
 /* scroll in firefox */
 .scroll-thin{
-  scrollbar-color: grey #f1f1f1;
+  scrollbar-color: #888888 #f1f1f1;
   scrollbar-width: thin;
   border-radius: 10px;
 }
