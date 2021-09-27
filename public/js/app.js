@@ -22123,6 +22123,13 @@ __webpack_require__.r(__webpack_exports__);
       return {
         'border-l-4 border-blue-600': this.chat_id == this.chat.id
       };
+    },
+    unread: function unread() {
+      if (this.chat.unread >= 100) {
+        return 'w-auto';
+      }
+
+      return 'w-5';
     }
   }
 });
@@ -26519,10 +26526,6 @@ var _hoisted_6 = {
   "class": "flex justify-between"
 };
 var _hoisted_7 = ["innerHTML"];
-var _hoisted_8 = {
-  key: 0,
-  "class": "text-sm bg-blue-500 rounded-full w-auto h-5 text-center text-white font-bold"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -26538,8 +26541,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     innerHTML: $props.chat.lastMessage
   }, null, 8
   /* PROPS */
-  , _hoisted_7), $props.chat.unread ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.unread), 1
-  /* TEXT */
+  , _hoisted_7), $props.chat.unread ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
+    key: 0,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm bg-blue-500 rounded-full h-5 text-center text-white font-bold", $options.unread])
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.unread), 3
+  /* TEXT, CLASS */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])], 2
   /* CLASS */
   );
