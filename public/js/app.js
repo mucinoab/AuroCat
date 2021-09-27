@@ -26163,7 +26163,7 @@ var _hoisted_1 = {
   "class": "flex h-screen overflow-hidden dark:bg-cat-light"
 };
 var _hoisted_2 = {
-  "class": "bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light"
+  "class": "bg-gray-50 rounded shadow p-6 w-auto min-w-max\tdark:bg-cat-light"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {

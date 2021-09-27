@@ -4,7 +4,7 @@
 
   <div class="flex h-screen overflow-hidden dark:bg-cat-light">
     <!-- Left Section-->
-    <div class="bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light">
+    <div class="bg-gray-50 rounded shadow p-6 w-auto min-w-max	dark:bg-cat-light">
       <!-- Chat title -->
       <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
         <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
