@@ -12,7 +12,7 @@
       
       <div class="flex justify-between">
         <p class="text-xs text-gray-500 dark:text-gray-300" v-html="chat.lastMessage"></p>
-        <span v-if="chat.unread" class="text-sm bg-blue-500 rounded-full w-5 h-5 text-center text-white font-bold">{{chat.unread}}</span>
+        <span v-if="chat.unread" class="text-sm bg-blue-500 rounded-full w-auto h-5 text-center text-white font-bold">{{chat.unread}}</span>
       </div>
     
     </div>

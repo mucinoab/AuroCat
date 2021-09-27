@@ -26521,7 +26521,7 @@ var _hoisted_6 = {
 var _hoisted_7 = ["innerHTML"];
 var _hoisted_8 = {
   key: 0,
-  "class": "text-sm bg-blue-500 rounded-full w-5 h-5 text-center text-white font-bold"
+  "class": "text-sm bg-blue-500 rounded-full w-auto h-5 text-center text-white font-bold"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
