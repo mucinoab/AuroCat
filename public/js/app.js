@@ -22130,6 +22130,9 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return 'w-5';
+    },
+    lengthMessage: function lengthMessage() {
+      return this.chat.lastMessage.length > 40 ? this.chat.lastMessage.substr(0, 40) + '...' : this.chat.lastMessage;
     }
   }
 });
@@ -26538,7 +26541,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "text-xs text-gray-500 dark:text-gray-300",
-    innerHTML: $props.chat.lastMessage
+    innerHTML: $options.lengthMessage
   }, null, 8
   /* PROPS */
   , _hoisted_7), $props.chat.unread ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {

@@ -11,7 +11,7 @@
       </div>
       
       <div class="flex justify-between">
-        <p class="text-xs text-gray-500 dark:text-gray-300" v-html="chat.lastMessage"></p>
+        <p class="text-xs text-gray-500 dark:text-gray-300" v-html="lengthMessage"></p>
         <span 
           v-if="chat.unread" 
           class="text-sm bg-blue-500 rounded-full h-5 text-center text-white font-bold" 
@@ -48,6 +48,9 @@ export default {
         if(this.chat.unread>=100){ return 'w-auto';}
         
         return 'w-5';
+      },
+      lengthMessage(){
+          return this.chat.lastMessage.length>40 ? this.chat.lastMessage.substr(0,40) + '...' : this.chat.lastMessage;
       }
     }
 }
