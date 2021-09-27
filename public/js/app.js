@@ -26202,7 +26202,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_11 = [_hoisted_10];
 var _hoisted_12 = {
-  "class": "scroll-thin conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen"
+  "class": "scroll-thin conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen pr-3"
 };
 var _hoisted_13 = {
   "class": "flex p-3 mt-5"

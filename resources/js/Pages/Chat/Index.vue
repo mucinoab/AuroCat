@@ -61,7 +61,7 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
+        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen pr-3">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
