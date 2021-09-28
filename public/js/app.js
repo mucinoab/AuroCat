@@ -26241,7 +26241,7 @@ var _hoisted_17 = {
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-yellow-600 dark:text-white text-xl text-base"
-}, "Este chat se encuentra atendido por un chatbot o finalizado", -1
+}, "Este chat se encuentra atendido por un bot o ha finalizado", -1
 /* HOISTED */
 );
 
