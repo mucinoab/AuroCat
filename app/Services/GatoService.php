@@ -130,7 +130,7 @@ class GatoService
   // Handles all TelegramUser messages.
   public function handleTelegramUserMessage(array &$update)
   {
-    $text = isset($update['message']['text']) ? trim($update['message']['text']) : json_encode($update['message']['sticker']);
+    $text = isset($update['message']['text']) ? trim($update['message']['text']) : '<b><i>sticker: </i></b>'. $update['message']['sticker']['emoji'];
     $chatId = $update['message']['chat']['id'];
     
     // Handles commands of the type "/function"

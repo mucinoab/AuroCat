@@ -1154,6 +1154,10 @@ select {
 	margin-left: auto;
 	margin-right: auto;
 }
+.mx-1 {
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
 .my-2 {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
@@ -1349,6 +1353,11 @@ select {
 }
 .min-w-0 {
 	min-width: 0px;
+}
+.min-w-max {
+	min-width: -webkit-max-content;
+	min-width: -moz-max-content;
+	min-width: max-content;
 }
 .max-w-screen-xl {
 	max-width: 1280px;
@@ -1720,6 +1729,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
+.bg-orange-200 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(254, 215, 170, var(--tw-bg-opacity));
+}
 .bg-red-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
@@ -1869,6 +1882,9 @@ select {
 }
 .pb-2 {
 	padding-bottom: 0.5rem;
+}
+.pr-3 {
+	padding-right: 0.75rem;
 }
 .text-left {
 	text-align: left;
@@ -2034,6 +2050,10 @@ select {
 .text-cat-dark {
 	--tw-text-opacity: 1;
 	color: rgba(32, 38, 52, var(--tw-text-opacity));
+}
+.text-yellow-600 {
+	--tw-text-opacity: 1;
+	color: rgba(202, 138, 4, var(--tw-text-opacity));
 }
 .text-orange-500 {
 	--tw-text-opacity: 1;
@@ -2381,6 +2401,10 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(41, 48, 66, var(--tw-bg-opacity));
 }
+.dark .dark\:bg-yellow-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(234, 179, 8, var(--tw-bg-opacity));
+}
 .dark .dark\:text-white {
 	--tw-text-opacity: 1;
 	color: rgba(255, 255, 255, var(--tw-text-opacity));
@@ -2640,10 +2664,6 @@ select {
 
 	.lg\:col-span-4 {
 		grid-column: span 4 / span 4;
-	}
-
-	.lg\:w-1\/4 {
-		width: 25%;
 	}
 
 	.lg\:w-3\/4 {

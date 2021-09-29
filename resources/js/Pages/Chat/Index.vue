@@ -4,7 +4,7 @@
 
   <div class="flex h-screen dark:bg-cat-light">
     <!-- Left Section-->
-    <div class="bg-gray-50 rounded shadow p-6 w-full lg:w-1/4 dark:bg-cat-light flex flex-col">
+    <div class="bg-gray-50 rounded shadow p-6 w-auto min-w-max	dark:bg-cat-light flex flex-col">
       <!-- Chat title -->
       <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
         <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
@@ -61,30 +61,37 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen">
+        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen pr-3">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
         <!-- Input for writing a messages -->
-        <div class="flex p-3 mt-5" v-show="inputAvailable">
-          <div class="flex-1 px-3">
-            <input type="text" class="w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring"
-              placeholder="Escribe un mensaje..."
-              v-model="message"
-              @keyup.enter="sendMessage"/>
+        <template v-if="inputAvailable">
+          <div class="flex p-3 mt-5" >
+            <div class="flex-1 px-3">
+              <input type="text" class="w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring"
+                placeholder="Escribe un mensaje..."
+                v-model="message"
+                @keyup.enter="sendMessage"/>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring"
+                @click="sendMessage">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+                  </path>
+                </svg>
+              </button>
+            </div>
           </div>
-          <div>
-            <button
-              type="button"
-              class="p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring"
-              @click="sendMessage">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
-                </path>
-              </svg>
-            </button>
+        </template>
+        <template v-else>
+          <div class="text-center bg-orange-200 dark:bg-yellow-500 px-3 py-2 mx-1 my-2 rounded-md">
+            <span class="text-yellow-600 dark:text-white text-xl text-base">Este chat se encuentra atendido por un bot o ha finalizado</span>
           </div>
-        </div>
+        </template>
       </div>
     </template>
 
@@ -264,7 +271,7 @@ export default {
   },
   computed:{
     inputAvailable(){
-      if(this.chat_id != '') return true;
+      if(this.chat_id != '' && this.game_id != '' && this.game.state !=2 && this.game.opponent == 1 ) return true;
 
       return false;
     },
