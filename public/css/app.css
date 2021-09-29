@@ -1348,8 +1348,8 @@ select {
 .w-3\/12 {
 	width: 25%;
 }
-.w-1\/2 {
-	width: 50%;
+.w-2\/5 {
+	width: 40%;
 }
 .min-w-0 {
 	min-width: 0px;
@@ -1538,6 +1538,9 @@ select {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.break-words {
+	overflow-wrap: break-word;
 }
 .rounded-md {
 	border-radius: 0.375rem;
