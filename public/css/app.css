@@ -1857,6 +1857,18 @@ select {
 .pr-3 {
 	padding-right: 0.75rem;
 }
+.pr-8 {
+	padding-right: 2rem;
+}
+.pr-20 {
+	padding-right: 5rem;
+}
+.pr-14 {
+	padding-right: 3.5rem;
+}
+.pr-12 {
+	padding-right: 3rem;
+}
 .text-left {
 	text-align: left;
 }

@@ -22067,6 +22067,7 @@ __webpack_require__.r(__webpack_exports__);
     styles: function styles() {
       return {
         'self-end': this.message.transmitter,
+        'self-start': !this.message.transmitter,
         'bg-blue-500': this.message.transmitter,
         'bg-gray-50': !this.message.transmitter,
         'text-white': this.message.transmitter,
@@ -26478,7 +26479,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative max-w-prose text-base", $options.styles])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "mb-2 break-words",
+    "class": "mb-2 break-words pr-12",
     innerHTML: $props.message.message
   }, null, 8
   /* PROPS */
