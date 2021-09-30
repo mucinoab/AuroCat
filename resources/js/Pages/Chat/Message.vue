@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 rounded-xl mt-2 relative w-2/5 text-base" :class="styles">
+    <div class="p-3 rounded-xl mt-2 relative max-w-prose text-base" :class="styles">
         <p class="mb-2 break-words" v-html="message.message"></p>
         <span class="text-xs absolute right-2 bottom-2">{{date}}</span>
     </div>
