@@ -2,17 +2,16 @@
 <app-layout title="Messenger">
   <Head title="Messenger" />
 
-  <div class="flex h-screen dark:bg-cat-light">
+  <div class="grid grid-cols-5 dark:bg-cat-light">
+    
     <!-- Left Section-->
-    <div class="bg-gray-50 rounded shadow p-6 w-auto min-w-max	dark:bg-cat-light flex flex-col">
+    <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light">
       <!-- Chat title -->
-      <div class="mb-4 p-4 text-center dark:bg-cat rounded-md">
-        <h1 class="text-black text-xl font-bold dark:text-white">Chats</h1>
+      <div class="mb-4 p-4 text-center rounded-md dark:bg-cat">
+        <h1 class="text-xl font-bold text-black dark:text-white">Chats</h1>
       </div>
-
       <!-- Error message card -->
       <CardInfo v-if="errors.chatsError" :card="cards[0]"></CardInfo>
-
       <template v-if="loads.loadChats">
         <!-- loading chats icon -->
         <LoadMessage :message="LoadingMessages[0]"></LoadMessage>
@@ -28,10 +27,10 @@
           </UserChat>
         </div>
         <!-- more chats button -->
-        <div class="flex mt-4" v-if="loads.moreChats">
-          <button class="flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring"
+        <div v-if="loads.moreChats">
+          <button class="w-full p-2 m-2 rounded-lg bg-blue-600"
             @click="loadMoreChats">
-            <p class="text-xs text-white text-base">Cargar más chats</p>
+            <p class="font-bold text-xs text-white text-base">Cargar más chats</p>
           </button>
         </div>
       </template>
@@ -39,16 +38,16 @@
 
     <!-- Middle Section -->
     <template v-if="name != ''">
-      <div class="bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light">
+      <div class="col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light">
         <!-- Conversation header -->
-        <div class="flex p-3 justify-between	border-b-2 border-gray-100">
+        <div class="flex p-3 justify-between border-b-2 border-gray-100">
           <!-- Chat name -->
-          <h1 class="text-black text-xl font-bold dark:text-white" :name="name">{{ name }}</h1>
+          <h1 class="text-xl font-bold text-black dark:text-white" :name="name">{{ name }}</h1>
           <!-- Close chat icon -->
           <div>
             <button
               type="button"
-              class="p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring"
+              class="p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100"
               @click="closeChat">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -61,15 +60,15 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="scroll-thin conversation overflow-y-scroll overflow-x-hidden 	flex flex-col items-stretch flex-col-reverse h-screen pr-3">
+        <div class="scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
         <!-- Input for writing a messages -->
         <template v-if="inputAvailable">
-          <div class="flex p-3 mt-5" >
-            <div class="flex-1 px-3">
-              <input type="text" class="w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring"
+          <div class="flex mt-5" >
+            <div class="flex-1">
+              <input type="text" class="w-full rounded-full py-1 text-gray-500"
                 placeholder="Escribe un mensaje..."
                 v-model="message"
                 @keyup.enter="sendMessage"/>
@@ -77,7 +76,7 @@
             <div>
               <button
                 type="button"
-                class="p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring"
+                class="ml-2 p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100"
                 @click="sendMessage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
@@ -88,8 +87,8 @@
           </div>
         </template>
         <template v-else>
-          <div class="text-center bg-orange-200 dark:bg-yellow-500 px-3 py-2 mx-1 my-2 rounded-md">
-            <span class="text-yellow-600 dark:text-white text-xl text-base">Este chat se encuentra atendido por un bot o ha finalizado</span>
+          <div class="text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-yellow-500">
+            <span class="text-xl text-base text-yellow-600 dark:text-white">Este chat se encuentra atendido por un bot o ha finalizado</span>
           </div>
         </template>
       </div>
@@ -97,7 +96,7 @@
 
     <!-- Right Section -->
     <!-- No game message card -->
-    <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat" v-if="errors.gamesError">
+    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat" v-if="errors.gamesError">
       <CardInfo
       :card="cards[1]"
       @click="loadGame"
@@ -105,14 +104,14 @@
     </div>
 
     <!-- No game exists message card -->
-    <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat" v-if="errors.noGameError">
+    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat" v-if="errors.noGameError">
       <CardInfo
       :card="cards[3]"
       ></CardInfo>
     </div>
 
     <template v-if="game != ''">
-      <div class="bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat">
+      <div class="flex flex-col justify-center text-center bg-white dark:bg-cat">
 
         <div class="m-3">
           <!-- Status game card -->
@@ -147,28 +146,19 @@
         :name="name"
         ></GameInformation>
 
-        <div class="flex mt-4">
-          <button class=" font-bold flex justify-center items-center w-full p-2 m-2 rounded-lg  bg-red-500 focus:outline-none focus:ring">
-            <p class="text-xs text-white text-base">Finalizar Partida</p>
+        <div class="p-2">
+          <button class="w-full p-2 rounded-lg bg-red-500">
+            <p class="font-bold text-xs text-white text-base">Finalizar Partida</p>
           </button>
         </div>
       </div>
     </template>
 
   </div>
-    </app-layout>
-
+</app-layout>
 </template>
 
 <style>
-/* To scroll messages to buttom */
-.scroll {
-  width: 300px;
-  max-height: 150px;
-  overflow: scroll;
-  background: lightgrey;
-  margin-bottom: 20px;
-}
 /* scroll in chrome */
 ::-webkit-scrollbar {
   width: 10px;
@@ -190,7 +180,6 @@
   scrollbar-width: thin;
   border-radius: 10px;
 }
-
 </style>
 
 <script>
@@ -375,14 +364,6 @@ export default {
         this.chats.unshift(this.chats.splice(position, 1)[0]);
       }
     },
-    // To send the message to the bottom
-    scrollToEnd() {
-      var container = document.querySelector(".conversation");
-      if(container!=undefined){
-        var scrollHeight = container.scrollHeight;
-        container.scrollTop = scrollHeight;
-      }
-    },
     sendMessage() {
       if (this.message == "") {
         return;
@@ -546,11 +527,7 @@ export default {
   mounted() {
     var channel = pusher.subscribe("nuevo-mensaje");
     channel.bind("App\\Events\\Notify", this.handlePackage);
-    this.scrollToEnd();
   },
-  updated() {
-    this.scrollToEnd();
-  }
 };
 
 </script>
