@@ -511,7 +511,7 @@ export default {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-
+        this.chats = [];
         data.data.forEach(element => {
           this.chats.push(element.chats);
           this.chatsIds.push(element.chats.id)

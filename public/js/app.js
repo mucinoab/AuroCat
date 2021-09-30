@@ -21992,6 +21992,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                 return _context4.abrupt("return", Promise.reject(error));
 
               case 6:
+                _this5.chats = [];
                 data.data.forEach(function (element) {
                   _this5.chats.push(element.chats);
 
@@ -22001,7 +22002,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
                 _this5.loadConversations();
 
-              case 9:
+              case 10:
               case "end":
                 return _context4.stop();
             }
