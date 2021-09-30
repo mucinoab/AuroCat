@@ -2323,9 +2323,6 @@ select {
 .disabled\:opacity-25:disabled {
 	opacity: 0.25;
 }
-.dark .dark\:border-b-2 {
-	border-bottom-width: 2px;
-}
 .dark .dark\:border-gray-700 {
 	--tw-border-opacity: 1;
 	border-color: rgba(63, 63, 70, var(--tw-border-opacity));

@@ -21536,7 +21536,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _LoadMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadMessage.vue */ "./resources/js/Pages/Chat/LoadMessage.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -22109,7 +22109,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     select: function select() {
       return {
-        'border-l-4 border-blue-600': this.chat_id == this.chat.id
+        'border-l-4 border-blue-600 border-b-2': this.chat_id == this.chat.id
       };
     },
     unread: function unread() {
@@ -26528,7 +26528,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$emit('mostrarConversacion');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-b-2 dark:border-blue-600", $options.chatColor, $options.select])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-blue-600", $options.chatColor, $options.select])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
@@ -28020,7 +28020,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* scroll in chrome */\n::-webkit-scrollbar {\r\n  width: 10px;\n}\n::-webkit-scrollbar-track {\r\n  background: #f1f1f1; \r\n  border-radius: 10px;\r\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\r\n  background: #888888; \r\n  border-radius: 10px;\n}\r\n\r\n/* scroll in firefox */\n.scroll-thin{\r\n  scrollbar-color: #888888 #f1f1f1;\r\n  scrollbar-width: thin;\r\n  border-radius: 10px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* To scroll messages to buttom */\n.scroll {\r\n  width: 300px;\r\n  max-height: 150px;\r\n  overflow: scroll;\r\n  background: lightgrey;\r\n  margin-bottom: 20px;\n}\r\n/* scroll in chrome */\n::-webkit-scrollbar {\r\n  width: 10px;\n}\n::-webkit-scrollbar-track {\r\n  background: #f1f1f1; \r\n  border-radius: 10px;\r\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\r\n  background: #888888; \r\n  border-radius: 10px;\n}\r\n\r\n/* scroll in firefox */\n.scroll-thin{\r\n  scrollbar-color: #888888 #f1f1f1;\r\n  scrollbar-width: thin;\r\n  border-radius: 10px;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
