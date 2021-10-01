@@ -1,7 +1,5 @@
 import json, requests
-
 # manda mensaje al webhook, simulando ser una nueva actualización de telegram
-
 update = json.loads("""{
   "message": {
     "chat": {
