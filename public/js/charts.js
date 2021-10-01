@@ -1,4 +1,7 @@
 var charts = [];
+var fontColor = "#fff";
+
+changeTheme();
 updateChartData();
 
 function makeChart(title, data, labels, ctx, type="pie") {
@@ -19,7 +22,7 @@ function makeChart(title, data, labels, ctx, type="pie") {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      color: "#fff",
+      color: fontColor,
       animation: {
         duration: 2500,
         delay: 400,
@@ -29,7 +32,7 @@ function makeChart(title, data, labels, ctx, type="pie") {
         title: {
           display: true,
           text: title,
-          color: "#fff",
+          color: fontColor,
           font: {
             size: 22,
           }
@@ -41,7 +44,6 @@ function makeChart(title, data, labels, ctx, type="pie") {
 
 async function updateChartData() {
   const graphs = ['gwad', 'tgp', 'tp'];
-
 
   // Do all the requests in parallel
   const requests = graphs.map(g => fetch(`/rates/${g}`));
@@ -87,4 +89,29 @@ async function updateChartData() {
 
   const updateTime = document.getElementById("last-update");
   updateTime.innerText = `Última actualización: ${timeFromUnix(unixTime()*1000)}`;
+}
+
+function changeTheme() {
+  fetch("/dark-mode")
+    .then(response => response.json())
+    .then(json => {
+      if(json.darkMode == null) return;
+
+      const body = document.getElementById("main-body");
+      const title = document.getElementById("main-title");
+      const updateTime = document.getElementById("last-update");
+      let background;
+
+      if(json.darkMode) {
+        fontColor = "#fff";
+        background = "#293042";
+      } else {
+        fontColor = "#000";
+        background = "#eef2ff";
+      }
+
+      title.style.color = fontColor;
+      updateTime.style.color = fontColor;
+      body.style.backgroundColor = background;
+    });
 }
