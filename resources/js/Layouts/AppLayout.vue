@@ -315,7 +315,8 @@
             .then(response => response.json())
             .then(json => {
                 if(json.darkMode == null) return;
-                 this.dark = json.darkMode;
+
+                this.dark = json.darkMode;
                 document.getElementById('bighead').className = this.dark ? 'dark': '';
             });
         }

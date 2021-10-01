@@ -476,7 +476,7 @@ export default {
         let position = this.chats.findIndex((chat) => chat.id == this.chat_id);
         this.chats[position].gameId = this.game.id;
       })
-      .catch(error=> {
+      .catch(_ => {
         this.errors.gamesError = false;
         this.errors.noGameError = true;
       });
@@ -538,7 +538,7 @@ export default {
         this.loads.loadChats = false;
         this.loadConversations();
       })
-      .catch(error=> {
+      .catch(_ => {
         this.loads.loadChats = false;
         this.errors.chatsError = true;
       });

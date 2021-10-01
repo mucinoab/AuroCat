@@ -21901,7 +21901,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return function (_x) {
           return _ref.apply(this, arguments);
         };
-      }())["catch"](function (error) {
+      }())["catch"](function (_) {
         _this2.errors.gamesError = false;
         _this2.errors.noGameError = true;
       });
@@ -22021,7 +22021,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return function (_x2) {
         return _ref2.apply(this, arguments);
       };
-    }())["catch"](function (error) {
+    }())["catch"](function (_) {
       _this5.loads.loadChats = false;
       _this5.errors.chatsError = true;
     });
