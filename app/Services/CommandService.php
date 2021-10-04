@@ -93,7 +93,7 @@ class CommandService
     $this->message->createMessage($telegram_user_id, $update_id, $message, 1, $date);
     $this->state->createState($game->id, $board_state, 0, 1, $date);
 
-    FinishGame::dispatch($game)->delay(now()->addMinutes(15));
+    //FinishGame::dispatch($game)->delay(now()->addMinutes(15));
   }
 
   public function updateState($game_id, $board_state, $transmitter)

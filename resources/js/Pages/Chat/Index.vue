@@ -2,10 +2,10 @@
 <app-layout title="Messenger">
   <Head title="Messenger" />
 
-  <div class="grid grid-cols-5 dark:bg-cat-light">
+  <div class="grid grid-cols-6 dark:bg-cat-light">
     
     <!-- Left Section-->
-    <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light">
+    <div class="flex flex-col h-screen p-4 bg-gray-50 dark:bg-cat-light">
       <!-- Chat title -->
       <div class="mb-4 p-4 text-center rounded-md dark:bg-cat">
         <h1 class="text-xl font-bold text-black dark:text-white">Chats</h1>
@@ -28,7 +28,7 @@
         </div>
         <!-- more chats button -->
         <div v-if="loads.moreChats">
-          <button class="w-full p-2 m-2 rounded-lg bg-blue-600"
+          <button class="w-full p-2 m-1 rounded-lg bg-blue-600"
             @click="loadMoreChats">
             <p class="font-bold text-xs text-white text-base">Cargar más chats</p>
           </button>
@@ -38,7 +38,7 @@
 
     <!-- Middle Section -->
     <template v-if="name != ''">
-      <div class="col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light">
+      <div class="col-span-4 flex flex-col h-screen p-3 bg-white dark:bg-cat-light">
         <!-- Conversation header -->
         <div class="flex p-3 justify-between border-b-2 border-gray-100">
           <!-- Chat name -->
