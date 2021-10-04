@@ -1,6 +1,6 @@
 <template>
-    <div class="p-3 rounded-xl mt-2 relative w-2/5 text-base" :class="styles">
-        <p class="mb-2 break-words" v-html="message.message"></p>
+    <div class="p-3 rounded-xl mt-2 relative max-w-prose text-base" :class="styles">
+        <p class="mb-2 break-words pr-12" v-html="message.message"></p>
         <span class="text-xs absolute right-2 bottom-2">{{date}}</span>
     </div>
 </template>
@@ -17,6 +17,7 @@ export default {
         styles(){
             return {
                 'self-end':this.message.transmitter,
+                'self-start':!this.message.transmitter,
                 'bg-blue-500':this.message.transmitter,
                 'bg-gray-50':!this.message.transmitter,
                 'text-white':this.message.transmitter,

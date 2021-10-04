@@ -21536,7 +21536,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _LoadMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadMessage.vue */ "./resources/js/Pages/Chat/LoadMessage.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -21758,15 +21758,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
         this.chats.unshift(this.chats.splice(position, 1)[0]);
-      }
-    },
-    // To send the message to the bottom
-    scrollToEnd: function scrollToEnd() {
-      var container = document.querySelector(".conversation");
-
-      if (container != undefined) {
-        var scrollHeight = container.scrollHeight;
-        container.scrollTop = scrollHeight;
       }
     },
     sendMessage: function sendMessage() {
@@ -22001,6 +21992,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                 return _context4.abrupt("return", Promise.reject(error));
 
               case 6:
+                _this5.chats = [];
                 data.data.forEach(function (element) {
                   _this5.chats.push(element.chats);
 
@@ -22010,7 +22002,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
                 _this5.loadConversations();
 
-              case 9:
+              case 10:
               case "end":
                 return _context4.stop();
             }
@@ -22029,10 +22021,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   mounted: function mounted() {
     var channel = pusher.subscribe("nuevo-mensaje");
     channel.bind("App\\Events\\Notify", this.handlePackage);
-    this.scrollToEnd();
-  },
-  updated: function updated() {
-    this.scrollToEnd();
   }
 });
 
@@ -22079,6 +22067,7 @@ __webpack_require__.r(__webpack_exports__);
     styles: function styles() {
       return {
         'self-end': this.message.transmitter,
+        'self-start': !this.message.transmitter,
         'bg-blue-500': this.message.transmitter,
         'bg-gray-50': !this.message.transmitter,
         'text-white': this.message.transmitter,
@@ -22121,7 +22110,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     select: function select() {
       return {
-        'border-l-4 border-blue-600': this.chat_id == this.chat.id
+        'border-l-4 border-blue-600 border-b-2': this.chat_id == this.chat.id
       };
     },
     unread: function unread() {
@@ -26160,16 +26149,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex h-screen dark:bg-cat-light"
+  "class": "grid grid-cols-5 dark:bg-cat-light"
 };
 var _hoisted_2 = {
-  "class": "bg-gray-50 rounded shadow p-6 w-auto min-w-max\tdark:bg-cat-light flex flex-col"
+  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mb-4 p-4 text-center dark:bg-cat rounded-md"
+  "class": "mb-4 p-4 text-center rounded-md dark:bg-cat"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-black text-xl font-bold dark:text-white"
+  "class": "text-xl font-bold text-black dark:text-white"
 }, "Chats")], -1
 /* HOISTED */
 );
@@ -26178,12 +26167,11 @@ var _hoisted_4 = {
   "class": "scroll-thin overflow-auto"
 };
 var _hoisted_5 = {
-  key: 0,
-  "class": "flex mt-4"
+  key: 0
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-xs text-white text-base"
+  "class": "font-bold text-xs text-white text-base"
 }, "Cargar más chats", -1
 /* HOISTED */
 );
@@ -26191,10 +26179,10 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   key: 0,
-  "class": "bg-white rounded shadow p-6 w-full lg:w-3/4 flex flex-col justify-between dark:bg-cat-light"
+  "class": "col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between\tborder-b-2 border-gray-100"
+  "class": "flex p-3 justify-between border-b-2 border-gray-100"
 };
 var _hoisted_10 = ["name"];
 
@@ -26215,14 +26203,14 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_12 = [_hoisted_11];
 var _hoisted_13 = {
-  "class": "scroll-thin conversation overflow-y-scroll overflow-x-hidden \tflex flex-col items-stretch flex-col-reverse h-screen pr-3"
+  "class": "scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3"
 };
 var _hoisted_14 = {
   key: 1,
-  "class": "flex p-3 mt-5"
+  "class": "flex mt-5"
 };
 var _hoisted_15 = {
-  "class": "flex-1 px-3"
+  "class": "flex-1"
 };
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -26239,11 +26227,11 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_17 = [_hoisted_16];
 var _hoisted_18 = {
   key: 2,
-  "class": "text-center bg-orange-200 dark:bg-yellow-500 px-3 py-2 mx-1 my-2 rounded-md"
+  "class": "text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-yellow-500"
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-yellow-600 dark:text-white text-xl text-base"
+  "class": "text-xl text-base text-yellow-600 dark:text-white"
 }, "Este chat se encuentra atendido por un bot o ha finalizado", -1
 /* HOISTED */
 );
@@ -26251,26 +26239,26 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
   key: 1,
-  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
 };
 var _hoisted_22 = {
   key: 2,
-  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "bg-white rounded shadow flex flex-col lg:w-1/5  justify-center text-center dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
 };
 var _hoisted_24 = {
   "class": "m-3"
 };
 
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex mt-4"
+  "class": "p-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": " font-bold flex justify-center items-center w-full p-2 m-2 rounded-lg  bg-red-500 focus:outline-none focus:ring"
+  "class": "w-full p-2 rounded-lg bg-red-500"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-xs text-white text-base"
+  "class": "font-bold text-xs text-white text-base"
 }, "Finalizar Partida")])], -1
 /* HOISTED */
 );
@@ -26328,20 +26316,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), $data.loads.moreChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        "class": "flex justify-center items-center w-full p-2 m-2 rounded-lg bg-blue-600 focus:outline-none focus:ring",
+        "class": "w-full p-2 m-2 rounded-lg bg-blue-600",
         onClick: _cache[0] || (_cache[0] = function () {
           return $options.loadMoreChats && $options.loadMoreChats.apply($options, arguments);
         })
       }, _hoisted_7)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
       /* STABLE_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Conversation header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-        "class": "text-black text-xl font-bold dark:text-white",
+        "class": "text-xl font-bold text-black dark:text-white",
         name: $data.name
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 9
       /* TEXT, PROPS */
       , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring",
+        "class": "p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[1] || (_cache[1] = function () {
           return $options.closeChat && $options.closeChat.apply($options, arguments);
         })
@@ -26360,7 +26348,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), $options.inputAvailable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "text",
-        "class": "w-full border-2 border-gray-100 rounded-full px-4 py-1 outline-none text-gray-500 focus:outline-none  focus:ring",
+        "class": "w-full rounded-full py-1 text-gray-500",
         placeholder: "Escribe un mensaje...",
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.message = $event;
@@ -26372,7 +26360,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* HYDRATE_EVENTS, NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "p-2 ml-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring",
+        "class": "ml-2 p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
@@ -26489,9 +26477,9 @@ var _hoisted_2 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative w-2/5 text-base", $options.styles])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative max-w-prose text-base", $options.styles])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "mb-2 break-words",
+    "class": "mb-2 break-words pr-12",
     innerHTML: $props.message.message
   }, null, 8
   /* PROPS */
@@ -26541,7 +26529,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$emit('mostrarConversacion');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-b-2 dark:border-blue-600", $options.chatColor, $options.select])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-blue-600", $options.chatColor, $options.select])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
@@ -27864,17 +27852,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
-var _window$document$getE;
-
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+ //const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
-var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaApp)({
   title: function title(_title) {
-    return "".concat(_title, " - ").concat(appName);
+    return "".concat(_title);
   },
   resolve: function resolve(name) {
     return __webpack_require__("./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$")("./".concat(name, ".vue"));
@@ -28033,7 +28019,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* To scroll messages to buttom */\n.scroll {\n  width: 300px;\n  max-height: 150px;\n  overflow: scroll;\n  background: lightgrey;\n  margin-bottom: 20px;\n}\n/* scroll in chrome */\n::-webkit-scrollbar {\n  width: 10px;\n}\n::-webkit-scrollbar-track {\n  background: #f1f1f1; \n  border-radius: 10px;\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\n  background: #888888; \n  border-radius: 10px;\n}\n\n/* scroll in firefox */\n.scroll-thin{\n  scrollbar-color: #888888 #f1f1f1;\n  scrollbar-width: thin;\n  border-radius: 10px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* scroll in chrome */\n::-webkit-scrollbar {\r\n  width: 10px;\n}\n::-webkit-scrollbar-track {\r\n  background: #f1f1f1; \r\n  border-radius: 10px;\r\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\r\n  background: #888888; \r\n  border-radius: 10px;\n}\r\n\r\n/* scroll in firefox */\n.scroll-thin{\r\n  scrollbar-color: #888888 #f1f1f1;\r\n  scrollbar-width: thin;\r\n  border-radius: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
