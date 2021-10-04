@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 html {
   scroll-behavior: smooth;
-  font-family: sans-serif;
 }
 
 body {
@@ -248,3 +249,4 @@ span {
 svg path, svg rect{
   fill: #85a2b6;
 }
+
