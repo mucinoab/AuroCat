@@ -26627,7 +26627,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_4 = {
-  "class": "mt-5"
+  "class": "mt-5 flex justify-end"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Eliminar cuenta ");
@@ -26854,7 +26854,7 @@ var _hoisted_17 = {
   key: 1
 };
 var _hoisted_18 = {
-  "class": "flex items-center mt-5"
+  "class": "flex justify-end mt-5"
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cerrar sesión en otras sesiones del explorador ");
@@ -27076,7 +27076,7 @@ var _hoisted_12 = {
   "class": "grid gap-1 max-w-xl mt-4 px-4 py-4 font-mono text-sm bg-gray-100 rounded-lg"
 };
 var _hoisted_13 = {
-  "class": "mt-5"
+  "class": "mt-5 flex justify-end"
 };
 var _hoisted_14 = {
   key: 0
