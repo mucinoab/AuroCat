@@ -5,7 +5,7 @@
   <div class="grid grid-cols-5 dark:bg-cat-light">
     
     <!-- Left Section-->
-    <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light">
+    <div class="flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-light">
       <!-- Chat title -->
       <div class="mb-4 p-4 text-center rounded-md dark:bg-cat">
         <h1 class="text-xl font-bold text-black dark:text-white">Chats</h1>
@@ -111,7 +111,7 @@
     </div>
 
     <template v-if="game != ''">
-      <div class="flex flex-col justify-center text-center bg-white dark:bg-cat">
+      <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat">
 
         <div class="m-3">
           <!-- Status game card -->
