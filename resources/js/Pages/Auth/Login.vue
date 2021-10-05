@@ -1,5 +1,5 @@
 <template>
-    <Head title="Gatonix" />
+    <Head title="Login AuroCat" />
 
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
         <Link :href="route('inicio')" class="ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500">

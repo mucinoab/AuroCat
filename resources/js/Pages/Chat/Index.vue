@@ -27,8 +27,8 @@
           </UserChat>
         </div>
         <!-- more chats button -->
-        <div v-if="loads.moreChats">
-          <button class="w-full p-2 m-2 rounded-lg bg-cat-hard-blue-2"
+        <div class="flex justify-center" v-if="loads.moreChats">
+          <button class="w-3/4 p-2 rounded-lg bg-cat-hard-blue-2"
             @click="loadMoreChats">
             <p class="font-medium text-base text-cat-light-secundary-3">Cargar más chats</p>
           </button>
@@ -146,8 +146,8 @@
         :name="name"
         ></GameInformation>
 
-        <div class="p-2">
-          <button class="w-full p-2 rounded-lg bg-red-500">
+        <div class="flex justify-center">
+          <button class="w-3/4 p-2 rounded-lg bg-red-500">
             <p class="font-medium text-base text-cat-light-secundary-3">Finalizar Partida</p>
           </button>
         </div>
