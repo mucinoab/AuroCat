@@ -11,7 +11,7 @@ function makeChart(title, data, labels, ctx, type="pie") {
       labels: labels,
       datasets: [{
         data: data,
-        hoverOffset: 40,
+        hoverOffset: 20,
         backgroundColor: [
           "#C794AD",
           "#94ADC7",

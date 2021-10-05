@@ -147,7 +147,7 @@ class DashboardController extends Controller
       ->first()['total'];
 
     return response()->json([
-      'title' => "Time Played",
+      'title' => "Time Played (Seconds)",
       'data' => [
         $time_played_vs_agent,
         $time_played_vs_bot
