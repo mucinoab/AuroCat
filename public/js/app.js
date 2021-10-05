@@ -21536,7 +21536,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _LoadMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadMessage.vue */ "./resources/js/Pages/Chat/LoadMessage.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -24104,7 +24104,7 @@ var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_65 = [_hoisted_64];
 var _hoisted_66 = {
   key: 0,
-  "class": "bg-white dark:bg-cat-dark shadow"
+  "class": "bg-cat-light-1 dark:bg-cat-dark shadow"
 };
 var _hoisted_67 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
@@ -26152,7 +26152,7 @@ var _hoisted_1 = {
   "class": "grid grid-cols-5 dark:bg-cat-light"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light"
+  "class": "flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-light"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -26248,7 +26248,7 @@ var _hoisted_22 = {
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat"
 };
 var _hoisted_24 = {
   "class": "m-3"
@@ -27298,7 +27298,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "current_password",
         type: "password",
-        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
         modelValue: $data.form.current_password,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $data.form.current_password = $event;
@@ -27318,7 +27318,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
         type: "password",
-        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
         modelValue: $data.form.password,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.password = $event;
@@ -27338,7 +27338,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password_confirmation",
         type: "password",
-        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
         modelValue: $data.form.password_confirmation,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.password_confirmation = $event;
@@ -27535,7 +27535,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "name",
         type: "text",
-        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
         modelValue: $data.form.name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.name = $event;
@@ -27554,7 +27554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
         type: "email",
-        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
         modelValue: $data.form.email,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.email = $event;
@@ -27622,7 +27622,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "font-semibold text-xl text-white leading-tight dark:text-white text-black"
+  "class": "font-semibold text-xl leading-tight dark:text-white text-black"
 }, " Mi perfil ", -1
 /* HOISTED */
 );
@@ -55474,4 +55474,5 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$";
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
-/******/ })();
+/******/ })()
+;
