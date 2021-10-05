@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="mt-5">
+            <div class="mt-5 flex justify-end">
                 <div v-if="! twoFactorEnabled">
                     <jet-confirms-password @confirmed="enableTwoFactorAuthentication">
                         <jet-button type="button" :class="{ 'opacity-25': enabling }" :disabled="enabling">

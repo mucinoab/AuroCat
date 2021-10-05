@@ -13,7 +13,7 @@
                 Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar.
             </div>
 
-            <div class="mt-5">
+            <div class="mt-5 flex justify-end">
                 <jet-danger-button @click="confirmUserDeletion">
                     Eliminar cuenta
                 </jet-danger-button>

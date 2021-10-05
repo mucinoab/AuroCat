@@ -62,7 +62,7 @@
             </jet-action-message>
 
             <jet-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Guardar.
+                Guardar
             </jet-button>
         </template>
     </jet-form-section>
