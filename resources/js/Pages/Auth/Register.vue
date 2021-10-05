@@ -16,22 +16,22 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="name" value="Nombre" class="text-cat-dark dark:text-white"/>
+                <jet-label for="name" value="Nombre" class="text-cat-dark dark:text-white text-lg font-medium"/>
                 <jet-input id="name" type="text" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white"/>
+                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white text-lg font-medium"/>
                 <jet-input id="email" type="email" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white"/>
+                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white text-lg font-medium"/>
                 <jet-input id="password" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirmar contraseña" class="text-cat-dark dark:text-white"/>
+                <jet-label for="password_confirmation" value="Confirmar contraseña" class="text-cat-dark dark:text-white text-lg font-medium"/>
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -48,7 +48,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-white hover:text-gray-900">
+                <Link :href="route('login')" class="underline text-white hover:text-gray-900 text-lg font-medium">
                     ¿Ya está registrado?
                 </Link>
 

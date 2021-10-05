@@ -1741,6 +1741,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(103, 114, 143, var(--tw-bg-opacity));
 }
+.bg-cat-hard-colors-2 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(119, 173, 102, var(--tw-bg-opacity));
+}
+.bg-cat-hard-colors-3 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(169, 173, 102, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -2072,6 +2080,14 @@ select {
 .text-cat-hard-5 {
 	--tw-text-opacity: 1;
 	color: rgba(32, 37, 51, var(--tw-text-opacity));
+}
+.text-cat-hard-secundary-4 {
+	--tw-text-opacity: 1;
+	color: rgba(66, 59, 41, var(--tw-text-opacity));
+}
+.text-cat-hard-secundary-3 {
+	--tw-text-opacity: 1;
+	color: rgba(143, 119, 60, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -2495,6 +2511,18 @@ select {
 .dark .dark\:bg-cat-light-blue-5 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(137, 168, 199, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-cat-hard-secundary-3 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(143, 119, 60, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-cat-hard-colors-2 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(119, 173, 102, var(--tw-bg-opacity));
+}
+.dark .dark\:bg-cat-hard-colors-3 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(169, 173, 102, var(--tw-bg-opacity));
 }
 .dark .dark\:text-white {
 	--tw-text-opacity: 1;

@@ -1,23 +1,23 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="dark:text-white text-black">Autenticación de dos factores</span>
+            <span class="dark:text-white text-lg font-bold">Autenticación de dos factores</span>
         </template>
 
         <template #description>
-            <span class="dark:text-gray-200 text-gray-500">Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.</span>
+            <span class="dark:text-gray-200 text-gray-500 text-base font-medium">Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.</span>
         </template>
 
         <template #content>
-            <h3 class="text-lg font-medium text-white" v-if="twoFactorEnabled">
+            <h3 class="text-lg font-bold text-white" v-if="twoFactorEnabled">
                 Ha habilitado la autenticación de dos factores.
             </h3>
 
-            <h3 class="text-lg font-medium text-white" v-else>
+            <h3 class="text-lg font-bold text-white" v-else>
                 No ha habilitado la autenticación de dos factores.
             </h3>
 
-            <div class="mt-3 max-w-xl text-sm text-gray-200">
+            <div class="mt-3 max-w-xl text-gray-200 text-base font-medium">
                 <p>
                     Cuando se habilita la autenticación de dos factores, se le pedirá un token seguro y aleatorio durante la autenticación. Puede recuperar este token de la aplicación Google Authenticator de su teléfono.
                 </p>
@@ -26,7 +26,7 @@
             <div v-if="twoFactorEnabled">
                 <div v-if="qrCode">
                     <div class="mt-4 max-w-xl text-sm text-gray-200">
-                        <p class="font-semibold">
+                        <p class="font-semibold text-base font-medium">
                             La autenticación de dos factores ahora está habilitada. Escanee el siguiente código QR usando la aplicación de autenticación de su teléfono.
                         </p>
                     </div>

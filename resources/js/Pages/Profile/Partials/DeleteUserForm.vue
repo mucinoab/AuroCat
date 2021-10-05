@@ -1,15 +1,15 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="dark:text-white text-black">Eliminar cuenta</span>
+            <span class="dark:text-white text-lg font-bold">Eliminar cuenta</span>
         </template>
 
         <template #description>
-            <span class="dark:text-gray-200 text-gray-500">Elimina permanentemente tu cuenta.</span>
+            <span class="dark:text-gray-200 text-gray-500 text-base font-medium">Elimina permanentemente tu cuenta.</span>
         </template>
 
         <template #content>
-            <div class="max-w-xl text-sm text-gray-200">
+            <div class="max-w-xl text-gray-200 text-base font-medium">
                 Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar.
             </div>
 

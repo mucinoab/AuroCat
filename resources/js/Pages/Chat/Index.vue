@@ -87,8 +87,8 @@
           </div>
         </template>
         <template v-else>
-          <div class="text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-yellow-500">
-            <span class="font-medium text-base text-yellow-600 dark:text-white">Este chat se encuentra atendido por un bot o ha finalizado</span>
+          <div class="text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-cat-hard-secundary-3">
+            <span class="font-medium text-base text-yellow-600 dark:text-cat-light-secundary-3">Este chat se encuentra atendido por un bot o ha finalizado</span>
           </div>
         </template>
       </div>

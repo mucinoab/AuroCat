@@ -1,6 +1,6 @@
 <template>
     <Head title="Welcome" />
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-hard-1">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-hard-5">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <Link v-if="$page.props.user" :href="route('messenger')" class="text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500">
                 Messenger
@@ -25,7 +25,7 @@
                 <h1 class="pl-2 pt-4 text-cat-logo dark:text-cat-light-secundary-3 text-6xl font-black	">AuroCat</h1>
             </div>
 
-            <div class="mt-8 bg-white dark:bg-cat-hard-4 overflow-hidden shadow sm:rounded-lg">
+            <div class="mt-8 bg-white dark:bg-cat-hard-1 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
                         <div class="flex items-center">

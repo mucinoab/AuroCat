@@ -35,8 +35,8 @@ export default {
       chatColor(){
         if(this.chat.state != 2){
           return {
-            'bg-yellow-500': this.chat.turn,
-            'bg-green-500': !this.chat.turn,
+            'bg-yellow-500 dark:bg-cat-hard-colors-3': this.chat.turn,
+            'bg-green-500 dark:bg-cat-hard-colors-2': !this.chat.turn,
             'bg-opacity-75': true,
           }
         }

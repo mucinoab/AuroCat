@@ -35,12 +35,12 @@ export default {
         },
         color(){
 
-            if(this.game.state == 2) return 'border-blue-600 bg-blue-500';
+            if(this.game.state == 2) return 'bg-cat-hard-blue-2';
 
             if(this.game.state_relation.turn == 1) 
-                return 'border-yellow-600 bg-yellow-500';
+                return 'bg-yellow-500 dark:bg-cat-hard-colors-3';
             else 
-                return 'border-green-600 bg-green-500';
+                return 'bg-green-500 dark:bg-cat-hard-colors-2';
         }
         
     }
