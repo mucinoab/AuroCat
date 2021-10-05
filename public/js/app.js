@@ -21536,7 +21536,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _LoadMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadMessage.vue */ "./resources/js/Pages/Chat/LoadMessage.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -22068,10 +22068,10 @@ __webpack_require__.r(__webpack_exports__);
       return {
         'self-end': this.message.transmitter,
         'self-start': !this.message.transmitter,
-        'bg-blue-500': this.message.transmitter,
-        'bg-gray-50': !this.message.transmitter,
-        'text-white': this.message.transmitter,
-        'text-black': !this.message.transmitter
+        'bg-cat-hard-blue-2': this.message.transmitter,
+        'bg-cat-light-secundary-3': !this.message.transmitter,
+        'text-cat-light-secundary-3': this.message.transmitter,
+        'text-cat-hard-5': !this.message.transmitter
       };
     }
   }
@@ -23842,10 +23842,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-dark"
+  "class": "min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-hard-blue-5"
 };
 var _hoisted_2 = {
-  "class": "bg-cat-dark-light border-b border-gray-600 dark:bg-cat-dark"
+  "class": "bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-blue-1"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -23872,13 +23872,21 @@ var _hoisted_8 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Messenger ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "font-medium text-base"
+}, "Messenger", -1
+/* HOISTED */
+);
 
 var _hoisted_10 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Stats ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "font-medium text-base"
+}, "Stats", -1
+/* HOISTED */
+);
 
 var _hoisted_12 = {
   "class": "hidden sm:flex sm:items-center sm:ml-6"
@@ -23976,7 +23984,7 @@ var _hoisted_33 = {
 };
 var _hoisted_34 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 dark:bg-cat-dark-light hover:text-gray-300 focus:outline-none transition"
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 dark:dark:bg-cat-hard-blue-1 hover:text-gray-300 focus:outline-none transition"
 };
 
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -26063,7 +26071,7 @@ var _hoisted_3 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center", $options.color])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 px-6 inline-flex items-center", $options.color])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     fill: "currentcolor",
     d: $options.item
@@ -26095,7 +26103,7 @@ var _hoisted_1 = {
   "class": "col-span-12 sm:col-span-6 md:col-span-3"
 };
 var _hoisted_2 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat"
+  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat-hard-blue-5"
 };
 var _hoisted_3 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26109,10 +26117,10 @@ var _hoisted_5 = {
   "class": "flex flex-col flex-grow ml-4"
 };
 var _hoisted_6 = {
-  "class": "text-sm text-gray-500 dark:text-gray-300"
+  "class": "text-base text-gray-500 dark:text-cat-gray-5"
 };
 var _hoisted_7 = {
-  "class": "font-bold text-lg dark:text-white"
+  "class": "font-bold text-xl dark:text-cat-light-secundary-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -26149,16 +26157,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "grid grid-cols-5 dark:bg-cat-light"
+  "class": "grid grid-cols-5 dark:bg-cat-gray-4"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light"
+  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mb-4 p-4 text-center rounded-md dark:bg-cat"
+  "class": "mb-4 p-2 text-center rounded-md dark:bg-cat-gray-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-xl font-bold text-black dark:text-white"
+  "class": "text-2xl font-bold text-black dark:text-white"
 }, "Chats")], -1
 /* HOISTED */
 );
@@ -26171,7 +26179,7 @@ var _hoisted_5 = {
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-bold text-xs text-white text-base"
+  "class": "font-medium text-base text-cat-light-secundary-3"
 }, "Cargar más chats", -1
 /* HOISTED */
 );
@@ -26179,10 +26187,10 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   key: 0,
-  "class": "col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light"
+  "class": "col-span-3 flex flex-col h-screen bg-white dark:bg-cat-gray-4"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between border-b-2 border-gray-100"
+  "class": "flex p-3 justify-between dark:bg-cat-hard-secundary-2"
 };
 var _hoisted_10 = ["name"];
 
@@ -26203,11 +26211,11 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_12 = [_hoisted_11];
 var _hoisted_13 = {
-  "class": "scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3"
+  "class": "scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3 pl-3"
 };
 var _hoisted_14 = {
   key: 1,
-  "class": "flex mt-5"
+  "class": "flex mt-5 pl-2"
 };
 var _hoisted_15 = {
   "class": "flex-1"
@@ -26231,7 +26239,7 @@ var _hoisted_18 = {
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-xl text-base text-yellow-600 dark:text-white"
+  "class": "font-medium text-base text-yellow-600 dark:text-white"
 }, "Este chat se encuentra atendido por un bot o ha finalizado", -1
 /* HOISTED */
 );
@@ -26239,15 +26247,15 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
   key: 1,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
 };
 var _hoisted_22 = {
   key: 2,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
 };
 var _hoisted_24 = {
   "class": "m-3"
@@ -26258,7 +26266,7 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "w-full p-2 rounded-lg bg-red-500"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-bold text-xs text-white text-base"
+  "class": "font-medium text-base text-cat-light-secundary-3"
 }, "Finalizar Partida")])], -1
 /* HOISTED */
 );
@@ -26316,20 +26324,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), $data.loads.moreChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        "class": "w-full p-2 m-2 rounded-lg bg-blue-600",
+        "class": "w-full p-2 m-2 rounded-lg bg-cat-hard-blue-2",
         onClick: _cache[0] || (_cache[0] = function () {
           return $options.loadMoreChats && $options.loadMoreChats.apply($options, arguments);
         })
       }, _hoisted_7)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
       /* STABLE_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Conversation header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-        "class": "text-xl font-bold text-black dark:text-white",
+        "class": "text-2xl font-medium text-black dark:text-white",
         name: $data.name
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 9
       /* TEXT, PROPS */
       , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[1] || (_cache[1] = function () {
           return $options.closeChat && $options.closeChat.apply($options, arguments);
         })
@@ -26348,7 +26356,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), $options.inputAvailable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "text",
-        "class": "w-full rounded-full py-1 text-gray-500",
+        "class": "w-full rounded-full py-1 text-cat-hard-5",
         placeholder: "Escribe un mensaje...",
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.message = $event;
@@ -26360,7 +26368,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* HYDRATE_EVENTS, NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "ml-2 p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "ml-2 p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
@@ -26479,7 +26487,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative max-w-prose text-base", $options.styles])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "mb-2 break-words pr-12",
+    "class": "mb-2 break-words pr-12 text-base font-normal",
     innerHTML: $props.message.message
   }, null, 8
   /* PROPS */
@@ -26512,7 +26520,7 @@ var _hoisted_2 = {
   "class": "flex flex-row justify-between items-center"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-bold text-black dark:text-white pb-3"
+  "class": "text-lg font-bold text-black dark:text-cat-light-secundary-3 pb-3"
 };
 var _hoisted_4 = {
   "class": "text-sm"
@@ -26535,7 +26543,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "text-xs text-gray-500 dark:text-gray-300",
+    "class": "text-base text-medium text-gray-500 dark:text-gray-300",
     innerHTML: $options.lengthMessage
   }, null, 8
   /* PROPS */
@@ -27745,7 +27753,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-dark"
+  "class": "relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-hard-1"
 };
 var _hoisted_2 = {
   key: 0,
@@ -27758,7 +27766,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Registrarse ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"max-w-6xl mx-auto sm:px-6 lg:px-8\"><div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\"><img class=\"rounded-md w-24 h-24\" src=\"/images/logo.png\" alt=\"logo\"><h1 class=\"pl-2 pt-4 text-cat-logo dark:text-white text-6xl font-extrabold\t\">AuroCat</h1></div><div class=\"mt-8 bg-white dark:bg-cat-light overflow-hidden shadow sm:rounded-lg\"><div class=\"grid grid-cols-1 md:grid-cols-2\"><div class=\"p-6\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path></svg><div class=\"ml-4 text-lg leading-7 font-semibold\"><a href=\"https://github.com/mucinoab/InternAuro\" class=\"underline text-black dark:text-white\">Documentación</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-white text-sm\"> La documentación de nuestro proyecto se encuentra en nuestro repositorio de GitHub. </div></div></div><div class=\"p-6  border-gray-200 dark:border-gray-700\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z\"></path></svg><div class=\"ml-4 text-lg leading-7 font-semibold\"><a href=\"https://t.me/aeolus_help_bot\" class=\"underline text-black dark:text-white\">Chabot Telegram</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-white text-sm\"> Comienza a jugar con nuestro chatbot en Telegram. </div></div></div></div></div><div class=\"flex justify-center pt-3\"><img class=\"rounded-md h-50 w-3/12 border-solid border-8 border-cat-logo dark:border-cat\" src=\"/images/animacionBienvenida.gif\" alt=\"logo\"></div><div class=\"flex justify-center mt-4 sm:items-center sm:justify-between\"><div class=\"ml-4 text-center text-sm  text-gray-700 dark:text-white sm:text-right sm:ml-0\"> AuroCat v 1.0 </div></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"max-w-6xl mx-auto sm:px-6 lg:px-8\"><div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\"><img class=\"rounded-md w-24 h-24\" src=\"/images/logo.png\" alt=\"logo\"><h1 class=\"pl-2 pt-4 text-cat-logo dark:text-cat-light-secundary-3 text-6xl font-black\t\">AuroCat</h1></div><div class=\"mt-8 bg-white dark:bg-cat-hard-4 overflow-hidden shadow sm:rounded-lg\"><div class=\"grid grid-cols-1 md:grid-cols-2\"><div class=\"p-6\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path></svg><div class=\"ml-4 text-2xl leading-7 font-bold\"><a href=\"https://github.com/mucinoab/InternAuro\" class=\"underline text-black dark:text-cat-light-secundary-3\">Documentación</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-cat-gray-4 text-base font-medium\"> La documentación de nuestro proyecto se encuentra en nuestro repositorio de GitHub. </div></div></div><div class=\"p-6  border-gray-200 dark:border-gray-700\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z\"></path></svg><div class=\"ml-4 text-2xl leading-7 font-bold\"><a href=\"https://t.me/aeolus_help_bot\" class=\"underline text-black dark:text-cat-light-secundary-3\">Chabot Telegram</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-cat-gray-4 text-base font-medium\"> Comienza a jugar con nuestro chatbot en Telegram. </div></div></div></div></div><div class=\"flex justify-center pt-3\"><img class=\"rounded-md h-50 w-3/12 border-solid border-8 border-cat-logo dark:border-cat\" src=\"/images/animacionBienvenida.gif\" alt=\"logo\"></div><div class=\"flex justify-center mt-4 sm:items-center sm:justify-between\"><div class=\"ml-4 text-center text-sm  text-gray-700 dark:text-white sm:text-right sm:ml-0 font-normal\"> AuroCat v 1.0 </div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -27770,7 +27778,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$props.canLogin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('messenger'),
-    "class": "text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3];
@@ -27784,7 +27792,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('login'),
-    "class": "text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4];
@@ -27797,7 +27805,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["href"]), $props.canRegister ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('register'),
-    "class": "ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "ml-4 text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_5];
@@ -28019,7 +28027,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n/* scroll in chrome */\n::-webkit-scrollbar {\n  width: 10px;\n}\n::-webkit-scrollbar-track {\n  background: #f1f1f1; \n  border-radius: 10px;\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\n  background: #888888; \n  border-radius: 10px;\n}\n\n/* scroll in firefox */\n.scroll-thin{\n  scrollbar-color: #888888 #f1f1f1;\n  scrollbar-width: thin;\n  border-radius: 10px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n/* scroll in chrome */\n::-webkit-scrollbar {\r\n  width: 10px;\n}\n::-webkit-scrollbar-track {\r\n  background: #f1f1f1; \r\n  border-radius: 10px;\r\n  box-shadow: inset 0 0 1px #888888;\n}\n::-webkit-scrollbar-thumb {\r\n  background: #888888; \r\n  border-radius: 10px;\n}\r\n\r\n/* scroll in firefox */\n.scroll-thin{\r\n  scrollbar-color: #888888 #f1f1f1;\r\n  scrollbar-width: thin;\r\n  border-radius: 10px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

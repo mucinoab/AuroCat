@@ -4,14 +4,14 @@
       :class="chatColor,select">
     <div class="w-full">
       <div class="flex flex-row justify-between items-center">
-        <h2 class="text-lg font-bold text-black dark:text-white pb-3">{{chat.name}}</h2>
+        <h2 class="text-lg font-bold text-black dark:text-cat-light-secundary-3 pb-3">{{chat.name}}</h2>
         <div class="text-sm">
           <span class="text-gray-500 dark:text-gray-300">{{date}}</span>
         </div>
       </div>
       
       <div class="flex justify-between">
-        <p class="text-xs text-gray-500 dark:text-gray-300" v-html="lengthMessage"></p>
+        <p class="text-base text-medium text-gray-500 dark:text-gray-300" v-html="lengthMessage"></p>
         <span 
           v-if="chat.unread" 
           class="text-sm bg-blue-500 rounded-full h-5 text-center text-white font-bold" 
