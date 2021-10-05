@@ -236,6 +236,7 @@ span {
 }
 
 .graph {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
   margin: 0.5em;
   height: 40em;
 }
