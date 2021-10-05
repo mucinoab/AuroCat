@@ -26512,7 +26512,7 @@ var _hoisted_2 = {
   "class": "flex flex-row justify-between items-center"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-bold text-black dark:text-white"
+  "class": "text-lg font-bold text-black dark:text-white pb-3"
 };
 var _hoisted_4 = {
   "class": "text-sm"
