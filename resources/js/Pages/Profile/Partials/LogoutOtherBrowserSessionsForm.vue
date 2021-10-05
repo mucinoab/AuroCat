@@ -44,7 +44,7 @@
             </div>
 
             <div class="flex justify-end mt-5">
-                <jet-button @click="confirmLogout">
+                <jet-button @click="confirmLogout" class="text-sm font-bold">
                     Cerrar sesión en otras sesiones del explorador
                 </jet-button>
 

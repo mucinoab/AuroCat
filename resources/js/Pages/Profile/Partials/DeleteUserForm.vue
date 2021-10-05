@@ -14,7 +14,7 @@
             </div>
 
             <div class="mt-5 flex justify-end">
-                <jet-danger-button @click="confirmUserDeletion">
+                <jet-danger-button @click="confirmUserDeletion" class="text-sm font-bold">
                     Eliminar cuenta
                 </jet-danger-button>
             </div>
