@@ -4,7 +4,7 @@
       :class="chatColor,select">
     <div class="w-full">
       <div class="flex flex-row justify-between items-center">
-        <h2 class="text-lg font-bold text-black dark:text-cat-light-secundary-3 pb-3">{{chat.name}}</h2>
+        <h2 class="text-base font-medium text-black dark:text-cat-light-secundary-3 pb-3">{{chat.name}}</h2>
         <div class="text-sm">
           <span class="text-gray-500 dark:text-gray-300">{{date}}</span>
         </div>
