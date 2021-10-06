@@ -21536,7 +21536,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GameInformation_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./GameInformation.vue */ "./resources/js/Pages/Chat/GameInformation.vue");
 /* harmony import */ var _CardInfo_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardInfo.vue */ "./resources/js/Pages/Chat/CardInfo.vue");
 /* harmony import */ var _LoadMessage_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadMessage.vue */ "./resources/js/Pages/Chat/LoadMessage.vue");
-/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../js/instanceId.js */ "./public/js/instanceId.js");
+/* harmony import */ var _js_instanceId_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../../js/instanceId.js */ "./public/js/instanceId.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -27793,7 +27793,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$props.canLogin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('messenger'),
-    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
+    "class": "text-sm text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3];
@@ -27807,7 +27807,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('login'),
-    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
+    "class": "text-sm text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4];
@@ -27820,7 +27820,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["href"]), $props.canRegister ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('register'),
-    "class": "ml-4 text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
+    "class": "ml-4 text-sm text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_5];
