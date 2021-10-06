@@ -1,5 +1,5 @@
 <template>
-    <div class="font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center"
+    <div class="font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center rounded-lg"
         :class="color">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path fill="currentcolor" :d="item"></path>

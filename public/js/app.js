@@ -26063,7 +26063,7 @@ var _hoisted_3 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center", $options.color])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center rounded-lg", $options.color])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     fill: "currentcolor",
     d: $options.item
@@ -26152,7 +26152,7 @@ var _hoisted_1 = {
   "class": "grid grid-cols-5 dark:bg-cat-light"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-light"
+  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-light"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -26183,7 +26183,7 @@ var _hoisted_8 = {
   "class": "col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between border-b-2 border-gray-100"
+  "class": "flex p-3 justify-between border-b-2 border-black-100"
 };
 var _hoisted_10 = ["name"];
 
@@ -26248,7 +26248,7 @@ var _hoisted_22 = {
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
 };
 var _hoisted_24 = {
   "class": "m-3"
@@ -26530,7 +26530,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$emit('mostrarConversacion');
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-blue-600", $options.chatColor, $options.select])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["my-2 mr-0 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-blue-600", $options.chatColor, $options.select])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.chat.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
