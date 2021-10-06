@@ -1210,14 +1210,17 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mr-8 {
+	margin-right: 2rem;
+}
 .mb-10 {
 	margin-bottom: 2.5rem;
 }
 .mb-2 {
 	margin-bottom: 0.5rem;
 }
-.mr-4 {
-	margin-right: 1rem;
+.mr-0 {
+	margin-right: 0px;
 }
 .block {
 	display: block;
@@ -1525,6 +1528,9 @@ select {
 .rounded-full {
 	border-radius: 9999px;
 }
+.rounded-sm {
+	border-radius: 0.125rem;
+}
 .rounded-xl {
 	border-radius: 0.75rem;
 }
@@ -1811,6 +1817,10 @@ select {
 .py-10 {
 	padding-top: 2.5rem;
 	padding-bottom: 2.5rem;
+}
+.px-10 {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
 }
 .pt-6 {
 	padding-top: 1.5rem;
