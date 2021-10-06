@@ -1,7 +1,7 @@
 <template>
     <app-layout title="Mi perfil">
         <template #header>
-            <h2 class="text-2xl font-bold text-white leading-tight dark:text-white text-black">
+            <h2 class="font-semibold text-xl leading-tight dark:text-white text-black">
                 Mi perfil
             </h2>
         </template>

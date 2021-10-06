@@ -24112,7 +24112,7 @@ var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_65 = [_hoisted_64];
 var _hoisted_66 = {
   key: 0,
-  "class": "bg-white dark:bg-cat-hard-4 shadow"
+  "class": "bg-cat-light-1 dark:bg-cat-hard-4 shadow"
 };
 var _hoisted_67 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
@@ -27626,7 +27626,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "text-2xl font-bold text-white leading-tight dark:text-white text-black"
+  "class": "font-semibold text-xl leading-tight dark:text-white text-black"
 }, " Mi perfil ", -1
 /* HOISTED */
 );
