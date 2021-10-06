@@ -2,13 +2,13 @@
 <app-layout title="Messenger">
   <Head title="Messenger" />
 
-  <div class="grid grid-cols-5 dark:bg-cat-light">
+  <div class="grid grid-cols-5 dark:bg-cat-hard-4">
     
     <!-- Left Section-->
-    <div class="flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-light">
+    <div class="flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-hard-5">
       <!-- Chat title -->
-      <div class="mb-4 p-4 text-center rounded-md dark:bg-cat">
-        <h1 class="text-xl font-bold text-black dark:text-white">Chats</h1>
+      <div class="mb-4 p-2 text-center rounded-md dark:bg-cat-hard-1">
+        <h1 class="text-2xl font-bold text-black dark:text-white">Chats</h1>
       </div>
       <!-- Error message card -->
       <CardInfo v-if="errors.chatsError" :card="cards[0]"></CardInfo>
@@ -28,9 +28,9 @@
         </div>
         <!-- more chats button -->
         <div class="flex justify-center" v-if="loads.moreChats">
-          <button class="w-3/4 p-2 rounded-lg bg-blue-600"
+          <button class="w-3/4 p-2 rounded-lg bg-cat-hard-blue-2"
             @click="loadMoreChats">
-            <p class="font-bold text-xs text-white text-base">Cargar más chats</p>
+            <p class="font-medium text-base text-cat-light-secundary-3">Cargar más chats</p>
           </button>
         </div>
       </template>
@@ -38,16 +38,16 @@
 
     <!-- Middle Section -->
     <template v-if="name != ''">
-      <div class="col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light">
+      <div class="col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1">
         <!-- Conversation header -->
-        <div class="flex p-3 justify-between border-b-2 border-gray-100">
+        <div class="flex p-3 justify-between border-b-2 border-cat-gray-2 dark:border-cat-light-secundary-3 m-5">
           <!-- Chat name -->
-          <h1 class="text-xl font-bold text-black dark:text-white" :name="name">{{ name }}</h1>
+          <h1 class="text-2xl font-medium text-black dark:text-white" :name="name">{{ name }}</h1>
           <!-- Close chat icon -->
           <div>
             <button
               type="button"
-              class="p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100"
+              class="p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
               @click="closeChat">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -60,15 +60,15 @@
         <CardInfo v-if="errors.messagesError" :card="cards[2]"></CardInfo>
        
         <!-- Messages -->
-        <div class="scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3">
+        <div class="scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3 pl-3">
           <Message v-for="message in messages" :message="message"> </Message>
         </div>
 
         <!-- Input for writing a messages -->
         <template v-if="inputAvailable">
-          <div class="flex mt-5" >
+          <div class="flex mt-5 pl-2" >
             <div class="flex-1">
-              <input type="text" class="w-full rounded-full py-1 text-gray-500"
+              <input type="text" class="w-full rounded-full py-1 text-cat-hard-5"
                 placeholder="Escribe un mensaje..."
                 v-model="message"
                 @keyup.enter="sendMessage"/>
@@ -76,7 +76,7 @@
             <div>
               <button
                 type="button"
-                class="ml-2 p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100"
+                class="ml-2 p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
                 @click="sendMessage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
@@ -87,16 +87,22 @@
           </div>
         </template>
         <template v-else>
-          <div class="text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-yellow-500">
-            <span class="text-xl text-base text-yellow-600 dark:text-white">Este chat se encuentra atendido por un bot o ha finalizado</span>
+          <div class="text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-cat-hard-secundary-3">
+            <span class="font-medium text-base text-yellow-600 dark:text-cat-light-secundary-3">Este chat se encuentra atendido por un bot o ha finalizado</span>
           </div>
         </template>
+      </div>
+    </template>
+    <template v-else>
+      <div class="col-span-4 flex flex-col justify-center items-center">
+        <p class="font-bold text-2xl text-base text-black dark:text-white">¡Nunca un chat fue tan divertido!</p>
+        <p class="text-xl text-gray-500 dark:text-gray-300">Comienza a jugar seleccionando alguno de los chats</p>
       </div>
     </template>
 
     <!-- Right Section -->
     <!-- No game message card -->
-    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat" v-if="errors.gamesError">
+    <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5" v-if="errors.gamesError">
       <CardInfo
       :card="cards[1]"
       @click="loadGame"
@@ -104,14 +110,14 @@
     </div>
 
     <!-- No game exists message card -->
-    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat" v-if="errors.noGameError">
+    <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5" v-if="errors.noGameError">
       <CardInfo
       :card="cards[3]"
       ></CardInfo>
     </div>
 
     <template v-if="game != ''">
-      <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat">
+      <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5">
 
         <div class="m-3">
           <!-- Status game card -->
@@ -146,11 +152,6 @@
         :name="name"
         ></GameInformation>
 
-        <div class="flex justify-center">
-          <button class="w-3/4 p-2 rounded-lg bg-red-500">
-            <p class="font-bold text-xs text-white text-base">Finalizar Partida</p>
-          </button>
-        </div>
       </div>
     </template>
 

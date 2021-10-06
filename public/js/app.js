@@ -20538,7 +20538,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['href', 'active'],
   computed: {
     classes: function classes() {
-      return this.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-200 focus:outline-none focus:border-indigo-700 transition' : 'inline-flex items-center px-1 pt-1 border-transparent text-sm font-medium leading-5 text-gray-200 hover:text-gray-300 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
+      return this.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-cat-hard-blue-2 text-sm font-medium leading-5 text-gray-200 focus:outline-none focus:border-indigo-700 transition' : 'inline-flex items-center px-1 pt-1 border-transparent text-sm font-medium leading-5 text-gray-200 hover:text-gray-300 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition';
     }
   }
 });
@@ -21461,8 +21461,8 @@ __webpack_require__.r(__webpack_exports__);
       if (this.game.state == 2) return "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z";else if (this.game.state_relation.turn == 1) return "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z";else return "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z";
     },
     color: function color() {
-      if (this.game.state == 2) return 'border-blue-600 bg-blue-500';
-      if (this.game.state_relation.turn == 1) return 'border-yellow-600 bg-yellow-500';else return 'border-green-600 bg-green-500';
+      if (this.game.state == 2) return 'bg-cat-hard-blue-2';
+      if (this.game.state_relation.turn == 1) return 'bg-yellow-500 dark:bg-cat-hard-colors-3';else return 'bg-green-500 dark:bg-cat-hard-colors-2';
     }
   }
 });
@@ -22068,10 +22068,10 @@ __webpack_require__.r(__webpack_exports__);
       return {
         'self-end': this.message.transmitter,
         'self-start': !this.message.transmitter,
-        'bg-blue-500': this.message.transmitter,
-        'bg-gray-50': !this.message.transmitter,
-        'text-white': this.message.transmitter,
-        'text-black': !this.message.transmitter
+        'bg-cat-hard-blue-2': this.message.transmitter,
+        'bg-cat-light-secundary-3': !this.message.transmitter,
+        'text-cat-light-secundary-3': this.message.transmitter,
+        'text-cat-hard-5': !this.message.transmitter
       };
     }
   }
@@ -22102,8 +22102,8 @@ __webpack_require__.r(__webpack_exports__);
     chatColor: function chatColor() {
       if (this.chat.state != 2) {
         return {
-          'bg-yellow-500': this.chat.turn,
-          'bg-green-500': !this.chat.turn,
+          'bg-yellow-500 dark:bg-cat-hard-colors-3': this.chat.turn,
+          'bg-green-500 dark:bg-cat-hard-colors-2': !this.chat.turn,
           'bg-opacity-75': true
         };
       }
@@ -22824,10 +22824,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-cat-dark"
+  "class": "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-cat-hard-5"
 };
 var _hoisted_2 = {
-  "class": "w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-cat-light hadow-md overflow-hidden sm:rounded-lg"
+  "class": "w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-cat-hard-1 overflow-hidden sm:rounded-lg"
 };
 function render(_ctx, _cache) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "logo")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])]);
@@ -23842,10 +23842,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-dark"
+  "class": "min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-hard-5"
 };
 var _hoisted_2 = {
-  "class": "bg-cat-dark-light border-b border-gray-600 dark:bg-cat-dark"
+  "class": "bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-5"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -23872,13 +23872,21 @@ var _hoisted_8 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Messenger ");
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "font-medium text-base"
+}, "Messenger", -1
+/* HOISTED */
+);
 
 var _hoisted_10 = {
   "class": "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Stats ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "font-medium text-base"
+}, "Stats", -1
+/* HOISTED */
+);
 
 var _hoisted_12 = {
   "class": "hidden sm:flex sm:items-center sm:ml-6"
@@ -23976,7 +23984,7 @@ var _hoisted_33 = {
 };
 var _hoisted_34 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 dark:bg-cat-dark-light hover:text-gray-300 focus:outline-none transition"
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 dark:dark:bg-cat-hard-blue-1 hover:text-gray-300 focus:outline-none transition"
 };
 
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -24104,7 +24112,7 @@ var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_65 = [_hoisted_64];
 var _hoisted_66 = {
   key: 0,
-  "class": "bg-cat-light-1 dark:bg-cat-dark shadow"
+  "class": "bg-cat-light-1 dark:bg-cat-hard-4 shadow"
 };
 var _hoisted_67 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
@@ -25138,7 +25146,7 @@ var _hoisted_7 = {
 };
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "ml-2 text-sm  text-cat-dark dark:text-white"
+  "class": "ml-2 text-cat-dark dark:text-white text-base font-medium"
 }, "Recordar contraseña", -1
 /* HOISTED */
 );
@@ -25212,7 +25220,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "email",
         value: "Email",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
         type: "email",
@@ -25228,7 +25236,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password",
         value: "Contraseña",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
         type: "password",
@@ -25252,7 +25260,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["checked"]), _hoisted_8])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
         key: 0,
         href: _ctx.route('password.request'),
-        "class": "underline text-sm text-cat-dark dark:text-white hover:text-gray-900"
+        "class": "underline text-cat-dark dark:text-white hover:text-gray-900 text-base font-medium"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_10];
@@ -25263,7 +25271,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4 bg-cat-blue text-white", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4 bg-cat-blue text-white text-sm font-bold", {
           'opacity-25': $data.form.processing
         }]),
         disabled: $data.form.processing
@@ -25391,7 +25399,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "name",
         value: "Nombre",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "name",
         type: "text",
@@ -25408,7 +25416,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "email",
         value: "Email",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
         type: "email",
@@ -25423,7 +25431,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password",
         value: "Contraseña",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
         type: "password",
@@ -25439,7 +25447,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password_confirmation",
         value: "Confirmar contraseña",
-        "class": "text-cat-dark dark:text-white"
+        "class": "text-cat-dark dark:text-white text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password_confirmation",
         type: "password",
@@ -25484,7 +25492,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: _ctx.route('login'),
-        "class": "underline text-sm text-white hover:text-gray-900"
+        "class": "underline text-white hover:text-gray-900 text-base font-medium"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_14];
@@ -25495,7 +25503,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4 bg-cat-blue", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4 bg-cat-blue text-sm font-bold", {
           'opacity-25': $data.form.processing
         }]),
         disabled: $data.form.processing
@@ -26063,7 +26071,7 @@ var _hoisted_3 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center", $options.color])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 px-6 inline-flex items-center", $options.color])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     fill: "currentcolor",
     d: $options.item
@@ -26095,7 +26103,7 @@ var _hoisted_1 = {
   "class": "col-span-12 sm:col-span-6 md:col-span-3"
 };
 var _hoisted_2 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat"
+  "class": "flex flex-row bg-cat-light-secundary-3 rounded p-4 dark:bg-cat-hard-5"
 };
 var _hoisted_3 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26109,10 +26117,10 @@ var _hoisted_5 = {
   "class": "flex flex-col flex-grow ml-4"
 };
 var _hoisted_6 = {
-  "class": "text-sm text-gray-500 dark:text-gray-300"
+  "class": "text-base text-gray-500 dark:text-cat-gray-5"
 };
 var _hoisted_7 = {
-  "class": "font-bold text-lg dark:text-white"
+  "class": "font-bold text-xl dark:text-cat-light-secundary-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -26149,16 +26157,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "grid grid-cols-5 dark:bg-cat-light"
+  "class": "grid grid-cols-5 dark:bg-cat-hard-4"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-light"
+  "class": "flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mb-4 p-4 text-center rounded-md dark:bg-cat"
+  "class": "mb-4 p-2 text-center rounded-md dark:bg-cat-hard-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "text-xl font-bold text-black dark:text-white"
+  "class": "text-2xl font-bold text-black dark:text-white"
 }, "Chats")], -1
 /* HOISTED */
 );
@@ -26172,7 +26180,7 @@ var _hoisted_5 = {
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-bold text-xs text-white text-base"
+  "class": "font-medium text-base text-cat-light-secundary-3"
 }, "Cargar más chats", -1
 /* HOISTED */
 );
@@ -26180,10 +26188,10 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   key: 0,
-  "class": "col-span-3 flex flex-col h-screen p-3 bg-white dark:bg-cat-light"
+  "class": "col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between border-b-2 border-gray-100"
+  "class": "flex p-3 justify-between border-b-2 border-cat-gray-2 dark:border-cat-light-secundary-3 m-5"
 };
 var _hoisted_10 = ["name"];
 
@@ -26204,11 +26212,11 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_12 = [_hoisted_11];
 var _hoisted_13 = {
-  "class": "scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3"
+  "class": "scroll-thin overflow-y-scroll flex flex-col-reverse h-screen pr-3 pl-3"
 };
 var _hoisted_14 = {
   key: 1,
-  "class": "flex mt-5"
+  "class": "flex mt-5 pl-2"
 };
 var _hoisted_15 = {
   "class": "flex-1"
@@ -26228,11 +26236,11 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_17 = [_hoisted_16];
 var _hoisted_18 = {
   key: 2,
-  "class": "text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-yellow-500"
+  "class": "text-center px-3 py-2 mx-1 my-2 rounded-md bg-orange-200 dark:bg-cat-hard-secundary-3"
 };
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-xl text-base text-yellow-600 dark:text-white"
+  "class": "font-medium text-base text-yellow-600 dark:text-cat-light-secundary-3"
 }, "Este chat se encuentra atendido por un bot o ha finalizado", -1
 /* HOISTED */
 );
@@ -26240,30 +26248,37 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
   key: 1,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
-};
-var _hoisted_22 = {
-  key: 2,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat"
-};
-var _hoisted_23 = {
-  key: 3,
-  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat"
-};
-var _hoisted_24 = {
-  "class": "m-3"
+  "class": "col-span-4 flex flex-col justify-center items-center"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex justify-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "w-3/4 p-2 rounded-lg bg-red-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-bold text-xs text-white text-base"
-}, "Finalizar Partida")])], -1
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "font-bold text-2xl text-base text-black dark:text-white"
+}, "¡Nunca un chat fue tan divertido!", -1
 /* HOISTED */
 );
 
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-xl text-gray-500 dark:text-gray-300"
+}, "Comienza a jugar seleccionando alguno de los chats", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = [_hoisted_22, _hoisted_23];
+var _hoisted_25 = {
+  key: 2,
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
+};
+var _hoisted_26 = {
+  key: 3,
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
+};
+var _hoisted_27 = {
+  key: 4,
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
+};
+var _hoisted_28 = {
+  "class": "m-3"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -26317,20 +26332,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), $data.loads.moreChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        "class": "w-3/4 p-2 rounded-lg bg-blue-600",
+        "class": "w-3/4 p-2 rounded-lg bg-cat-hard-blue-2",
         onClick: _cache[0] || (_cache[0] = function () {
           return $options.loadMoreChats && $options.loadMoreChats.apply($options, arguments);
         })
       }, _hoisted_7)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
       /* STABLE_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Middle Section "), $data.name != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Conversation header "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Chat name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-        "class": "text-xl font-bold text-black dark:text-white",
+        "class": "text-2xl font-medium text-black dark:text-white",
         name: $data.name
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 9
       /* TEXT, PROPS */
       , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[1] || (_cache[1] = function () {
           return $options.closeChat && $options.closeChat.apply($options, arguments);
         })
@@ -26349,7 +26364,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Input for writing a messages "), $options.inputAvailable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "text",
-        "class": "w-full rounded-full py-1 text-gray-500",
+        "class": "w-full rounded-full py-1 text-cat-hard-5",
         placeholder: "Escribe un mensaje...",
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.message = $event;
@@ -26361,20 +26376,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* HYDRATE_EVENTS, NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "ml-2 p-2 text-gray-400 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "ml-2 p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
-      }, _hoisted_17)])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_20))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      }, _hoisted_17)])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_20))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, _hoisted_24)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[1],
         onClick: $options.loadGame
       }, null, 8
       /* PROPS */
-      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[3]
       }, null, 8
       /* PROPS */
-      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
+      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
         game: $data.game
       }, null, 8
       /* PROPS */
@@ -26407,7 +26422,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: $data.name
       }, null, 8
       /* PROPS */
-      , ["game", "option", "name"]), _hoisted_25])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+      , ["game", "option", "name"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
     }),
     _: 1
     /* STABLE */
@@ -26480,7 +26495,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-3 rounded-xl mt-2 relative max-w-prose text-base", $options.styles])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "mb-2 break-words pr-12",
+    "class": "mb-2 break-words pr-12 text-base font-normal",
     innerHTML: $props.message.message
   }, null, 8
   /* PROPS */
@@ -26513,7 +26528,7 @@ var _hoisted_2 = {
   "class": "flex flex-row justify-between items-center"
 };
 var _hoisted_3 = {
-  "class": "text-lg font-bold text-black dark:text-white pb-3"
+  "class": "text-base font-medium text-black dark:text-cat-light-secundary-3 pb-3"
 };
 var _hoisted_4 = {
   "class": "text-sm"
@@ -26536,7 +26551,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date), 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "text-xs text-gray-500 dark:text-gray-300",
+    "class": "text-base text-medium text-gray-500 dark:text-gray-300",
     innerHTML: $options.lengthMessage
   }, null, 8
   /* PROPS */
@@ -26609,19 +26624,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-black"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Eliminar cuenta", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-norma"
 }, "Elimina permanentemente tu cuenta.", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-200"
+  "class": "max-w-xl text-gray-200 text-sm font-norma"
 }, " Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar. ", -1
 /* HOISTED */
 );
@@ -26666,7 +26681,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_danger_button, {
-        onClick: $options.confirmUserDeletion
+        onClick: $options.confirmUserDeletion,
+        "class": "text-sm font-bold"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];
@@ -26762,19 +26778,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-black"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Sesiones del navegador", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Administre y cierre la sesión activa en otros navegadores y dispositivos.", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-xl text-sm text-gray-200"
+  "class": "max-w-xl text-gray-200 text-sm font-normal"
 }, " Si es necesario, puede cerrar la sesión de todas las demás sesiones del navegador en todos los dispositivos. Algunas de sus sesiones recientes se enumeran a continuación; sin embargo, es posible que esta lista no sea exhaustiva. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña. ", -1
 /* HOISTED */
 );
@@ -26910,7 +26926,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 128
       /* KEYED_FRAGMENT */
       ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        onClick: $options.confirmLogout
+        onClick: $options.confirmLogout,
+        "class": "text-sm font-bold"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_19];
@@ -27018,13 +27035,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-black"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Autenticación de dos factores", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.", -1
 /* HOISTED */
 );
@@ -27039,7 +27056,7 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mt-3 max-w-xl text-sm text-gray-200"
+  "class": "mt-3 max-w-xl text-gray-200 text-sm font-normal"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Cuando se habilita la autenticación de dos factores, se le pedirá un token seguro y aleatorio durante la autenticación. Puede recuperar este token de la aplicación Google Authenticator de su teléfono. ")], -1
 /* HOISTED */
 );
@@ -27054,7 +27071,7 @@ var _hoisted_7 = {
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "mt-4 max-w-xl text-sm text-gray-200"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-semibold"
+  "class": "font-semibold text-sm font-normal"
 }, " La autenticación de dos factores ahora está habilitada. Escanee el siguiente código QR usando la aplicación de autenticación de su teléfono. ")], -1
 /* HOISTED */
 );
@@ -27132,9 +27149,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
             type: "button",
-            "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+            "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm font-bold", {
               'opacity-25': $data.enabling
-            }),
+            }]),
             disabled: $data.enabling
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27244,13 +27261,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-black"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Actualizar contraseña", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Asegúrese de que su cuenta está utilizando una contraseña larga y aleatoria para mantenerse seguro.", -1
 /* HOISTED */
 );
@@ -27294,11 +27311,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     form: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "current_password",
-        value: "Contraseña actual"
+        value: "Contraseña actual",
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "current_password",
         type: "password",
-        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
         modelValue: $data.form.current_password,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $data.form.current_password = $event;
@@ -27314,11 +27332,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password",
-        value: "Nueva contraseña"
+        value: "Nueva contraseña",
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
         type: "password",
-        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
         modelValue: $data.form.password,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.password = $event;
@@ -27334,11 +27353,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password_confirmation",
-        value: "Confirmar contraseña"
+        value: "Confirmar contraseña",
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password_confirmation",
         type: "password",
-        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
         modelValue: $data.form.password_confirmation,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.password_confirmation = $event;
@@ -27367,9 +27387,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["on"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm font-bold", {
           'opacity-25': $data.form.processing
-        }),
+        }]),
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27407,13 +27427,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-black"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Datos de perfil", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Actualize la información de su cuenta de perfil y la dirección de su correo electrónico.", -1
 /* HOISTED */
 );
@@ -27531,11 +27551,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "name",
-        value: "Nombre"
+        value: "Nombre",
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "name",
         type: "text",
-        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
         modelValue: $data.form.name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.name = $event;
@@ -27550,11 +27571,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "email",
-        value: "Email"
+        value: "Email",
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
         type: "email",
-        "class": "mt-1 block w-full bg-cat-light-1 dark:bg-cat-gray",
+        "class": "mt-1 block w-full bg-blue-50 dark:bg-cat-gray",
         modelValue: $data.form.email,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
           return $data.form.email = $event;
@@ -27582,9 +27604,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 8
       /* PROPS */
       , ["on"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-sm font-bold", {
           'opacity-25': $data.form.processing
-        }),
+        }]),
         disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27746,7 +27768,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-dark"
+  "class": "relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center sm:pt-0 dark:bg-cat-hard-5"
 };
 var _hoisted_2 = {
   key: 0,
@@ -27759,7 +27781,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Registrarse ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"max-w-6xl mx-auto sm:px-6 lg:px-8\"><div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\"><img class=\"rounded-md w-24 h-24\" src=\"/images/logo.png\" alt=\"logo\"><h1 class=\"pl-2 pt-4 text-cat-logo dark:text-white text-6xl font-extrabold\t\">AuroCat</h1></div><div class=\"mt-8 bg-white dark:bg-cat-light overflow-hidden shadow sm:rounded-lg\"><div class=\"grid grid-cols-1 md:grid-cols-2\"><div class=\"p-6\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path></svg><div class=\"ml-4 text-lg leading-7 font-semibold\"><a href=\"https://github.com/mucinoab/InternAuro\" class=\"underline text-black dark:text-white\">Documentación</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-white text-sm\"> La documentación de nuestro proyecto se encuentra en nuestro repositorio de GitHub. </div></div></div><div class=\"p-6  border-gray-200 dark:border-gray-700\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z\"></path></svg><div class=\"ml-4 text-lg leading-7 font-semibold\"><a href=\"https://t.me/aeolus_help_bot\" class=\"underline text-black dark:text-white\">Chabot Telegram</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-white text-sm\"> Comienza a jugar con nuestro chatbot en Telegram. </div></div></div></div></div><div class=\"flex justify-center pt-3\"><img class=\"rounded-md h-50 w-3/12 border-solid border-8 border-cat-logo dark:border-cat\" src=\"/images/animacionBienvenida.gif\" alt=\"logo\"></div><div class=\"flex justify-center mt-4 sm:items-center sm:justify-between\"><div class=\"ml-4 text-center text-sm  text-gray-700 dark:text-white sm:text-right sm:ml-0\"> AuroCat v 1.0 </div></div></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"max-w-6xl mx-auto sm:px-6 lg:px-8\"><div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\"><img class=\"rounded-md w-24 h-24\" src=\"/images/logo.png\" alt=\"logo\"><h1 class=\"pl-2 pt-4 text-cat-logo dark:text-cat-light-secundary-3 text-6xl font-black\t\">AuroCat</h1></div><div class=\"mt-8 bg-white dark:bg-cat-hard-1 overflow-hidden shadow sm:rounded-lg\"><div class=\"grid grid-cols-1 md:grid-cols-2\"><div class=\"p-6\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path></svg><div class=\"ml-4 text-xl leading-7 font-medium\"><a href=\"https://github.com/mucinoab/InternAuro\" class=\"underline text-black dark:text-cat-light-secundary-3\">Documentación</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-cat-gray-4 text-sm font-normal\"> La documentación de nuestro proyecto se encuentra en nuestro repositorio de GitHub. </div></div></div><div class=\"p-6  border-gray-200 dark:border-gray-700\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-500\"><path d=\"M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z\"></path></svg><div class=\"ml-4 text-xl leading-7 font-medium\"><a href=\"https://t.me/aeolus_help_bot\" class=\"underline text-black dark:text-cat-light-secundary-3\">Chabot Telegram</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-gray-700 dark:text-cat-gray-4 text-sm font-normal\"> Comienza a jugar con nuestro chatbot en Telegram. </div></div></div></div></div><div class=\"flex justify-center pt-3\"><img class=\"rounded-md h-50 w-3/12 border-solid border-8 border-cat-logo dark:border-cat\" src=\"/images/animacionBienvenida.gif\" alt=\"logo\"></div><div class=\"flex justify-center mt-4 sm:items-center sm:justify-between\"><div class=\"ml-4 text-center text-sm  text-gray-700 dark:text-white sm:text-right sm:ml-0 font-normal\"> AuroCat v 1.0 </div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -27771,7 +27793,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [$props.canLogin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [_ctx.$page.props.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('messenger'),
-    "class": "text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3];
@@ -27785,7 +27807,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 1
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('login'),
-    "class": "text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_4];
@@ -27798,7 +27820,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["href"]), $props.canRegister ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
     key: 0,
     href: _ctx.route('register'),
-    "class": "ml-4 text-sm text-gray-700 dark:text-white underline hover:text-gray-500"
+    "class": "ml-4 text-sm font-medium text-gray-700 dark:text-cat-light-secundary-3 underline hover:text-gray-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_5];

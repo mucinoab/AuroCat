@@ -1,5 +1,5 @@
 <template>
-    <div class="font-bold select-none text-white shadow-md py-2 px-6 inline-flex items-center"
+    <div class="font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 px-6 inline-flex items-center"
         :class="color">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path fill="currentcolor" :d="item"></path>
@@ -35,12 +35,12 @@ export default {
         },
         color(){
 
-            if(this.game.state == 2) return 'border-blue-600 bg-blue-500';
+            if(this.game.state == 2) return 'bg-cat-hard-blue-2';
 
             if(this.game.state_relation.turn == 1) 
-                return 'border-yellow-600 bg-yellow-500';
+                return 'bg-yellow-500 dark:bg-cat-hard-colors-3';
             else 
-                return 'border-green-600 bg-green-500';
+                return 'bg-green-500 dark:bg-cat-hard-colors-2';
         }
         
     }
