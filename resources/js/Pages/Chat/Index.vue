@@ -40,14 +40,14 @@
     <template v-if="name != ''">
       <div class="col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1">
         <!-- Conversation header -->
-        <div class="flex p-3 justify-between border-b-2 border-cat-light-secundary-3 m-5">
+        <div class="flex p-3 justify-between border-b-2 border-cat-gray-2 dark:border-cat-light-secundary-3 m-5">
           <!-- Chat name -->
           <h1 class="text-2xl font-medium text-black dark:text-white" :name="name">{{ name }}</h1>
           <!-- Close chat icon -->
           <div>
             <button
               type="button"
-              class="p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
+              class="p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
               @click="closeChat">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -76,7 +76,7 @@
             <div>
               <button
                 type="button"
-                class="ml-2 p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
+                class="ml-2 p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100"
                 @click="sendMessage">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-6 w-6 transform rotate-90">
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">

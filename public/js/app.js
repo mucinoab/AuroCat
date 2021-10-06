@@ -26191,7 +26191,7 @@ var _hoisted_8 = {
   "class": "col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between border-b-2 border-cat-light-secundary-3 m-5"
+  "class": "flex p-3 justify-between border-b-2 border-cat-gray-2 dark:border-cat-light-secundary-3 m-5"
 };
 var _hoisted_10 = ["name"];
 
@@ -26327,7 +26327,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT, PROPS */
       , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Close chat icon "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[1] || (_cache[1] = function () {
           return $options.closeChat && $options.closeChat.apply($options, arguments);
         })
@@ -26358,7 +26358,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* HYDRATE_EVENTS, NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.message]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         type: "button",
-        "class": "ml-2 p-2 text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
+        "class": "ml-2 p-2 text-cat-gray-2 dark:text-cat-light-secundary-3 rounded-full hover:text-gray-600 hover:bg-gray-100",
         onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
