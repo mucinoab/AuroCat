@@ -23,28 +23,28 @@
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white text-lg font-medium"/>
+                <jet-label for="email" value="Email" class="text-cat-dark dark:text-white text-base font-medium"/>
                 <jet-input id="email" type="email" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.email" required autofocus />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white text-lg font-medium"/>
+                <jet-label for="password" value="Contraseña" class="text-cat-dark dark:text-white text-base font-medium"/>
                 <jet-input id="password" type="password" class="mt-1 block w-full bg-blue-50 dark:bg-cat-gray" v-model="form.password" required autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-cat-dark dark:text-white text-lg font-medium">Recordar contraseña</span>
+                    <span class="ml-2 text-cat-dark dark:text-white text-base font-medium">Recordar contraseña</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-cat-dark dark:text-white hover:text-gray-900 text-lg font-medium">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-cat-dark dark:text-white hover:text-gray-900 text-base font-medium">
                     ¿Olvidaste tu contraseña?
                 </Link>
 
-                <jet-button class="ml-4 bg-cat-blue text-white" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-4 bg-cat-blue text-white text-sm font-bold" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Iniciar sesión
                 </jet-button>
             </div>
