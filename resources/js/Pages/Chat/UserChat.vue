@@ -1,6 +1,6 @@
 <template>
   <div @click="$emit('mostrarConversacion')" 
-      class="my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-blue-500 dark:border-blue-600"
+      class="my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-cat"
       :class="chatColor,select">
     <div class="w-full">
       <div class="flex flex-row justify-between items-center">
@@ -42,7 +42,7 @@ export default {
         }
       },
       select(){
-        return {'border-l-4 border-blue-600 border-b-2': this.chat_id == this.chat.id};
+        return {'bg-gray-200 dark:bg-cat': this.chat_id == this.chat.id};
       },
       unread(){
         if(this.chat.unread>=100){ return 'w-auto';}
