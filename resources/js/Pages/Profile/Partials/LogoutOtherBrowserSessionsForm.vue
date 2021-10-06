@@ -1,15 +1,15 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="text-black dark:text-white text-lg font-bold">Sesiones del navegador</span>
+            <span class="text-black dark:text-white text-lg font-medium">Sesiones del navegador</span>
         </template>
 
         <template #description>
-            <span class="dark:text-gray-200 text-gray-500 text-base font-medium">Administre y cierre la sesión activa en otros navegadores y dispositivos.</span>
+            <span class="dark:text-gray-200 text-gray-500 text-sm font-normal">Administre y cierre la sesión activa en otros navegadores y dispositivos.</span>
         </template>
 
         <template #content>
-            <div class="max-w-xl text-gray-200 text-base font-medium">
+            <div class="max-w-xl text-gray-200 text-sm font-normal">
                 Si es necesario, puede cerrar la sesión de todas las demás sesiones del navegador en todos los dispositivos. Algunas de sus sesiones recientes se enumeran a continuación; sin embargo, es posible que esta lista no sea exhaustiva. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña.
             </div>
 

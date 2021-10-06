@@ -26624,19 +26624,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Eliminar cuenta", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500 text-base font-medium"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-norma"
 }, "Elimina permanentemente tu cuenta.", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-xl text-gray-200 text-base font-medium"
+  "class": "max-w-xl text-gray-200 text-sm font-norma"
 }, " Una vez de que su cuenta sea eliminada, todos sus datos y recursos serán permanentemente borrados. Antes de eliminar su cuenta, descargue cualquier dato o información que quiera conservar. ", -1
 /* HOISTED */
 );
@@ -26778,19 +26778,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Sesiones del navegador", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500 text-base font-medium"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Administre y cierre la sesión activa en otros navegadores y dispositivos.", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "max-w-xl text-gray-200 text-base font-medium"
+  "class": "max-w-xl text-gray-200 text-sm font-normal"
 }, " Si es necesario, puede cerrar la sesión de todas las demás sesiones del navegador en todos los dispositivos. Algunas de sus sesiones recientes se enumeran a continuación; sin embargo, es posible que esta lista no sea exhaustiva. Si cree que su cuenta se ha visto comprometida, también debe actualizar su contraseña. ", -1
 /* HOISTED */
 );
@@ -27035,28 +27035,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Autenticación de dos factores", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500 text-base font-medium"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Agregue seguridad adicional a su cuenta mediante la autenticación de dos factores.", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = {
   key: 0,
-  "class": "text-lg font-bold text-white"
+  "class": "text-lg font-medium text-white"
 };
 var _hoisted_4 = {
   key: 1,
-  "class": "text-lg font-bold text-white"
+  "class": "text-lg font-medium text-white"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mt-3 max-w-xl text-gray-200 text-base font-medium"
+  "class": "mt-3 max-w-xl text-gray-200 text-sm font-normal"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, " Cuando se habilita la autenticación de dos factores, se le pedirá un token seguro y aleatorio durante la autenticación. Puede recuperar este token de la aplicación Google Authenticator de su teléfono. ")], -1
 /* HOISTED */
 );
@@ -27071,7 +27071,7 @@ var _hoisted_7 = {
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "mt-4 max-w-xl text-sm text-gray-200"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-semibold text-base font-medium"
+  "class": "font-semibold text-sm font-normal"
 }, " La autenticación de dos factores ahora está habilitada. Escanee el siguiente código QR usando la aplicación de autenticación de su teléfono. ")], -1
 /* HOISTED */
 );
@@ -27261,13 +27261,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Actualizar contraseña", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500 text-base font-medium"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Asegúrese de que su cuenta está utilizando una contraseña larga y aleatoria para mantenerse seguro.", -1
 /* HOISTED */
 );
@@ -27312,7 +27312,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "current_password",
         value: "Contraseña actual",
-        "class": "text-base font-bold"
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "current_password",
         type: "password",
@@ -27333,7 +27333,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password",
         value: "Nueva contraseña",
-        "class": "text-base font-bold"
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password",
         type: "password",
@@ -27354,7 +27354,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "password_confirmation",
         value: "Confirmar contraseña",
-        "class": "text-base font-bold"
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "password_confirmation",
         type: "password",
@@ -27427,13 +27427,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-black dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-medium"
 }, "Datos de perfil", -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-gray-200 text-gray-500 text-base font-medium"
+  "class": "dark:text-gray-200 text-gray-500 text-sm font-normal"
 }, "Actualize la información de su cuenta de perfil y la dirección de su correo electrónico.", -1
 /* HOISTED */
 );
@@ -27552,7 +27552,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["message"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "name",
         value: "Nombre",
-        "class": "text-base font-bold"
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "name",
         type: "text",
@@ -27572,7 +27572,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Email "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "email",
         value: "Email",
-        "class": "text-base font-bold"
+        "class": "text-base font-medium"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "email",
         type: "email",
