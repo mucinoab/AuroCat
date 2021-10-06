@@ -1,6 +1,6 @@
 <template>
   <div @click="$emit('mostrarConversacion')" 
-      class="my-2 mr-4 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-cat"
+      class="my-2 mr-0 p-2 flex cursor-pointer rounded-lg hover:bg-gray-200 dark:hover:bg-cat"
       :class="chatColor,select">
     <div class="w-full">
       <div class="flex flex-row justify-between items-center">
