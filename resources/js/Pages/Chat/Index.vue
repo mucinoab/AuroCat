@@ -5,7 +5,7 @@
   <div class="grid grid-cols-5 dark:bg-cat-hard-4">
     
     <!-- Left Section-->
-    <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5">
+    <div class="flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-hard-5">
       <!-- Chat title -->
       <div class="mb-4 p-2 text-center rounded-md dark:bg-cat-hard-1">
         <h1 class="text-2xl font-bold text-black dark:text-white">Chats</h1>
@@ -96,7 +96,7 @@
 
     <!-- Right Section -->
     <!-- No game message card -->
-    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5" v-if="errors.gamesError">
+    <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5" v-if="errors.gamesError">
       <CardInfo
       :card="cards[1]"
       @click="loadGame"
@@ -104,14 +104,14 @@
     </div>
 
     <!-- No game exists message card -->
-    <div class="flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5" v-if="errors.noGameError">
+    <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5" v-if="errors.noGameError">
       <CardInfo
       :card="cards[3]"
       ></CardInfo>
     </div>
 
     <template v-if="game != ''">
-      <div class="flex flex-col justify-center text-center bg-white dark:bg-cat-hard-5">
+      <div class="flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5">
 
         <div class="m-3">
           <!-- Status game card -->

@@ -26103,7 +26103,7 @@ var _hoisted_1 = {
   "class": "col-span-12 sm:col-span-6 md:col-span-3"
 };
 var _hoisted_2 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat-hard-5"
+  "class": "flex flex-row bg-cat-light-secundary-3 rounded p-4 dark:bg-cat-hard-5"
 };
 var _hoisted_3 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26160,7 +26160,7 @@ var _hoisted_1 = {
   "class": "grid grid-cols-5 dark:bg-cat-hard-4"
 };
 var _hoisted_2 = {
-  "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5"
+  "class": "flex flex-col h-screen p-3 bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -26248,15 +26248,15 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
   key: 1,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
 var _hoisted_22 = {
   key: 2,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-5"
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
 var _hoisted_24 = {
   "class": "m-3"
