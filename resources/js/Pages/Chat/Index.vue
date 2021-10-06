@@ -7,7 +7,7 @@
     <!-- Left Section-->
     <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5">
       <!-- Chat title -->
-      <div class="mb-4 p-2 text-center rounded-md dark:bg-cat-gray-2">
+      <div class="mb-4 p-2 text-center rounded-md dark:bg-cat-hard-1">
         <h1 class="text-2xl font-bold text-black dark:text-white">Chats</h1>
       </div>
       <!-- Error message card -->
@@ -38,9 +38,9 @@
 
     <!-- Middle Section -->
     <template v-if="name != ''">
-      <div class="col-span-3 flex flex-col h-screen bg-white dark:bg-cat-gray-4">
+      <div class="col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1">
         <!-- Conversation header -->
-        <div class="flex p-3 justify-between dark:bg-cat-hard-secundary-2">
+        <div class="flex p-3 justify-between border-b-2 border-cat-light-secundary-3 m-5">
           <!-- Chat name -->
           <h1 class="text-2xl font-medium text-black dark:text-white" :name="name">{{ name }}</h1>
           <!-- Close chat icon -->
@@ -111,7 +111,7 @@
     </div>
 
     <template v-if="game != ''">
-      <div class="flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5">
+      <div class="flex flex-col justify-center text-center bg-white dark:bg-cat-hard-5">
 
         <div class="m-3">
           <!-- Status game card -->
@@ -146,11 +146,6 @@
         :name="name"
         ></GameInformation>
 
-        <div class="flex justify-center">
-          <button class="w-3/4 p-2 rounded-lg bg-red-500">
-            <p class="font-medium text-base text-cat-light-secundary-3">Finalizar Partida</p>
-          </button>
-        </div>
       </div>
     </template>
 

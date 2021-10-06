@@ -23845,7 +23845,7 @@ var _hoisted_1 = {
   "class": "min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-hard-5"
 };
 var _hoisted_2 = {
-  "class": "bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-blue-1"
+  "class": "bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-5"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -24112,7 +24112,7 @@ var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_65 = [_hoisted_64];
 var _hoisted_66 = {
   key: 0,
-  "class": "bg-white dark:bg-cat-hard-3 shadow"
+  "class": "bg-white dark:bg-cat-hard-4 shadow"
 };
 var _hoisted_67 = {
   "class": "max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8"
@@ -26103,7 +26103,7 @@ var _hoisted_1 = {
   "class": "col-span-12 sm:col-span-6 md:col-span-3"
 };
 var _hoisted_2 = {
-  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat-hard-blue-5"
+  "class": "flex flex-row bg-white shadow-sm rounded p-4 dark:bg-cat-hard-5"
 };
 var _hoisted_3 = {
   xmlns: "http://www.w3.org/2000/svg",
@@ -26164,7 +26164,7 @@ var _hoisted_2 = {
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mb-4 p-2 text-center rounded-md dark:bg-cat-gray-2"
+  "class": "mb-4 p-2 text-center rounded-md dark:bg-cat-hard-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-2xl font-bold text-black dark:text-white"
 }, "Chats")], -1
@@ -26188,10 +26188,10 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   key: 0,
-  "class": "col-span-3 flex flex-col h-screen bg-white dark:bg-cat-gray-4"
+  "class": "col-span-3 flex flex-col h-screen bg-white dark:bg-cat-hard-1"
 };
 var _hoisted_9 = {
-  "class": "flex p-3 justify-between dark:bg-cat-hard-secundary-2"
+  "class": "flex p-3 justify-between border-b-2 border-cat-light-secundary-3 m-5"
 };
 var _hoisted_10 = ["name"];
 
@@ -26256,22 +26256,11 @@ var _hoisted_22 = {
 };
 var _hoisted_23 = {
   key: 3,
-  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-blue-5"
+  "class": "flex flex-col justify-center text-center bg-white dark:bg-cat-hard-5"
 };
 var _hoisted_24 = {
   "class": "m-3"
 };
-
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex justify-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "w-3/4 p-2 rounded-lg bg-red-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "font-medium text-base text-cat-light-secundary-3"
-}, "Finalizar Partida")])], -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -26415,7 +26404,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: $data.name
       }, null, 8
       /* PROPS */
-      , ["game", "option", "name"]), _hoisted_25])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+      , ["game", "option", "name"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
     }),
     _: 1
     /* STABLE */

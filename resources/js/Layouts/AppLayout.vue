@@ -5,7 +5,7 @@
         <jet-banner />
 
         <div class="min-h-screen bg-indigo-50 overflow-y-auto dark:bg-cat-hard-5">
-            <nav class="bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-blue-1">
+            <nav class="bg-cat-dark-light  border-gray-600 dark:bg-cat-hard-5">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -233,7 +233,7 @@
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white dark:bg-cat-hard-3 shadow" v-if="$slots.header">
+            <header class="bg-white dark:bg-cat-hard-4 shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
