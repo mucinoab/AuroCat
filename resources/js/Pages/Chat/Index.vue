@@ -93,6 +93,12 @@
         </template>
       </div>
     </template>
+    <template v-else>
+      <div class="col-span-4 flex flex-col justify-center items-center">
+        <p class="font-bold text-2xl text-base text-black dark:text-white">¡Nunca un chat fue tan divertido!</p>
+        <p class="text-xl text-gray-500 dark:text-gray-300">Comienza a jugar seleccionando alguno de los chats</p>
+      </div>
+    </template>
 
     <!-- Right Section -->
     <!-- No game message card -->

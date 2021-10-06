@@ -26248,17 +26248,35 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_20 = [_hoisted_19];
 var _hoisted_21 = {
   key: 1,
-  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
+  "class": "col-span-4 flex flex-col justify-center items-center"
 };
-var _hoisted_22 = {
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "font-bold text-2xl text-base text-black dark:text-white"
+}, "¡Nunca un chat fue tan divertido!", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-xl text-gray-500 dark:text-gray-300"
+}, "Comienza a jugar seleccionando alguno de los chats", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = [_hoisted_22, _hoisted_23];
+var _hoisted_25 = {
   key: 2,
   "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
-var _hoisted_23 = {
+var _hoisted_26 = {
   key: 3,
   "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
 };
-var _hoisted_24 = {
+var _hoisted_27 = {
+  key: 4,
+  "class": "flex flex-col justify-center text-center bg-cat-light-secundary-3 dark:bg-cat-hard-5"
+};
+var _hoisted_28 = {
   "class": "m-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -26362,16 +26380,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[4] || (_cache[4] = function () {
           return $options.sendMessage && $options.sendMessage.apply($options, arguments);
         })
-      }, _hoisted_17)])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_20))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      }, _hoisted_17)])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_20))])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, _hoisted_24)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game message card "), $data.errors.gamesError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[1],
         onClick: $options.loadGame
       }, null, 8
       /* PROPS */
-      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
+      , ["card", "onClick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" No game exists message card "), $data.errors.noGameError ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardInfo, {
         card: $data.cards[3]
       }, null, 8
       /* PROPS */
-      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
+      , ["card"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.game != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Status game card "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_GameHeader, {
         game: $data.game
       }, null, 8
       /* PROPS */
