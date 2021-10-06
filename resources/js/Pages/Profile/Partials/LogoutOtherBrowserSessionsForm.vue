@@ -1,7 +1,7 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="dark:text-white text-lg font-bold">Sesiones del navegador</span>
+            <span class="text-black dark:text-white text-lg font-bold">Sesiones del navegador</span>
         </template>
 
         <template #description>

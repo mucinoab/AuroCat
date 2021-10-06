@@ -2,7 +2,7 @@
 <app-layout title="Messenger">
   <Head title="Messenger" />
 
-  <div class="grid grid-cols-5 dark:bg-cat-gray-4">
+  <div class="grid grid-cols-5 dark:bg-cat-hard-4">
     
     <!-- Left Section-->
     <div class="flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5">

@@ -1,7 +1,7 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="dark:text-white text-lg font-bold">Eliminar cuenta</span>
+            <span class="text-black dark:text-white text-lg font-bold">Eliminar cuenta</span>
         </template>
 
         <template #description>

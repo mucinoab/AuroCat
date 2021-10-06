@@ -26157,7 +26157,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "grid grid-cols-5 dark:bg-cat-gray-4"
+  "class": "grid grid-cols-5 dark:bg-cat-hard-4"
 };
 var _hoisted_2 = {
   "class": "flex flex-col h-screen p-3 bg-gray-50 dark:bg-cat-hard-5"
@@ -26606,7 +26606,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-bold"
 }, "Eliminar cuenta", -1
 /* HOISTED */
 );
@@ -26760,7 +26760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-bold"
 }, "Sesiones del navegador", -1
 /* HOISTED */
 );
@@ -27017,7 +27017,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-bold"
 }, "Autenticación de dos factores", -1
 /* HOISTED */
 );
@@ -27243,7 +27243,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-bold"
 }, "Actualizar contraseña", -1
 /* HOISTED */
 );
@@ -27409,7 +27409,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "dark:text-white text-lg font-bold"
+  "class": "text-black dark:text-white text-lg font-bold"
 }, "Datos de perfil", -1
 /* HOISTED */
 );

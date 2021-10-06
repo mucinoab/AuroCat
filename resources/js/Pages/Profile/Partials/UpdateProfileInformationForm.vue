@@ -1,7 +1,7 @@
 <template>
     <jet-form-section @submitted="updateProfileInformation" >
         <template #title>
-            <span class="dark:text-white text-lg font-bold">Datos de perfil</span>
+            <span class="text-black dark:text-white text-lg font-bold">Datos de perfil</span>
         </template>
 
         <template #description>

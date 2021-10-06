@@ -1,7 +1,7 @@
 <template>
     <jet-action-section>
         <template #title>
-            <span class="dark:text-white text-lg font-bold">Autenticación de dos factores</span>
+            <span class="text-black dark:text-white text-lg font-bold">Autenticación de dos factores</span>
         </template>
 
         <template #description>
