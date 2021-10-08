@@ -21455,7 +21455,7 @@ __webpack_require__.r(__webpack_exports__);
       return timeFromUnix(this.message.date * 1000);
     },
     title: function title() {
-      if (this.game.state == 2) return 'Finalizado';else if (this.game.state_relation.turn == 1) return 'Espera Movimiento';else return 'Tu turno';
+      if (this.game.state == 2) return 'Finalizado';else if (this.game.state_relation.turn == 1) return 'Espera\nMovimiento';else return 'Tu turno';
     },
     item: function item() {
       if (this.game.state == 2) return "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z";else if (this.game.state_relation.turn == 1) return "M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zm-4-5l-4-4V4h8v3.5l-4 4z";else return "M2.01 21L23 12 2.01 3 2 10l15 2-15 2z";
@@ -26071,7 +26071,7 @@ var _hoisted_3 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 px-10 inline-flex items-center rounded-sm", $options.color])
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 w-3/4 px-5 inline-flex items-center rounded-sm", $options.color])
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("svg", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
     fill: "currentcolor",
     d: $options.item
@@ -26332,7 +26332,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), 256
       /* UNKEYED_FRAGMENT */
       ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" more chats button "), $data.loads.moreChats ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-        "class": "w-3/4 mr-8 p-2 rounded-lg bg-cat-hard-blue-2",
+        "class": "w-3/4 p-2 rounded-lg bg-cat-hard-blue-2",
         onClick: _cache[0] || (_cache[0] = function () {
           return $options.loadMoreChats && $options.loadMoreChats.apply($options, arguments);
         })
