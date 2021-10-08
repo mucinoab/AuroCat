@@ -1210,9 +1210,6 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
-.mr-8 {
-	margin-right: 2rem;
-}
 .mb-10 {
 	margin-bottom: 2.5rem;
 }
@@ -1818,9 +1815,9 @@ select {
 	padding-top: 2.5rem;
 	padding-bottom: 2.5rem;
 }
-.px-10 {
-	padding-left: 2.5rem;
-	padding-right: 2.5rem;
+.px-5 {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
 }
 .pt-6 {
 	padding-top: 1.5rem;

@@ -1,10 +1,10 @@
 <template>
-    <div class="font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 px-10 inline-flex items-center rounded-sm"
+    <div class="font-bold text-xl select-none text-cat-light-secundary-3 shadow-md py-2 w-3/4 px-5 inline-flex items-center rounded-sm"
         :class="color">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path fill="currentcolor" :d="item"></path>
         </svg>
-        <span class="mr-2" >{{title}}</span>
+        <span class="mr-2">{{title}}</span>
     </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
             if(this.game.state ==2)
                 return 'Finalizado';
             else if(this.game.state_relation.turn == 1)
-                return 'Espera Movimiento';
+                return 'Espera\nMovimiento';
             else
                 return 'Tu turno';
         },
